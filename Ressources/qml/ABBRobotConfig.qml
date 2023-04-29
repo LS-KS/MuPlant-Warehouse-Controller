@@ -11,11 +11,9 @@ Rectangle {
         border.width: 2
 
         property bool expanded : true
-        property int ex_height : 800
+        property int ex_height : 125
         width: 400
-        height: 800
-
-
+        height: 125
 
         Image {
             id: arrow
@@ -32,11 +30,8 @@ Rectangle {
                     window.expanded = window.expanded ? false : true
                     window.height = window.expanded? window.ex_height : 25
                     seperator01.visible = seperator01.visible ? false: true
-                    modBusConfig.visible = modBusConfig.visible ? false : true
                     seperator02.visible = seperator02.visible ? false : true
-                    manOrder.visible = manOrder.visible ? false : true
-                    manRFID.visible = manRFID.visible ? false : true
-                    manualEvent.visible = manualEvent.visible ? false : true
+                    abbArmConfig.visible = abbArmConfig.visible ? false : true
                 }
             }
         }
@@ -48,7 +43,7 @@ Rectangle {
             anchors.top : parent.top
             anchors.right: parent.right
             anchors.margins : 5
-            text: "Manual handling"
+            text: "ABB Robot Arm"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
@@ -66,8 +61,8 @@ Rectangle {
             Behavior on visible { PropertyAnimation{} }
         }
 
-        ModBusConfig{
-            id: modBusConfig
+        ABBRobotArmConfig{
+            id: abbArmConfig
             anchors.top : seperator01.bottom
             anchors.left: parent.left
             anchors.margins: 5
@@ -85,35 +80,5 @@ Rectangle {
             anchors.margins : 5
 
             Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic} }
-        }
-
-        ManualOrder{
-            id: manOrder
-            width : window.width - 1
-            anchors.top: seperator02.bottom
-            anchors.left: window.left
-            anchors.right: window.right
-            anchors.margins: 5
-            Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic} }
-        }
-
-        ManualRFIDServer{
-            id: manRFID
-            anchors.top:manOrder.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 5
-            Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic} }
-        }
-
-        ManualEventLog {
-            id: manualEvent
-            anchors.top: manRFID.bottom
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.margins: 5
-            Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic} }
-
         }
 }

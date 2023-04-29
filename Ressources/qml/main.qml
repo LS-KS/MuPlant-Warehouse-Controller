@@ -21,10 +21,10 @@ Window {
         anchors.top : headerLine.bottom
     }
 
-    ManualController {
-        id: manCon02
-        anchors.left : parent.left
-        anchors.top : manCon01.bottom
+    ABBRobotConfig {
+        id: abbConfig
+        anchors.top: manCon01.bottom
+        anchors.left: parent.left
     }
 
 
