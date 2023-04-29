@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 Rectangle{
     width: parent.width -10
-    height: 50
+    height: 80
     Text {
         id: label_ModBusConfiguration
         width: window.width
@@ -19,8 +19,8 @@ Rectangle{
         id: label_ip
         text: qsTr("IP Adress")
         width : parent.width /3 -5
-        height: 15
-        verticalAlignment: Text.verticalAlignment
+        height: 30
+        verticalAlignment: Text.AlignVCenter
         anchors.left: parent.left
         anchors.top: label_ModBusConfiguration.bottom
         horizontalAlignment: Text.AlignHCenter
@@ -30,7 +30,7 @@ Rectangle{
         id: label_port
         text: qsTr("Port:")
         width : parent.width /5-5
-        height: 15
+        height: 30
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.left: label_ip.right
@@ -39,9 +39,10 @@ Rectangle{
 
     Text {
         id: label_connect
-        height: 15
+        height: 30
         text: qsTr("Disconnected")
-        verticalAlignment: Text.AlignVBottom
+        verticalAlignment: Text.AlignVCenter
+        font.styleName: "Semibold"
         horizontalAlignment: Text.AlignHCenter
         anchors.right:parent.right
         anchors.rightMargin: 10
@@ -53,14 +54,14 @@ Rectangle{
     }
     TextField {
         width: label_ip.width
-        height: label_ip.height +5
+        height: label_ip.height
         anchors.left: label_ip.left
         anchors.top: label_ip.bottom
         placeholderText:  "Enter ModBus IP"
     }
     TextField {
         width: label_port.width
-        height: label_port.height +5
+        height: label_port.height
         anchors.left: label_port.left
         anchors.top: label_port.bottom
         placeholderText: "Enter Port"
@@ -69,7 +70,7 @@ Rectangle{
     Button {
         text: "Start"
         width: label_connect.width -5
-        height: label_port.height +5
+        height: label_port.height
         anchors.right: label_connect.right
         anchors.top : label_ip.bottom
         anchors.rightMargin: 10

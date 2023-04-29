@@ -4,8 +4,6 @@ import QtQuick.Controls 2.5
 
 Rectangle {
         id: window
-        width: parent.width /3
-        height: parent.height /3
         radius: 10
         color : "white"
 
@@ -14,8 +12,9 @@ Rectangle {
 
         property bool expanded : true
         property int ex_height : parent.height / 2
+        width: 400
+        height: 460
 
-        Behavior on height {PropertyAnimation{} }
 
         Image {
             id: arrow
@@ -44,8 +43,11 @@ Rectangle {
             height: 15
             anchors.left: arrow. right
             anchors.top : parent.top
+            anchors.right: parent.right
             anchors.margins : 5
             text: "Manual handling"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
         }
 
         Rectangle {
