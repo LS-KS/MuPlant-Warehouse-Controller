@@ -1,66 +1,78 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.5
+import QtQuick.Controls.Material
+import QtQuick.Layouts 1.15
 Rectangle{
-    width: parent.width -10
+    width: parent.width-20
     height: 90
 
-    Text {
-        id: label_ip
-        text: qsTr("IP Adress")
+    RowLayout{
         height: 30
-        verticalAlignment: Text.AlignVCenter
-        anchors.left: parent.left
+        width: parent.width
+        id: row1
         anchors.top: parent.top
-        anchors.right: abbIp.left
-        anchors.bottom: labelTries.top
-        horizontalAlignment: Text.AlignHCenter
-    }
-
-    TextField {
-        id: abbIp
-        height: 30
-        anchors.left: label_ip.right
-        anchors.right: parent.right
-        placeholderText:  "Enter ModBus IP"
-    }
-
-    Text {
-        id: labelTries
-        y: 30
-        text: qsTr("Max. Tries")
-        height: 30
-        verticalAlignment: Text.AlignVCenter
-        anchors.rightMargin: 0
-        anchors.leftMargin: 0
-        horizontalAlignment: Text.AlignHCenter
         anchors.left: parent.left
-        anchors.top: label_ip.bottom
-        anchors.right: maxTriesField.left
+        anchors.right: parent.right
+        Text {
+            id: label_ip
+            text: qsTr("IP Adress")
+            verticalAlignment: Text.AlignVCenter
+            Layout.preferredWidth: parent.width/3
+            Layout.preferredHeight: parent.height
+        }
+
+        TextField {
+            id: abbIp
+            placeholderText:  "Enter ModBus IP"
+            Layout.preferredWidth: 2*parent.width/3
+            Layout.preferredHeight: parent.height
+        }
     }
 
-    TextField {
-        id: maxTriesField
-        height: 30
-        anchors.top: abbIp.bottom
-        anchors.left: label_ip.right
+    RowLayout{
+        id: row2
+        height:30
+        width:parent.width
+        anchors.top: row1.bottom
+        anchors.left: parent.left
         anchors.right: parent.right
-        placeholderText:  "Enter max. Tries"
+        Text {
+            id: labelTries
+            text: qsTr("Max. Tries")
+            verticalAlignment: Text.AlignVCenter
+            Layout.preferredWidth: parent.width/3
+            Layout.preferredHeight: parent.height
+        }
+
+        TextField {
+            id: maxTriesField
+            placeholderText:  "Enter max. Tries"
+            verticalAlignment: Text.AlignVCenter
+            Layout.preferredWidth: 2*parent.width/3
+            Layout.preferredHeight: parent.height
+        }
     }
 
-    Button {
-        id: startButton
-        text: "Start"
+
+    RowLayout{
+        id: row3
         height: 30
-        anchors.left: maxTriesField.left
-        anchors.top : maxTriesField.bottom
-        anchors.rightMargin: 10
-    }
-    Button {
-        id: modifyButton
-        text: "Modify"
-        height: 30
+        width: parent.width
+        anchors.top: row2.bottom
+        anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top : maxTriesField.bottom
-        anchors.left: startButton.right
+        Button {
+            id: startButton
+            text: "Start"
+            Layout.preferredWidth: parent.width/2
+            Layout.preferredHeight: parent.height
+        }
+        Button {
+            id: modifyButton
+            text: "Modify"
+            Layout.preferredWidth: parent.width/2
+            Layout.preferredHeight: parent.height
+        }
     }
+
 }

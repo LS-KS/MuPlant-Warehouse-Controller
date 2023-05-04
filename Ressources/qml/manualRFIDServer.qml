@@ -1,12 +1,12 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
+import QtQuick.Controls.Material
 import QtQuick.Layouts 1.3
 
 Rectangle {
     id: manRfidServer
     width: parent.width
     height: 200
-
     radius: 5
     border.color: "#546E7A"
     border.width: 2
@@ -31,19 +31,19 @@ Rectangle {
 
         Text {
             id: cupLabel
-            height: 40
-            width: parent.width /2
             text: "Cup ID"
             verticalAlignment: Text.AlignVCenter
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
 
         TextField {
             id: cupIdField
-            height: 40
             text: "0"
             horizontalAlignment: Text.AlignHRight
             validator: IntValidator{bottom: 0; top: 100000}
-
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
     }
 
@@ -59,16 +59,17 @@ Rectangle {
 
         Text {
             id: cupSizeLabel
-            height: 40
-            width: parent.width /2
             text: "Cup Size (optional)"
             verticalAlignment: Text.AlignVCenter
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
 
         ComboBox {
             id: cupSizeField
-            height: 40
             displayText: "Any"
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
     }
 
@@ -84,18 +85,19 @@ Rectangle {
 
         Text {
             id: produktIDLabel
-            height: 40
-            width: parent.width /2
             text: "Product ID (optional)"
             verticalAlignment: Text.AlignVCenter
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
 
         TextField {
             id: productIDField
-            height: 40
             text: "0"
             horizontalAlignment: Text.AlignHRight
             validator: IntValidator{bottom: 0; top: 100000}
+            Layout.preferredHeight: parent.height
+            Layout.preferredWidth:  parent.width/2
         }
     }
     Button {

@@ -1,5 +1,8 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.5
+import QtQuick.Controls
+import QtQuick.Controls.Material
+
+
 Rectangle{
     width: parent.width -10
     height: 80
@@ -59,6 +62,7 @@ Rectangle{
         anchors.top: label_ip.bottom
         placeholderText:  "Enter ModBus IP"
         verticalAlignment: Text.AlignVCenter
+        color: "black"
     }
     TextField {
         width: label_port.width
@@ -67,7 +71,7 @@ Rectangle{
         anchors.top: label_port.bottom
         placeholderText: "Enter Port"
         verticalAlignment: Text.AlignVCenter
-
+        color: "black"
     }
 
     Button {

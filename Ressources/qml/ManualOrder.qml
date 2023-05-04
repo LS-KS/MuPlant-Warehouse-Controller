@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
+import QtQuick.Controls.Material
 import QtQuick.Layouts 1.3
 
 Rectangle {
@@ -47,6 +48,8 @@ Rectangle {
                     id: row1
                     height: 40
                     anchors.top: parent.top
+                    layer.enabled: false
+                    layoutDirection: Qt.LeftToRight
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -55,11 +58,16 @@ Rectangle {
                         width: row1.width / 2
                         text: qsTr("Operation: ")
                         minimumPixelSize: 6
-                        layer.sourceRect.width: parent.width / 2
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
+
                     }
                     ComboBox{
                         id: operationComboBox
-                        height: 30
+                        font.family: "Arial"
+                        Layout.preferredWidth: 2* parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -74,11 +82,15 @@ Rectangle {
                         height: 30
                         width: parent.width / 2
                         text: qsTr("Request Type: ")
-                        layer.sourceRect.width: parent.width / 2
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     ComboBox{
                         id: requestComboBox
-                        height: 30
+                        font.family: "Arial"
+                        Layout.preferredWidth: 2* parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -94,15 +106,19 @@ Rectangle {
                         width: parent.width / 2
                         text: qsTr("Cup ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     TextField{
                         id: cupField
-                        height: 30
                         width: parent.width / 2
                         text: "0"
                         horizontalAlignment: Text.AlignHRight
+                        font.family: "Arial"
                         validator: IntValidator {bottom: 0; top: 100000}
+                        Layout.preferredWidth: 2* parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -119,14 +135,18 @@ Rectangle {
                         width: parent.width / 2
                         text: qsTr("Product ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     TextField{
                         id: productField
-                        height: 30
                         text: "0"
                         horizontalAlignment: Text.AlignHRight
+                        font.family: "Arial"
                         validator: IntValidator {bottom: 0; top: 100000}
+                        Layout.preferredWidth: 2* parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -143,19 +163,24 @@ Rectangle {
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
 
                     }
                     ComboBox{
                         id: storageCol
-                        height: 30
-                        width: parent.width /3 -10
+                        font.family: "Arial"
                         displayText: "column"
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                     }
                     ComboBox{
                         id: storageRow
-                        height: 30
-                        width: parent.width /3 -10
+                        font.family: "Arial"
                         displayText: "row"
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -171,12 +196,15 @@ Rectangle {
                         height: 30
                         width: row1.width / 2
                         text: qsTr("Cup Position (optional): ")
-                        layer.sourceRect.width: parent.width / 2
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     ComboBox{
                         id: cupPositionComboBox
-                        height: 30
-                    }
+                        font.family: "Arial"
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height                    }
                 }
 
                 RowLayout{
@@ -187,15 +215,20 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: noteLabel
-                        height: 30
                         text: qsTr("Note: Cup ID or Product ID must be set.")
                         fontSizeMode: Text.HorizontalFit
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
 
                     }
                     Button {
                         id: sendButton
                         text: "send"
+                        font.family: "Arial"
                         enabled: false
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
             }
@@ -216,15 +249,15 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteOperationLabel
-                        height: 30
-                        width: paletteRow1.width / 2
                         text: qsTr("Operation: ")
                         minimumPixelSize: 6
-                        layer.sourceRect.width: parent.width / 2
-                    }
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter                    }
                     ComboBox{
                         id: paletteOperationComboBox
-                        height: 30
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -236,10 +269,11 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteRequestLabel
-                        height: 30
                         width: parent.width / 2
                         text: qsTr("Request Type: ")
-                        layer.sourceRect.width: parent.width / 2
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
 
                 }
@@ -252,12 +286,12 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteCupLabel
-                        height: 30
                         width: parent.width / 2
                         text: qsTr("Cup ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
-                    }
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter                    }
 
                 }
 
@@ -270,12 +304,11 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteProductLabel
-                        height: 30
-                        width: parent.width / 2
                         text: qsTr("Product ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
-                    }
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter                    }
 
                 }
 
@@ -287,22 +320,23 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteStorageLabel
-                        height: 30
-                        width: parent.width /3 -10
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     ComboBox{
                         id: paletteStorageCol
-                        height: 30
-                        width: parent.width /3 -10
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                         displayText: "column"
                     }
                     ComboBox{
                         id: paletteStorageRow
-                        height: 30
-                        width: parent.width /3 -10
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                         displayText: "row"
                     }
                 }
@@ -316,14 +350,15 @@ Rectangle {
 
                     Text {
                         id: paletteCupPositionLabel
-                        height: 30
-                        width: row1.width / 2
                         text: qsTr("Cup Position (optional): ")
-                        layer.sourceRect.width: parent.width / 2
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                     }
                     ComboBox{
                         id: paletteCupPositionComboBox
-                        height: 30
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -335,15 +370,19 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: paletteNoteLabel
-                        height: 30
                         text: qsTr("")
                         fontSizeMode: Text.HorizontalFit
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
 
                     }
                     Button {
                         id: paletteSendButton
                         text: "send"
                         enabled: false
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
             }
@@ -364,16 +403,16 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupOperationLabel
-                        height: 30
-                        width: paletteRow1.width / 2
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Operation: ")
                         minimumPixelSize: 6
-                        layer.sourceRect.width: parent.width / 2
                     }
                     ComboBox{
                         id: cupOperationComboBox
-                        height: 30
-                    }
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height                    }
                 }
 
                 RowLayout{
@@ -384,10 +423,10 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupRequestLabel
-                        height: 30
-                        width: parent.width / 2
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Request Type: ")
-                        layer.sourceRect.width: parent.width / 2
                     }
 
                 }
@@ -400,11 +439,11 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupCupLabel
-                        height: 30
-                        width: parent.width / 2
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Cup ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
                     }
 
                 }
@@ -418,11 +457,11 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupProductLabel
-                        height: 30
-                        width: parent.width / 2
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Product ID: ")
                         font.italic: true
-                        layer.sourceRect.width: parent.width/2
                     }
 
                 }
@@ -435,8 +474,9 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupStorageLabel
-                        height: 30
-                        width: parent.width /3 -10
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
@@ -444,14 +484,14 @@ Rectangle {
                     }
                     ComboBox{
                         id: cupStorageCol
-                        height: 30
-                        width: parent.width /3 -10
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                         displayText: "column"
                     }
                     ComboBox{
                         id: cupStorageRow
-                        height: 30
-                        width: parent.width /3 -10
+                        Layout.preferredWidth: parent.width/4
+                        Layout.preferredHeight: parent.height
                         displayText: "row"
                     }
                 }
@@ -465,14 +505,15 @@ Rectangle {
 
                     Text {
                         id: cupCupPositionLabel
-                        height: 30
-                        width: row1.width / 2
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("Cup Position (optional): ")
-                        layer.sourceRect.width: parent.width / 2
                     }
                     ComboBox{
                         id: cupCupPositionComboBox
-                        height: 30
+                        Layout.preferredWidth: parent.width/2
+                        Layout.preferredHeight: parent.height
                     }
                 }
 
@@ -484,7 +525,9 @@ Rectangle {
                     anchors.right: parent.right
                     Text {
                         id: cupNoteLabel
-                        height: 30
+                        Layout.preferredWidth: 2*parent.width/3
+                        Layout.preferredHeight: parent.height
+                        verticalAlignment: Text.AlignVCenter
                         text: qsTr("")
                         fontSizeMode: Text.HorizontalFit
 
@@ -493,6 +536,8 @@ Rectangle {
                         id: cupSendButton
                         text: "send"
                         enabled: false
+                        Layout.preferredWidth: parent.width/3
+                        Layout.preferredHeight: parent.height
                     }
                 }
             }

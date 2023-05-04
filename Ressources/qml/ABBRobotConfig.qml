@@ -13,7 +13,7 @@ Rectangle {
         property bool expanded : true
         property int ex_height : 125
         width: 400
-        height: 125
+        height: 140
 
         Image {
             id: arrow
@@ -65,7 +65,7 @@ Rectangle {
             id: abbArmConfig
             anchors.top : seperator01.bottom
             anchors.left: parent.left
-            anchors.margins: 5
+            anchors.margins: 10
             Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic}}
         }
 

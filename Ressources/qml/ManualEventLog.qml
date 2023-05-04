@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
+import QtQuick.Controls.Material
 import QtQuick.Layouts 1.3
 
 Rectangle {
@@ -30,7 +31,6 @@ Rectangle {
         anchors.right: parent.right
         anchors.margins: 10
 
-
         TextArea {
             id: manEventLog
             width: parent.width
@@ -38,5 +38,6 @@ Rectangle {
             anchors.fill: parent
         }
     }
+
 
 }

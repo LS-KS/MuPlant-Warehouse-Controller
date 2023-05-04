@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Window
 
+
 Window {
     width: 640
     minimumWidth : 480
