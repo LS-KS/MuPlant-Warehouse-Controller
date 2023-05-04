@@ -75,7 +75,7 @@ Rectangle {
             width : window.width - 10
             height: 1
             color: "#546E7A"
-            anchors.top : modBusConfig.bottom
+            anchors.top : abbArmConfig.bottom
             anchors.left: window.left
             anchors.margins : 5
 

@@ -34,7 +34,6 @@ Rectangle {
             height: 40
             width: parent.width /2
             text: "Cup ID"
-            anchors.left: parent.left
             verticalAlignment: Text.AlignVCenter
         }
 
@@ -42,9 +41,6 @@ Rectangle {
             id: cupIdField
             height: 40
             text: "0"
-            anchors.left: cupLabel.right
-            anchors.top: parent.top
-            anchors.right: parent.right
             horizontalAlignment: Text.AlignHRight
             validator: IntValidator{bottom: 0; top: 100000}
 
@@ -66,7 +62,6 @@ Rectangle {
             height: 40
             width: parent.width /2
             text: "Cup Size (optional)"
-            anchors.left: parent.left
             verticalAlignment: Text.AlignVCenter
         }
 
@@ -74,9 +69,6 @@ Rectangle {
             id: cupSizeField
             height: 40
             displayText: "Any"
-            anchors.left: cupSizeLabel.right
-            anchors.top: parent.top
-            anchors.right: parent.right
         }
     }
 
@@ -95,7 +87,6 @@ Rectangle {
             height: 40
             width: parent.width /2
             text: "Product ID (optional)"
-            anchors.left: parent.left
             verticalAlignment: Text.AlignVCenter
         }
 
@@ -103,9 +94,6 @@ Rectangle {
             id: productIDField
             height: 40
             text: "0"
-            anchors.left: produktIDLabel.right
-            anchors.top: parent.top
-            anchors.right: parent.right
             horizontalAlignment: Text.AlignHRight
             validator: IntValidator{bottom: 0; top: 100000}
         }

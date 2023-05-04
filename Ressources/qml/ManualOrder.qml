@@ -45,7 +45,7 @@ Rectangle {
                 RowLayout{
                     id: row1
                     height: 40
-                    anchors.top: tabBar.bottom
+                    anchors.top: parent.bottom
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -59,8 +59,6 @@ Rectangle {
                     ComboBox{
                         id: operationComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: operationLabel.right
                     }
                 }
 
@@ -80,8 +78,6 @@ Rectangle {
                     ComboBox{
                         id: requestComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: requestLabel.right
                     }
                 }
 
@@ -103,8 +99,6 @@ Rectangle {
                         id: cupField
                         height: 30
                         width: parent.width / 2
-                        anchors.right: parent.right
-                        anchors.left: cupLabel.right
                         text: "0"
                         horizontalAlignment: Text.AlignHRight
                         validator: IntValidator {bottom: 0; top: 100000}
@@ -129,8 +123,6 @@ Rectangle {
                     TextField{
                         id: productField
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: productLabel.right
                         text: "0"
                         horizontalAlignment: Text.AlignHRight
                         validator: IntValidator {bottom: 0; top: 100000}
@@ -150,24 +142,18 @@ Rectangle {
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
-                        anchors.left: parent.left
 
                     }
                     ComboBox{
                         id: storageCol
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: storageLabel.right
-                        anchors.margins: 5
                         displayText: "column"
                     }
                     ComboBox{
                         id: storageRow
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: storageCol.right
-                        anchors.right: parent.right
-                        anchors.margins: 5
                         displayText: "row"
                     }
                 }
@@ -189,8 +175,6 @@ Rectangle {
                     ComboBox{
                         id: cupPositionComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: cupPositionLabel.right
                     }
                 }
 
@@ -211,7 +195,6 @@ Rectangle {
                         id: sendButton
                         text: "send"
                         enabled: false
-                        anchors.right: parent.right
                     }
                 }
             }
@@ -227,7 +210,7 @@ Rectangle {
                 RowLayout{
                     id: paletteRow1
                     height: 40
-                    anchors.top: tabBar.bottom
+                    anchors.top: parent.bottom
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -241,8 +224,6 @@ Rectangle {
                     ComboBox{
                         id: paletteOperationComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: paletteOperationLabel.right
                     }
                 }
 
@@ -310,24 +291,17 @@ Rectangle {
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
-                        anchors.left: parent.left
-
                     }
                     ComboBox{
                         id: paletteStorageCol
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: paletteStorageLabel.right
-                        anchors.margins: 5
                         displayText: "column"
                     }
                     ComboBox{
                         id: paletteStorageRow
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: paletteStorageCol.right
-                        anchors.right: parent.right
-                        anchors.margins: 5
                         displayText: "row"
                     }
                 }
@@ -349,8 +323,6 @@ Rectangle {
                     ComboBox{
                         id: paletteCupPositionComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: paletteCupPositionLabel.right
                     }
                 }
 
@@ -371,7 +343,6 @@ Rectangle {
                         id: paletteSendButton
                         text: "send"
                         enabled: false
-                        anchors.right: parent.right
                     }
                 }
             }
@@ -387,7 +358,7 @@ Rectangle {
                 RowLayout{
                     id: cupRow1
                     height: 40
-                    anchors.top: tabBar.bottom
+                    anchors.top: parent.bottom
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -401,8 +372,6 @@ Rectangle {
                     ComboBox{
                         id: cupOperationComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: cupOperationLabel.right
                     }
                 }
 
@@ -470,24 +439,18 @@ Rectangle {
                         text: qsTr("Storage Position (optional): ")
                         font.italic: true
                         fontSizeMode: Text.HorizontalFit
-                        anchors.left: parent.left
 
                     }
                     ComboBox{
                         id: cupStorageCol
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: cupStorageLabel.right
-                        anchors.margins: 5
                         displayText: "column"
                     }
                     ComboBox{
                         id: cupStorageRow
                         height: 30
                         width: parent.width /3 -10
-                        anchors.left: cupStorageCol.right
-                        anchors.right: parent.right
-                        anchors.margins: 5
                         displayText: "row"
                     }
                 }
@@ -509,8 +472,6 @@ Rectangle {
                     ComboBox{
                         id: cupCupPositionComboBox
                         height: 30
-                        anchors.right: parent.right
-                        anchors.left: cupCupPositionLabel.right
                     }
                 }
 
@@ -531,7 +492,6 @@ Rectangle {
                         id: cupSendButton
                         text: "send"
                         enabled: false
-                        anchors.right: parent.right
                     }
                 }
             }
