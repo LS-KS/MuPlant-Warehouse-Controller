@@ -42,10 +42,11 @@ Rectangle {
             Rectangle {
                 width: parent.width
                 height: parent.height
+
                 RowLayout{
                     id: row1
                     height: 40
-                    anchors.top: parent.bottom
+                    anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -210,7 +211,7 @@ Rectangle {
                 RowLayout{
                     id: paletteRow1
                     height: 40
-                    anchors.top: parent.bottom
+                    anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {
@@ -358,7 +359,7 @@ Rectangle {
                 RowLayout{
                     id: cupRow1
                     height: 40
-                    anchors.top: parent.bottom
+                    anchors.top: parent.top
                     anchors.left: parent.left
                     anchors.right: parent.right
                     Text {

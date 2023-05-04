@@ -58,6 +58,7 @@ Rectangle{
         anchors.left: label_ip.left
         anchors.top: label_ip.bottom
         placeholderText:  "Enter ModBus IP"
+        verticalAlignment: Text.AlignVCenter
     }
     TextField {
         width: label_port.width
@@ -65,6 +66,8 @@ Rectangle{
         anchors.left: label_port.left
         anchors.top: label_port.bottom
         placeholderText: "Enter Port"
+        verticalAlignment: Text.AlignVCenter
+
     }
 
     Button {
@@ -73,6 +76,8 @@ Rectangle{
         height: label_port.height
         anchors.right: label_connect.right
         anchors.top : label_ip.bottom
+        checked: false
+        checkable: false
         anchors.rightMargin: 10
     }
 }
