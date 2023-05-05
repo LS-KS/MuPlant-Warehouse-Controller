@@ -28,5 +28,11 @@ Window {
         anchors.left: parent.left
     }
 
+    ProduktList {
+        id: productlist
+        anchors.top: abbConfig.bottom
+        anchors.bottom: parent.bottom
+    }
+
 
 }
