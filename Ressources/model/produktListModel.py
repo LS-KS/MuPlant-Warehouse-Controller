@@ -1,3 +1,39 @@
+import sys
+
+from PySide6 import QtCore
+from PySide6 import QtGui
+
+
+class ProductListModel (QtCore.QAbstractListModel):
+
+    def __init__(self, products, parent = None):
+        super().__init__(parent)
+        self.products = products
+
+    def data(self, index, role):
+        """Returns an appropriate value for the requested data.
+           If the view requests an invalid index, an invalid variant is returned.
+           Any valid index that corresponds to a string in the list causes that
+          string to be returned."""
+        row = index.row()
+        if not index.isValid() or row >= len(self.products):
+            return None
+        if role != QtCore.Qt.DisplayRole and role != QtCore.Qt.EditRole:
+            return None
+        return self.products[row]
+
+    def headerData(self, section, orientation, role=QtCore.Qt.DisplayRole):
+        """Returns the appropriate header string depending on the orientation of
+           the header and the section. If anything other than the display role is
+           requested, we return an invalid variant."""
+        if role != QtCore.Qt.DisplayRole:
+            return None
+        if orientation == QtCore.Qt.Horizontal:
+            return f"Column {section}"
+        return f"Row {section}"
+
+
+'''
 import PySide6
 from PySide6.QtCore import  QAbstractListModel,QByteArray
 from PySide6 import QtCore
@@ -58,3 +94,4 @@ class ProductList (QAbstractListModel):
 
 if __name__ == '__main__':
     productListModel = ProductList("../data/Produkte.db")
+'''
