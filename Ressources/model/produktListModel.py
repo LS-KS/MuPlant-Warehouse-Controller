@@ -1,5 +1,7 @@
 import sys
+import typing
 
+import PySide6
 from PySide6 import QtCore
 from PySide6 import QtGui
 
@@ -32,6 +34,14 @@ class ProductListModel (QtCore.QAbstractListModel):
             return f"Column {section}"
         return f"Row {section}"
 
+    def rowCount(self, parent: typing.Union[PySide6.QtCore.QModelIndex, PySide6.QtCore.QPersistentModelIndex] = ...) -> int:
+        # return length of productList
+        return len(self.products)
+
+class Product:
+   def __init__(self, id:int, name:str):
+       self.id = id
+       self.name = name
 
 '''
 import PySide6
@@ -40,10 +50,7 @@ from PySide6 import QtCore
 import typing
 
 
-class Product:
-    def __init__(self, id:int, name:str):
-        self.id = id
-        self.name = name
+
 
 # This class loads data from 'Produkte.db' and delegates it to QAbstractListModel
 # This is necessary for using Data in QML
@@ -89,9 +96,31 @@ class ProductList (QAbstractListModel):
         for i, field in enumerate(fields(Student)):
             d[Qt.DisplayRole + i] = field.name.encode()
         return d
-
-
-
-if __name__ == '__main__':
-    productListModel = ProductList("../data/Produkte.db")
 '''
+
+
+def getProducts():
+    FILE= "Ressources/data/Produkte.db"
+    productList = []
+    try:
+        # Open product file and read lines to list.
+        # Avoid u\ufeff prefix in data by set encoding to utf8-8-sig (source: stackoverflow)
+        with open(FILE, 'r', encoding='utf-8-sig') as file:
+            list = file.readlines()
+
+        for line in list:
+            # Split the line by ';' to get the id and name
+            product_data = line.strip().split(';')
+            product_id = int(product_data[0])
+            product_name = str(product_data[1])
+            productList.append(Product(id=product_id, name=product_name))
+        # Print the list of Product objects
+        for product in productList:
+            print(f"{product.id}: {product.name}")
+    except FileNotFoundError:
+            print("Error: could't find product list file 'Produkte.db'")
+    except FileExistsError:
+            print("Error: file 'Produkte.db' doesn't exist")
+
+    return productList
+

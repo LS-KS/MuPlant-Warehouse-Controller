@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material
-
+import QtQml.Models 2.15
 
 Rectangle {
         id: window
@@ -15,6 +15,9 @@ Rectangle {
         property int ex_height : 125
         width: 400
         height: 140
+
+
+
 
         Image {
             id: arrow
@@ -62,26 +65,36 @@ Rectangle {
             Behavior on visible { PropertyAnimation{} }
         }
 
-        ListView {
-            id: productlist
-            model: productListModel
-            delegate: Rectangle {
-                   Text{ text: model.id }
-                   Text{ text: model.name }
-               }
-}
-
-
         Rectangle {
             id: seperator02
             visible: true
             width : window.width - 10
             height: 1
             color: "#546E7A"
-            anchors.top : productlist.bottom
+            anchors.bottom : parent.bottom
             anchors.left: window.left
             anchors.margins : 5
 
             Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic} }
         }
+
+
+
+        ListView {
+            id: productlist
+            anchors.top: seperator01.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: seperator02.top
+            model: productListModel
+            clip: true
+            delegate:         Component{
+                id: namedelegate
+                Text {
+                    text: model.id
+
+                }
+            }
+        }
+
 }
