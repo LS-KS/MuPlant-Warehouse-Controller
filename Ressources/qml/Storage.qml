@@ -24,8 +24,8 @@ Rectangle{
                 cupA: model.a_CupID
                 prodA: model.a_ProductID
                 nameA: model.a_Name
-                cupB: model.b_cupID
-                prodB: model.b_ProdID
+                cupB: model.b_CupID
+                prodB: model.b_ProductID
                 nameB: model.b_Name
                 implicitHeight: 220
                 implicitWidth: 200
