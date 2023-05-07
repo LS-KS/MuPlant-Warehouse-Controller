@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material
+import QtQuick.Layouts 1.15
 import QtQml.Models 2.15
 
 Rectangle {
@@ -88,11 +89,21 @@ Rectangle {
             anchors.bottom: seperator02.top
             model: productListModel
             clip: true
-            delegate:         Component{
+            interactive: true
+            property int selectedIndex: -1 // initialize the selected row index to -1
+            delegate: Component {
                 id: namedelegate
-                Text {
-                    text: model.id
-
+                RowLayout {
+                    anchors.left: parent.left
+                    anchors.margins: 10
+                    spacing: 10
+                    Rectangle{
+                        height: 30
+                        Text {
+                            text: model.id + ": "+ model.name
+                        }
+                        color: "blue"
+                    }
                 }
             }
         }
