@@ -8,7 +8,7 @@ from PySide6.QtGui import QGuiApplication
 
 from PySide6.QtQml import QQmlApplicationEngine
 
-from Ressources.model.produktListModel import ProductList
+from Ressources.model import produktListModel
 
 
 if __name__ == "__main__":
@@ -17,9 +17,8 @@ if __name__ == "__main__":
 
     engine = QQmlApplicationEngine()
 
-    # Creating an instance of ProductList and passing it to the QML engine context as a context property
-    product_list_model = ProductList("Ressources/data/Produkte.db")
-    engine.rootContext().setContextProperty("productListModel", product_list_model)
+    productListModel = produktListModel.ProductListModel(produktListModel.getProducts())
+    engine.rootContext().setContextProperty("productListModel", productListModel)
 
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
 
