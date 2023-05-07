@@ -58,8 +58,9 @@ class Product:
        self.name = name
 
 
-def getProducts():
-    FILE= "Ressources/data/Produkte.db"
+def getProducts(FILE):
+    if not  FILE:
+        FILE= "Ressources/data/Produkte.db"
     productList = []
     try:
         # Open product file and read lines to list.

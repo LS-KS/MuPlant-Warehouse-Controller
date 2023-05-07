@@ -94,8 +94,8 @@ Rectangle {
             delegate: Component {
                 id: namedelegate
                 RowLayout {
-                    anchors.left: parent.left
                     anchors.margins: 10
+                    anchors.left: parent.left
                     spacing: 10
                     Rectangle{
                         height: 30

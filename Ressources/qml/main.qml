@@ -5,9 +5,9 @@ import QtQuick.Controls.Material 2.15
 
 
 Window {
-    width: maximumWidth
+    width: Screen.width
     minimumWidth : 480
-    height: maximumHeight
+    height: Screen.height
     minimumHeight: 200
     visible: true
     title: qsTr("Warehouse Management")
@@ -43,12 +43,14 @@ Window {
     }
 
     Rectangle{
+        id: eventWindow
         anchors {
             right: parent.right
             bottom: parent.bottom
+            left: roboShow.right
+            top: roboShow.bottom
         }
-        height: parent.height /2 - headerLine.height
-        width: parent.width - manCon01.width -roboShow.width
+
 
         ManualEventLog{
             id: eventLog
@@ -79,7 +81,25 @@ Window {
         }
     }
 
+    Inventory {
+        width: roboShow.width
+        height: parent.height - roboShow.height - headerLine.height
+        anchors{
+            top: roboShow.bottom
+            left: roboShow.left
+            right: roboShow.right
+        }
+    }
 
+    Storage {
+        id: storage
+        anchors {
+            left: roboShow.right
+            top:  headerLine.bottom
+            right: parent.right
+            bottom: roboShow.bottom
 
+        }
+    }
 
 }
