@@ -2,9 +2,14 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import InventoryController 1.0
+
+
 
 Rectangle{
-
+    InvController {
+        id: invController
+    }
     Rectangle{
         id: window
         color: "white"
@@ -62,29 +67,49 @@ Rectangle{
                 rightMargin: 10
             }
 
-            TableView{
-                id: inventoryTable
-
+            ListView {
+                id: inventoryList
+                model: productSummaryModel
                 anchors.fill: parent
-                clip: true
-                interactive: true
-                columnSpacing: 5
-                rowSpacing: 5
-                model: inventoryModel
+                anchors.margins: 10
+                delegate: Rectangle{
+                            id: rect1
+                            border.width: 1
+                            border.color: "#546E7A"
+                            implicitHeight: 50
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            RowLayout{
+                                id: row
+                                Text {
+                                    id: id
+                                    text: model.id
+                                    font.pixelSize: 20
+                                    Layout.preferredWidth: 50
+                                }
+                                Text {
+                                    id: name
+                                    text: model.name
+                                    font.pixelSize: 20
+                                    Layout.preferredWidth: 400
+                                }
+                                Text {
+                                    id: quantity
+                                    text: model.quantity
+                                    font.pixelSize: 20
+                                    Layout.preferredWidth: 100
+                                }
+                            }
+                            MouseArea {
+                                        anchors.fill: rect1
+                                        onClicked: {
+                                            invController.clickMe("Here am I!")
+                                            clickedDelegateSignal()
+                                        }
+                                    }
 
-                delegate: Component {
-                    id: namedelegate
-                    Rectangle{
-                        implicitHeight: 100
-                        implicitWidth: 100
-                        Text {
-                            id: element
-                            text: "Cup"+ model.a_CupID
-                        }
-                        border.color: "black"
-                        border.width: 2
                     }
-                }
+                clip: true
             }
         }
 

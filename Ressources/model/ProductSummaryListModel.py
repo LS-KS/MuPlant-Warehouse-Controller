@@ -25,7 +25,7 @@ class ProductSummaryListModel (QtCore.QAbstractListModel):
             return product.id
         elif role == QtCore.Qt.UserRole + 2:
             return product.name
-        elif role == QtCore.Qt.UserRole + 2:
+        elif role == QtCore.Qt.UserRole + 3:
             return product.quantity
         return None
 
@@ -47,8 +47,11 @@ class ProductSummaryListModel (QtCore.QAbstractListModel):
             roles = {
                 QtCore.Qt.UserRole + 1: b'id',
                 QtCore.Qt.UserRole + 2: b'name',
+                QtCore.Qt.UserRole + 3: b'quantity',
             }
             return roles
+
+
 
 class Product:
    def __init__(self, id:int, name:str, quantity: int = 0):
@@ -67,6 +70,16 @@ class Inventory():
     b_CupID : int
     b_ProductID : int
     b_Name : str
+    def __init__(self, row, col, isPallet, a_CupID, a_ProductID,a_Name, b_CupID, b_ProductID, b_Name):
+        self.row = row
+        self.col = col
+        self.isPallet = isPallet
+        self.a_CupID = a_CupID
+        self.a_ProductID = a_ProductID
+        self.a_Name = a_Name
+        self.b_CupID = b_CupID
+        self.b_ProductID = b_ProductID
+        self.b_Name = b_Name
 
 
 def createTableModel(FILE, PRODUCTLIST= None):
@@ -82,7 +95,7 @@ def createTableModel(FILE, PRODUCTLIST= None):
     try:
         # Open product file and read lines to list.
         # Avoid u\ufeff prefix in data by set encoding to utf8-8-sig (source: stackoverflow)
-        with open(FILE, 'r', encoding='utf-8-sig') as file:
+        with open(PRODUCTLIST, 'r', encoding='utf-8-sig') as file:
             list = file.readlines()
 
         for line in list:
