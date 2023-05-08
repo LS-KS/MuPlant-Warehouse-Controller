@@ -9,7 +9,7 @@ from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 
 from Ressources.model import ProductListModel, InventoryModel
-from Ressources.model import ProductSummaryListModel
+from Ressources.model import Pro
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ from pathlib import Path
 
 from PySide6 import QtCore
 from PySide6.QtCore import QModelIndex
-import Ressources.model.produktListModel as produktListModel
+import Ressources.model.ProductListModel as produktListModel
 
 
 class InventoryModel(QtCore.QAbstractTableModel):
@@ -151,4 +151,6 @@ def createTableModel(FILE, PRODUCTLIST= None):
 
 if __name__ == "__main__":
     blubb = createTableModel("../data/StorageData.db")
+
+
 

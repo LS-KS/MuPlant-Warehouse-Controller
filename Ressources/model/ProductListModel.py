@@ -53,9 +53,10 @@ class ProductListModel (QtCore.QAbstractListModel):
 
 
 class Product:
-   def __init__(self, id:int, name:str):
+   def __init__(self, id:int, name:str, quantity: int = 0):
        self.id = id
        self.name = name
+       self.quantity = quantity
 
 
 def getProducts(FILE):
