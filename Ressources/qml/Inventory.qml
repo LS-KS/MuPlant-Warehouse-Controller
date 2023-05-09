@@ -4,15 +4,14 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import inventorycontroller 1.0
 
-
+//Uses InventoryModel.py DataModel consisting of Produkte.db and StorageData to render ListView
+//with id, name and quantity
 
 Rectangle{
-
     Rectangle{
         id: window
         color: "white"
         radius: 10
-
         border.color: "#546E7A"
         border.width: 2
         anchors{
@@ -22,7 +21,6 @@ Rectangle{
             bottom: parent.bottom
             margins: 5
         }
-
         Text {
             id: label
             text: "Inventory"
@@ -32,7 +30,6 @@ Rectangle{
                 top: parent.top
                 left: parent.left
                 margins: 15
-
             }
         }
 
@@ -67,7 +64,6 @@ Rectangle{
                 leftMargin: 10
                 rightMargin: 10
             }
-
             ListView {
                 id: inventoryList
                 model: productSummaryModel
@@ -76,10 +72,8 @@ Rectangle{
                 clip: true
                 spacing: 5
                 Layout.fillWidth: true
-
                 delegate:Rectangle{
                     id: rect1
-
                     width: ListView.view.width
                     height: 50
                     property bool selected: false
@@ -130,10 +124,8 @@ Rectangle{
                         function onRowClicked(message) {
                             if (model.id !== message) {
                                 rect1.selected = false
-                                console.log("Butt")
                             }
                             if(model.id === parseInt(message)) {
-                                console.log("Here")
                                 rect1.selected = true
                             }
                         }
