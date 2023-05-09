@@ -81,10 +81,12 @@ Rectangle{
 
                 delegate:Rectangle{
                     id: rect1
-                    color: selected? "#81D4FA" : "white"
+
                     width: ListView.view.width
                     height: 50
                     property bool selected: false
+                    color: selected ? "#E1F5FE": "white"
+
                     RowLayout{
                         id: row
                         anchors.fill: parent
@@ -128,7 +130,6 @@ Rectangle{
                     Connections {
                         target: invController
                         function onRowClicked(message) {
-                            console.log("signal arrived")
                             if (model.id !== message) {
                                 rect1.selected = false
                             }

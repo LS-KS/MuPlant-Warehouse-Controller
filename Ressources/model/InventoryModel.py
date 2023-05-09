@@ -144,7 +144,7 @@ def createTableModel(FILE, PRODUCTLIST= None):
             for element in storageData:
                 if col == element.col and row == element.row:
                     tableData [row][col] = [element.isPallet,element.a_CupID, element.a_ProductID, element.a_Name, element.b_CupID, element.b_ProductID, element.b_Name]
-    print(tableData)
+    #print(tableData)
 
     return tableData
 

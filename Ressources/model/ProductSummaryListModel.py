@@ -105,8 +105,8 @@ def createTableModel(FILE, PRODUCTLIST= None):
             product_name = str(product_data[1])
             productList.append(Product(id=product_id, name=product_name))
         # Print the list of Product objects
-        for product in productList:
-            print(f"{product.id}: {product.name}")
+        #for product in productList:
+        #    print(f"{product.id}: {product.name}")
     except FileNotFoundError:
             print("Error: could't find product list file 'Produkte.db'")
     except FileExistsError:
