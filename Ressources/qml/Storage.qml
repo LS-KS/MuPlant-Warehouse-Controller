@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
-import InventoryController 1.0
 
 Rectangle{
     id: storageRect
@@ -11,11 +10,7 @@ Rectangle{
     border.color: "#546E7A"
     border.width: 2
     radius: 10
-
-    InvController {
-        id:invControllerB
-    }
-
+    // TableView holds objects of StorageData.db which is read in InventoryModel
     TableView {
         model: inventoryModel
         anchors.fill: parent
@@ -37,11 +32,5 @@ Rectangle{
         }
         Layout.fillWidth: true
         Layout.fillHeight: true
-    }
-    Connections{
-        target: invControllerB
-        function onStorageChange(message){
-            console.log("storage.qml got signal: " + message)
-        }
     }
 }

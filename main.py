@@ -7,11 +7,9 @@ from pathlib import Path
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtCore import QObject
 from PySide6.QtQml import QQmlApplicationEngine, qmlRegisterType
-
 from Ressources.model import ProductListModel, InventoryModel
 from Ressources.model import ProductSummaryListModel
-
-from Ressources.controller import InventoryController
+from Ressources.controller.InventoryController import InventoryController
 
 
 if __name__ == "__main__":
@@ -32,7 +30,7 @@ if __name__ == "__main__":
     productSummaryModel = ProductSummaryListModel.ProductSummaryListModel(ProductSummaryListModel.createTableModel(STORAGEDATA, PRODUCTLIST))
     engine.rootContext().setContextProperty("productSummaryModel", productSummaryModel)
 
-    qmlRegisterType(InventoryController.InventoryController, 'InventoryController',1,0, 'InvController')
+    qmlRegisterType(InventoryController, 'inventorycontroller',1,0, 'InvController')
 
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
 

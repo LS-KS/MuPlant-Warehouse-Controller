@@ -2,9 +2,15 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import inventorycontroller 1.0
 
 
 Window {
+
+    InvController {
+        id: invController
+    }
+
     width: Screen.width
     minimumWidth : 480
     height: Screen.height

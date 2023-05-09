@@ -2,14 +2,12 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
-import InventoryController 1.0
+import inventorycontroller 1.0
 
 
 
 Rectangle{
-    InvController {
-        id: invController
-    }
+
     Rectangle{
         id: window
         color: "white"
@@ -132,13 +130,16 @@ Rectangle{
                         function onRowClicked(message) {
                             if (model.id !== message) {
                                 rect1.selected = false
+                                console.log("Butt")
+                            }
+                            if(model.id === parseInt(message)) {
+                                console.log("Here")
+                                rect1.selected = true
                             }
                         }
                     }
                 }
             }
         }
-
-
     }
 }

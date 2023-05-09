@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import InventoryController 1.0
+import inventorycontroller 1.0 //InventoryController registered in main.py in qmlRegister
 
 
 
@@ -22,9 +22,6 @@ Rectangle {
     property string prodB: ""
     property string nameB: ""
 
-    InvController{
-        id: invController
-    }
 
     Text {
         id: title
@@ -64,6 +61,7 @@ Rectangle {
         ColumnLayout{
             anchors.fill: parent
             spacing: 2
+            // Rectangle holding Product A
             Rectangle{
                 id: productSlotA
                 implicitHeight: parent.height/2-10
@@ -96,7 +94,18 @@ Rectangle {
                    }
 
                 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if (!productSlotA.selected){
+                           invController.clickMe(prodA)
+                        }
+
+                    }
+
+                }
             }
+            // Rectangle holds Product B
             Rectangle{
                 id: productSlotB
                 implicitHeight: parent.height/2-10
@@ -133,13 +142,23 @@ Rectangle {
 
                 }
                 Layout.fillHeight: parent
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        if (!productSlotB.selected){
+                           invController.clickMe(prodB)
+                        }
+
+                    }
+
+                }
             }
 
         }
+        //Connect to InventoryController.py's InventoryController and change color of selected Product.
         Connections{
             target: invController
-            function onStorageChange(message){
-                console.log("signal in storage arrived")
+            function onRowClicked(message){
                 if (prodA === message){
                     productSlotA.selected = true
                 }else{
@@ -150,7 +169,6 @@ Rectangle {
                 }else{
                     productSlotB.selected = false
                 }
-
             }
         }
     }
