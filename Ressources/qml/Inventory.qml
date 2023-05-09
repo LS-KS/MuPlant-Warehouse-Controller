@@ -47,6 +47,9 @@ Rectangle{
                 top: parent.top
                 right: parent.right
             }
+            onCheckStateChanged: {
+                console.log("checkstatechanged!")
+            }
         }
 
         Rectangle{
@@ -72,44 +75,66 @@ Rectangle{
                 model: productSummaryModel
                 anchors.fill: parent
                 anchors.margins: 10
-                delegate: Rectangle{
-                            id: rect1
-                            border.width: 1
-                            border.color: "#546E7A"
-                            implicitHeight: 50
-                            Layout.fillWidth: true
-                            Layout.fillHeight: true
-                            RowLayout{
-                                id: row
-                                Text {
-                                    id: id
-                                    text: model.id
-                                    font.pixelSize: 20
-                                    Layout.preferredWidth: 50
-                                }
-                                Text {
-                                    id: name
-                                    text: model.name
-                                    font.pixelSize: 20
-                                    Layout.preferredWidth: 400
-                                }
-                                Text {
-                                    id: quantity
-                                    text: model.quantity
-                                    font.pixelSize: 20
-                                    Layout.preferredWidth: 100
-                                }
-                            }
-                            MouseArea {
-                                        anchors.fill: rect1
-                                        onClicked: {
-                                            invController.clickMe("Here am I!")
-                                            clickedDelegateSignal()
-                                        }
-                                    }
-
-                    }
                 clip: true
+                spacing: 5
+                Layout.fillWidth: true
+
+                delegate:Rectangle{
+                    id: rect1
+                    color: selected? "#81D4FA" : "white"
+                    width: ListView.view.width
+                    height: 50
+                    property bool selected: false
+                    RowLayout{
+                        id: row
+                        anchors.fill: parent
+                        Text {
+                            id: id
+                            text: model.id
+                            font.pixelSize: 20
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: 50
+                        }
+                        Text {
+                            id: name
+                            text: model.name
+                            font.pixelSize: 20
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: 400
+                        }
+                        Text {
+                            id: quantity
+                            text: model.quantity
+                            font.pixelSize: 20
+                            verticalAlignment: Text.AlignVCenter
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                            Layout.preferredWidth: 100
+                        }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            if(!rect1.selected) {
+                                invController.clickMe(model.id)
+                                rect1.selected= !rect1.selected
+                            }
+                        }
+                    }
+                    Connections {
+                        target: invController
+                        function onRowClicked(message) {
+                            console.log("signal arrived")
+                            if (model.id !== message) {
+                                rect1.selected = false
+                            }
+                        }
+                    }
+                }
             }
         }
 
