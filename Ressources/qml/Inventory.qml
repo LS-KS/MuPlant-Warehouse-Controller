@@ -115,7 +115,7 @@ Rectangle{
                         onClicked: {
                             if(!rect1.selected) {
                                 invController.clickMe(model.id)
-                                rect1.selected= !rect1.selected
+                                rect1.selected= true
                             }
                         }
                     }
@@ -125,7 +125,7 @@ Rectangle{
                             if (model.id !== message) {
                                 rect1.selected = false
                             }
-                            if(model.id === parseInt(message)) {
+                            if(parseInt(model.id) === parseInt(message)) {
                                 rect1.selected = true
                             }
                         }

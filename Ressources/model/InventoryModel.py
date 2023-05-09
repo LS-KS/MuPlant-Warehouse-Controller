@@ -3,7 +3,7 @@ from pathlib import Path
 
 from PySide6 import QtCore
 from PySide6.QtCore import QModelIndex, QSortFilterProxyModel, Property, QObject
-from PySide6.QtCore.Qt import DisplayRole
+from PySide6.QtCore import Qt
 import Ressources.model.ProductListModel as produktListModel
 
 
@@ -69,7 +69,7 @@ class InventoryFilterProxyModel (QSortFilterProxyModel):
 
     def filterAcceptsRow(self, sourceRow, sourceParent):
         index = self.sourceModel().index(sourceRow, 0, sourceParent)
-        quantity = self.sourceModel().data(index, DisplayRole)
+        quantity = self.sourceModel().data(index, Qt.DisplayRole)
         if quantity == 0 and not self.showZeroQuantity:
                     return False
         return super().filterAcceptsRow(sourceRow, sourceParent)
