@@ -66,7 +66,7 @@ Rectangle {
                 id: productSlotA
                 implicitHeight: parent.height/2-10
                 implicitWidth: parent.width
-                color: selected ? "#E1F5FE": "white"
+                color: selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
                 radius: 5
@@ -110,7 +110,7 @@ Rectangle {
                 id: productSlotB
                 implicitHeight: parent.height/2-10
                 implicitWidth: parent.width
-                color: selected ? "#E1F5FE": "white"
+                color: selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
                 radius: 5

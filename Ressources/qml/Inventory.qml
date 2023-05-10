@@ -83,7 +83,7 @@ Rectangle{
                     width: ListView.view.width
                     height: 50
                     property bool selected: false
-                    color: selected ? "#E1F5FE": "white"
+                    color: selected ? "#4FC3F7": "white"
 
                     RowLayout{
                         id: row

@@ -67,7 +67,7 @@ class InventoryFilterProxyModel (QSortFilterProxyModel):
 
     def filterAcceptsRow(self, sourceRow, sourceParent):
         index = self.sourceModel().index(sourceRow, 0, sourceParent)
-        quantity = self.sourceModel().data(index, Qt.DisplayRole)
+        quantity = self.sourceModel().data(index, Qt.UserRole +3)
         if quantity == 0 and not self.showZeroQuantity:
                     return False
         return super().filterAcceptsRow(sourceRow, sourceParent)
