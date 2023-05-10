@@ -42,9 +42,14 @@ Rectangle{
                 top: parent.top
                 right: parent.right
             }
-            onCheckStateChanged: {
-                console.log("checkstatechanged!")
-            }
+            onCheckedChanged: {
+                    console.log("checkstatechanged!")
+                    if (checked) {
+                        inventoryFilterModel.setShowZero(true)
+                    } else {
+                        inventoryFilterModel.setShowZero(false)
+                    }
+                }
         }
 
         Rectangle{
@@ -66,7 +71,8 @@ Rectangle{
             }
             ListView {
                 id: inventoryList
-                model: productSummaryModel
+                //model: productSummaryModel
+                model: inventoryFilterModel
                 anchors.fill: parent
                 anchors.margins: 10
                 clip: true

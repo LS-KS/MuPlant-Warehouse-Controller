@@ -2,7 +2,7 @@
 from pathlib import Path
 
 from PySide6 import QtCore
-from PySide6.QtCore import QModelIndex, QSortFilterProxyModel, Property, QObject
+from PySide6.QtCore import QModelIndex, QSortFilterProxyModel, Property, QObject, Signal, Slot
 from PySide6.QtCore import Qt
 import Ressources.model.ProductListModel as produktListModel
 
@@ -52,27 +52,6 @@ class InventoryModel(QtCore.QAbstractTableModel):
             return inventory[6]
         return None
 
-#QSortFilterProxyModel for filtered Views
-class InventoryFilterProxyModel (QSortFilterProxyModel):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.showZeroQuantity = True
-        self.setSourceModel(None)
-
-    @Property(QObject)
-    def sourceModel(self):
-        return super().sourceModel() #because Model is inherited from QSortFilterModel super() is needed
-
-    @sourceModel.setter
-    def setSourceModel(self, model):
-        super().setSourceModel(model)
-
-    def filterAcceptsRow(self, sourceRow, sourceParent):
-        index = self.sourceModel().index(sourceRow, 0, sourceParent)
-        quantity = self.sourceModel().data(index, Qt.DisplayRole)
-        if quantity == 0 and not self.showZeroQuantity:
-                    return False
-        return super().filterAcceptsRow(sourceRow, sourceParent)
 
 # Data class for Inventory:
 class Inventory():

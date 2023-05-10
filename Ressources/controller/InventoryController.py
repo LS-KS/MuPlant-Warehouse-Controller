@@ -1,6 +1,7 @@
 
 
-from PySide6.QtCore import QObject, Signal, Slot
+from PySide6.QtCore import QObject, Signal, Slot, QSortFilterProxyModel
+
 
 class InventoryController(QObject):
 
@@ -10,3 +11,5 @@ class InventoryController(QObject):
     def clickMe(self, message):
         print(message)
         self.rowClicked.emit(message)
+
+

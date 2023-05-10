@@ -5,10 +5,10 @@ import sys
 from pathlib import Path
 
 from PySide6.QtGui import QGuiApplication
-from PySide6.QtCore import QObject
 from PySide6.QtQml import QQmlApplicationEngine, qmlRegisterType
-from Ressources.model import ProductListModel, InventoryModel
-from Ressources.model import ProductSummaryListModel
+from Ressources.model import ProductListModel
+from Ressources.model.InventoryModel import InventoryModel, createTableModel
+from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
 from Ressources.controller.InventoryController import InventoryController
 
 
@@ -24,11 +24,14 @@ if __name__ == "__main__":
     productListModel = ProductListModel.ProductListModel(ProductListModel.getProducts(PRODUCTLIST))
     engine.rootContext().setContextProperty("productListModel", productListModel)
 
-    inventoryModel = InventoryModel.InventoryModel(InventoryModel.createTableModel(STORAGEDATA, PRODUCTLIST))
+    inventoryModel = InventoryModel(createTableModel(STORAGEDATA, PRODUCTLIST))
     engine.rootContext().setContextProperty("inventoryModel", inventoryModel)
 
-    productSummaryModel = ProductSummaryListModel.ProductSummaryListModel(ProductSummaryListModel.createTableModel(STORAGEDATA, PRODUCTLIST))
+    productSummaryModel = ProductSummaryListModel(createSummaryModel(STORAGEDATA, PRODUCTLIST))
     engine.rootContext().setContextProperty("productSummaryModel", productSummaryModel)
+
+    inventoryFilterModel = InventoryFilterProxyModel(model= productSummaryModel)
+    engine.rootContext().setContextProperty("inventoryFilterModel", inventoryFilterModel)
 
     qmlRegisterType(InventoryController, 'inventorycontroller',1,0, 'InvController')
 

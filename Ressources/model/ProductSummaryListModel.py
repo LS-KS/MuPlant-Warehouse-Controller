@@ -2,6 +2,7 @@ import typing
 
 import PySide6
 from PySide6 import QtCore
+from PySide6.QtCore import QSortFilterProxyModel, Signal, Slot, Qt
 
 
 
@@ -51,7 +52,25 @@ class ProductSummaryListModel (QtCore.QAbstractListModel):
             }
             return roles
 
+#QSortFilterProxyModel for filtered Views
+class InventoryFilterProxyModel (QSortFilterProxyModel):
+    def __init__(self, model, parent=None):
+        super().__init__(parent)
+        self.showZeroQuantity = True
+        self.setSourceModel(model)
 
+    @Slot(bool)
+    def setShowZero(self,bool):
+        self.showZeroQuantity = bool
+        self.invalidateFilter()
+        self.revert
+
+    def filterAcceptsRow(self, sourceRow, sourceParent):
+        index = self.sourceModel().index(sourceRow, 0, sourceParent)
+        quantity = self.sourceModel().data(index, Qt.DisplayRole)
+        if quantity == 0 and not self.showZeroQuantity:
+                    return False
+        return super().filterAcceptsRow(sourceRow, sourceParent)
 
 class Product:
    def __init__(self, id:int, name:str, quantity: int = 0):
@@ -82,7 +101,7 @@ class Inventory():
         self.b_Name = b_Name
 
 
-def createTableModel(FILE, PRODUCTLIST= None):
+def createSummaryModel(FILE, PRODUCTLIST= None):
     # URL of StorageData.db
     if not FILE:
         FILE = "Ressources/data/StorageData.db"
