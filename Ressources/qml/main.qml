@@ -14,6 +14,7 @@ Window {
     EventController{
         id: eventController
     }
+    property bool init: false
 
     width: Screen.width
     minimumWidth : 480
@@ -82,5 +83,10 @@ Window {
 
         }
     }
-
+    onAfterRendering: {
+        if (!init){
+            eventController.writeEvent("QML", "Program GUI fully rendered")
+            init = true
+        }
+    }
 }

@@ -46,7 +46,7 @@ Rectangle{
                 width: parent.width
                 height: parent.height
                 anchors.fill: parent
-                text: "hier steht in wahrheit kein Text"
+
             }
         }
     }
@@ -62,18 +62,14 @@ Rectangle{
             margins: 10
         }
         onClicked: {
-            eventController.writeEvent("Test 12345")
+            eventLogTextArea.text = ""
         }
 
     }
     Connections{
         target: eventController
         function onNewSignal(message){
-            var currentTime = new Date()
-            var offsetInMinutes = currentTime.getTimezoneOffset()
-            currentTime.setMinutes(currentTime.getMinutes() - offsetInMinutes)
-            var formattedDateTime = currentTime.toISOString().slice(0, 19).replace("T", " ")
-            eventLogTextArea.text = "[" + formattedDateTime + "] " + message+ "\n"+ eventLogTextArea.text
+            eventLogTextArea.text = message+ "\n"+ eventLogTextArea.text
         }
     }
 }
