@@ -27,6 +27,9 @@ class InventoryModel(QtCore.QAbstractTableModel):
             QtCore.Qt.UserRole + 5: b'b_CupID',
             QtCore.Qt.UserRole + 6: b'b_ProductID',
             QtCore.Qt.UserRole + 7: b'b_Name',
+            QtCore.Qt.UserRole + 8: b'row',
+            QtCore.Qt.UserRole + 9: b'col',
+
         }
         return roles
 
@@ -50,6 +53,10 @@ class InventoryModel(QtCore.QAbstractTableModel):
             return inventory[5]
         if role == QtCore.Qt.UserRole +7:
             return inventory[6]
+        if role == QtCore.Qt.UserRole +8:
+            return inventory[7]
+        if role == QtCore.Qt.UserRole +9:
+            return inventory[8]
         return None
 
 
@@ -143,7 +150,7 @@ def createTableModel(FILE, PRODUCTLIST= None):
         for row in range(rows):
             for element in storageData:
                 if col == element.col and row == element.row:
-                    tableData [row][col] = [element.isPallet,element.a_CupID, element.a_ProductID, element.a_Name, element.b_CupID, element.b_ProductID, element.b_Name]
+                    tableData [row][col] = [element.isPallet,element.a_CupID, element.a_ProductID, element.a_Name, element.b_CupID, element.b_ProductID, element.b_Name, element.row, element.col]
     #print(tableData)
 
     return tableData

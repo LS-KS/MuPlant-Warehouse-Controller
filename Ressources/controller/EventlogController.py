@@ -11,3 +11,7 @@ class EventlogController (QObject):
     def writeEvent(self, message):
         #print("Eventcontroller: "+message)
         self.newSignal.emit(message)
+
+
+#L1 - 18 a= vorne /b = hinten
+#Englisch / Deutsch Deep ML PLugin?
