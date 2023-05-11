@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.3
+import inventorycontroller 1.0
+
 Rectangle{
     width: parent.width /3
     height: parent.height /2
@@ -43,7 +45,6 @@ Rectangle{
             left:  parent.left
             margins: 20
         }
-
     }
 
     ProductSlot {

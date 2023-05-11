@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
+import inventorycontroller 1.0
 
 
 
@@ -14,12 +15,12 @@ Rectangle {
     border.color: "#546E7A"
 
     property string name: "ProductSlot"
-    property string cupA: ""
-    property string prodA: ""
-    property string nameA: ""
-    property string cupB: ""
-    property string prodB: ""
-    property string nameB: ""
+    property string cupA: "0"
+    property string prodA: "0"
+    property string nameA: "Kein Becher"
+    property string cupB: "0"
+    property string prodB: "0"
+    property string nameB: "Kein Becher"
 
     Text {
         id: title
@@ -88,9 +89,11 @@ Rectangle {
             anchors.fill: parent
             spacing: 2
             Rectangle{
+                id: rect11
                 implicitHeight: parent.height/2-10
                 implicitWidth: parent.width
-                color: "white"
+                property bool selected: false
+                color: rect11.selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
                 radius: 5
@@ -117,14 +120,18 @@ Rectangle {
                    }
 
                 }
+
             }
             Rectangle{
+                id: rect12
                 implicitHeight: parent.height/2-10
                 implicitWidth: parent.width
-                color: "white"
+                color: rect12.selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
                 radius: 5
+                property bool selected: false
+
                 ColumnLayout{
                    anchors.fill: parent
                    Text{
@@ -152,8 +159,24 @@ Rectangle {
 
                 }
                 Layout.fillHeight: parent
+
             }
 
+        }
+    }
+    Connections{
+        target: invController
+        function onRowClicked(message){
+            if (parseInt(message)=== parseInt(prodA)){
+                rect11.selected = true
+            } else{
+                rect11.selected = false
+            }
+            if (parseInt(message)=== parseInt(prodB)){
+                rect12.selected = true
+            } else{
+                rect12.selected = false
+            }
         }
     }
 }

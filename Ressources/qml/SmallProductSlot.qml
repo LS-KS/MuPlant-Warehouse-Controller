@@ -98,7 +98,7 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         if (!productSlotA.selected){
-                           invController.clickMe(prodA)
+                           invController.selectRow(prodA)
                         }
 
                     }

@@ -120,7 +120,7 @@ Rectangle{
                         anchors.fill: parent
                         onClicked: {
                             if(!rect1.selected) {
-                                invController.clickMe(model.id)
+                                invController.selectRow(model.id)
                                 rect1.selected= true
                             }
                         }
