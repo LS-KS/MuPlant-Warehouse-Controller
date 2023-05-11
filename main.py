@@ -10,6 +10,7 @@ from Ressources.model import ProductListModel
 from Ressources.model.InventoryModel import InventoryModel, createTableModel
 from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
 from Ressources.controller.InventoryController import InventoryController
+from Ressources.controller.EventlogController import EventlogController
 
 
 if __name__ == "__main__":
@@ -34,6 +35,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("inventoryFilterModel", inventoryFilterModel)
 
     qmlRegisterType(InventoryController, 'inventorycontroller',1,0, 'InvController')
+    qmlRegisterType(EventlogController, 'eventlogcontroller', 1,0, 'EventController')
 
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
 

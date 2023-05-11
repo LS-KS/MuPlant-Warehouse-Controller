@@ -55,7 +55,7 @@ Rectangle {
             id: detailBox
             checked: false
             text: "Edit"
-            font.pixelSize: 12
+            font.pixelSize: 10
 
         }
 
@@ -63,7 +63,7 @@ Rectangle {
             id: editBox
             checked: false
             text: "Show Details"
-            font.pixelSize: 12
+            font.pixelSize: 10
         }
 
     }

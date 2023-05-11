@@ -24,7 +24,7 @@ class InventoryController(QObject):
     # Slot can be accessed from qml file with oo-syntax: invController.selectRow(model.id)
     @Slot(str)
     def selectRow(self, message):
-        print(message)
+        #print(message)
         self.rowClicked.emit(message)
 
 

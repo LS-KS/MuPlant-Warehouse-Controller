@@ -36,6 +36,7 @@ Rectangle {
             width: parent.width
             height: parent.height
             anchors.fill: parent
+            text: "hier steht in wahrheit kein Text"
         }
     }
 

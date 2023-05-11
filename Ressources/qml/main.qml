@@ -3,12 +3,16 @@ import QtQuick.Window
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import inventorycontroller 1.0
+import eventlogcontroller 1.0
 
 
 Window {
 
     InvController {
         id: invController
+    }
+    EventController{
+        id: eventController
     }
 
     width: Screen.width
@@ -48,42 +52,13 @@ Window {
         anchors.top: headerLine.bottom
     }
 
-    Rectangle{
-        id: eventWindow
+    Eventlogger {
+        id: eventlogger
         anchors {
             right: parent.right
             bottom: parent.bottom
             left: roboShow.right
             top: roboShow.bottom
-        }
-
-
-        ManualEventLog{
-            id: eventLog
-            anchors{
-                top: parent.top
-                bottom: parent.bottom
-                right: parent.right
-                left: parent.left
-                topMargin: 5
-                rightMargin: 5
-                bottomMargin: 5
-                leftMargin: 5
-            }
-
-        }
-
-        Button {
-            id:clearButton
-            width: 100
-            height: 30
-            text: "clear"
-            anchors {
-                top: parent.top
-                right: parent.right
-                margins: 10
-            }
-
         }
     }
 

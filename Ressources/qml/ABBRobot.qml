@@ -38,7 +38,7 @@ Rectangle{
     ProductSlot {
         id : mobileRobot
         width: parent.width/3
-        height: parent.height/3
+        height: parent.height/3 > 250? parent.height/3 : 250
         name: "Mobile Robot"
         anchors{
             bottom: parent.bottom
