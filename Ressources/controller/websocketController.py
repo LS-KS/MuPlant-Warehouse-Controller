@@ -1,23 +1,18 @@
-# This Python file uses the following encoding: utf-8
-from PySide6 import QtCore
-from PySide6.QtCore import Signal, Slot, QObject
+from PySide6.QtCore import QObject, Signal, Slot
+from Ressources.websocket.websocketClient import createWebsocket
 from datetime import datetime
+
 
 def createMessage(source, message):
     time = datetime.now()
     return f"[{time}] [{source}]: {message}"
 
+class WebsocketController (QObject):
 
-
-class EventlogController (QObject):
-
-    newSignal= Signal(str)
+    newMessage= Signal(str)
+    ws = createWebsocket()
 
     @Slot(str, str)
     def writeEvent(self, source, message):
         #print("Eventcontroller: "+message)
         self.newSignal.emit( createMessage(source, message) )
-
-
-#L1 - 18 a= vorne /b = hinten
-#Englisch / Deutsch DeepL PLugin?

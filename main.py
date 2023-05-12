@@ -16,10 +16,6 @@ from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  I
 from Ressources.controller.InventoryController import InventoryController
 from Ressources.controller.EventlogController import EventlogController
 
-class model:
-    def __init__(self, model, name):
-        self.model = model
-        self.name = name
 
 
 if __name__ == "__main__":
@@ -50,6 +46,7 @@ if __name__ == "__main__":
     # register controller to make them availlable in qml files.
     qmlRegisterType(InventoryController, 'inventorycontroller',1,0, 'InvController')
     qmlRegisterType(EventlogController, 'eventlogcontroller', 1,0, 'EventController')
+
 
     # define load main.qml file to start application
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
