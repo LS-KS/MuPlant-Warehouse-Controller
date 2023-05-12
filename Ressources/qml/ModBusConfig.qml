@@ -56,6 +56,7 @@ Rectangle{
         font.weight: 10
     }
     TextField {
+        id: ipField
         width: label_ip.width
         height: label_ip.height
         anchors.left: label_ip.left
@@ -65,6 +66,7 @@ Rectangle{
         color: "black"
     }
     TextField {
+        id: portField
         width: label_port.width
         height: label_port.height
         anchors.left: label_port.left
@@ -83,5 +85,8 @@ Rectangle{
         checked: false
         checkable: false
         anchors.rightMargin: 10
+        onClicked: {
+            wsController.startWebSocket(ipField.text, portField.text)
+        }
     }
 }

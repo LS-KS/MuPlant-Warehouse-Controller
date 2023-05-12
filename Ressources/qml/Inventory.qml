@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
-import inventorycontroller 1.0
 
 //Uses InventoryModel.py DataModel consisting of Produkte.db and StorageData to render ListView
 //with id, name and quantity
@@ -71,7 +70,6 @@ Rectangle{
             }
             ListView {
                 id: inventoryList
-                //model: productSummaryModel
                 model: inventoryFilterModel
                 anchors.fill: parent
                 anchors.margins: 10
@@ -120,13 +118,13 @@ Rectangle{
                         anchors.fill: parent
                         onClicked: {
                             if(!rect1.selected) {
-                                invController.selectRow(model.id)
+                                inventoryController.selectRow(model.id)
                                 rect1.selected= true
                             }
                         }
                     }
                     Connections {
-                        target: invController
+                        target: inventoryController
                         function onRowClicked(message) {
                             if (model.id !== message) {
                                 rect1.selected = false

@@ -9,14 +9,13 @@ import sys
 from pathlib import Path
 
 from PySide6.QtGui import QGuiApplication
-from PySide6.QtQml import QQmlApplicationEngine, qmlRegisterType
+from PySide6.QtQml import QQmlApplicationEngine
 from Ressources.model import ProductListModel
 from Ressources.model.InventoryModel import InventoryModel, createTableModel
 from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
 from Ressources.controller.InventoryController import InventoryController
 from Ressources.controller.EventlogController import EventlogController
-
-
+from Ressources.controller import websocketController
 
 if __name__ == "__main__":
     '''Create Basic Application Class and QMLEngine'''
@@ -43,10 +42,17 @@ if __name__ == "__main__":
     inventoryFilterModel = InventoryFilterProxyModel(model= productSummaryModel)
     engine.rootContext().setContextProperty("inventoryFilterModel", inventoryFilterModel)
 
-    # register controller to make them availlable in qml files.
-    qmlRegisterType(InventoryController, 'inventorycontroller',1,0, 'InvController')
-    qmlRegisterType(EventlogController, 'eventlogcontroller', 1,0, 'EventController')
+    # create EventlogController instance
+    eventlogController = EventlogController()
+    engine.rootContext().setContextProperty("eventLogController", eventlogController)
 
+    # create InventoryController instance
+    inventoryController = InventoryController()
+    engine.rootContext().setContextProperty("inventoryController", inventoryController)
+
+    # register controller to make them availlable in qml files.
+    wsController = websocketController.WebsocketController(eventlogController)
+    engine.rootContext().setContextProperty("wsController", wsController)
 
     # define load main.qml file to start application
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"

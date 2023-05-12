@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls.Material 2.15
-import eventlogcontroller 1.0
+
 Rectangle{
     id: eventWindow
     anchors {
@@ -46,6 +46,7 @@ Rectangle{
                 width: parent.width
                 height: parent.height
                 anchors.fill: parent
+                readOnly: true
 
             }
         }
@@ -67,7 +68,7 @@ Rectangle{
 
     }
     Connections{
-        target: eventController
+        target: eventLogController
         function onNewSignal(message){
             eventLogTextArea.text = message+ "\n"+ eventLogTextArea.text
         }

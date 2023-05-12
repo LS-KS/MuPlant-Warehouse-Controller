@@ -1,7 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.3
-import inventorycontroller 1.0
 
 Rectangle{
     width: parent.width /3
@@ -27,7 +26,7 @@ Rectangle{
         source: "../assets/robot_ref_img.png"
         anchors{
             top: parent.top
-            right: parent.right
+            horizontalCenter: parent.horizontalCenter
             margins: 10
         }
 
@@ -38,7 +37,7 @@ Rectangle{
     ProductSlot {
         id : mobileRobot
         width: parent.width/3
-        height: parent.height/3 > 250? parent.height/3 : 250
+        height: parent.height/3 > 210? parent.height/3 : 210
         name: "Mobile Robot"
         anchors{
             bottom: parent.bottom
@@ -50,7 +49,7 @@ Rectangle{
     ProductSlot {
         id : workBench
         width: parent.width/3
-        height: parent.height/3
+        height: parent.height/3 > 210? parent.height/3 : 210
         name: "Work Bench"
         anchors{
             bottom: parent.bottom

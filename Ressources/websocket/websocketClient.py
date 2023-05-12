@@ -1,32 +1,39 @@
 import websocket
-import _thread
-import time
-import rel
+from Ressources.controller import EventlogController
 
 
-def onMessage(ws, message):
-    print(message)
+class WSClient:
 
-def onError(ws,error):
-    print(error)
-def onClose(ws, close_status_code, close_msg):
-    print("### closed ###")
+    def __init__(self, controller: EventlogController.EventlogController):
+        self.controller = controller
+        self.wsApp = None
 
-def onOpen(ws):
-    print("Opened connection")
+    def onMessage(self,ws, message):
+        print(message)
 
-def createWebsocket(Ip= None, port = None, errorCallback = None):
-    websocket.enableTrace(True)
-    if (Ip and port):
-        return None
-    else:
-        ws = websocket.WebSocketApp("wss://api.gemini.com/v1/marketdata/BTCUSD",
-                                on_open=onOpen,
-                                on_message=onMessage,
-                                on_error= onError,
-                                on_close=onClose)
+    def onError(self,ws, error):
+        self.controller.writeEvent("WebSocket", error)
 
-        ws.run_forever(dispatcher=rel, reconnect=5)  # Set dispatcher to automatic reconnection, 5 second reconnect delay if connection closed unexpectedly
-        rel.signal(2, rel.abort)  # Keyboard Interrupt
-        rel.dispatch()
-    return ws
+    def onClose(self,ws, close_status_code, close_msg):
+        print("### closed ###")
+
+    def onOpen(self,ws):
+        print("Opened connection")
+
+    def createWebsocket(self, Ip=None, port=None):
+        websocket.enableTrace(True)
+        if Ip and port:
+            return None
+        else:
+            ws = websocket.WebSocketApp(
+                url = "wss://api.gemini.com/v1/marketdata/BTCUSD",
+                on_open = self.onOpen,
+                on_message = self.onMessage,
+                on_error = self.onError,
+                on_close = self.onClose
+            )
+
+        return ws
+
+
+

@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import inventorycontroller 1.0
 
 
 
@@ -96,12 +95,15 @@ Rectangle {
                 color: rect11.selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 radius: 5
                 ColumnLayout{
                    anchors.fill: parent
                    Text{
                        text:"Cup ID: "+cupA
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
@@ -109,12 +111,14 @@ Rectangle {
                    Text{
                        text:"Produkt ID: "+prodA
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
                    Text{
                        text:nameA
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
@@ -129,6 +133,8 @@ Rectangle {
                 color: rect12.selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 radius: 5
                 property bool selected: false
 
@@ -138,6 +144,7 @@ Rectangle {
                        width: parent.width
                        text:"Cup ID: "+cupB
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
@@ -146,6 +153,7 @@ Rectangle {
                        width: parent.width
                        text:"Produkt ID: "+prodB
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
@@ -153,19 +161,19 @@ Rectangle {
                        width: parent.width
                        text:nameB
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
 
                 }
-                Layout.fillHeight: parent
 
             }
 
         }
     }
     Connections{
-        target: invController
+        target: inventoryController
         function onRowClicked(message){
             if (parseInt(message)=== parseInt(prodA)){
                 rect11.selected = true

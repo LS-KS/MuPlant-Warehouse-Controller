@@ -2,18 +2,11 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
-import inventorycontroller 1.0
-import eventlogcontroller 1.0
+
 
 
 Window {
 
-    InvController {
-        id: invController
-    }
-    EventController{
-        id: eventController
-    }
     property bool init: false
 
     width: Screen.width
@@ -85,7 +78,7 @@ Window {
     }
     onAfterRendering: {
         if (!init){
-            eventController.writeEvent("QML", "Program GUI fully rendered")
+            eventLogController.writeEvent("QML", "Program GUI fully rendered")
             init = true
         }
     }

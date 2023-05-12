@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import inventorycontroller 1.0 //InventoryController registered in main.py in qmlRegister
 
 
 
@@ -98,7 +97,7 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         if (!productSlotA.selected){
-                           invController.selectRow(prodA)
+                           inventoryController.selectRow(prodA)
                         }
 
                     }
@@ -146,7 +145,7 @@ Rectangle {
                     anchors.fill: parent
                     onClicked: {
                         if (!productSlotB.selected){
-                           invController.selectRow(prodB)
+                           inventoryController.selectRow(prodB)
                         }
 
                     }
@@ -157,7 +156,7 @@ Rectangle {
         }
         //Connect to InventoryController.py's InventoryController and change color of selected Product.
         Connections{
-            target: invController
+            target: inventoryController
             function onRowClicked(message){
                 if (prodA === message){
                     productSlotA.selected = true
