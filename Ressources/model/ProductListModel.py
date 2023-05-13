@@ -59,8 +59,8 @@ class Product:
        self.quantity = quantity
 
 
-def getProducts(FILE):
-    if not  FILE:
+def getProducts(FILE = None):
+    if not FILE:
         FILE= "Ressources/data/Produkte.db"
     productList = []
     try:

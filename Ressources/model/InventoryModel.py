@@ -1,9 +1,9 @@
 # This Python file uses the following encoding: utf-8
-from pathlib import Path
 
 from PySide6 import QtCore
-from PySide6.QtCore import QModelIndex, QSortFilterProxyModel, Property, QObject, Signal, Slot
+from PySide6.QtCore import QModelIndex
 from PySide6.QtCore import Qt
+
 import Ressources.model.ProductListModel as produktListModel
 
 
@@ -33,46 +33,71 @@ class InventoryModel(QtCore.QAbstractTableModel):
         }
         return roles
 
-    def data(self, index, role) :
+    def data(self, index, role):
         row = index.row()
         col = index.column()
         if not index.isValid() or row >= len(self.inventory) or col >= 6:
             return None
         inventory = self.inventory[row][col]
-        if role == QtCore.Qt.UserRole +1:
+        if role == QtCore.Qt.UserRole + 1:
             return inventory[0]
-        if role == QtCore.Qt.UserRole +2:
+        if role == QtCore.Qt.UserRole + 2:
             return inventory[1]
-        if role == QtCore.Qt.UserRole +3:
+        if role == QtCore.Qt.UserRole + 3:
             return inventory[2]
-        if role == QtCore.Qt.UserRole +4:
+        if role == QtCore.Qt.UserRole + 4:
             return inventory[3]
-        if role == QtCore.Qt.UserRole +5:
+        if role == QtCore.Qt.UserRole + 5:
             return inventory[4]
-        if role == QtCore.Qt.UserRole +6:
+        if role == QtCore.Qt.UserRole + 6:
             return inventory[5]
-        if role == QtCore.Qt.UserRole +7:
+        if role == QtCore.Qt.UserRole + 7:
             return inventory[6]
-        if role == QtCore.Qt.UserRole +8:
+        if role == QtCore.Qt.UserRole + 8:
             return inventory[7]
-        if role == QtCore.Qt.UserRole +9:
+        if role == QtCore.Qt.UserRole + 9:
             return inventory[8]
         return None
+
+    def setData(self, index, value, role):
+        row = index.row()
+        col = index.column()
+        if not index.isValid() or row >= len(self.inventory) or col >= 6:
+            return False
+        if role == Qt.UserRole + 2:  # a_CupID
+            self.inventory[row][col][1] = value
+            return True
+        if role == Qt.UserRole + 5:  # b_CupID
+            self.inventory[row][col][4] = value
+            return True
+        if role == Qt.UserRole + 3:  # a_productID
+            self.inventory[row][col][2] = value
+            return True
+        if role == Qt.UserRole + 6:  # b_productID
+            self.inventory[row][col][5] = value
+            return True
+        if role == Qt.UserRole + 4:  # a_Name
+            self.inventory[row][col][3]= value
+            return True
+        if role == Qt.UserRole + 7:  # b_Name
+            self.inventory[row][col][6]= value
+            return True
+        return False
 
 
 # Data class for Inventory:
 class Inventory():
-    row : int
-    col : int
-    isPallet : bool
-    a_CupID : int
-    a_ProductID : int
-    a_Name : str
-    b_CupID : int
-    b_ProductID : int
-    b_Name : str
+    row: int
+    col: int
+    isPallet: bool
+    a_CupID: int
+    a_ProductID: int
+    a_Name: str
+    b_CupID: int
+    b_ProductID: int
+    b_Name: str
 
-    def __init__(self, row, col, isPallet, a_CupID, a_ProductID,a_Name, b_CupID, b_ProductID, b_Name):
+    def __init__(self, row, col, isPallet, a_CupID, a_ProductID, a_Name, b_CupID, b_ProductID, b_Name):
         self.row = row
         self.col = col
         self.isPallet = isPallet
@@ -84,11 +109,11 @@ class Inventory():
         self.b_Name = b_Name
 
 
-def createTableModel(FILE, PRODUCTLIST= None):
+def createTableModel(FILE, PRODUCTLIST=None):
     # URL of StorageData.db
     if not FILE:
         FILE = "Ressources/data/StorageData.db"
-        FILE = "../data/StorageData.db" #for debug purpose
+        FILE = "../data/StorageData.db"  # for debug purpose
 
     # get actual List of possible Products top get names and id correllation
     if not PRODUCTLIST:
@@ -132,7 +157,8 @@ def createTableModel(FILE, PRODUCTLIST= None):
                 if a_Name != "" and b_Name != "":
                     break
             # append data to storageData for QAbstractTableModel
-            storageData.append(Inventory(row=row, col=col, isPallet=isPallet, a_CupID = a_CupID, a_ProductID=a_ProductID, b_CupID=b_CupID, b_ProductID=b_ProductID, a_Name= a_Name, b_Name = b_Name))
+            storageData.append(Inventory(row=row, col=col, isPallet=isPallet, a_CupID=a_CupID, a_ProductID=a_ProductID,
+                                         b_CupID=b_CupID, b_ProductID=b_ProductID, a_Name=a_Name, b_Name=b_Name))
             # print(f"Row: {row}\t Col: {col}\t isPallet: {isPallet}\t Cup_A: {a_CupID}\t ProductA: {a_ProductID}, {a_Name}\t Cup_B: {b_CupID}\t ProductB: {b_ProductID}, {b_Name} ")
     except FileNotFoundError:
         print("Error: could't find product list file 'StorageData.db'")
@@ -146,18 +172,17 @@ def createTableModel(FILE, PRODUCTLIST= None):
     cols = 6
     rows = 3
     tableData = [[None for col in range(cols)] for row in range(rows)]
-    for  col in range(cols):
+    for col in range(cols):
         for row in range(rows):
             for element in storageData:
                 if col == element.col and row == element.row:
-                    tableData [row][col] = [element.isPallet,element.a_CupID, element.a_ProductID, element.a_Name, element.b_CupID, element.b_ProductID, element.b_Name, element.row, element.col]
-    #print(tableData)
+                    tableData[row][col] = [element.isPallet, element.a_CupID, element.a_ProductID, element.a_Name,
+                                           element.b_CupID, element.b_ProductID, element.b_Name, element.row,
+                                           element.col]
+    # print(tableData)
 
     return tableData
 
 
 if __name__ == "__main__":
     blubb = createTableModel("../data/StorageData.db")
-
-
-

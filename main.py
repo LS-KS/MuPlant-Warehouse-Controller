@@ -5,9 +5,7 @@ Date: 11.05.2023
 
 '''
 import sys
-
 from pathlib import Path
-
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
 from Ressources.model import ProductListModel
@@ -22,7 +20,7 @@ if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
 
-    '''Define Pathes for saved Data, löoad the Data in QML-usable Data Models und set Data Model as Root-Context'''
+    '''Define pathes for saved data, load the data in QML-usable data models and set mata model as RootContext'''
     PRODUCTLIST = Path(__file__).resolve().parent / "Ressources" / "data" / "Produkte.db"
     STORAGEDATA = Path(__file__).resolve().parent / "Ressources" / "data" / "StorageData.db"
 
@@ -47,7 +45,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("eventLogController", eventlogController)
 
     # create InventoryController instance
-    inventoryController = InventoryController(model=inventoryModel)
+    inventoryController = InventoryController(model=inventoryModel, eventcontroller = eventlogController)
     engine.rootContext().setContextProperty("inventoryController", inventoryController)
 
     # register controller to make them availlable in qml files.

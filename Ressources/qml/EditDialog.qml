@@ -32,7 +32,7 @@ Dialog {
         }
         Row{
             Text {
-                id: product
+                id: slotText
                 width: parent.width/2
                 text: qsTr("Product a or b: ")
                 Layout.fillHeight: true
@@ -41,6 +41,7 @@ Dialog {
 
             }
             ComboBox{
+                id: setAB
                 model: ["a","b"]
                 Layout.fillHeight: true
                 Layout.fillWidth: true
@@ -96,7 +97,14 @@ Dialog {
     }
 
     standardButtons: Dialog.Ok | Dialog.Cancel
-    onAccepted: console.log("Ok clicked")
+    onAccepted: {
+        console.log("location: "+ setLocation.currentText)
+        console.log("slot: " +setAB.currentText)
+        console.log("cup: " + setCup.text)
+        console.log("product: " + setProduct.currentText)
+        inventoryController.changeStorage(setLocation.currentText, setAB.currentText, setCup.text, setProduct.currentText)
+        console.log("Ok clicked")
+    }
     onRejected: console.log("Cancel clicked")
 
 
