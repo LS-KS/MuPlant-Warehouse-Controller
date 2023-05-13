@@ -47,7 +47,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("eventLogController", eventlogController)
 
     # create InventoryController instance
-    inventoryController = InventoryController()
+    inventoryController = InventoryController(model=inventoryModel)
     engine.rootContext().setContextProperty("inventoryController", inventoryController)
 
     # register controller to make them availlable in qml files.

@@ -68,6 +68,9 @@ Rectangle {
                 color: selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                activeFocusOnTab: true
                 radius: 5
                 property bool selected: false
                 ColumnLayout{
@@ -75,19 +78,14 @@ Rectangle {
                    Text{
                        text:"Cup ID: "+cupA
                        horizontalAlignment: Text.AlignHCenter
-                       Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-                       Layout.fillHeight: true
-                       Layout.fillWidth: true
-                   }
-                   Text{
-                       text:"Produkt ID: "+prodA
-                       horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
                    Text{
                        text:nameA
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
@@ -112,35 +110,29 @@ Rectangle {
                 color: selected ? "#4FC3F7": "white"
                 border.color: "#546E7A"
                 border.width: 2
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 radius: 5
                 property bool selected: false
                 ColumnLayout{
                    anchors.fill: parent
                    Text{
-                       width: parent.width
                        text:"Cup ID: "+cupB
                        horizontalAlignment: Text.AlignHCenter
-                       Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
+
                    Text{
-                       width: parent.width
-                       text:"Produkt ID: "+prodB
-                       horizontalAlignment: Text.AlignHCenter
-                       Layout.fillHeight: true
-                       Layout.fillWidth: true
-                   }
-                   Text{
-                       width: parent.width
                        text:nameB
                        horizontalAlignment: Text.AlignHCenter
+                       verticalAlignment: Text.AlignVCenter
                        Layout.fillHeight: true
                        Layout.fillWidth: true
                    }
 
                 }
-                Layout.fillHeight: parent
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
