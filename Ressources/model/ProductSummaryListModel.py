@@ -3,6 +3,7 @@ import typing
 import PySide6
 from PySide6 import QtCore
 from PySide6.QtCore import QSortFilterProxyModel, Signal, Slot, Qt
+from Ressources.model.InventoryModel import InventoryModel
 
 
 
@@ -11,6 +12,7 @@ class ProductSummaryListModel (QtCore.QAbstractListModel):
     def __init__(self, products, parent = None):
         super().__init__(parent)
         self.products = products
+        self.storagemodel = None
 
     def data(self, index, role):
         """Returns an appropriate value for the requested data.
@@ -51,6 +53,23 @@ class ProductSummaryListModel (QtCore.QAbstractListModel):
                 QtCore.Qt.UserRole + 3: b'quantity',
             }
             return roles
+
+    def setStorageModel(self, model:InventoryModel):
+        self.storagemodel = model
+
+    def update(self, old, new):
+        if self.storagemodel:
+            for row, product in enumerate(self.products):
+                if product.id == new:
+                    product.quantity +=1
+                    index = self.createIndex(row, 0)
+                    self.dataChanged.emit(index, index, product.quantity)
+                if product.id == old:
+                    product.quantity -=1
+                    index = self.createIndex(row, 0)
+                    self.dataChanged.emit(index, index, product.quantity)
+
+
 
 #QSortFilterProxyModel for filtered Views
 class InventoryFilterProxyModel (QSortFilterProxyModel):

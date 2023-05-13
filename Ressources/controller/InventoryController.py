@@ -31,6 +31,7 @@ class InventoryController(QObject):
 
     # Signal can be captured in qml file with Connections - syntax and handling on signal called 'onRowClicked'
     rowClicked = Signal(str)
+    idSwapped = Signal(int, int)
 
     # Slot can be accessed from qml file with oo-syntax: invController.selectRow(model.id)
     @Slot(str)
@@ -88,9 +89,10 @@ class InventoryController(QObject):
         index = self.model.createIndex(row, col)
 
         cup = self.model.setData(index, cupID, role=roleCup)
-        id = self.model.setData(index, productID, role=roleProduct)
+        product = self.model.setData(index, productID, role=roleProduct)
         name = self.model.setData(index, self.findProductName(productID), role=roleName)
         self.model.dataChanged.emit(index, index, [roleCup, roleProduct, roleName])
+        self.idSwapped.emit(product, productID)
 
     def findProductName(self, id: int):
         productList = ProductListModel.getProducts("Ressources/data/Produkte.db")

@@ -71,11 +71,13 @@ class InventoryModel(QtCore.QAbstractTableModel):
             self.inventory[row][col][4] = value
             return True
         if role == Qt.UserRole + 3:  # a_productID
+            oldValue = self.inventory[row][col][2]
             self.inventory[row][col][2] = value
-            return True
+            return oldValue
         if role == Qt.UserRole + 6:  # b_productID
+            oldValue = self.inventory[row][col][5]
             self.inventory[row][col][5] = value
-            return True
+            return oldValue
         if role == Qt.UserRole + 4:  # a_Name
             self.inventory[row][col][3]= value
             return True

@@ -48,9 +48,16 @@ if __name__ == "__main__":
     inventoryController = InventoryController(model=inventoryModel, eventcontroller = eventlogController)
     engine.rootContext().setContextProperty("inventoryController", inventoryController)
 
+    # set inventoryModel as property of productSummaryModel
+    productSummaryModel.setStorageModel(inventoryModel)
+
     # register controller to make them availlable in qml files.
     wsController = websocketController.WebsocketController(eventlogController)
     engine.rootContext().setContextProperty("wsController", wsController)
+
+    # Connect dataChanged signal from inventoryModel to productSummaryModel and productListModel
+    inventoryController.idSwapped.connect(productSummaryModel.update)
+    #inventoryModel.dataChanged.connect(productListModel.handleDataChanged)
 
     # define load main.qml file to start application
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
