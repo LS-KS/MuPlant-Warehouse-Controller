@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.3
 
 Dialog {
     id: editDialog
-    title: "Override Storage"
+    title: "Override Workbench"
     ColumnLayout{
         Layout.fillHeight: true
         Layout.fillWidth: true

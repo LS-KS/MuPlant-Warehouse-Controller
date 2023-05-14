@@ -45,7 +45,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("eventLogController", eventlogController)
 
     # create InventoryController instance
-    inventoryController = InventoryController(model=inventoryModel, eventcontroller = eventlogController)
+    inventoryController = InventoryController(model=inventoryModel, eventcontroller = eventlogController, productlist = productListModel)
     engine.rootContext().setContextProperty("inventoryController", inventoryController)
 
     # set inventoryModel as property of productSummaryModel
@@ -55,9 +55,11 @@ if __name__ == "__main__":
     wsController = websocketController.WebsocketController(eventlogController)
     engine.rootContext().setContextProperty("wsController", wsController)
 
-    # Connect dataChanged signal from inventoryModel to productSummaryModel and productListModel
+    # Connect idSwapped signal from inventoryModel to productSummaryModel
     inventoryController.idSwapped.connect(productSummaryModel.update)
-    #inventoryModel.dataChanged.connect(productListModel.handleDataChanged)
+
+    # TODO: Connect signal of EditDialog emitted when Location is changed to inventoryModel to return appropriate cupID and ProductID
+    # TODO: Connect signal of EditDialog emitted when slot is changed to inventoryModel to return appropriate cupID and ProductID
 
     # define load main.qml file to start application
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"

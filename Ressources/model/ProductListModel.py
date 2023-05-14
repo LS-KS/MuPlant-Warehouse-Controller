@@ -51,6 +51,12 @@ class ProductListModel (QtCore.QAbstractListModel):
             }
             return roles
 
+    def indexOf(self, productID):
+        for index, product in enumerate(self.products):
+            if product == productID:
+                return index
+
+
 
 class Product:
    def __init__(self, id:int, name:str, quantity: int = 0):

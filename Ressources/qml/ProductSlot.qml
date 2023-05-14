@@ -21,59 +21,59 @@ Rectangle {
     property string prodB: "0"
     property string nameB: "Kein Becher"
 
-    Text {
-        id: title
-        text: name
-        width: parent.width
-        height: 20
-        verticalAlignment: Text.AlignVCenter
-        minimumPixelSize: 6
-        horizontalAlignment: Text.AlignHCenter
-        anchors{
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            leftMargin: 10
-            topMargin: 5
-        }
 
-        fontSizeMode: Text.HorizontalFit
-        font.bold: true
+    WorkbenchDialog{
+        id: editDialog
+        title: "Override " + name
     }
 
 
-    RowLayout {
-        id: boxRow
+    Rectangle{
+        id: titleRect
+        height: 30
         anchors{
-            top: title.bottom
             left: parent.left
             right: parent.right
+            top: parent.top
+            leftMargin: 20
+            rightMargin: 20
+            topMargin: 5
         }
+        RowLayout{
+            anchors.fill: parent
 
-        CheckBox{
-            id: detailBox
-            checked: false
-            text: "Edit"
-            font.pixelSize: 10
-
+            Text {
+                id: titleT
+                height: 40
+                text: name
+                verticalAlignment: Text.AlignVCenter
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                font.pixelSize: 12
+                font.bold: true
+            }
+            Image {
+                id: setImage
+                source: "../assets/gear.png"
+                fillMode: Image.PreserveAspectFit
+                height: title.height
+                width: Image.PreserveAspectFit
+                Layout.fillHeight: true
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        editDialog.open()
+                    }
+                }
+            }
         }
-
-        CheckBox{
-            id: editBox
-            checked: false
-            text: "Show Details"
-            font.pixelSize: 10
-        }
-
     }
 
 
     Rectangle {
         id: greySpace
-        height: parent.height
-        width: parent.width
         anchors {
-            top: boxRow.bottom
+            top: titleRect.bottom
             left: parent.left
             bottom: parent.bottom
             right: parent.right
