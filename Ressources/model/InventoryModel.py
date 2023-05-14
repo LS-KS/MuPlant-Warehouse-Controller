@@ -65,11 +65,13 @@ class InventoryModel(QtCore.QAbstractTableModel):
         if not index.isValid() or row >= len(self.inventory) or col >= 6:
             return False
         if role == Qt.UserRole + 2:  # a_CupID
+            oldValue= self.inventory[row][col][1]
             self.inventory[row][col][1] = value
-            return True
+            return oldValue
         if role == Qt.UserRole + 5:  # b_CupID
+            oldValue= self.inventory[row][col][4]
             self.inventory[row][col][4] = value
-            return True
+            return oldValue
         if role == Qt.UserRole + 3:  # a_productID
             oldValue = self.inventory[row][col][2]
             self.inventory[row][col][2] = value
@@ -79,11 +81,13 @@ class InventoryModel(QtCore.QAbstractTableModel):
             self.inventory[row][col][5] = value
             return oldValue
         if role == Qt.UserRole + 4:  # a_Name
+            oldValue= self.inventory[row][col][3]
             self.inventory[row][col][3]= value
-            return True
+            return oldValue
         if role == Qt.UserRole + 7:  # b_Name
+            oldValue= self.inventory[row][col][6]
             self.inventory[row][col][6]= value
-            return True
+            return oldValue
         return False
 
 
