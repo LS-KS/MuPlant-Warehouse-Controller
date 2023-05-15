@@ -19,7 +19,7 @@ Rectangle{
 
     Rectangle{
         id: titleRect
-        height: 30
+        height: 25
         anchors{
             left: parent.left
             right: parent.right
@@ -41,6 +41,15 @@ Rectangle{
                 font.pixelSize: 12
                 font.bold: true
             }
+            Button {
+                id: cameraButton
+                text: "camApp"
+                height: title.height
+                onClicked: {
+                    helpers.startCamApp()
+                }
+            }
+
             Image {
                 id: setImage
                 source: "../assets/gear.png"

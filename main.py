@@ -8,12 +8,23 @@ import sys
 from pathlib import Path
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
+from PySide6.QtCore import Slot, QObject
 from Ressources.model import ProductListModel
 from Ressources.model.InventoryModel import InventoryModel, createTableModel
 from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
 from Ressources.controller.InventoryController import InventoryController
 from Ressources.controller.EventlogController import EventlogController
 from Ressources.controller import websocketController
+from Ressources.cameraApplication import cameraApp
+
+class helpFunctions(QObject):
+
+    @Slot()
+    def startCamApp(self):
+        camWindow = cameraApp.CamWindow()
+        camWindow.show()
+
+
 
 if __name__ == "__main__":
     '''Create Basic Application Class and QMLEngine'''
@@ -58,6 +69,8 @@ if __name__ == "__main__":
     # Connect idSwapped signal from inventoryModel to productSummaryModel
     inventoryController.idSwapped.connect(productSummaryModel.update)
 
+    helpers = helpFunctions()
+    engine.rootContext().setContextProperty("helpers", helpers)
     # TODO: Connect signal of EditDialog emitted when Location is changed to inventoryModel to return appropriate cupID and ProductID
     # TODO: Connect signal of EditDialog emitted when slot is changed to inventoryModel to return appropriate cupID and ProductID
 

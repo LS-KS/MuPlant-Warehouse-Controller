@@ -62,6 +62,7 @@ Rectangle {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
+                        editDialog.source = name
                         editDialog.open()
                     }
                 }

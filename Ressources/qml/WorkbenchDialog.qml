@@ -7,35 +7,11 @@ import QtQuick.Layouts 1.3
 Dialog {
     id: editDialog
     title: "Override Workbench"
+    property string source: ""
     ColumnLayout{
         Layout.fillHeight: true
         Layout.fillWidth: true
 
-        Row{
-            Text {
-                id: location
-                text: qsTr("Location: ")
-                width: parent.width/2
-                height: setLocation.height
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                verticalAlignment: Text.AlignVCenter
-            }
-            ComboBox{
-                id: setLocation
-                model: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18']
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                onCurrentValueChanged: {
-                    if(setLocation.currentValue !==''){
-                        inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
-                    }
-                }
-
-            }
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-        }
         Row{
             Text {
                 id: slotText
@@ -52,7 +28,7 @@ Dialog {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 onCurrentValueChanged: {
-                    inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
+                    inventoryController.loadStorage(source, setAB.currentValue)
                 }
 
             }
@@ -72,7 +48,6 @@ Dialog {
                     bottom: 0
                     top: 9999
                 }
-
             }
         }
         Row{
@@ -90,7 +65,6 @@ Dialog {
                 textRole: 'id'
                 Layout.fillHeight: true
                 Layout.fillWidth: true
-
             }
 
         }
@@ -100,7 +74,6 @@ Dialog {
                 id: clearButton
                 text: "Clear"
                 onClicked: {
-                    console.log("Clear Clicked")
                     setProduct.currentIndex = 0
                     setCup.text = "0"
                 }
@@ -111,12 +84,8 @@ Dialog {
 
     standardButtons: Dialog.Ok | Dialog.Cancel
     onAccepted: {
-        console.log("location: "+ setLocation.currentText)
-        console.log("slot: " +setAB.currentText)
-        console.log("cup: " + setCup.text)
-        console.log("product: " + setProduct.currentText)
-        inventoryController.changeStorage(setLocation.currentText, setAB.currentText, setCup.text, setProduct.currentText)
-        console.log("Ok clicked")
+
+        inventoryController.changeStorage(source, setAB.currentText, setCup.text, setProduct.currentText)
     }
     onRejected: console.log("Cancel clicked")
 
@@ -125,6 +94,33 @@ Dialog {
         function onTransmitData(slot, cup, product){
             setCup.text = cup
             setProduct.editText = product
+        }
+    }
+    onOpened: {
+        function setValues(){
+            console.log("function called")
+            if (name === "Workbench"){
+                console.log("recognized Workbench ")
+                if(setAB ==='a'){
+                    console.log("recognized a ")
+                    setCup = workBench.cupA
+                    setProduct = workBench.prodA
+                } else {
+                    console.log("recognized b ")
+                    setCup = workBench.cupB
+                    setProduct = workBench.prodB
+                }
+            }
+            if (name === "Mobile Robot"){
+                if(setAB ==='a'){
+                    setCup.text = mobileRobot.cupA
+                    setProduct.editText = mobileRobot.prodA
+                } else {
+                    setCup.text = mobileRobot.cupB
+                    setProduct.editText = mobileRobot.prodB
+                }
+
+            }
         }
     }
 }
