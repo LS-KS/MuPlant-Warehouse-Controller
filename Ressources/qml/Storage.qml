@@ -13,7 +13,13 @@ Rectangle{
     radius: 10
 
     EditDialog{
+        //Dialog to edit storage data
         id: editDialog
+    }
+
+    Loader{
+        //Loader to load camera Application QML file
+        id: camAppLoader
     }
 
 
@@ -41,13 +47,20 @@ Rectangle{
                 font.pixelSize: 12
                 font.bold: true
             }
+
             Button {
+
+
                 id: cameraButton
                 text: "camApp"
-                height: title.height
+                height: title.height -5
+
+
                 onClicked: {
-                    helpers.startCamApp()
+                    console.log("Clicked")
+                    camAppLoader.source = camAppPath
                 }
+
             }
 
             Image {

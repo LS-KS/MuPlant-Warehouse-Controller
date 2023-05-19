@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
-from PySide6.QtCore import Slot, QObject
+from PySide6.QtCore import Slot, QObject, QUrl
 from Ressources.model import ProductListModel
 from Ressources.model.InventoryModel import InventoryModel, createTableModel
 from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
@@ -24,7 +24,8 @@ class helpFunctions(QObject):
 
     @Slot()
     def startCamApp(self):
-        self.camApp = cameraProcessing.runApp()
+        # self.camApp = cameraProcessing.runApp()
+        pass
 
 
 
@@ -36,6 +37,7 @@ if __name__ == "__main__":
     '''Define pathes for saved data, load the data in QML-usable data models and set mata model as RootContext'''
     PRODUCTLIST = Path(__file__).resolve().parent / "Ressources" / "data" / "Produkte.db"
     STORAGEDATA = Path(__file__).resolve().parent / "Ressources" / "data" / "StorageData.db"
+    CAMAPP_QML = "../cameraApplication/qml/CameraAppMain.qml"
 
     # simple Productlist
     productListModel = ProductListModel.ProductListModel(ProductListModel.getProducts(PRODUCTLIST))
@@ -71,8 +73,7 @@ if __name__ == "__main__":
     # Connect idSwapped signal from inventoryModel to productSummaryModel
     inventoryController.idSwapped.connect(productSummaryModel.update)
 
-    helpers = helpFunctions()
-    engine.rootContext().setContextProperty("helpers", helpers)
+    engine.rootContext().setContextProperty("camAppPath", CAMAPP_QML)
     # TODO: Connect signal of EditDialog emitted when Location is changed to inventoryModel to return appropriate cupID and ProductID
     # TODO: Connect signal of EditDialog emitted when slot is changed to inventoryModel to return appropriate cupID and ProductID
 

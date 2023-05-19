@@ -8,7 +8,7 @@ import QtQuick.Controls.Material 2.15
 Window {
 
     property bool init: false
-
+    id: mainWindow
     width: Screen.width
     minimumWidth : 480
     height: Screen.height
