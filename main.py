@@ -15,14 +15,16 @@ from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  I
 from Ressources.controller.InventoryController import InventoryController
 from Ressources.controller.EventlogController import EventlogController
 from Ressources.controller import websocketController
-from Ressources.cameraApplication import cameraApp
+from Ressources.cameraApplication import cameraProcessing
 
 class helpFunctions(QObject):
 
+    def __init__(self):
+        super().__init__()
+
     @Slot()
     def startCamApp(self):
-        camWindow = cameraApp.CamWindow()
-        camWindow.show()
+        self.camApp = cameraProcessing.runApp()
 
 
 
