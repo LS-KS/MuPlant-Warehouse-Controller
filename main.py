@@ -17,17 +17,6 @@ from Ressources.controller.EventlogController import EventlogController
 from Ressources.controller import websocketController
 from Ressources.cameraApplication import cameraProcessing
 
-class helpFunctions(QObject):
-
-    def __init__(self):
-        super().__init__()
-
-    @Slot()
-    def startCamApp(self):
-        # self.camApp = cameraProcessing.runApp()
-        pass
-
-
 
 if __name__ == "__main__":
     '''Create Basic Application Class and QMLEngine'''
@@ -70,12 +59,15 @@ if __name__ == "__main__":
     wsController = websocketController.WebsocketController(eventlogController)
     engine.rootContext().setContextProperty("wsController", wsController)
 
+    # register cameraProcessing.py as cameraController
+    camApp = cameraProcessing.VideoPlayer(engine)
+    engine.rootContext().setContextProperty("camApp", camApp)
+
     # Connect idSwapped signal from inventoryModel to productSummaryModel
     inventoryController.idSwapped.connect(productSummaryModel.update)
 
+    # set main qml of camera App as rootContext
     engine.rootContext().setContextProperty("camAppPath", CAMAPP_QML)
-    # TODO: Connect signal of EditDialog emitted when Location is changed to inventoryModel to return appropriate cupID and ProductID
-    # TODO: Connect signal of EditDialog emitted when slot is changed to inventoryModel to return appropriate cupID and ProductID
 
     # define load main.qml file to start application
     qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"

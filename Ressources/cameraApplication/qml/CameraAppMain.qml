@@ -65,6 +65,9 @@ Window {
                     height: 50
                     Layout.fillWidth: true
                     Layout.fillHeight: true
+                    onClicked: {
+                        camApp.start()
+                    }
                 }
 
                 Button{
@@ -83,6 +86,9 @@ Window {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
+                    onClicked: {
+                        camApp.stop()
+                    }
                 }
 
                 Layout.alignment: Qt.AlignHCenter
@@ -93,6 +99,7 @@ Window {
 
     onClosing: {
         camAppLoader.source = ""
+        camApp.stop()
     }
 }
 
