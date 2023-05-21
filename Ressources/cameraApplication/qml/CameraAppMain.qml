@@ -35,6 +35,21 @@ Window {
             border.color: "#546E7A"
             border.width: 2
             radius: 10
+            Image {
+                id: camImage
+                width: parent.width
+                height: parent.height
+                anchors.fill: parent
+                anchors.margins: 10
+                source: "image: //camApp/img"
+                property bool counter: false
+
+                function reloadImage() {
+                    counter =!counter
+                    source = "image://MyImageProvider/img?id="+counter
+                }
+            }
+
         }
 
         Text {

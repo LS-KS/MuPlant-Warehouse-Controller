@@ -16,17 +16,16 @@ class VideoThread(QThread):
 
     def run(self):
         while self.running:
-            #print("getframe...")
+            print("getframe...")
             ret, frame = self.capture.read()
             if ret:
                 rgbImage =  cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 h, w, _ = rgbImage.shape
                 qImage = QImage(rgbImage.data, w, h, QImage.Format_RGB888)
                 self.frameChanged.emit(qImage)
-                #print("...emitted frame")
+                print("...emitted frame")
 
     def quit(self):
-        print("try closing")
         self.running = False
         self.capture.release()
         super().quit()

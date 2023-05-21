@@ -60,7 +60,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("wsController", wsController)
 
     # register cameraProcessing.py as cameraController
-    camApp = cameraProcessing.VideoPlayer(engine)
+    camApp = cameraProcessing.VideoPlayer()
     engine.rootContext().setContextProperty("camApp", camApp)
 
     # Connect idSwapped signal from inventoryModel to productSummaryModel
