@@ -58,10 +58,15 @@ if __name__ == "__main__":
     # register controller to make them availlable in qml files.
     wsController = websocketController.WebsocketController(eventlogController)
     engine.rootContext().setContextProperty("wsController", wsController)
-
-    # register cameraProcessing.py as cameraController
+    '''
+    # set camera Application as root Context
     camApp = cameraProcessing.VideoPlayer()
     engine.rootContext().setContextProperty("camApp", camApp)
+    '''
+    # add camApp to engine
+    camApp = cameraProcessing.VideoPlayer()
+    engine.rootContext().setContextProperty("camApp", camApp)
+    engine.addImageProvider("camApp", camApp)
 
     # Connect idSwapped signal from inventoryModel to productSummaryModel
     inventoryController.idSwapped.connect(productSummaryModel.update)

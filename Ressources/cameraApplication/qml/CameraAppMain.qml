@@ -41,12 +41,15 @@ Window {
                 height: parent.height
                 anchors.fill: parent
                 anchors.margins: 10
-                source: "image: //camApp/img"
+                source: "image://camApp/img"
                 property bool counter: false
-
-                function reloadImage() {
-                    counter =!counter
-                    source = "image://MyImageProvider/img?id="+counter
+            }
+            Connections{
+                target: camApp
+                function onImageChanged(image){
+                    console.log("new image emitted")
+                    camImage.counter = !camImage.counter
+                    camImage.source = "image://camApp/img?id="+camImage.counter
                 }
             }
 
