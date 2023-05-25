@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.cameraApplication.cameraProcessing &mdash; muPlantPython 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            muPlantPython
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Modules and Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../search.html">Search Page</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">muPlantPython</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.cameraApplication.cameraProcessing</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for src.cameraApplication.cameraProcessing</h1><div class="highlight"><pre>
+<span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This Python File implements the logic to recognize arUco markers.</span>
+<span class="sd">class VideoThread inherits from QThread class. So image capture and image processing code is in seperated thread.</span>
+<span class="sd">Processed images are provided to qml by using class videoPlayer which inherits from QQuickImageProvider.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtGui</span> <span class="kn">import</span> <span class="n">QImage</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtCore</span> <span class="kn">import</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">Qt</span><span class="p">,</span> <span class="n">QThread</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtQuick</span> <span class="kn">import</span> <span class="n">QQuickImageProvider</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtQml</span> <span class="kn">import</span> <span class="n">QQmlImageProviderBase</span>
+
+
+<div class="viewcode-block" id="VideoThread"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoThread">[docs]</a><span class="k">class</span> <span class="nc">VideoThread</span><span class="p">(</span><span class="n">QThread</span><span class="p">):</span>
+    <span class="c1">#: Signal which is emitted when a new image is ready for QQuickImageProvider</span>
+    <span class="n">frameChanged</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">QImage</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">QThread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capture</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1">#: initializes the first camera device.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capture</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FPS</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1">#: limit FPS cap to 30 fps. This is set to slow the thread down.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">#: run variable for while loop in run() function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">detecting</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1">#: enables/disables feature detection</span>
+
+        <span class="c1">#: initialize haar cascade face detection.. just that there is some image processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">faceCascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">haarcascades</span> <span class="o">+</span> <span class="s1">&#39;haarcascade_frontalface_default.xml&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VideoThread initialization finished&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VideoThread.run"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoThread.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This Method reads the camera sensor and performs necessary image processing.</span>
+<span class="sd">        Converts processed image to Qt&#39;s QImage class and emits Signal with QImage</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">capture</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>        <span class="c1">#: reads the camera sensor</span>
+            <span class="k">if</span> <span class="n">ret</span><span class="p">:</span>     <span class="c1">#: If frame is returned successfully ret will be True else False.</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">detecting</span><span class="p">:</span>      <span class="c1">#: ImageProcessing can be dis/enabled via GUI</span>
+                    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>      <span class="c1">#: Convert the frame to grayscale</span>
+                    <span class="n">faces</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">faceCascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">scaleFactor</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">minNeighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>        <span class="c1">#: Detect faces in the frame</span>
+                    <span class="c1">#: Draw rectangles around the faces</span>
+                    <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+                        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="c1">#: Converts frame to rgb image and create QImage object</span>
+                <span class="n">rgbImage</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+                <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">rgbImage</span><span class="o">.</span><span class="n">shape</span>
+                <span class="n">qImage</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">rgbImage</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">QImage</span><span class="o">.</span><span class="n">Format_RGB888</span><span class="p">)</span>
+                <span class="c1">#: emit qImage for GUI as new image</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">frameChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">qImage</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capture</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>      <span class="c1">#: If while loop is stopped, release camera sensor</span></div>
+
+<div class="viewcode-block" id="VideoThread.quit"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoThread.quit">[docs]</a>    <span class="k">def</span> <span class="nf">quit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Necessary Implementation of inherited class to quit existing thread.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#: stops the while loop in run-method</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span> <span class="c1">#: calls quit-method from inherited class</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span> <span class="c1">#: wait until thread is quitted</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span> <span class="c1">#: deletes thread object</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Camera thread closed&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VideoThread.start"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoThread.start">[docs]</a>    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Necessary Implementation of inherited class to quit existing thread.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting camera thread...&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;... done&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VideoThread.detect"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoThread.detect">[docs]</a>    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        enables/disables detection in run-method</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">detecting</span> <span class="o">=</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">detecting</span></div></div>
+
+
+<div class="viewcode-block" id="VideoPlayer"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer">[docs]</a><span class="k">class</span> <span class="nc">VideoPlayer</span><span class="p">(</span><span class="n">QQuickImageProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class implements QQuickImageProvider class from PySide6 framework. It is necessary to pass captured</span>
+<span class="sd">    and processed images to QML GUI.</span>
+<span class="sd">    The signal imageChanged passes the QImage object to QQmlEngine to show it in GUI</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">imageChanged</span> <span class="o">=</span> <span class="n">Signal</span><span class="p">(</span><span class="n">QImage</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        calls the init-function from inherited class then creates objects from VideoThread class and an image field</span>
+<span class="sd">        VideoThread and image are initialized with None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">QQmlImageProviderBase</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">QQmlImageProviderBase</span><span class="o">.</span><span class="n">ForceAsynchronousImageLoading</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="VideoPlayer.requestImage"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer.requestImage">[docs]</a>    <span class="k">def</span> <span class="nf">requestImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">requestedSize</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        This function overrides requestImage from inherited class.</span>
+<span class="sd">        :param id: necessary identifier to switch between images. Can be any value. Implemented as boolean value which is toggled</span>
+<span class="sd">        everytime when imageChanged is emitted form a JavaScript - function in CameraApplicationMain.qml</span>
+<span class="sd">        :param size:</span>
+<span class="sd">        :param requestedSize:</span>
+<span class="sd">        :return: returns QImage object in RGBA color format</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">,</span> <span class="n">QImage</span><span class="o">.</span><span class="n">Format_RGBA8888</span><span class="p">)</span>
+            <span class="n">img</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">img</span></div>
+
+<div class="viewcode-block" id="VideoPlayer.updateImage"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer.updateImage">[docs]</a>    <span class="nd">@Slot</span><span class="p">(</span><span class="n">QImage</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">updateImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Implements connection between VideoThread and VideoPlayer. If VideoThread emits a new image this Slot is called.</span>
+<span class="sd">        stores emitted image in self.image and emits image to QQmlEngine</span>
+<span class="sd">        :param frame: QImage which is emitted from run-method in VideoThread object.</span>
+<span class="sd">        :return: this method returns nothing but emits signal to QQmlEngine</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;new image in updateImage&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">frame</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imageChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VideoPlayer.start"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer.start">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Overrides start method of inherited class QQuickImageProvider. It is a Slot and called from QML Button of CameraAppMain.qml</span>
+<span class="sd">        :return: this method returns nothing.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting Video feed...&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span> <span class="o">=</span> <span class="n">VideoThread</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="o">.</span><span class="n">frameChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">updateImage</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="o">.</span><span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="VideoPlayer.stop"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer.stop">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Overrides stop method of inherited class QQuickImageProvider. It is a Slot and called from QML Button of CameraAppMain.qml</span>
+<span class="sd">        :return: this method returns nothing</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finishing Video feed.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished Video feed.&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VideoPlayer.toggleDetection"><a class="viewcode-back" href="../../../modules.html#src.cameraApplication.cameraProcessing.VideoPlayer.toggleDetection">[docs]</a>    <span class="nd">@Slot</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">toggleDetection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Toggles detection field of VideoThread object. Enables / disables feature detection in VideoThread&#39;s run method.</span>
+<span class="sd">        It is a Slot and called from QML Button of CameraAppMain.qml</span>
+<span class="sd">        :return: This method returns nothing</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">videoThread</span><span class="o">.</span><span class="n">detect</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lennart Schink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

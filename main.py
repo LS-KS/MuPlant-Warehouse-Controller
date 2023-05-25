@@ -8,14 +8,13 @@ import sys
 from pathlib import Path
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
-from PySide6.QtCore import Slot, QObject, QUrl
-from Ressources.model import ProductListModel
-from Ressources.model.InventoryModel import InventoryModel, createTableModel
-from Ressources.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
-from Ressources.controller.InventoryController import InventoryController
-from Ressources.controller.EventlogController import EventlogController
-from Ressources.controller import websocketController
-from Ressources.cameraApplication import cameraProcessing
+from src.model import ProductListModel
+from src.model.InventoryModel import InventoryModel, createTableModel
+from src.model.ProductSummaryListModel import ProductSummaryListModel,  InventoryFilterProxyModel, createSummaryModel
+from src.controller.InventoryController import InventoryController
+from src.controller.EventlogController import EventlogController
+from src.controller import websocketController
+from src.cameraApplication import cameraProcessing
 
 
 if __name__ == "__main__":
@@ -24,8 +23,8 @@ if __name__ == "__main__":
     engine = QQmlApplicationEngine()
 
     '''Define pathes for saved data, load the data in QML-usable data models and set mata model as RootContext'''
-    PRODUCTLIST = Path(__file__).resolve().parent / "Ressources" / "data" / "Produkte.db"
-    STORAGEDATA = Path(__file__).resolve().parent / "Ressources" / "data" / "StorageData.db"
+    PRODUCTLIST = Path(__file__).resolve().parent / "src" / "data" / "Produkte.db"
+    STORAGEDATA = Path(__file__).resolve().parent / "src" / "data" / "StorageData.db"
     CAMAPP_QML = "../cameraApplication/qml/CameraAppMain.qml"
 
     # simple Productlist
@@ -58,11 +57,7 @@ if __name__ == "__main__":
     # register controller to make them availlable in qml files.
     wsController = websocketController.WebsocketController(eventlogController)
     engine.rootContext().setContextProperty("wsController", wsController)
-    '''
-    # set camera Application as root Context
-    camApp = cameraProcessing.VideoPlayer()
-    engine.rootContext().setContextProperty("camApp", camApp)
-    '''
+
     # add camApp to engine
     camApp = cameraProcessing.VideoPlayer()
     engine.rootContext().setContextProperty("camApp", camApp)
@@ -75,7 +70,7 @@ if __name__ == "__main__":
     engine.rootContext().setContextProperty("camAppPath", CAMAPP_QML)
 
     # define load main.qml file to start application
-    qml_file = Path(__file__).resolve().parent / "Ressources" / "qml" / "main.qml"
+    qml_file = Path(__file__).resolve().parent / "src" / "qml" / "main.qml"
     engine.load(qml_file)
 
     if not engine.rootObjects():

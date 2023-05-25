@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to muPlant Warehouse Manager’s documentation! &mdash; muPlantPython 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            muPlantPython
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules and Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search Page</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">muPlantPython</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to muPlant Warehouse Manager’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-muplant-warehouse-manager-s-documentation">
+<h1>Welcome to muPlant Warehouse Manager’s documentation!<a class="headerlink" href="#welcome-to-muplant-warehouse-manager-s-documentation" title="Permalink to this heading"></a></h1>
+<p>This Software is part of muPlant Project of University of Kassel.
+It implements basic functions for WareHouse Management.</p>
+</section>
+<section id="communication-standards">
+<h1>Communication Standards<a class="headerlink" href="#communication-standards" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p>TCP/IP for communication with ABB Robot</p></li>
+<li><p>OPC UA with other muPlant stations</p></li>
+<li><p>RFID to communicate with turtle bots</p></li>
+<li><p>uEye Camera with openCV and arUco markers for automated storage detection</p></li>
+</ul>
+</section>
+<section id="learnings-from-earlier-studies">
+<h1>Learnings from earlier studies<a class="headerlink" href="#learnings-from-earlier-studies" title="Permalink to this heading"></a></h1>
+<p>Sebastian Hübler has published hie practical studies in 2019. He evaluated methods to detect cups
+in muPlant storage by using two different cameras.
+Regarding the detection with arUco markers he made some helpful analysis:</p>
+<ul class="simple">
+<li><p>low resolution leads to better detection results</p></li>
+<li><p>minimal/ maximal distance uEye tp marker: 17mm/ 745mm</p></li>
+<li><p>ambient light has significant influence</p></li>
+<li><p>auto focus maybe a big issue</p></li>
+<li><p>detection best works while robotic arm is without movement</p></li>
+</ul>
+<section id="further-thoughts">
+<h2>Further thoughts:<a class="headerlink" href="#further-thoughts" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>if ambient light and other surcumstances are not good:</p></li>
+<li><p>reduce image size to criticl area only</p></li>
+<li><p>calibrate location of camera to maximize image size reduction</p></li>
+<li><p>better detection with custom filter which smoothes and increases contrast?</p></li>
+<li><p>other camera which has no autofocus</p></li>
+</ul>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>install Python 3.11</p></li>
+<li><p>install numpy</p></li>
+<li><p>install asynchua</p></li>
+<li><p>install pyside6</p></li>
+<li><p>install websocket</p></li>
+<li><p>install opencv</p></li>
+</ul>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules and Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.cameraApplication.cameraProcessing.VideoPlayer"><code class="docutils literal notranslate"><span class="pre">VideoPlayer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.cameraApplication.cameraProcessing.VideoThread"><code class="docutils literal notranslate"><span class="pre">VideoThread</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.controller.EventlogController.EventlogController"><code class="docutils literal notranslate"><span class="pre">EventlogController</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.controller.InventoryController.InventoryController"><code class="docutils literal notranslate"><span class="pre">InventoryController</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.controller.websocketController.WebsocketController"><code class="docutils literal notranslate"><span class="pre">WebsocketController</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.model.InventoryModel.InventoryModel"><code class="docutils literal notranslate"><span class="pre">InventoryModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.model.ProductListModel.ProductListModel"><code class="docutils literal notranslate"><span class="pre">ProductListModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.model.ProductSummaryListModel.InventoryFilterProxyModel"><code class="docutils literal notranslate"><span class="pre">InventoryFilterProxyModel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="search.html">Search Page</a></li>
+</ul>
+</div>
+</section>
+<section id="contributions">
+<h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Qt Project</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lennart Schink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

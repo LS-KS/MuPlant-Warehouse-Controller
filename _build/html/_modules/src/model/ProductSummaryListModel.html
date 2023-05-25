@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>src.model.ProductSummaryListModel &mdash; muPlantPython 0.1 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            muPlantPython
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">Modules and Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../search.html">Search Page</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">muPlantPython</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">src.model.ProductSummaryListModel</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for src.model.ProductSummaryListModel</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">typing</span>
+
+<span class="kn">import</span> <span class="nn">PySide6</span>
+<span class="kn">from</span> <span class="nn">PySide6</span> <span class="kn">import</span> <span class="n">QtCore</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtCore</span> <span class="kn">import</span> <span class="n">QSortFilterProxyModel</span><span class="p">,</span> <span class="n">Signal</span><span class="p">,</span> <span class="n">Slot</span><span class="p">,</span> <span class="n">Qt</span>
+<span class="kn">from</span> <span class="nn">src.model.InventoryModel</span> <span class="kn">import</span> <span class="n">InventoryModel</span>
+
+
+
+<div class="viewcode-block" id="ProductSummaryListModel"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel">[docs]</a><span class="k">class</span> <span class="nc">ProductSummaryListModel</span> <span class="p">(</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QAbstractListModel</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">products</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">products</span> <span class="o">=</span> <span class="n">products</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">storagemodel</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="ProductSummaryListModel.data"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel.data">[docs]</a>    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">role</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns an appropriate value for the requested data.</span>
+<span class="sd">        If the view requests an invalid index, an invalid variant is returned.</span>
+<span class="sd">        Any valid index that corresponds to a string in the list causes that</span>
+<span class="sd">        string to be returned.</span>
+<span class="sd">        :param index:</span>
+<span class="sd">        :param role:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">index</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span> <span class="ow">or</span> <span class="n">row</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">product</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span>
+        <span class="k">elif</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">elif</span> <span class="n">role</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">product</span><span class="o">.</span><span class="n">quantity</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="ProductSummaryListModel.headerData"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel.headerData">[docs]</a>    <span class="k">def</span> <span class="nf">headerData</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the appropriate header string depending on the orientation of</span>
+<span class="sd">        the header and the section. If anything other than the display role is</span>
+<span class="sd">        requested, we return an invalid variant</span>
+<span class="sd">        :param section:</span>
+<span class="sd">        :param orientation:</span>
+<span class="sd">        :param role:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">role</span> <span class="o">!=</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">DisplayRole</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">Horizontal</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Column </span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Row </span><span class="si">{</span><span class="n">section</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+<div class="viewcode-block" id="ProductSummaryListModel.rowCount"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount">[docs]</a>    <span class="k">def</span> <span class="nf">rowCount</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">PySide6</span><span class="o">.</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QModelIndex</span><span class="p">,</span> <span class="n">PySide6</span><span class="o">.</span><span class="n">QtCore</span><span class="o">.</span><span class="n">QPersistentModelIndex</span><span class="p">]</span> <span class="o">=</span> <span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># return length of productList</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductSummaryListModel.roleNames"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.ProductSummaryListModel.roleNames">[docs]</a>    <span class="k">def</span> <span class="nf">roleNames</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="n">roles</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;id&#39;</span><span class="p">,</span>
+                <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">2</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                <span class="n">QtCore</span><span class="o">.</span><span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span> <span class="mi">3</span><span class="p">:</span> <span class="sa">b</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">roles</span></div>
+
+    <span class="k">def</span> <span class="nf">setStorageModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span><span class="n">InventoryModel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">storagemodel</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">storagemodel</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">product</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">products</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">new</span><span class="p">:</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">quantity</span> <span class="o">+=</span><span class="mi">1</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">product</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">old</span><span class="p">:</span>
+                    <span class="n">product</span><span class="o">.</span><span class="n">quantity</span> <span class="o">-=</span><span class="mi">1</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">createIndex</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dataChanged</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">product</span><span class="o">.</span><span class="n">quantity</span><span class="p">)</span></div>
+
+
+
+<span class="c1">#: QSortFilterProxyModel for filtered Views</span>
+<div class="viewcode-block" id="InventoryFilterProxyModel"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.InventoryFilterProxyModel">[docs]</a><span class="k">class</span> <span class="nc">InventoryFilterProxyModel</span> <span class="p">(</span><span class="n">QSortFilterProxyModel</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">showZeroQuantity</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setSourceModel</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="nd">@Slot</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">setShowZero</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">showZeroQuantity</span> <span class="o">=</span> <span class="nb">bool</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">invalidateFilter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">revert</span>
+
+<div class="viewcode-block" id="InventoryFilterProxyModel.filterAcceptsRow"><a class="viewcode-back" href="../../../modules.html#src.model.ProductSummaryListModel.InventoryFilterProxyModel.filterAcceptsRow">[docs]</a>    <span class="k">def</span> <span class="nf">filterAcceptsRow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sourceRow</span><span class="p">,</span> <span class="n">sourceParent</span><span class="p">):</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sourceModel</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">sourceRow</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sourceParent</span><span class="p">)</span>
+        <span class="n">quantity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sourceModel</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">Qt</span><span class="o">.</span><span class="n">UserRole</span> <span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">quantity</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">showZeroQuantity</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">filterAcceptsRow</span><span class="p">(</span><span class="n">sourceRow</span><span class="p">,</span> <span class="n">sourceParent</span><span class="p">)</span></div></div>
+
+<span class="k">class</span> <span class="nc">Product</span><span class="p">:</span>
+   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+       <span class="bp">self</span><span class="o">.</span><span class="n">quantity</span> <span class="o">=</span> <span class="n">quantity</span>
+
+<span class="c1"># Data class for Inventory:</span>
+<span class="k">class</span> <span class="nc">Inventory</span><span class="p">():</span>
+    <span class="n">row</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">col</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">isPallet</span> <span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">a_CupID</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">a_ProductID</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">a_Name</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">b_CupID</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">b_ProductID</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">b_Name</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">isPallet</span><span class="p">,</span> <span class="n">a_CupID</span><span class="p">,</span> <span class="n">a_ProductID</span><span class="p">,</span><span class="n">a_Name</span><span class="p">,</span> <span class="n">b_CupID</span><span class="p">,</span> <span class="n">b_ProductID</span><span class="p">,</span> <span class="n">b_Name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">row</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">isPallet</span> <span class="o">=</span> <span class="n">isPallet</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_CupID</span> <span class="o">=</span> <span class="n">a_CupID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_ProductID</span> <span class="o">=</span> <span class="n">a_ProductID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a_Name</span> <span class="o">=</span> <span class="n">a_Name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_CupID</span> <span class="o">=</span> <span class="n">b_CupID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_ProductID</span> <span class="o">=</span> <span class="n">b_ProductID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_Name</span> <span class="o">=</span> <span class="n">b_Name</span>
+
+
+<span class="k">def</span> <span class="nf">createSummaryModel</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="n">PRODUCTLIST</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># URL of StorageData.db</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">FILE</span><span class="p">:</span>
+        <span class="n">FILE</span> <span class="o">=</span> <span class="s2">&quot;src/data/StorageData.db&quot;</span>
+        <span class="n">FILE</span> <span class="o">=</span> <span class="s2">&quot;../data/StorageData.db&quot;</span> <span class="c1">#for debug purpose</span>
+
+    <span class="c1"># get actual List of possible Products top get names and id correllation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">PRODUCTLIST</span><span class="p">:</span>
+        <span class="n">PRODUCTLIST</span> <span class="o">=</span> <span class="s2">&quot;../data/Produkte.db&quot;</span>
+    <span class="n">productList</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Open product file and read lines to list.</span>
+        <span class="c1"># Avoid u\ufeff prefix in data by set encoding to utf8-8-sig (source: stackoverflow)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">PRODUCTLIST</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="nb">list</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="c1"># Split the line by &#39;;&#39; to get the id and name</span>
+            <span class="n">product_data</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+            <span class="n">product_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">product_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">product_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">product_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">productList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Product</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">product_id</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">product_name</span><span class="p">))</span>
+        <span class="c1"># Print the list of Product objects</span>
+        <span class="c1">#for product in productList:</span>
+        <span class="c1">#    print(f&quot;{product.id}: {product.name}&quot;)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: could&#39;t find product list file &#39;Produkte.db&#39;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: file &#39;Produkte.db&#39; doesn&#39;t exist&quot;</span><span class="p">)</span>
+
+    <span class="c1"># load Inventory from StorageData.db</span>
+    <span class="n">storageData</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Open StorageData file and read in lines to list</span>
+        <span class="c1"># Avoid u\efeff prefix in data by set encodeing to utf8-8-sig (source: stackoverflow)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8-sig&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="nb">list</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+        <span class="c1"># remove empty lines</span>
+        <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">list</span> <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+        <span class="c1"># remove first line</span>
+        <span class="nb">list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="c1"># strip and split to get raw data</span>
+            <span class="n">splitData</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+            <span class="n">splitData</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">splitData</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="n">splitData</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">splitData</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span>
+            <span class="c1"># map the split data to Inevntory Data</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">isPallet</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">splitData</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span> <span class="k">else</span> <span class="kc">False</span>
+            <span class="n">a_CupID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">a_ProductID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">a_Name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">b_CupID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">b_ProductID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">splitData</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+            <span class="n">b_Name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="c1"># find matching product strings from actual product list</span>
+            <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">productList</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">a_ProductID</span><span class="p">:</span>
+                    <span class="n">a_Name</span> <span class="o">=</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">if</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">b_ProductID</span><span class="p">:</span>
+                    <span class="n">b_Name</span> <span class="o">=</span> <span class="n">product</span><span class="o">.</span><span class="n">name</span>
+                <span class="k">if</span> <span class="n">a_Name</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">b_Name</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="c1"># append data to storageData for QAbstractTableModel</span>
+            <span class="n">storageData</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Inventory</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">isPallet</span><span class="o">=</span><span class="n">isPallet</span><span class="p">,</span> <span class="n">a_CupID</span> <span class="o">=</span> <span class="n">a_CupID</span><span class="p">,</span> <span class="n">a_ProductID</span><span class="o">=</span><span class="n">a_ProductID</span><span class="p">,</span> <span class="n">b_CupID</span><span class="o">=</span><span class="n">b_CupID</span><span class="p">,</span> <span class="n">b_ProductID</span><span class="o">=</span><span class="n">b_ProductID</span><span class="p">,</span> <span class="n">a_Name</span><span class="o">=</span> <span class="n">a_Name</span><span class="p">,</span> <span class="n">b_Name</span> <span class="o">=</span> <span class="n">b_Name</span><span class="p">))</span>
+            <span class="c1"># print(f&quot;Row: {row}\t Col: {col}\t isPallet: {isPallet}\t Cup_A: {a_CupID}\t ProductA: {a_ProductID}, {a_Name}\t Cup_B: {b_CupID}\t ProductB: {b_ProductID}, {b_Name} &quot;)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: could&#39;t find product list file &#39;StorageData.db&#39;&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: file &#39;StorageData.db&#39; doesn&#39;t exist&quot;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span class="n">storageData</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">product</span> <span class="ow">in</span> <span class="n">productList</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">stock</span><span class="o">.</span><span class="n">a_ProductID</span> <span class="o">==</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">quantity</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">stock</span><span class="o">.</span><span class="n">b_ProductID</span> <span class="o">==</span> <span class="n">product</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+                <span class="n">product</span><span class="o">.</span><span class="n">quantity</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">productList</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Lennart Schink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
