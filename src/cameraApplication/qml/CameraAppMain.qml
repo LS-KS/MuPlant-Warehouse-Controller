@@ -3,7 +3,9 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 
-
+/*
+  Create Window object as parent. Mustn't be ApplicationWindow because QMLEngine ans QGuiApllication instance already exist
+  */
 Window {
     id: window
     title: "Warehouse Management - Camera Application"
@@ -13,6 +15,7 @@ Window {
     visibility: "Maximized"
     visible: true
 
+    // Draw a Rectangle with colored border and radius as basic screen element
     Rectangle {
         id: baseRect
         visible: true
@@ -23,6 +26,7 @@ Window {
         border.width: 2
         radius: 10
 
+        // Draw a Rectangle as Container for Image
         Rectangle{
             id: imRim
             width: baseRect.width
@@ -35,18 +39,21 @@ Window {
             border.color: "#546E7A"
             border.width: 2
             radius: 10
+            // Image shows VideoPlayer's captured and processed images
             Image {
                 id: camImage
-                width: 800
-                height: Image.PreserveAspectFit
-                anchors.fill: parent
-                anchors.margins: 10
+                height: parent.height
+                width: height* 1.5
+                anchors.centerIn: parent
                 source: "image://camApp/img"
                 property bool counter: false
 
             }
+            // Connect VideoPlayer's imageChanged Signal with Image item in qml
             Connections{
                 target: camApp
+                // this function toggles the counter property to constantly alternate the id value to get another picture as before.
+                // Sets the new incoming picture as Content of Image item camImage
                 function onImageChanged(image){
                     console.log("new image emitted")
                     camImage.counter = !camImage.counter
@@ -55,7 +62,7 @@ Window {
             }
 
         }
-
+        // Just a describing Text
         Text {
             text: "arUco Camera Application"
             font.pixelSize: 24
@@ -66,7 +73,7 @@ Window {
             anchors.topMargin: 20
             horizontalAlignment: Text.AlignHCenter
         }
-
+        // This Rowlayout stores the buttons to controll the CameraApplication
         RowLayout{
             id: buttonBar
             anchors.left: imRim.left
@@ -78,6 +85,7 @@ Window {
             anchors.topMargin: 10
 
             Row{
+                // Startbutton calls VideoPlayers start - function
                 Button{
                     id: startButton
                     text: "Camera Start"
@@ -89,7 +97,7 @@ Window {
                         camApp.start()
                     }
                 }
-
+                // This button calls VideoPlayers toggleDetection - function
                 Button{
                     id: toggleButton
                     text: "Detection Start"
@@ -109,7 +117,7 @@ Window {
                     }
 
                 }
-
+                // This Button stops the actual Video feed
                 Button{
                     id: stopButton
                     text: "Camera Stop"
@@ -122,13 +130,12 @@ Window {
                         camApp.stop()
                     }
                 }
-
                 Layout.alignment: Qt.AlignHCenter
             }
         }
 
     }
-
+    // If someone closes the Window the VideoPlayer instance has to destroy VideoThread instance.
     onClosing: {
         camAppLoader.source = ""
         camApp.stop()
