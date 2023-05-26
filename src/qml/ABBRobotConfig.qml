@@ -1,8 +1,10 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material
-
-
+/*
+This QML Item enables the user to configure The ModBus settings.
+Rectangle is the parent which stores all other elements
+*/
 Rectangle {
         id: window
         radius: 10
@@ -15,7 +17,7 @@ Rectangle {
         property int ex_height : 125
         width: 400
         height: 140
-
+        // Image Item contains a small icon picture and a Mouse Area.
         Image {
             id: arrow
             source: "../assets/angle-small-up.png"
@@ -24,6 +26,7 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.margins: 5
+            // When the User clicks on the Image image file is changed and visbility is changed
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -36,7 +39,7 @@ Rectangle {
                 }
             }
         }
-
+        // Basic Text Item
         Text {
             id: title
             height: 15
@@ -48,7 +51,7 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
         }
-
+        // As QML has no Line Item this Rectangle's height is just 1 pt small
         Rectangle {
             id: seperator01
             visible: true
@@ -61,7 +64,7 @@ Rectangle {
 
             Behavior on visible { PropertyAnimation{} }
         }
-
+        // Custom QML Item which enables User to perform Robot ModBus settings
         ABBRobotArmConfig{
             id: abbArmConfig
             anchors.top : seperator01.bottom
@@ -69,7 +72,7 @@ Rectangle {
             anchors.margins: 10
             Behavior on visible { PropertyAnimation{ duration: 50; easing.type: Easing.OutCubic}}
         }
-
+        // As QML has no Line Item this Rectangle's height is just 1 pt small
         Rectangle {
             id: seperator02
             visible: true

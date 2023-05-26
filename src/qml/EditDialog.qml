@@ -3,7 +3,9 @@ import QtQuick.Dialogs
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.3
-
+/*
+  This QML File shows a Dialog which enables the user to manually override the storage data
+  */
 Dialog {
     id: editDialog
     title: "Override Storage"

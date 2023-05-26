@@ -2,10 +2,14 @@ import QtQuick 2.15
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material
 import QtQuick.Layouts 1.15
+/*
+This QML Item enables the user to configure The ModBus settings.
+Rectangle is the parent which stores all other elements
+*/
 Rectangle{
     width: parent.width-20
     height: 90
-
+    // Rowlayouts store each a label and a TextField or Combobox
     RowLayout{
         height: 30
         width: parent.width
