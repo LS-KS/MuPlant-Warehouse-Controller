@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  25 MAY 2023 09:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  27 MAY 2023 09:02
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **muplantpython.tex
 (./muplantpython.tex
@@ -734,7 +733,7 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count319
 \l__pdf_internal_box=\box119
 )
-(/Users/lennartschink/Documents/GitHub/muPlantPython/out/muplantpython.aux)
+(./muplantpython.aux)
 \openout1 = `muplantpython.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
@@ -815,8 +814,7 @@ e
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 73.
-(/Users/lennartschink/Documents/GitHub/muPlantPython/out/muplantpython.out)
-(/Users/lennartschink/Documents/GitHub/muPlantPython/out/muplantpython.out)
+(./muplantpython.out) (./muplantpython.out)
 \@outlinefile=\write5
 \openout5 = `muplantpython.out'.
 
@@ -844,8 +842,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 al/texlive/2023/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}] [2
 
 
-]
-(/Users/lennartschink/Documents/GitHub/muPlantPython/out/muplantpython.toc)
+] (./muplantpython.toc)
 \tf@toc=\write6
 \openout6 = `muplantpython.toc'.
 
@@ -866,50 +863,543 @@ File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 
 ]
 Chapter 2.
-[5] [6
-
-]
-Chapter 3.
-LaTeX Font Info:    Trying to load font information for T1+txtt on input line 2
-27.
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 1
+74.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
-(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 227.
- [7] [8]
-[9] [10] [11
+) [5]
+LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10> not available
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 206.
+LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
+206.
 
+(/usr/local/texlive/2023/texmf-dist/tex/latex/txfonts/ts1txtt.fd
+File: ts1txtt.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `TS1/txtt/m/it' in size <10> not available
+(Font)              Font shape `TS1/txtt/m/sl' tried instead on input line 206.
+
+LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 212.
+ [6{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}] [7] [8] [9
+] [10]
+Underfull \vbox (badness 10000) detected at line 862
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 862
+ []
+
+[11] [12] [13] [14] [15]
+Underfull \vbox (badness 10000) detected at line 1114
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1114
+ []
+
+[16] [17]
+Underfull \vbox (badness 10000) detected at line 1258
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1258
+ []
+
+[18]
+Underfull \vbox (badness 10000) detected at line 1258
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1258
+ []
+
+[19] [20]
+Underfull \vbox (badness 10000) detected at line 1343
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1343
+ []
+
+[21]
+
+! LaTeX Error: Unicode character μ (U+03BC)
+               not set up for use with LaTeX.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1387 ...Plant Model Factory: Warehouse\PYGZdq{}}
+                                                  
+? 
+[22] [23]
+Underfull \vbox (badness 10000) detected at line 1561
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1561
+ []
+
+[24]
+Underfull \vbox (badness 10000) detected at line 1561
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1561
+ []
+
+[25] [26]
+Underfull \vbox (badness 10000) detected at line 1687
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 1687
+ []
+
+[27] [28] [29]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[30]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[31]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[32]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[33]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[34]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[35]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[36]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[37]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[38]
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2291
+ []
+
+[39] [40]
+Underfull \vbox (badness 10000) detected at line 2409
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2409
+ []
+
+[41] [42]
+Underfull \vbox (badness 10000) detected at line 2507
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2507
+ []
+
+[43] [44]
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+[45]
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+[46]
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2704
+ []
+
+[47] [48]
+Underfull \vbox (badness 10000) detected at line 2876
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2876
+ []
+
+[49]
+Underfull \vbox (badness 10000) detected at line 2876
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2876
+ []
+
+[50] [51]
+Underfull \vbox (badness 10000) detected at line 2994
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 2994
+ []
+
+[52] [53]
+Underfull \vbox (badness 10000) detected at line 3126
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3126
+ []
+
+[54]
+Underfull \vbox (badness 10000) detected at line 3126
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3126
+ []
+
+[55] [56]
+Underfull \vbox (badness 10000) detected at line 3275
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3275
+ []
+
+[57]
+Underfull \vbox (badness 10000) detected at line 3275
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3275
+ []
+
+[58] [59] [60
+
+] [61
+
+
+] (./muplantpython.ind [62
 
 
 ]
-No file muplantpython.ind.
-(/Users/lennartschink/Documents/GitHub/muPlantPython/out/muplantpython.aux)
-Package rerunfilecheck Info: File `muplantpython.out' has not changed.
-(rerunfilecheck)             Checksum: 744446CFB1918F42C3CC56FE542C5DC3;1292.
+Overfull \hbox (32.85239pt too wide) in paragraph at lines 8--10
+[]\T1/txtt/m/n/10 capture \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication
+.cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (72.09224pt too wide) in paragraph at lines 10--12
+[]\T1/txtt/m/n/10 changeStorage() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.controlle
+r.InventoryController.InventoryController
+ []
+
+
+Overfull \hbox (14.82228pt too wide) in paragraph at lines 12--14
+[]\T1/txtt/m/n/10 columnCount() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Inven
+toryModel.InventoryModel
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+[]\T1/txtt/m/n/10 data() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.InventoryMod
+el.InventoryModel
+ []
+
+
+Overfull \hbox (71.53241pt too wide) in paragraph at lines 20--22
+[]\T1/txtt/m/n/10 data() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.ProductSumma
+ryListModel.ProductSummaryListModel
+ []
+
+
+Overfull \hbox (38.10237pt too wide) in paragraph at lines 22--24
+[]\T1/txtt/m/n/10 detect() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplicatio
+n.cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (43.35236pt too wide) in paragraph at lines 24--26
+[]\T1/txtt/m/n/10 detecting \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplicati
+on.cameraProcessing.VideoThread
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--31
+[]\T1/txtt/m/n/10 EventlogController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (53.85233pt too wide) in paragraph at lines 34--36
+[]\T1/txtt/m/n/10 faceCascade \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplica
+tion.cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (133.41219pt too wide) in paragraph at lines 36--38
+[]\T1/txtt/m/n/10 filterAcceptsRow() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.
+ProductSummaryListModel.InventoryFilterProxyModel
+ []
+
+
+Overfull \hbox (59.10231pt too wide) in paragraph at lines 38--40
+[]\T1/txtt/m/n/10 frameChanged \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplic
+ation.cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (26.8923pt too wide) in paragraph at lines 43--45
+[]\T1/txtt/m/n/10 headerData() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Produc
+tListModel.ProductListModel
+ []
+
+
+Overfull \hbox (103.03232pt too wide) in paragraph at lines 45--47
+[]\T1/txtt/m/n/10 headerData() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Produc
+tSummaryListModel.ProductSummaryListModel
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
+[]\T1/txtt/m/n/10 InventoryController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--54
+[]\T1/txtt/m/n/10 InventoryFilterProxyModel \T1/qtm/m/n/10 (\T1/qtm/m/it/10 cla
+ss in
+ []
+
+
+Overfull \hbox (61.59227pt too wide) in paragraph at lines 58--60
+[]\T1/txtt/m/n/10 loadStorage() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.controller.
+InventoryController.InventoryController
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+[]\T1/txtt/m/n/10 ProductListModel \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
+[]\T1/txtt/m/n/10 ProductSummaryListModel \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class
+ in
+ []
+
+
+Overfull \hbox (27.6024pt too wide) in paragraph at lines 82--84
+[]\T1/txtt/m/n/10 quit() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication.
+cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (68.07231pt too wide) in paragraph at lines 87--89
+[]\T1/txtt/m/n/10 requestImage() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraAppl
+ication.cameraProcessing.VideoPlayer
+ []
+
+
+Overfull \hbox (4.32231pt too wide) in paragraph at lines 89--91
+[]\T1/txtt/m/n/10 roleNames() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Invento
+ryModel.InventoryModel
+ []
+
+
+Overfull \hbox (21.64232pt too wide) in paragraph at lines 91--93
+[]\T1/txtt/m/n/10 roleNames() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Product
+ListModel.ProductListModel
+ []
+
+
+Overfull \hbox (97.78233pt too wide) in paragraph at lines 93--95
+[]\T1/txtt/m/n/10 roleNames() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Product
+SummaryListModel.ProductSummaryListModel
+ []
+
+
+Overfull \hbox (16.39233pt too wide) in paragraph at lines 97--99
+[]\T1/txtt/m/n/10 rowCount() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.ProductL
+istModel.ProductListModel
+ []
+
+[63
+
+]
+Overfull \hbox (92.53235pt too wide) in paragraph at lines 99--101
+[]\T1/txtt/m/n/10 rowCount() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.ProductS
+ummaryListModel.ProductSummaryListModel
+ []
+
+
+Overfull \hbox (22.35242pt too wide) in paragraph at lines 101--103
+[]\T1/txtt/m/n/10 run() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication.c
+ameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (32.85239pt too wide) in paragraph at lines 103--105
+[]\T1/txtt/m/n/10 running \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication
+.cameraProcessing.VideoThread
+ []
+
+
+Underfull \hbox (badness 7814) in paragraph at lines 108--110
+[]\T1/txtt/m/n/10 setData() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.model.Inventory
+Model.InventoryModel
+ []
+
+
+Overfull \hbox (31.32242pt too wide) in paragraph at lines 128--130
+[]\T1/txtt/m/n/10 start() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication
+.cameraProcessing.VideoPlayer
+ []
+
+
+Overfull \hbox (32.85239pt too wide) in paragraph at lines 130--132
+[]\T1/txtt/m/n/10 start() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication
+.cameraProcessing.VideoThread
+ []
+
+
+Overfull \hbox (26.07243pt too wide) in paragraph at lines 132--134
+[]\T1/txtt/m/n/10 stop() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraApplication.
+cameraProcessing.VideoPlayer
+ []
+
+
+Overfull \hbox (83.82227pt too wide) in paragraph at lines 137--139
+[]\T1/txtt/m/n/10 toggleDetection() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraA
+pplication.cameraProcessing.VideoPlayer
+ []
+
+
+Overfull \hbox (62.82233pt too wide) in paragraph at lines 142--144
+[]\T1/txtt/m/n/10 updateImage() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 src.cameraAppli
+cation.cameraProcessing.VideoPlayer
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
+[]\T1/txtt/m/n/10 VideoPlayer \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
+\T1/qtm/m/it/10 src.cameraApplication.cameraProcessing\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
+[]\T1/txtt/m/n/10 VideoThread \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--151
+\T1/qtm/m/it/10 src.cameraApplication.cameraProcessing\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
+[]\T1/txtt/m/n/10 WebsocketController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+[64]) (./muplantpython.aux)
+
+Package rerunfilecheck Warning: File `muplantpython.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `muplantpython.out':
+(rerunfilecheck)             Before: 6BE3E8172179C5CD14AB2B884AD970E7;5278
+(rerunfilecheck)             After:  5185E8CEDCF78471D9502DB8B5F8E76F;5349.
  ) 
 Here is how much of TeX's memory you used:
- 16146 strings out of 476025
- 274659 string characters out of 5790017
- 1871388 words of memory out of 5000000
- 36136 multiletter control sequences out of 15000+600000
- 562857 words of font info for 71 fonts, out of 8000000 for 9000
+ 16334 strings out of 476025
+ 276887 string characters out of 5790017
+ 2928388 words of memory out of 5000000
+ 36237 multiletter control sequences out of 15000+600000
+ 569703 words of font info for 79 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 72i,11n,76p,1175b,652s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></usr
-/local/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/loca
-l/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texl
-ive/2023/texmf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/20
-23/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2023/tex
-mf-dist/fonts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2023/texmf-di
-st/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2023/texmf-dist/fo
-nts/type1/public/txfonts/t1xtt.pfb>
-Output written on /Users/lennartschink/Documents/GitHub/muPlantPython/out/mupla
-ntpython.pdf (15 pages, 177575 bytes).
+ 72i,12n,76p,1175b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></u
+sr/local/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></usr/loc
+al/texlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/local/te
+xlive/2023/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/2023/t
+exmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2023/texmf-d
+ist/fonts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2023/texmf-dist/f
+onts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/
+type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/
+public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
+/txfonts/tcxtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb>
+Output written on muplantpython.pdf (68 pages, 298506 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 652 PDF objects out of 1000 (max. 8388607)
+ 554 compressed objects within 6 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

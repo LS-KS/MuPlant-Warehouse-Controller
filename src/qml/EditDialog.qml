@@ -9,10 +9,11 @@ import QtQuick.Layouts 1.3
 Dialog {
     id: editDialog
     title: "Override Storage"
+    // ColumnLayout helps to organize Items in vertical order.
     ColumnLayout{
         Layout.fillHeight: true
         Layout.fillWidth: true
-
+        // This Row enables user to allocate the storage location
         Row{
             Text {
                 id: location
@@ -24,6 +25,7 @@ Dialog {
                 verticalAlignment: Text.AlignVCenter
             }
             ComboBox{
+                // Comobobox has List of all possible hardcoded storage locations
                 id: setLocation
                 model: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18']
                 Layout.fillHeight: true
@@ -33,11 +35,11 @@ Dialog {
                         inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
                     }
                 }
-
             }
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
+        // This Row enables the user to select either he wants to override the cup in front or at the backside.
         Row{
             Text {
                 id: slotText
@@ -46,21 +48,22 @@ Dialog {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignVCenter
-
             }
             ComboBox{
+                // a = front, b = back
                 id: setAB
                 model: ["a","b"]
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                // load actual storage values if storage location is changed and not empty
                 onCurrentValueChanged: {
                     inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
                 }
-
             }
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
+        // This row has a textlabel and textfield which enables the user to override Cup ID
         Row{
             Text {
                 id: cupText
@@ -70,6 +73,7 @@ Dialog {
             }
             TextField{
                 id: setCup
+                // limit the cup ID to positive integer between 0 and 9999
                 validator: IntValidator{
                     bottom: 0
                     top: 9999
@@ -77,6 +81,7 @@ Dialog {
 
             }
         }
+        // This row enables the user to override product id in storage
         Row{
             Text {
                 id: setProd
@@ -94,10 +99,9 @@ Dialog {
                 Layout.fillWidth: true
 
             }
-
         }
+        // clearbutton enables the user to set values for cup and product which implicate that the storage is empty
         DialogButtonBox{
-
             Button {
                 id: clearButton
                 text: "Clear"
@@ -110,8 +114,9 @@ Dialog {
 
         }
     }
-
+    // standardbuttons are buttons which perform standard tasks.
     standardButtons: Dialog.Ok | Dialog.Cancel
+    // signal which is emitted when Dialog.OK is clicked. It calls changeStorage() function of InventoryController
     onAccepted: {
         console.log("location: "+ setLocation.currentText)
         console.log("slot: " +setAB.currentText)
@@ -121,7 +126,8 @@ Dialog {
         console.log("Ok clicked")
     }
     onRejected: console.log("Cancel clicked")
-
+    // Connect InventoryController's transmitData Signal to this qml file. If storage is set and InventoryController's loadStorage() function is called
+    // data will be transmitted by this signal
     Connections{
         target: inventoryController
         function onTransmitData(slot, cup, product){

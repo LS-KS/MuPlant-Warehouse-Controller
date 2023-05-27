@@ -3,12 +3,18 @@ Modules and Scripts
 
 This list contains all created Modules and scripts created for this software.
 
-.. automodule:: main
-    :members:
+Main python file
+----------------
+.. literalinclude:: main.py
+    :language: python
 
+Image Processing Application
+----------------------------
 .. automodule:: src.cameraApplication.cameraProcessing
     :members:
 
+Controllers
+-----------
 .. automodule:: src.controller.EventlogController
     :members:
 
@@ -18,6 +24,8 @@ This list contains all created Modules and scripts created for this software.
 .. automodule:: src.controller.websocketController
     :members:
 
+DataModels
+----------
 .. automodule:: src.model.InventoryModel
     :members:
 
@@ -27,10 +35,13 @@ This list contains all created Modules and scripts created for this software.
 .. automodule:: src.model.ProductSummaryListModel
     :members:
 
-
+OPC UA Client
+-------------
 .. automodule:: src.opcua.opcuaClient
     :members:
 
+Websocket Client
+----------------
 .. automodule:: src.websocket.websocketClient
     :members:
 
@@ -126,5 +137,5 @@ qml.WorkbenchDialog.qml
 
 src.cameraApplication.qml.CameraMain.qml
 ----------------------------------------
-.. literalinclude:: src/cameraApplication/qml/CameraMain.qml
+.. literalinclude:: src/cameraApplication/qml/CameraAppMain.qml
     :language: qml

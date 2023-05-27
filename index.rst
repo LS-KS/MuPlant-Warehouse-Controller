@@ -39,29 +39,30 @@ Further thoughts:
 - other camera which has no autofocus
 
 
-Indices and tables
-==================
-
 Getting started
 ---------------
-* install Python 3.11
-* install numpy
-* install asynchua
-* install pyside6
-* install websocket
-* install opencv
+This project uses a requirements.txt which can be used to set up the project running.
+
+.. code-block:: bash
+
+   pip install -r requirements.txt
+
+Once the program is running the requirements.txt can be updated with following command
+
+.. code-block:: bash
+
+   pip freeze > requirements.txt
 
 
 
-Modules
--------
 .. toctree::
    :maxdepth: 2
    :caption: Table of Contents
 
-   genindex
+   readme
    modules
    search
+   genindex
 
 
 Contributions

@@ -7,6 +7,7 @@
   <title>Modules and Scripts &mdash; muPlantPython 0.1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,9 +17,12 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Read Me" href="readme.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,61 +46,73 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Read Me</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules and Scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer"><code class="docutils literal notranslate"><span class="pre">VideoPlayer</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.requestImage"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.requestImage()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.start"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.start()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.stop"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.stop()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.toggleDetection"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.toggleDetection()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.updateImage"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.updateImage()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#main-python-file">Main python file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.cameraApplication.cameraProcessing">Image Processing Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer"><code class="docutils literal notranslate"><span class="pre">VideoPlayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.requestImage"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.requestImage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.start"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.stop"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.stop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.toggleDetection"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.toggleDetection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.updateImage"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.updateImage()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread"><code class="docutils literal notranslate"><span class="pre">VideoThread</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.capture"><code class="docutils literal notranslate"><span class="pre">VideoThread.capture</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.detect"><code class="docutils literal notranslate"><span class="pre">VideoThread.detect()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.detecting"><code class="docutils literal notranslate"><span class="pre">VideoThread.detecting</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.faceCascade"><code class="docutils literal notranslate"><span class="pre">VideoThread.faceCascade</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.frameChanged"><code class="docutils literal notranslate"><span class="pre">VideoThread.frameChanged</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.quit"><code class="docutils literal notranslate"><span class="pre">VideoThread.quit()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.run"><code class="docutils literal notranslate"><span class="pre">VideoThread.run()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.running"><code class="docutils literal notranslate"><span class="pre">VideoThread.running</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.start"><code class="docutils literal notranslate"><span class="pre">VideoThread.start()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread"><code class="docutils literal notranslate"><span class="pre">VideoThread</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.capture"><code class="docutils literal notranslate"><span class="pre">VideoThread.capture</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.detect"><code class="docutils literal notranslate"><span class="pre">VideoThread.detect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.detecting"><code class="docutils literal notranslate"><span class="pre">VideoThread.detecting</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.faceCascade"><code class="docutils literal notranslate"><span class="pre">VideoThread.faceCascade</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.frameChanged"><code class="docutils literal notranslate"><span class="pre">VideoThread.frameChanged</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.quit"><code class="docutils literal notranslate"><span class="pre">VideoThread.quit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.run"><code class="docutils literal notranslate"><span class="pre">VideoThread.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.running"><code class="docutils literal notranslate"><span class="pre">VideoThread.running</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoThread.start"><code class="docutils literal notranslate"><span class="pre">VideoThread.start()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.controller.EventlogController.EventlogController"><code class="docutils literal notranslate"><span class="pre">EventlogController</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.controller.InventoryController.InventoryController"><code class="docutils literal notranslate"><span class="pre">InventoryController</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.controller.InventoryController.InventoryController.changeStorage"><code class="docutils literal notranslate"><span class="pre">InventoryController.changeStorage()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.controller.InventoryController.InventoryController.loadStorage"><code class="docutils literal notranslate"><span class="pre">InventoryController.loadStorage()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.controller.websocketController.WebsocketController"><code class="docutils literal notranslate"><span class="pre">WebsocketController</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel"><code class="docutils literal notranslate"><span class="pre">InventoryModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.columnCount"><code class="docutils literal notranslate"><span class="pre">InventoryModel.columnCount()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.data"><code class="docutils literal notranslate"><span class="pre">InventoryModel.data()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.roleNames"><code class="docutils literal notranslate"><span class="pre">InventoryModel.roleNames()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.rowCount"><code class="docutils literal notranslate"><span class="pre">InventoryModel.rowCount()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.setData"><code class="docutils literal notranslate"><span class="pre">InventoryModel.setData()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.controller.EventlogController">Controllers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.controller.EventlogController.EventlogController"><code class="docutils literal notranslate"><span class="pre">EventlogController</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.controller.InventoryController.InventoryController"><code class="docutils literal notranslate"><span class="pre">InventoryController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.controller.InventoryController.InventoryController.changeStorage"><code class="docutils literal notranslate"><span class="pre">InventoryController.changeStorage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.controller.InventoryController.InventoryController.loadStorage"><code class="docutils literal notranslate"><span class="pre">InventoryController.loadStorage()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel"><code class="docutils literal notranslate"><span class="pre">ProductListModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.data"><code class="docutils literal notranslate"><span class="pre">ProductListModel.data()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.headerData"><code class="docutils literal notranslate"><span class="pre">ProductListModel.headerData()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.roleNames"><code class="docutils literal notranslate"><span class="pre">ProductListModel.roleNames()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.rowCount"><code class="docutils literal notranslate"><span class="pre">ProductListModel.rowCount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.controller.websocketController.WebsocketController"><code class="docutils literal notranslate"><span class="pre">WebsocketController</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.model.ProductSummaryListModel.InventoryFilterProxyModel"><code class="docutils literal notranslate"><span class="pre">InventoryFilterProxyModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.InventoryFilterProxyModel.filterAcceptsRow"><code class="docutils literal notranslate"><span class="pre">InventoryFilterProxyModel.filterAcceptsRow()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.model.InventoryModel">DataModels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel"><code class="docutils literal notranslate"><span class="pre">InventoryModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.columnCount"><code class="docutils literal notranslate"><span class="pre">InventoryModel.columnCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.data"><code class="docutils literal notranslate"><span class="pre">InventoryModel.data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.roleNames"><code class="docutils literal notranslate"><span class="pre">InventoryModel.roleNames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.rowCount"><code class="docutils literal notranslate"><span class="pre">InventoryModel.rowCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.setData"><code class="docutils literal notranslate"><span class="pre">InventoryModel.setData()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.data"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.data()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.headerData"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.headerData()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.roleNames"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.roleNames()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.rowCount()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel"><code class="docutils literal notranslate"><span class="pre">ProductListModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.data"><code class="docutils literal notranslate"><span class="pre">ProductListModel.data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.headerData"><code class="docutils literal notranslate"><span class="pre">ProductListModel.headerData()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.roleNames"><code class="docutils literal notranslate"><span class="pre">ProductListModel.roleNames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductListModel.ProductListModel.rowCount"><code class="docutils literal notranslate"><span class="pre">ProductListModel.rowCount()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.InventoryFilterProxyModel"><code class="docutils literal notranslate"><span class="pre">InventoryFilterProxyModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.InventoryFilterProxyModel.filterAcceptsRow"><code class="docutils literal notranslate"><span class="pre">InventoryFilterProxyModel.filterAcceptsRow()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.data"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.headerData"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.headerData()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.roleNames"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.roleNames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.rowCount()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.opcua.opcuaClient">OPC UA Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.websocket.websocketClient">Websocket Client</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#qml-files">QML Files</a><ul>
@@ -121,6 +137,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="search.html">Search Page</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
 </ul>
 
         </div>
@@ -150,10 +167,93 @@
   <section id="modules-and-scripts">
 <h1>Modules and Scripts<a class="headerlink" href="#modules-and-scripts" title="Permalink to this heading"></a></h1>
 <p>This list contains all created Modules and scripts created for this software.</p>
-<span class="target" id="module-main"></span><p>This is the entrancee file of Python-Implementation of muPlant Warehouse Manager.
-Author: L.Schink
-Date: 11.05.2023</p>
-<span class="target" id="module-src.cameraApplication.cameraProcessing"></span><p>This Python File implements the logic to recognize arUco markers.
+<section id="main-python-file">
+<h2>Main python file<a class="headerlink" href="#main-python-file" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This is the entrancee file of Python-Implementation of muPlant Warehouse Manager.</span>
+<span class="sd">Author: L.Schink</span>
+<span class="sd">Date: 11.05.2023</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
+<span class="kn">from</span> <span class="nn">PySide6.QtQml</span> <span class="kn">import</span> <span class="n">QQmlApplicationEngine</span>
+<span class="kn">from</span> <span class="nn">src.model</span> <span class="kn">import</span> <span class="n">ProductListModel</span>
+<span class="kn">from</span> <span class="nn">src.model.InventoryModel</span> <span class="kn">import</span> <span class="n">InventoryModel</span><span class="p">,</span> <span class="n">createTableModel</span>
+<span class="kn">from</span> <span class="nn">src.model.ProductSummaryListModel</span> <span class="kn">import</span> <span class="n">ProductSummaryListModel</span><span class="p">,</span>  <span class="n">InventoryFilterProxyModel</span><span class="p">,</span> <span class="n">createSummaryModel</span>
+<span class="kn">from</span> <span class="nn">src.controller.InventoryController</span> <span class="kn">import</span> <span class="n">InventoryController</span>
+<span class="kn">from</span> <span class="nn">src.controller.EventlogController</span> <span class="kn">import</span> <span class="n">EventlogController</span>
+<span class="kn">from</span> <span class="nn">src.controller</span> <span class="kn">import</span> <span class="n">websocketController</span>
+<span class="kn">from</span> <span class="nn">src.cameraApplication</span> <span class="kn">import</span> <span class="n">cameraProcessing</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Create Basic Application Class and QMLEngine&#39;&#39;&#39;</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
+
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Define pathes for saved data, load the data in QML-usable data models and set mata model as RootContext&#39;&#39;&#39;</span>
+    <span class="n">PRODUCTLIST</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;Produkte.db&quot;</span>
+    <span class="n">STORAGEDATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageData.db&quot;</span>
+    <span class="n">CAMAPP_QML</span> <span class="o">=</span> <span class="s2">&quot;../cameraApplication/qml/CameraAppMain.qml&quot;</span>
+
+    <span class="c1"># simple Productlist</span>
+    <span class="n">productListModel</span> <span class="o">=</span> <span class="n">ProductListModel</span><span class="o">.</span><span class="n">ProductListModel</span><span class="p">(</span><span class="n">ProductListModel</span><span class="o">.</span><span class="n">getProducts</span><span class="p">(</span><span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;productListModel&quot;</span><span class="p">,</span> <span class="n">productListModel</span><span class="p">)</span>
+
+    <span class="c1"># tableModel for storage-visualization</span>
+    <span class="n">inventoryModel</span> <span class="o">=</span> <span class="n">InventoryModel</span><span class="p">(</span><span class="n">createTableModel</span><span class="p">(</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryModel&quot;</span><span class="p">,</span> <span class="n">inventoryModel</span><span class="p">)</span>
+
+    <span class="c1"># model combined from productlist and storage. Provides list with storage data and quantity</span>
+    <span class="n">productSummaryModel</span> <span class="o">=</span> <span class="n">ProductSummaryListModel</span><span class="p">(</span><span class="n">createSummaryModel</span><span class="p">(</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;productSummaryModel&quot;</span><span class="p">,</span> <span class="n">productSummaryModel</span><span class="p">)</span>
+
+    <span class="c1"># model based on productSummaryModel but can be filtered dependding on quantity</span>
+    <span class="n">inventoryFilterModel</span> <span class="o">=</span> <span class="n">InventoryFilterProxyModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span> <span class="n">productSummaryModel</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryFilterModel&quot;</span><span class="p">,</span> <span class="n">inventoryFilterModel</span><span class="p">)</span>
+
+    <span class="c1"># create EventlogController instance</span>
+    <span class="n">eventlogController</span> <span class="o">=</span> <span class="n">EventlogController</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;eventLogController&quot;</span><span class="p">,</span> <span class="n">eventlogController</span><span class="p">)</span>
+
+    <span class="c1"># create InventoryController instance</span>
+    <span class="n">inventoryController</span> <span class="o">=</span> <span class="n">InventoryController</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">inventoryModel</span><span class="p">,</span> <span class="n">eventcontroller</span> <span class="o">=</span> <span class="n">eventlogController</span><span class="p">,</span> <span class="n">productlist</span> <span class="o">=</span> <span class="n">productListModel</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryController&quot;</span><span class="p">,</span> <span class="n">inventoryController</span><span class="p">)</span>
+
+    <span class="c1"># set inventoryModel as property of productSummaryModel</span>
+    <span class="n">productSummaryModel</span><span class="o">.</span><span class="n">setStorageModel</span><span class="p">(</span><span class="n">inventoryModel</span><span class="p">)</span>
+
+    <span class="c1"># register controller to make them availlable in qml files.</span>
+    <span class="n">wsController</span> <span class="o">=</span> <span class="n">websocketController</span><span class="o">.</span><span class="n">WebsocketController</span><span class="p">(</span><span class="n">eventlogController</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;wsController&quot;</span><span class="p">,</span> <span class="n">wsController</span><span class="p">)</span>
+
+    <span class="c1"># add camApp to engine</span>
+    <span class="n">camApp</span> <span class="o">=</span> <span class="n">cameraProcessing</span><span class="o">.</span><span class="n">VideoPlayer</span><span class="p">()</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;camApp&quot;</span><span class="p">,</span> <span class="n">camApp</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">addImageProvider</span><span class="p">(</span><span class="s2">&quot;camApp&quot;</span><span class="p">,</span> <span class="n">camApp</span><span class="p">)</span>
+
+    <span class="c1"># Connect idSwapped signal from inventoryModel to productSummaryModel</span>
+    <span class="n">inventoryController</span><span class="o">.</span><span class="n">idSwapped</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">productSummaryModel</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
+
+    <span class="c1"># set main qml of camera App as rootContext</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;camAppPath&quot;</span><span class="p">,</span> <span class="n">CAMAPP_QML</span><span class="p">)</span>
+
+    <span class="c1"># define load main.qml file to start application</span>
+    <span class="n">qml_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;qml&quot;</span> <span class="o">/</span> <span class="s2">&quot;main.qml&quot;</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">qml_file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">engine</span><span class="o">.</span><span class="n">rootObjects</span><span class="p">():</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="module-src.cameraApplication.cameraProcessing">
+<span id="image-processing-application"></span><h2>Image Processing Application<a class="headerlink" href="#module-src.cameraApplication.cameraProcessing" title="Permalink to this heading"></a></h2>
+<p>This Python File implements the logic to recognize arUco markers.
 class VideoThread inherits from QThread class. So image capture and image processing code is in seperated thread.
 Processed images are provided to qml by using class videoPlayer which inherits from QQuickImageProvider.</p>
 <dl class="py class">
@@ -263,7 +363,10 @@ Converts processed image to Qt’s QImage class and emits Signal with QImage</p>
 
 </dd></dl>
 
-<span class="target" id="module-src.controller.EventlogController"></span><dl class="py class">
+</section>
+<section id="module-src.controller.EventlogController">
+<span id="controllers"></span><h2>Controllers<a class="headerlink" href="#module-src.controller.EventlogController" title="Permalink to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="src.controller.EventlogController.EventlogController">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.controller.EventlogController.</span></span><span class="sig-name descname"><span class="pre">EventlogController</span></span><a class="reference internal" href="_modules/src/controller/EventlogController.html#EventlogController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.controller.EventlogController.EventlogController" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -294,7 +397,10 @@ returns productslot, cup ID and productListindex.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.controller.websocketController.</span></span><span class="sig-name descname"><span class="pre">WebsocketController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.EventlogController.EventlogController" title="src.controller.EventlogController.EventlogController"><span class="pre">EventlogController</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/controller/websocketController.html#WebsocketController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.controller.websocketController.WebsocketController" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<span class="target" id="module-src.model.InventoryModel"></span><dl class="py class">
+</section>
+<section id="module-src.model.InventoryModel">
+<span id="datamodels"></span><h2>DataModels<a class="headerlink" href="#module-src.model.InventoryModel" title="Permalink to this heading"></a></h2>
+<dl class="py class">
 <dt class="sig sig-object py" id="src.model.InventoryModel.InventoryModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.model.InventoryModel.</span></span><span class="sig-name descname"><span class="pre">InventoryModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storageData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/model/InventoryModel.html#InventoryModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.InventoryModel.InventoryModel" title="Permalink to this definition"></a></dt>
 <dd><dl class="py method">
@@ -408,7 +514,14 @@ requested, we return an invalid variant
 
 </dd></dl>
 
-<span class="target" id="module-src.opcua.opcuaClient"></span><span class="target" id="module-src.websocket.websocketClient"></span></section>
+</section>
+<section id="module-src.opcua.opcuaClient">
+<span id="opc-ua-client"></span><h2>OPC UA Client<a class="headerlink" href="#module-src.opcua.opcuaClient" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-src.websocket.websocketClient">
+<span id="websocket-client"></span><h2>Websocket Client<a class="headerlink" href="#module-src.websocket.websocketClient" title="Permalink to this heading"></a></h2>
+</section>
+</section>
 <section id="qml-files">
 <h1>QML Files<a class="headerlink" href="#qml-files" title="Permalink to this heading"></a></h1>
 <p>QML Files are shown here as literal include. Sphinx doesnt handle qml language by default.
@@ -519,12 +632,15 @@ Pleas note, that</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.3</span>
-
+<span class="cm">/*</span>
+<span class="cm">  This QML Item shows a symbolic imgage of the robotic arm and visualizes product information in workbench and turtle bot.</span>
+<span class="cm">  A Rectangle is basic parent for evry qml item.</span>
+<span class="cm">  */</span>
 <span class="nx">Rectangle</span><span class="p">{</span>
     <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span><span class="mi">3</span>
     <span class="k">height:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">height</span> <span class="o">/</span><span class="mi">2</span>
     <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
-
+    <span class="c1">// The startButton is meant to start the Application.</span>
     <span class="nx">Button</span><span class="p">{</span>
         <span class="kd">id: startButton</span>
         <span class="k">text:</span> <span class="s2">&quot;START&quot;</span>
@@ -538,7 +654,7 @@ Pleas note, that</p>
             <span class="k">margins:</span> <span class="mi">5</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
+    <span class="c1">// This displays the symbolic picture of the robotic arm.</span>
     <span class="nx">Image</span> <span class="p">{</span>
         <span class="kd">id: roboImage</span>
         <span class="k">source:</span> <span class="s2">&quot;../assets/robot_ref_img.png&quot;</span>
@@ -551,7 +667,7 @@ Pleas note, that</p>
         <span class="k">height:</span> <span class="mf">0.5</span><span class="o">*</span><span class="nx">parent</span><span class="p">.</span><span class="nx">height</span>
         <span class="k">fillMode:</span> <span class="nx">Image</span><span class="p">.</span><span class="nx">PreserveAspectFit</span>
     <span class="p">}</span>
-
+    <span class="c1">// Custom QML Item which shows product id&#39;s, cup id&#39;S and if there is a pallet or not. Enables the user to manually override the storage in turtle bot.</span>
     <span class="nx">ProductSlot</span> <span class="p">{</span>
         <span class="kd">id : mobileRobot</span>
         <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">3</span>
@@ -563,7 +679,7 @@ Pleas note, that</p>
             <span class="k">margins:</span> <span class="mi">20</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
+    <span class="c1">// Custom QML Item which shows product id&#39;s, cup id&#39;s and if there is a pallet or not. Enables the user to manually override the storage in workbench.</span>
     <span class="nx">ProductSlot</span> <span class="p">{</span>
         <span class="kd">id : workBench</span>
         <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">3</span>
@@ -586,10 +702,14 @@ Pleas note, that</p>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.5</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.15</span>
+<span class="cm">/*</span>
+<span class="cm">This QML Item enables the user to configure The ModBus settings.</span>
+<span class="cm">Rectangle is the parent which stores all other elements</span>
+<span class="cm">*/</span>
 <span class="nx">Rectangle</span><span class="p">{</span>
     <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="mi">20</span>
     <span class="k">height:</span> <span class="mi">90</span>
-
+    <span class="c1">// Rowlayouts store each a label and a TextField or Combobox</span>
     <span class="nx">RowLayout</span><span class="p">{</span>
         <span class="k">height:</span> <span class="mi">30</span>
         <span class="k">width:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">width</span>
@@ -668,8 +788,10 @@ Pleas note, that</p>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.9</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.5</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span>
-
-
+<span class="cm">/*</span>
+<span class="cm">This QML Item enables the user to configure The ModBus settings.</span>
+<span class="cm">Rectangle is the parent which stores all other elements</span>
+<span class="cm">*/</span>
 <span class="nx">Rectangle</span> <span class="p">{</span>
         <span class="kd">id: window</span>
         <span class="k">radius:</span> <span class="mi">10</span>
@@ -682,7 +804,7 @@ Pleas note, that</p>
         <span class="nx">property</span> <span class="kr">int</span> <span class="k">ex_height :</span> <span class="mi">125</span>
         <span class="k">width:</span> <span class="mi">400</span>
         <span class="k">height:</span> <span class="mi">140</span>
-
+        <span class="c1">// Image Item contains a small icon picture and a Mouse Area.</span>
         <span class="nx">Image</span> <span class="p">{</span>
             <span class="kd">id: arrow</span>
             <span class="k">source:</span> <span class="s2">&quot;../assets/angle-small-up.png&quot;</span>
@@ -691,6 +813,7 @@ Pleas note, that</p>
             <span class="k">anchors.left:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">left</span>
             <span class="k">anchors.top:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">top</span>
             <span class="k">anchors.margins:</span> <span class="mi">5</span>
+            <span class="c1">// When the User clicks on the Image image file is changed and visbility is changed</span>
             <span class="nx">MouseArea</span> <span class="p">{</span>
                 <span class="k">anchors.fill:</span> <span class="nx">parent</span>
                 <span class="k">onClicked:</span> <span class="p">{</span>
@@ -703,7 +826,7 @@ Pleas note, that</p>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-
+        <span class="c1">// Basic Text Item</span>
         <span class="nx">Text</span> <span class="p">{</span>
             <span class="kd">id: title</span>
             <span class="k">height:</span> <span class="mi">15</span>
@@ -715,7 +838,7 @@ Pleas note, that</p>
             <span class="k">horizontalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
             <span class="k">verticalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignVCenter</span>
         <span class="p">}</span>
-
+        <span class="c1">// As QML has no Line Item this Rectangle&#39;s height is just 1 pt small</span>
         <span class="nx">Rectangle</span> <span class="p">{</span>
             <span class="kd">id: seperator01</span>
             <span class="k">visible:</span> <span class="kc">true</span>
@@ -728,7 +851,7 @@ Pleas note, that</p>
 
             <span class="nx">Behavior</span> <span class="nx">on</span> <span class="nx">visible</span> <span class="p">{</span> <span class="nx">PropertyAnimation</span><span class="p">{}</span> <span class="p">}</span>
         <span class="p">}</span>
-
+        <span class="c1">// Custom QML Item which enables User to perform Robot ModBus settings</span>
         <span class="nx">ABBRobotArmConfig</span><span class="p">{</span>
             <span class="kd">id: abbArmConfig</span>
             <span class="k">anchors.top :</span> <span class="nx">seperator01</span><span class="p">.</span><span class="nx">bottom</span>
@@ -736,7 +859,7 @@ Pleas note, that</p>
             <span class="k">anchors.margins:</span> <span class="mi">10</span>
             <span class="nx">Behavior</span> <span class="nx">on</span> <span class="nx">visible</span> <span class="p">{</span> <span class="nx">PropertyAnimation</span><span class="p">{</span> <span class="k">duration:</span> <span class="mi">50</span><span class="p">;</span> <span class="k">easing.type:</span> <span class="nx">Easing</span><span class="p">.</span><span class="nx">OutCubic</span><span class="p">}}</span>
         <span class="p">}</span>
-
+        <span class="c1">// As QML has no Line Item this Rectangle&#39;s height is just 1 pt small</span>
         <span class="nx">Rectangle</span> <span class="p">{</span>
             <span class="kd">id: seperator02</span>
             <span class="k">visible:</span> <span class="kc">true</span>
@@ -760,14 +883,17 @@ Pleas note, that</p>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.3</span>
-
+<span class="cm">/*</span>
+<span class="cm">  This QML File shows a Dialog which enables the user to manually override the storage data</span>
+<span class="cm">  */</span>
 <span class="nx">Dialog</span> <span class="p">{</span>
     <span class="kd">id: editDialog</span>
     <span class="k">title:</span> <span class="s2">&quot;Override Storage&quot;</span>
+    <span class="c1">// ColumnLayout helps to organize Items in vertical order.</span>
     <span class="nx">ColumnLayout</span><span class="p">{</span>
         <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
         <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
-
+        <span class="c1">// This Row enables user to allocate the storage location</span>
         <span class="nx">Row</span><span class="p">{</span>
             <span class="nx">Text</span> <span class="p">{</span>
                 <span class="kd">id: location</span>
@@ -779,6 +905,7 @@ Pleas note, that</p>
                 <span class="k">verticalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignVCenter</span>
             <span class="p">}</span>
             <span class="nx">ComboBox</span><span class="p">{</span>
+                <span class="c1">// Comobobox has List of all possible hardcoded storage locations</span>
                 <span class="kd">id: setLocation</span>
                 <span class="k">model:</span> <span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;L3&#39;</span><span class="p">,</span> <span class="s1">&#39;L4&#39;</span><span class="p">,</span> <span class="s1">&#39;L5&#39;</span><span class="p">,</span> <span class="s1">&#39;L6&#39;</span><span class="p">,</span> <span class="s1">&#39;L7&#39;</span><span class="p">,</span> <span class="s1">&#39;L8&#39;</span><span class="p">,</span> <span class="s1">&#39;L9&#39;</span><span class="p">,</span> <span class="s1">&#39;L10&#39;</span><span class="p">,</span> <span class="s1">&#39;L11&#39;</span><span class="p">,</span> <span class="s1">&#39;L12&#39;</span><span class="p">,</span> <span class="s1">&#39;L13&#39;</span><span class="p">,</span> <span class="s1">&#39;L14&#39;</span><span class="p">,</span> <span class="s1">&#39;L15&#39;</span><span class="p">,</span> <span class="s1">&#39;L16&#39;</span><span class="p">,</span> <span class="s1">&#39;L17&#39;</span><span class="p">,</span> <span class="s1">&#39;L18&#39;</span><span class="p">]</span>
                 <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
@@ -788,11 +915,11 @@ Pleas note, that</p>
                         <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">loadStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
-
             <span class="p">}</span>
             <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
             <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
         <span class="p">}</span>
+        <span class="c1">// This Row enables the user to select either he wants to override the cup in front or at the backside.</span>
         <span class="nx">Row</span><span class="p">{</span>
             <span class="nx">Text</span> <span class="p">{</span>
                 <span class="kd">id: slotText</span>
@@ -801,21 +928,22 @@ Pleas note, that</p>
                 <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
                 <span class="k">verticalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignVCenter</span>
-
             <span class="p">}</span>
             <span class="nx">ComboBox</span><span class="p">{</span>
+                <span class="c1">// a = front, b = back</span>
                 <span class="kd">id: setAB</span>
                 <span class="k">model:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
                 <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
+                <span class="c1">// load actual storage values if storage location is changed and not empty</span>
                 <span class="k">onCurrentValueChanged:</span> <span class="p">{</span>
                     <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">loadStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
                 <span class="p">}</span>
-
             <span class="p">}</span>
             <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
             <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
         <span class="p">}</span>
+        <span class="c1">// This row has a textlabel and textfield which enables the user to override Cup ID</span>
         <span class="nx">Row</span><span class="p">{</span>
             <span class="nx">Text</span> <span class="p">{</span>
                 <span class="kd">id: cupText</span>
@@ -825,6 +953,7 @@ Pleas note, that</p>
             <span class="p">}</span>
             <span class="nx">TextField</span><span class="p">{</span>
                 <span class="kd">id: setCup</span>
+                <span class="c1">// limit the cup ID to positive integer between 0 and 9999</span>
                 <span class="k">validator:</span> <span class="nx">IntValidator</span><span class="p">{</span>
                     <span class="k">bottom:</span> <span class="mi">0</span>
                     <span class="k">top:</span> <span class="mi">9999</span>
@@ -832,6 +961,7 @@ Pleas note, that</p>
 
             <span class="p">}</span>
         <span class="p">}</span>
+        <span class="c1">// This row enables the user to override product id in storage</span>
         <span class="nx">Row</span><span class="p">{</span>
             <span class="nx">Text</span> <span class="p">{</span>
                 <span class="kd">id: setProd</span>
@@ -849,10 +979,9 @@ Pleas note, that</p>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
 
             <span class="p">}</span>
-
         <span class="p">}</span>
+        <span class="c1">// clearbutton enables the user to set values for cup and product which implicate that the storage is empty</span>
         <span class="nx">DialogButtonBox</span><span class="p">{</span>
-
             <span class="nx">Button</span> <span class="p">{</span>
                 <span class="kd">id: clearButton</span>
                 <span class="k">text:</span> <span class="s2">&quot;Clear&quot;</span>
@@ -865,8 +994,9 @@ Pleas note, that</p>
 
         <span class="p">}</span>
     <span class="p">}</span>
-
+    <span class="c1">// standardbuttons are buttons which perform standard tasks.</span>
     <span class="k">standardButtons:</span> <span class="nx">Dialog</span><span class="p">.</span><span class="nx">Ok</span> <span class="o">|</span> <span class="nx">Dialog</span><span class="p">.</span><span class="nx">Cancel</span>
+    <span class="c1">// signal which is emitted when Dialog.OK is clicked. It calls changeStorage() function of InventoryController</span>
     <span class="k">onAccepted:</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;location: &quot;</span><span class="o">+</span> <span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;slot: &quot;</span> <span class="o">+</span><span class="nx">setAB</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
@@ -876,7 +1006,8 @@ Pleas note, that</p>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ok clicked&quot;</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="k">onRejected:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Cancel clicked&quot;</span><span class="p">)</span>
-
+    <span class="c1">// Connect InventoryController&#39;s transmitData Signal to this qml file. If storage is set and InventoryController&#39;s loadStorage() function is called</span>
+    <span class="c1">// data will be transmitted by this signal</span>
     <span class="nx">Connections</span><span class="p">{</span>
         <span class="k">target:</span> <span class="nx">inventoryController</span>
         <span class="kd">function</span> <span class="nx">onTransmitData</span><span class="p">(</span><span class="nx">slot</span><span class="p">,</span> <span class="nx">cup</span><span class="p">,</span> <span class="nx">product</span><span class="p">){</span>
@@ -894,7 +1025,10 @@ Pleas note, that</p>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.15</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.15</span>
-
+<span class="cm">/*</span>
+<span class="cm">  This Qml file implements a basic eventlogger textarea.</span>
+<span class="cm">  It uses the EventLogController.</span>
+<span class="cm">  */</span>
 <span class="nx">Rectangle</span><span class="p">{</span>
     <span class="kd">id: eventWindow</span>
     <span class="nx">anchors</span> <span class="p">{</span>
@@ -2743,13 +2877,160 @@ Pleas note, that</p>
 </section>
 <section id="src-cameraapplication-qml-cameramain-qml">
 <h2>src.cameraApplication.qml.CameraMain.qml<a class="headerlink" href="#src-cameraapplication-qml-cameramain-qml" title="Permalink to this heading"></a></h2>
+<div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span> <span class="mf">2.15</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.15</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span><span class="p">.</span><span class="nx">Material</span> <span class="mf">2.15</span>
+<span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Layouts</span> <span class="mf">1.15</span>
+
+<span class="cm">/*</span>
+<span class="cm">  Create Window object as parent. Mustn&#39;t be ApplicationWindow because QMLEngine ans QGuiApllication instance already exist</span>
+<span class="cm">  */</span>
+<span class="nx">Window</span> <span class="p">{</span>
+    <span class="kd">id: window</span>
+    <span class="k">title:</span> <span class="s2">&quot;Warehouse Management - Camera Application&quot;</span>
+    <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
+    <span class="k">width:</span> <span class="mi">800</span>
+    <span class="k">height:</span> <span class="mi">800</span>
+    <span class="k">visibility:</span> <span class="s2">&quot;Maximized&quot;</span>
+    <span class="k">visible:</span> <span class="kc">true</span>
+
+    <span class="c1">// Draw a Rectangle with colored border and radius as basic screen element</span>
+    <span class="nx">Rectangle</span> <span class="p">{</span>
+        <span class="kd">id: baseRect</span>
+        <span class="k">visible:</span> <span class="kc">true</span>
+        <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
+        <span class="k">anchors.fill:</span> <span class="nx">parent</span>
+        <span class="k">anchors.margins:</span> <span class="mi">10</span>
+        <span class="k">border.color:</span> <span class="s2">&quot;#546E7A&quot;</span>
+        <span class="k">border.width:</span> <span class="mi">2</span>
+        <span class="k">radius:</span> <span class="mi">10</span>
+
+        <span class="c1">// Draw a Rectangle as Container for Image</span>
+        <span class="nx">Rectangle</span><span class="p">{</span>
+            <span class="kd">id: imRim</span>
+            <span class="k">width:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">width</span>
+            <span class="k">height:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">height</span> <span class="o">*</span> <span class="mf">0.7</span>
+            <span class="nx">anchors</span><span class="p">{</span>
+                <span class="k">top:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">top</span>
+                <span class="k">left:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">left</span>
+                <span class="k">right:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">right</span>
+            <span class="p">}</span>
+            <span class="k">border.color:</span> <span class="s2">&quot;#546E7A&quot;</span>
+            <span class="k">border.width:</span> <span class="mi">2</span>
+            <span class="k">radius:</span> <span class="mi">10</span>
+            <span class="c1">// Image shows VideoPlayer&#39;s captured and processed images</span>
+            <span class="nx">Image</span> <span class="p">{</span>
+                <span class="kd">id: camImage</span>
+                <span class="k">height:</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">height</span>
+                <span class="k">width:</span> <span class="nx">height</span><span class="o">*</span> <span class="mf">1.5</span>
+                <span class="k">anchors.centerIn:</span> <span class="nx">parent</span>
+                <span class="k">source:</span> <span class="s2">&quot;image://camApp/img&quot;</span>
+                <span class="nx">property</span> <span class="nx">bool</span> <span class="k">counter:</span> <span class="kc">false</span>
+
+            <span class="p">}</span>
+            <span class="c1">// Connect VideoPlayer&#39;s imageChanged Signal with Image item in qml</span>
+            <span class="nx">Connections</span><span class="p">{</span>
+                <span class="k">target:</span> <span class="nx">camApp</span>
+                <span class="c1">// this function toggles the counter property to constantly alternate the id value to get another picture as before.</span>
+                <span class="c1">// Sets the new incoming picture as Content of Image item camImage</span>
+                <span class="kd">function</span> <span class="nx">onImageChanged</span><span class="p">(</span><span class="nx">image</span><span class="p">){</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;new image emitted&quot;</span><span class="p">)</span>
+                    <span class="nx">camImage</span><span class="p">.</span><span class="nx">counter</span> <span class="o">=</span> <span class="o">!</span><span class="nx">camImage</span><span class="p">.</span><span class="nx">counter</span>
+                    <span class="nx">camImage</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="s2">&quot;image://camApp/img?id=&quot;</span><span class="o">+</span><span class="nx">camImage</span><span class="p">.</span><span class="nx">counter</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="c1">// Just a describing Text</span>
+        <span class="nx">Text</span> <span class="p">{</span>
+            <span class="k">text:</span> <span class="s2">&quot;arUco Camera Application&quot;</span>
+            <span class="k">font.pixelSize:</span> <span class="mi">24</span>
+            <span class="k">font.bold:</span> <span class="kc">true</span>
+            <span class="k">anchors.left:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">left</span>
+            <span class="k">anchors.right:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">right</span>
+            <span class="k">anchors.top:</span> <span class="nx">baseRect</span><span class="p">.</span><span class="nx">top</span>
+            <span class="k">anchors.topMargin:</span> <span class="mi">20</span>
+            <span class="k">horizontalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+        <span class="p">}</span>
+        <span class="c1">// This Rowlayout stores the buttons to controll the CameraApplication</span>
+        <span class="nx">RowLayout</span><span class="p">{</span>
+            <span class="kd">id: buttonBar</span>
+            <span class="k">anchors.left:</span> <span class="nx">imRim</span><span class="p">.</span><span class="nx">left</span>
+            <span class="k">anchors.right:</span> <span class="nx">imRim</span><span class="p">.</span><span class="nx">right</span>
+            <span class="k">anchors.top:</span> <span class="nx">imRim</span><span class="p">.</span><span class="nx">bottom</span>
+            <span class="k">height:</span> <span class="mi">100</span>
+            <span class="k">anchors.rightMargin:</span> <span class="mi">100</span>
+            <span class="k">anchors.leftMargin:</span> <span class="mi">100</span>
+            <span class="k">anchors.topMargin:</span> <span class="mi">10</span>
+
+            <span class="nx">Row</span><span class="p">{</span>
+                <span class="c1">// Startbutton calls VideoPlayers start - function</span>
+                <span class="nx">Button</span><span class="p">{</span>
+                    <span class="kd">id: startButton</span>
+                    <span class="k">text:</span> <span class="s2">&quot;Camera Start&quot;</span>
+                    <span class="k">width:</span> <span class="mi">200</span>
+                    <span class="k">height:</span> <span class="mi">50</span>
+                    <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
+                    <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
+                    <span class="k">onClicked:</span> <span class="p">{</span>
+                        <span class="nx">camApp</span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="c1">// This button calls VideoPlayers toggleDetection - function</span>
+                <span class="nx">Button</span><span class="p">{</span>
+                    <span class="kd">id: toggleButton</span>
+                    <span class="k">text:</span> <span class="s2">&quot;Detection Start&quot;</span>
+                    <span class="k">width:</span> <span class="mi">200</span>
+                    <span class="k">height:</span> <span class="mi">50</span>
+                    <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
+                    <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
+                    <span class="nx">property</span> <span class="nx">bool</span> <span class="k">toggle :</span> <span class="kc">false</span>
+                    <span class="k">onClicked:</span> <span class="p">{</span>
+                        <span class="nx">camApp</span><span class="p">.</span><span class="nx">toggleDetection</span><span class="p">()</span>
+                        <span class="nx">toggle</span> <span class="o">=</span> <span class="o">!</span><span class="nx">toggle</span>
+                        <span class="k">if</span><span class="p">(</span><span class="nx">toggle</span><span class="p">){</span>
+                            <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;Detection Stop&quot;</span>
+                        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                            <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;Detection Start&quot;</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+
+                <span class="p">}</span>
+                <span class="c1">// This Button stops the actual Video feed</span>
+                <span class="nx">Button</span><span class="p">{</span>
+                    <span class="kd">id: stopButton</span>
+                    <span class="k">text:</span> <span class="s2">&quot;Camera Stop&quot;</span>
+                    <span class="k">width:</span> <span class="mi">200</span>
+                    <span class="k">height:</span> <span class="mi">50</span>
+                    <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
+                    <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
+
+                    <span class="k">onClicked:</span> <span class="p">{</span>
+                        <span class="nx">camApp</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">Layout.alignment:</span> <span class="nx">Qt</span><span class="p">.</span><span class="nx">AlignHCenter</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="c1">// If someone closes the Window the VideoPlayer instance has to destroy VideoThread instance.</span>
+    <span class="k">onClosing:</span> <span class="p">{</span>
+        <span class="nx">camAppLoader</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="nx">camApp</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="readme.html" class="btn btn-neutral float-left" title="Read Me" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
