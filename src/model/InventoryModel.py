@@ -190,5 +190,7 @@ def createTableModel(FILE, PRODUCTLIST=None):
     return tableData
 
 
+
+
 if __name__ == "__main__":
     blubb = createTableModel("../data/StorageData.db")
