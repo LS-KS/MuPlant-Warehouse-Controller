@@ -24,8 +24,8 @@ Dialog {
                 Layout.fillWidth: true
                 verticalAlignment: Text.AlignVCenter
             }
+            // Comobobox has List of all possible hardcoded storage locations
             ComboBox{
-                // Comobobox has List of all possible hardcoded storage locations
                 id: setLocation
                 model: ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7', 'L8', 'L9', 'L10', 'L11', 'L12', 'L13', 'L14', 'L15', 'L16', 'L17', 'L18']
                 Layout.fillHeight: true
@@ -57,7 +57,9 @@ Dialog {
                 Layout.fillWidth: true
                 // load actual storage values if storage location is changed and not empty
                 onCurrentValueChanged: {
-                    inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
+                    if(setLocation.currentValue !==''){
+                        inventoryController.loadStorage(setLocation.currentValue, setAB.currentValue)
+                    }
                 }
             }
             Layout.fillHeight: true
@@ -78,7 +80,6 @@ Dialog {
                     bottom: 0
                     top: 9999
                 }
-
             }
         }
         // This row enables the user to override product id in storage
@@ -132,7 +133,7 @@ Dialog {
         target: inventoryController
         function onTransmitData(slot, cup, product){
             setCup.text = cup
-            setProduct.editText = product
+            setProduct.setEditText(product)
         }
     }
 }

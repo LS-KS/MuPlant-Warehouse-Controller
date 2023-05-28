@@ -65,8 +65,8 @@ class InventoryController(QObject):
             else:
                 raise ValueError("Slot Value error. Slot must be 'a' or 'b'")
             index = self.model.createIndex(row, col)
-
             product = self.model.data(index, prodRole)
+            print(f"index: {index}, product: {product}")
             productlistIndex = self.productlist.indexOf(product)
             cup = self.model.data(index, cupRole)
             self.transmitData.emit(slot, cup, product)

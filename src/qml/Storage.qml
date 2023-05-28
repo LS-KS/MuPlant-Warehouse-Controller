@@ -6,23 +6,18 @@ import QtQuick.Dialogs
 
 Rectangle{
     id: storageRect
-
     color: "white"
     border.color: "#546E7A"
     border.width: 2
     radius: 10
-
     EditDialog{
         //Dialog to edit storage data
         id: editDialog
     }
-
     Loader{
         //Loader to load camera Application QML file
         id: camAppLoader
     }
-
-
     Rectangle{
         id: titleRect
         height: 25
@@ -36,7 +31,6 @@ Rectangle{
         }
         RowLayout{
             anchors.fill: parent
-
             Text {
                 id: title
                 height: 40
@@ -47,22 +41,15 @@ Rectangle{
                 font.pixelSize: 12
                 font.bold: true
             }
-
             Button {
-
-
                 id: cameraButton
                 text: "camApp"
                 height: title.height -5
-
-
                 onClicked: {
                     console.log("Clicked")
                     camAppLoader.source = camAppPath
                 }
-
             }
-
             Image {
                 id: setImage
                 source: "../assets/gear.png"
@@ -79,7 +66,6 @@ Rectangle{
             }
         }
     }
-
     // TableView holds objects of StorageData.db which is read in InventoryModel
     TableView {
         model: inventoryModel
