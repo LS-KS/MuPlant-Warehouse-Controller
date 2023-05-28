@@ -123,8 +123,8 @@ Dialog {
         console.log("location: "+ setLocation.currentText)
         console.log("slot: " +setAB.currentText)
         console.log("cup: " + setCup.text)
-        console.log("product: " + setProduct.currentValue)
-        inventoryController.changeStorage(setLocation.currentText, setAB.currentText, setCup.text, setProduct.currentValue)
+        console.log("product: " + setProduct.currentText)
+        inventoryController.changeStorage(setLocation.currentText, setAB.currentText, setCup.text, setProduct.currentText)
         console.log("Ok clicked")
     }
     onRejected: console.log("Cancel clicked")
@@ -134,7 +134,7 @@ Dialog {
         target: inventoryController
         function onTransmitData(slot, cup, product){
             setCup.text = cup
-            setProduct.currentIndex = product
+            setProduct.currentValue = product
         }
     }
 }
