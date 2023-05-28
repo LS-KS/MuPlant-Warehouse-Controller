@@ -1,4 +1,4 @@
-# Row,Col:IsPalletPresent:CupID_a,ProductID_a|CupID_b,ProductID_b
+﻿# Row,Col:IsPalletPresent:CupID_a,ProductID_a|CupID_b,ProductID_b
 
 0,0:1:0,0|0,0
 0,1:1:0,0|0,0
