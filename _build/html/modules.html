@@ -49,7 +49,8 @@
 <li class="toctree-l1"><a class="reference internal" href="readme.html">Read Me</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules and Scripts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#main-python-file">Main python file</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.cameraApplication.cameraProcessing">Image Processing Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-processing-application">Image Processing Application</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer"><code class="docutils literal notranslate"><span class="pre">VideoPlayer</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.requestImage"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.requestImage()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#src.cameraApplication.cameraProcessing.VideoPlayer.start"><code class="docutils literal notranslate"><span class="pre">VideoPlayer.start()</span></code></a></li>
@@ -72,7 +73,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.controller.EventlogController">Controllers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#controllers">Controllers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#src.controller.EventlogController.EventlogController"><code class="docutils literal notranslate"><span class="pre">EventlogController</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#src.controller.InventoryController.InventoryController"><code class="docutils literal notranslate"><span class="pre">InventoryController</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#src.controller.InventoryController.InventoryController.changeStorage"><code class="docutils literal notranslate"><span class="pre">InventoryController.changeStorage()</span></code></a></li>
@@ -82,7 +83,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#src.controller.websocketController.WebsocketController"><code class="docutils literal notranslate"><span class="pre">WebsocketController</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.model.InventoryModel">DataModels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#datamodels">DataModels</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel"><code class="docutils literal notranslate"><span class="pre">InventoryModel</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.columnCount"><code class="docutils literal notranslate"><span class="pre">InventoryModel.columnCount()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#src.model.InventoryModel.InventoryModel.data"><code class="docutils literal notranslate"><span class="pre">InventoryModel.data()</span></code></a></li>
@@ -111,8 +112,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.opcua.opcuaClient">OPC UA Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-src.websocket.websocketClient">Websocket Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opc-ua-client">OPC UA Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#websocket-client">Websocket Client</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#qml-files">QML Files</a><ul>
@@ -169,6 +170,10 @@
 <p>This list contains all created Modules and scripts created for this software.</p>
 <section id="main-python-file">
 <h2>Main python file<a class="headerlink" href="#main-python-file" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>This file is the entrance file of the Application.
+it has no own classes but creates all necessary instances and starts GUI Application</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">This is the entrancee file of Python-Implementation of muPlant Warehouse Manager.</span>
 <span class="sd">Author: L.Schink</span>
@@ -177,41 +182,38 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
 <span class="kn">from</span> <span class="nn">PySide6.QtGui</span> <span class="kn">import</span> <span class="n">QGuiApplication</span>
 <span class="kn">from</span> <span class="nn">PySide6.QtQml</span> <span class="kn">import</span> <span class="n">QQmlApplicationEngine</span>
+
+<span class="kn">from</span> <span class="nn">src.cameraApplication</span> <span class="kn">import</span> <span class="n">cameraProcessing</span>
+<span class="kn">from</span> <span class="nn">src.constants</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">src.controller</span> <span class="kn">import</span> <span class="n">websocketController</span>
+<span class="kn">from</span> <span class="nn">src.controller.EventlogController</span> <span class="kn">import</span> <span class="n">EventlogController</span>
+<span class="kn">from</span> <span class="nn">src.controller.InventoryController</span> <span class="kn">import</span> <span class="n">InventoryController</span>
 <span class="kn">from</span> <span class="nn">src.model</span> <span class="kn">import</span> <span class="n">ProductListModel</span>
 <span class="kn">from</span> <span class="nn">src.model.InventoryModel</span> <span class="kn">import</span> <span class="n">InventoryModel</span><span class="p">,</span> <span class="n">createTableModel</span>
-<span class="kn">from</span> <span class="nn">src.model.ProductSummaryListModel</span> <span class="kn">import</span> <span class="n">ProductSummaryListModel</span><span class="p">,</span>  <span class="n">InventoryFilterProxyModel</span><span class="p">,</span> <span class="n">createSummaryModel</span>
-<span class="kn">from</span> <span class="nn">src.controller.InventoryController</span> <span class="kn">import</span> <span class="n">InventoryController</span>
-<span class="kn">from</span> <span class="nn">src.controller.EventlogController</span> <span class="kn">import</span> <span class="n">EventlogController</span>
-<span class="kn">from</span> <span class="nn">src.controller</span> <span class="kn">import</span> <span class="n">websocketController</span>
-<span class="kn">from</span> <span class="nn">src.cameraApplication</span> <span class="kn">import</span> <span class="n">cameraProcessing</span>
-
+<span class="kn">from</span> <span class="nn">src.model.ProductSummaryListModel</span> <span class="kn">import</span> <span class="n">ProductSummaryListModel</span><span class="p">,</span> <span class="n">InventoryFilterProxyModel</span><span class="p">,</span> <span class="n">createSummaryModel</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Create Basic Application Class and QMLEngine&#39;&#39;&#39;</span>
     <span class="n">app</span> <span class="o">=</span> <span class="n">QGuiApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
     <span class="n">engine</span> <span class="o">=</span> <span class="n">QQmlApplicationEngine</span><span class="p">()</span>
 
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Define pathes for saved data, load the data in QML-usable data models and set mata model as RootContext&#39;&#39;&#39;</span>
-    <span class="n">PRODUCTLIST</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;Produkte.db&quot;</span>
-    <span class="n">STORAGEDATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageData.db&quot;</span>
-    <span class="n">CAMAPP_QML</span> <span class="o">=</span> <span class="s2">&quot;../cameraApplication/qml/CameraAppMain.qml&quot;</span>
-
     <span class="c1"># simple Productlist</span>
-    <span class="n">productListModel</span> <span class="o">=</span> <span class="n">ProductListModel</span><span class="o">.</span><span class="n">ProductListModel</span><span class="p">(</span><span class="n">ProductListModel</span><span class="o">.</span><span class="n">getProducts</span><span class="p">(</span><span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">productListModel</span> <span class="o">=</span> <span class="n">ProductListModel</span><span class="o">.</span><span class="n">ProductListModel</span><span class="p">(</span><span class="n">ProductListModel</span><span class="o">.</span><span class="n">getProducts</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">PRODUCTLIST</span><span class="p">))</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;productListModel&quot;</span><span class="p">,</span> <span class="n">productListModel</span><span class="p">)</span>
 
     <span class="c1"># tableModel for storage-visualization</span>
-    <span class="n">inventoryModel</span> <span class="o">=</span> <span class="n">InventoryModel</span><span class="p">(</span><span class="n">createTableModel</span><span class="p">(</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">inventoryModel</span> <span class="o">=</span> <span class="n">InventoryModel</span><span class="p">(</span><span class="n">createTableModel</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">constants</span><span class="o">.</span><span class="n">PRODUCTLIST</span><span class="p">))</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryModel&quot;</span><span class="p">,</span> <span class="n">inventoryModel</span><span class="p">)</span>
 
     <span class="c1"># model combined from productlist and storage. Provides list with storage data and quantity</span>
-    <span class="n">productSummaryModel</span> <span class="o">=</span> <span class="n">ProductSummaryListModel</span><span class="p">(</span><span class="n">createSummaryModel</span><span class="p">(</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">PRODUCTLIST</span><span class="p">))</span>
+    <span class="n">productSummaryModel</span> <span class="o">=</span> <span class="n">ProductSummaryListModel</span><span class="p">(</span><span class="n">createSummaryModel</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">STORAGEDATA</span><span class="p">,</span> <span class="n">constants</span><span class="o">.</span><span class="n">PRODUCTLIST</span><span class="p">))</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;productSummaryModel&quot;</span><span class="p">,</span> <span class="n">productSummaryModel</span><span class="p">)</span>
 
     <span class="c1"># model based on productSummaryModel but can be filtered dependding on quantity</span>
-    <span class="n">inventoryFilterModel</span> <span class="o">=</span> <span class="n">InventoryFilterProxyModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span> <span class="n">productSummaryModel</span><span class="p">)</span>
+    <span class="n">inventoryFilterModel</span> <span class="o">=</span> <span class="n">InventoryFilterProxyModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">productSummaryModel</span><span class="p">)</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryFilterModel&quot;</span><span class="p">,</span> <span class="n">inventoryFilterModel</span><span class="p">)</span>
 
     <span class="c1"># create EventlogController instance</span>
@@ -219,7 +221,8 @@
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;eventLogController&quot;</span><span class="p">,</span> <span class="n">eventlogController</span><span class="p">)</span>
 
     <span class="c1"># create InventoryController instance</span>
-    <span class="n">inventoryController</span> <span class="o">=</span> <span class="n">InventoryController</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">inventoryModel</span><span class="p">,</span> <span class="n">eventcontroller</span> <span class="o">=</span> <span class="n">eventlogController</span><span class="p">,</span> <span class="n">productlist</span> <span class="o">=</span> <span class="n">productListModel</span><span class="p">)</span>
+    <span class="n">inventoryController</span> <span class="o">=</span> <span class="n">InventoryController</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">inventoryModel</span><span class="p">,</span> <span class="n">eventcontroller</span><span class="o">=</span><span class="n">eventlogController</span><span class="p">,</span>
+                                              <span class="n">productlist</span><span class="o">=</span><span class="n">productListModel</span><span class="p">)</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;inventoryController&quot;</span><span class="p">,</span> <span class="n">inventoryController</span><span class="p">)</span>
 
     <span class="c1"># set inventoryModel as property of productSummaryModel</span>
@@ -238,7 +241,7 @@
     <span class="n">inventoryController</span><span class="o">.</span><span class="n">idSwapped</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">productSummaryModel</span><span class="o">.</span><span class="n">update</span><span class="p">)</span>
 
     <span class="c1"># set main qml of camera App as rootContext</span>
-    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;camAppPath&quot;</span><span class="p">,</span> <span class="n">CAMAPP_QML</span><span class="p">)</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">rootContext</span><span class="p">()</span><span class="o">.</span><span class="n">setContextProperty</span><span class="p">(</span><span class="s2">&quot;camAppPath&quot;</span><span class="p">,</span> <span class="n">constants</span><span class="o">.</span><span class="n">CAMAPP_QML</span><span class="p">)</span>
 
     <span class="c1"># define load main.qml file to start application</span>
     <span class="n">qml_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;qml&quot;</span> <span class="o">/</span> <span class="s2">&quot;main.qml&quot;</span>
@@ -251,9 +254,32 @@
 </pre></div>
 </div>
 </section>
-<section id="module-src.cameraApplication.cameraProcessing">
-<span id="image-processing-application"></span><h2>Image Processing Application<a class="headerlink" href="#module-src.cameraApplication.cameraProcessing" title="Permalink to this heading"></a></h2>
-<p>This Python File implements the logic to recognize arUco markers.
+<section id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>To make them accessible in every controller file. constants like file paths are saved in specific python file which can be included everywhere.</p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This file provides file URLS etc. to other python files</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">PRODUCTLIST</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;Produkte.db&quot;</span>
+<span class="n">STORAGEDATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageData.db&quot;</span>
+<span class="n">STORAGEDATAWRITE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageDataWrite.db&quot;</span>
+<span class="n">CAMAPP_QML</span> <span class="o">=</span> <span class="s2">&quot;../cameraApplication/qml/CameraAppMain.qml&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="image-processing-application">
+<h2>Image Processing Application<a class="headerlink" href="#image-processing-application" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>This is an embedded application which performs an automated inventory scan</p>
+</div></blockquote>
+<span class="target" id="module-src.cameraApplication.cameraProcessing"></span><p>This Python File implements the logic to recognize arUco markers.
 class VideoThread inherits from QThread class. So image capture and image processing code is in seperated thread.
 Processed images are provided to qml by using class videoPlayer which inherits from QQuickImageProvider.</p>
 <dl class="py class">
@@ -364,9 +390,12 @@ Converts processed image to Qt’s QImage class and emits Signal with QImage</p>
 </dd></dl>
 
 </section>
-<section id="module-src.controller.EventlogController">
-<span id="controllers"></span><h2>Controllers<a class="headerlink" href="#module-src.controller.EventlogController" title="Permalink to this heading"></a></h2>
-<dl class="py class">
+<section id="controllers">
+<h2>Controllers<a class="headerlink" href="#controllers" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Controllers are part of implement MVC design pattern they pass modeldata to qml engine.</p>
+</div></blockquote>
+<span class="target" id="module-src.controller.EventlogController"></span><dl class="py class">
 <dt class="sig sig-object py" id="src.controller.EventlogController.EventlogController">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.controller.EventlogController.</span></span><span class="sig-name descname"><span class="pre">EventlogController</span></span><a class="reference internal" href="_modules/src/controller/EventlogController.html#EventlogController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.controller.EventlogController.EventlogController" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
@@ -398,9 +427,12 @@ returns productslot, cup ID and productListindex.</p>
 <dd></dd></dl>
 
 </section>
-<section id="module-src.model.InventoryModel">
-<span id="datamodels"></span><h2>DataModels<a class="headerlink" href="#module-src.model.InventoryModel" title="Permalink to this heading"></a></h2>
-<dl class="py class">
+<section id="datamodels">
+<h2>DataModels<a class="headerlink" href="#datamodels" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>These Datamodels stores data in proper format which can be passed to qml engine by controller class.</p>
+</div></blockquote>
+<span class="target" id="module-src.model.InventoryModel"></span><dl class="py class">
 <dt class="sig sig-object py" id="src.model.InventoryModel.InventoryModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.model.InventoryModel.</span></span><span class="sig-name descname"><span class="pre">InventoryModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">storageData</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/model/InventoryModel.html#InventoryModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.InventoryModel.InventoryModel" title="Permalink to this definition"></a></dt>
 <dd><dl class="py method">
@@ -515,19 +547,30 @@ requested, we return an invalid variant
 </dd></dl>
 
 </section>
-<section id="module-src.opcua.opcuaClient">
-<span id="opc-ua-client"></span><h2>OPC UA Client<a class="headerlink" href="#module-src.opcua.opcuaClient" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-src.websocket.websocketClient">
-<span id="websocket-client"></span><h2>Websocket Client<a class="headerlink" href="#module-src.websocket.websocketClient" title="Permalink to this heading"></a></h2>
-</section>
+<section id="opc-ua-client">
+<h2>OPC UA Client<a class="headerlink" href="#opc-ua-client" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>This file implements communication service between application and OPC UA server.</p>
+</div></blockquote>
+<span class="target" id="module-src.opcua.opcuaClient"></span></section>
+<section id="websocket-client">
+<h2>Websocket Client<a class="headerlink" href="#websocket-client" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>This file implements communication service between application and TCP/IP</p>
+</div></blockquote>
+<span class="target" id="module-src.websocket.websocketClient"></span></section>
 </section>
 <section id="qml-files">
 <h1>QML Files<a class="headerlink" href="#qml-files" title="Permalink to this heading"></a></h1>
-<p>QML Files are shown here as literal include. Sphinx doesnt handle qml language by default.
+<blockquote>
+<div><p>QML Files are shown here as literal include. Sphinx doesnt handle qml language by default.
 Pleas note, that</p>
+</div></blockquote>
 <section id="qml-main-qml">
 <h2>qml.main.qml<a class="headerlink" href="#qml-main-qml" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>The main QML-file creates the main application window and stores other QML files as childs.</p>
+</div></blockquote>
 <div class="highlight-qml notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">QtQuick</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Window</span>
 <span class="kr">import</span> <span class="nx">QtQuick</span><span class="p">.</span><span class="nx">Controls</span> <span class="mf">2.15</span>

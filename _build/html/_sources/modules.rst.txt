@@ -5,16 +5,34 @@ This list contains all created Modules and scripts created for this software.
 
 Main python file
 ----------------
+
+    This file is the entrance file of the Application.
+    it has no own classes but creates all necessary instances and starts GUI Application
+
 .. literalinclude:: main.py
+    :language: python
+
+Constants
+---------
+
+    To make them accessible in every controller file. constants like file paths are saved in specific python file which can be included everywhere.
+
+.. literalinclude:: src/constants/constants.py
     :language: python
 
 Image Processing Application
 ----------------------------
+
+    This is an embedded application which performs an automated inventory scan
+
 .. automodule:: src.cameraApplication.cameraProcessing
     :members:
 
 Controllers
 -----------
+
+    Controllers are part of implement MVC design pattern they pass modeldata to qml engine.
+
 .. automodule:: src.controller.EventlogController
     :members:
 
@@ -26,6 +44,9 @@ Controllers
 
 DataModels
 ----------
+
+    These Datamodels stores data in proper format which can be passed to qml engine by controller class.
+
 .. automodule:: src.model.InventoryModel
     :members:
 
@@ -37,23 +58,33 @@ DataModels
 
 OPC UA Client
 -------------
+
+    This file implements communication service between application and OPC UA server.
+
 .. automodule:: src.opcua.opcuaClient
     :members:
 
 Websocket Client
 ----------------
+
+    This file implements communication service between application and TCP/IP
+
 .. automodule:: src.websocket.websocketClient
     :members:
 
 QML Files
 =========
-QML Files are shown here as literal include. Sphinx doesnt handle qml language by default.
-Pleas note, that
+
+    QML Files are shown here as literal include. Sphinx doesnt handle qml language by default.
+    Pleas note, that
 
 qml.main.qml
 ------------
+
+    The main QML-file creates the main application window and stores other QML files as childs.
+
 .. literalinclude:: src/qml/main.qml
-    :language: qml
+ :language: qml
 
 qml.ABBRobot.qml
 ----------------
