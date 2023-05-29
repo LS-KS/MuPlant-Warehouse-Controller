@@ -42,6 +42,11 @@ Controllers
 .. automodule:: src.controller.websocketController
     :members:
 
+.. automodule:: src.controller.WorkbenchController
+    :members:
+
+.. automodule:: src.controller.MobileRobotController
+
 DataModels
 ----------
 
@@ -54,6 +59,12 @@ DataModels
     :members:
 
 .. automodule:: src.model.ProductSummaryListModel
+    :members:
+
+.. automodule:: src.model.Workbench
+    :members:
+
+.. automodule:: src.model.MobileRobot
     :members:
 
 OPC UA Client
