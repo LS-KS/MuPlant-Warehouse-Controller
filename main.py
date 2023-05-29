@@ -15,7 +15,7 @@ from src.constants import constants
 from src.controller import websocketController
 from src.controller.EventlogController import EventlogController
 from src.controller.InventoryController import InventoryController
-from src.model import ProductListModel
+from src.model import ProductListModel, Workbench, MobileRobot
 from src.model.InventoryModel import InventoryModel, createTableModel
 from src.model.ProductSummaryListModel import ProductSummaryListModel, InventoryFilterProxyModel, createSummaryModel
 
@@ -39,6 +39,14 @@ if __name__ == "__main__":
     # model based on productSummaryModel but can be filtered dependding on quantity
     inventoryFilterModel = InventoryFilterProxyModel(model=productSummaryModel)
     engine.rootContext().setContextProperty("inventoryFilterModel", inventoryFilterModel)
+
+    # create workbenchmodel
+    workbenchModel = Workbench.Workbench(Workbench.extractComissData())
+    engine.rootContext().setContextProperty("workbenchModel", workbenchModel)
+
+    # create mobileRobotModel
+    mobileRobotModel = MobileRobot.MobileRobot()
+    engine.rootContext().setContextProperty("mobileRobotModel", mobileRobotModel)
 
     # create EventlogController instance
     eventlogController = EventlogController()

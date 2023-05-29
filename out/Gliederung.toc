@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Einleitung}{2}{}%
+\contentsline {section}{\numberline {2}Softwarearchitektur der bestehenden Software}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Lagerverwaltung 3.0}{3}{}%
+\contentsline {subsection}{\numberline {2.2}RFID Server}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Controller}{3}{}%
+\contentsline {section}{\numberline {3}Konzeptionierung einer integrierten Python Anwendung}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Konzepte zur Datenmodellierung}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Konzepte für Controller- und Serviceklassen}{4}{}%
+\contentsline {subsection}{\numberline {3.3}GUI - Konzeptionierung}{4}{}%
+\contentsline {subsection}{\numberline {3.4}Teilautomatisierte Code Dokumentation}{4}{}%
+\contentsline {section}{\numberline {4}Analyse zur Fehlerbehandlung}{5}{}%
+\contentsline {section}{\numberline {5}Ideensammlung zu kameragestützten Validierungsprozessen in der Lagerverwaltung}{6}{}%
+\contentsline {subsection}{\numberline {5.1}Konzepte}{6}{}%
+\contentsline {subsection}{\numberline {5.2}Abgeleitete Anforderungen an die Kamera}{6}{}%
+\contentsline {subsection}{\numberline {5.3}Kameraauswahl}{6}{}%

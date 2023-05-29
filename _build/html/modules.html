@@ -110,6 +110,22 @@
 <li class="toctree-l4"><a class="reference internal" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount"><code class="docutils literal notranslate"><span class="pre">ProductSummaryListModel.rowCount()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.Workbench.Workbench"><code class="docutils literal notranslate"><span class="pre">Workbench</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.Workbench.Workbench.columnCount"><code class="docutils literal notranslate"><span class="pre">Workbench.columnCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.Workbench.Workbench.data"><code class="docutils literal notranslate"><span class="pre">Workbench.data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.Workbench.Workbench.roleNames"><code class="docutils literal notranslate"><span class="pre">Workbench.roleNames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.Workbench.Workbench.rowCount"><code class="docutils literal notranslate"><span class="pre">Workbench.rowCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.Workbench.Workbench.setData"><code class="docutils literal notranslate"><span class="pre">Workbench.setData()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot"><code class="docutils literal notranslate"><span class="pre">MobileRobot</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot.columnCount"><code class="docutils literal notranslate"><span class="pre">MobileRobot.columnCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot.data"><code class="docutils literal notranslate"><span class="pre">MobileRobot.data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot.roleNames"><code class="docutils literal notranslate"><span class="pre">MobileRobot.roleNames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot.rowCount"><code class="docutils literal notranslate"><span class="pre">MobileRobot.rowCount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.model.MobileRobot.MobileRobot.setData"><code class="docutils literal notranslate"><span class="pre">MobileRobot.setData()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#opc-ua-client">OPC UA Client</a></li>
@@ -270,6 +286,7 @@ it has no own classes but creates all necessary instances and starts GUI Applica
 <span class="n">PRODUCTLIST</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;Produkte.db&quot;</span>
 <span class="n">STORAGEDATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageData.db&quot;</span>
 <span class="n">STORAGEDATAWRITE</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;StorageDataWrite.db&quot;</span>
+<span class="n">COMMISSDATA</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;src&quot;</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span> <span class="o">/</span> <span class="s2">&quot;Commissdata.db&quot;</span>
 <span class="n">CAMAPP_QML</span> <span class="o">=</span> <span class="s2">&quot;../cameraApplication/qml/CameraAppMain.qml&quot;</span>
 </pre></div>
 </div>
@@ -426,7 +443,7 @@ returns productslot, cup ID and productListindex.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.controller.websocketController.</span></span><span class="sig-name descname"><span class="pre">WebsocketController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.controller.EventlogController.EventlogController" title="src.controller.EventlogController.EventlogController"><span class="pre">EventlogController</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/controller/websocketController.html#WebsocketController"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.controller.websocketController.WebsocketController" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-</section>
+<span class="target" id="module-src.controller.WorkbenchController"></span><span class="target" id="module-src.controller.MobileRobotController"></span></section>
 <section id="datamodels">
 <h2>DataModels<a class="headerlink" href="#datamodels" title="Permalink to this heading"></a></h2>
 <blockquote>
@@ -542,6 +559,66 @@ requested, we return an invalid variant
 <dl class="py method">
 <dt class="sig sig-object py" id="src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount">
 <span class="sig-name descname"><span class="pre">rowCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Invalid(PySide6.QtCore.QModelIndex)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/model/ProductSummaryListModel.html#ProductSummaryListModel.rowCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.ProductSummaryListModel.ProductSummaryListModel.rowCount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-src.model.Workbench"></span><dl class="py class">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.model.Workbench.</span></span><span class="sig-name descname"><span class="pre">Workbench</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench.columnCount">
+<span class="sig-name descname"><span class="pre">columnCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench.columnCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench.columnCount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Instance(Qt.DisplayRole)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench.data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench.data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench.roleNames">
+<span class="sig-name descname"><span class="pre">roleNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QByteArray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench.roleNames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench.roleNames" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench.rowCount">
+<span class="sig-name descname"><span class="pre">rowCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Invalid(PySide6.QtCore.QModelIndex)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench.rowCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench.rowCount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.Workbench.Workbench.setData">
+<span class="sig-name descname"><span class="pre">setData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Instance(Qt.EditRole)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/model/Workbench.html#Workbench.setData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.Workbench.Workbench.setData" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-src.model.MobileRobot"></span><dl class="py class">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.model.MobileRobot.</span></span><span class="sig-name descname"><span class="pre">MobileRobot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot.columnCount">
+<span class="sig-name descname"><span class="pre">columnCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot.columnCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot.columnCount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Instance(Qt.DisplayRole)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot.data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot.data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot.roleNames">
+<span class="sig-name descname"><span class="pre">roleNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QByteArray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot.roleNames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot.roleNames" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot.rowCount">
+<span class="sig-name descname"><span class="pre">rowCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Invalid(PySide6.QtCore.QModelIndex)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot.rowCount"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot.rowCount" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.model.MobileRobot.MobileRobot.setData">
+<span class="sig-name descname"><span class="pre">setData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PySide6.QtCore.QModelIndex</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QPersistentModelIndex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Instance(Qt.EditRole)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/model/MobileRobot.html#MobileRobot.setData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.model.MobileRobot.MobileRobot.setData" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -947,8 +1024,8 @@ Pleas note, that</p>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
                 <span class="k">verticalAlignment:</span> <span class="nx">Text</span><span class="p">.</span><span class="nx">AlignVCenter</span>
             <span class="p">}</span>
+            <span class="c1">// Comobobox has List of all possible hardcoded storage locations</span>
             <span class="nx">ComboBox</span><span class="p">{</span>
-                <span class="c1">// Comobobox has List of all possible hardcoded storage locations</span>
                 <span class="kd">id: setLocation</span>
                 <span class="k">model:</span> <span class="p">[</span><span class="s1">&#39;L1&#39;</span><span class="p">,</span> <span class="s1">&#39;L2&#39;</span><span class="p">,</span> <span class="s1">&#39;L3&#39;</span><span class="p">,</span> <span class="s1">&#39;L4&#39;</span><span class="p">,</span> <span class="s1">&#39;L5&#39;</span><span class="p">,</span> <span class="s1">&#39;L6&#39;</span><span class="p">,</span> <span class="s1">&#39;L7&#39;</span><span class="p">,</span> <span class="s1">&#39;L8&#39;</span><span class="p">,</span> <span class="s1">&#39;L9&#39;</span><span class="p">,</span> <span class="s1">&#39;L10&#39;</span><span class="p">,</span> <span class="s1">&#39;L11&#39;</span><span class="p">,</span> <span class="s1">&#39;L12&#39;</span><span class="p">,</span> <span class="s1">&#39;L13&#39;</span><span class="p">,</span> <span class="s1">&#39;L14&#39;</span><span class="p">,</span> <span class="s1">&#39;L15&#39;</span><span class="p">,</span> <span class="s1">&#39;L16&#39;</span><span class="p">,</span> <span class="s1">&#39;L17&#39;</span><span class="p">,</span> <span class="s1">&#39;L18&#39;</span><span class="p">]</span>
                 <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
@@ -980,7 +1057,9 @@ Pleas note, that</p>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
                 <span class="c1">// load actual storage values if storage location is changed and not empty</span>
                 <span class="k">onCurrentValueChanged:</span> <span class="p">{</span>
-                    <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">loadStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
+                    <span class="k">if</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentValue</span> <span class="o">!==</span><span class="s1">&#39;&#39;</span><span class="p">){</span>
+                        <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">loadStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
             <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
@@ -1001,7 +1080,6 @@ Pleas note, that</p>
                     <span class="k">bottom:</span> <span class="mi">0</span>
                     <span class="k">top:</span> <span class="mi">9999</span>
                 <span class="p">}</span>
-
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="c1">// This row enables the user to override product id in storage</span>
@@ -1017,7 +1095,8 @@ Pleas note, that</p>
             <span class="nx">ComboBox</span><span class="p">{</span>
                 <span class="kd">id:setProduct</span>
                 <span class="k">model:</span> <span class="nx">productListModel</span>
-                <span class="k">textRole:</span> <span class="s1">&#39;id&#39;</span>
+                <span class="k">textRole:</span> <span class="s1">&#39;name&#39;</span>
+                <span class="k">valueRole:</span> <span class="s1">&#39;id&#39;</span>
                 <span class="k">Layout.fillHeight:</span> <span class="kc">true</span>
                 <span class="k">Layout.fillWidth:</span> <span class="kc">true</span>
 
@@ -1044,8 +1123,8 @@ Pleas note, that</p>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;location: &quot;</span><span class="o">+</span> <span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;slot: &quot;</span> <span class="o">+</span><span class="nx">setAB</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;cup: &quot;</span> <span class="o">+</span> <span class="nx">setCup</span><span class="p">.</span><span class="nx">text</span><span class="p">)</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;product: &quot;</span> <span class="o">+</span> <span class="nx">setProduct</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
-        <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">changeStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentText</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentText</span><span class="p">,</span> <span class="nx">setCup</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span> <span class="nx">setProduct</span><span class="p">.</span><span class="nx">currentText</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;product: &quot;</span> <span class="o">+</span> <span class="nx">setProduct</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
+        <span class="nx">inventoryController</span><span class="p">.</span><span class="nx">changeStorage</span><span class="p">(</span><span class="nx">setLocation</span><span class="p">.</span><span class="nx">currentText</span><span class="p">,</span> <span class="nx">setAB</span><span class="p">.</span><span class="nx">currentText</span><span class="p">,</span> <span class="nx">setCup</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span> <span class="nx">setProduct</span><span class="p">.</span><span class="nx">currentValue</span><span class="p">)</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ok clicked&quot;</span><span class="p">)</span>
     <span class="p">}</span>
     <span class="k">onRejected:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Cancel clicked&quot;</span><span class="p">)</span>
@@ -1055,7 +1134,7 @@ Pleas note, that</p>
         <span class="k">target:</span> <span class="nx">inventoryController</span>
         <span class="kd">function</span> <span class="nx">onTransmitData</span><span class="p">(</span><span class="nx">slot</span><span class="p">,</span> <span class="nx">cup</span><span class="p">,</span> <span class="nx">product</span><span class="p">){</span>
             <span class="nx">setCup</span><span class="p">.</span><span class="nx">text</span> <span class="o">=</span> <span class="nx">cup</span>
-            <span class="nx">setProduct</span><span class="p">.</span><span class="nx">editText</span> <span class="o">=</span> <span class="nx">product</span>
+            <span class="nx">setProduct</span><span class="p">.</span><span class="nx">currentIndex</span> <span class="o">=</span> <span class="nx">product</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -2680,23 +2759,18 @@ Pleas note, that</p>
 
 <span class="nx">Rectangle</span><span class="p">{</span>
     <span class="kd">id: storageRect</span>
-
     <span class="k">color:</span> <span class="s2">&quot;white&quot;</span>
     <span class="k">border.color:</span> <span class="s2">&quot;#546E7A&quot;</span>
     <span class="k">border.width:</span> <span class="mi">2</span>
     <span class="k">radius:</span> <span class="mi">10</span>
-
     <span class="nx">EditDialog</span><span class="p">{</span>
         <span class="c1">//Dialog to edit storage data</span>
         <span class="kd">id: editDialog</span>
     <span class="p">}</span>
-
     <span class="nx">Loader</span><span class="p">{</span>
         <span class="c1">//Loader to load camera Application QML file</span>
         <span class="kd">id: camAppLoader</span>
     <span class="p">}</span>
-
-
     <span class="nx">Rectangle</span><span class="p">{</span>
         <span class="kd">id: titleRect</span>
         <span class="k">height:</span> <span class="mi">25</span>
@@ -2710,7 +2784,6 @@ Pleas note, that</p>
         <span class="p">}</span>
         <span class="nx">RowLayout</span><span class="p">{</span>
             <span class="k">anchors.fill:</span> <span class="nx">parent</span>
-
             <span class="nx">Text</span> <span class="p">{</span>
                 <span class="kd">id: title</span>
                 <span class="k">height:</span> <span class="mi">40</span>
@@ -2721,22 +2794,15 @@ Pleas note, that</p>
                 <span class="k">font.pixelSize:</span> <span class="mi">12</span>
                 <span class="k">font.bold:</span> <span class="kc">true</span>
             <span class="p">}</span>
-
             <span class="nx">Button</span> <span class="p">{</span>
-
-
                 <span class="kd">id: cameraButton</span>
                 <span class="k">text:</span> <span class="s2">&quot;camApp&quot;</span>
                 <span class="k">height:</span> <span class="nx">title</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span><span class="mi">5</span>
-
-
                 <span class="k">onClicked:</span> <span class="p">{</span>
                     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Clicked&quot;</span><span class="p">)</span>
                     <span class="nx">camAppLoader</span><span class="p">.</span><span class="nx">source</span> <span class="o">=</span> <span class="nx">camAppPath</span>
                 <span class="p">}</span>
-
             <span class="p">}</span>
-
             <span class="nx">Image</span> <span class="p">{</span>
                 <span class="kd">id: setImage</span>
                 <span class="k">source:</span> <span class="s2">&quot;../assets/gear.png&quot;</span>
@@ -2753,7 +2819,6 @@ Pleas note, that</p>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
     <span class="c1">// TableView holds objects of StorageData.db which is read in InventoryModel</span>
     <span class="nx">TableView</span> <span class="p">{</span>
         <span class="k">model:</span> <span class="nx">inventoryModel</span>

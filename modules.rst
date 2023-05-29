@@ -46,6 +46,7 @@ Controllers
     :members:
 
 .. automodule:: src.controller.MobileRobotController
+    :members:
 
 DataModels
 ----------
