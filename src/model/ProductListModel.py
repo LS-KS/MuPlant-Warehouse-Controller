@@ -19,7 +19,7 @@ class ProductListModel(QtCore.QAbstractListModel):
         :return:
         """
         row = index.row()
-        if not index.isValid() or row >= len(self.products):
+        if not index.isValid() or row >= self.rowCount():
             return None
         product = self.products[row]
         if role == QtCore.Qt.DisplayRole:

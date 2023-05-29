@@ -36,7 +36,7 @@ class InventoryModel(QtCore.QAbstractTableModel):
     def data(self, index, role):
         row = index.row()
         col = index.column()
-        if not index.isValid() or row >= len(self.inventory) or col >= 6:
+        if not index.isValid() or row >= self.rowCount() or col >= self.columnCount():
             return None
         inventory = self.inventory[row][col]
         if role == QtCore.Qt.UserRole + 1:
@@ -62,7 +62,7 @@ class InventoryModel(QtCore.QAbstractTableModel):
     def setData(self, index, value, role):
         row = index.row()
         col = index.column()
-        if not index.isValid() or row >= len(self.inventory) or col >= 6:
+        if not index.isValid() or row >= self.rowCount() or col >= self.columnCount():
             return False
         if role == Qt.UserRole + 2:  # a_CupID
             oldValue= self.inventory[row][col][1]
