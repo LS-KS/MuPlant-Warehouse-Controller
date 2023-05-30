@@ -1,0 +1,131 @@
+%! Author = lennartschink
+%! Date = 29.05.23
+
+% Preamble
+\documentclass[11pt]{scrartcl}
+\title{Software-Migration für die robotergestützte Lagerverwaltung mit kameragestützten Validierungsprozessen}
+\subtitle{Erstellung einer integrierten Python-Anwendung mit kameragestützen Validierungsprozessen in der Industrie 4.0-Plattform Modellfabrik $\mu$Plant}
+\author{Lennart Schink}
+\date{\today}
+% Packages
+\usepackage{amsmath}
+\setcounter{tocdepth}{3}
+% Document
+\begin{document}
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Einleitung}
+
+    \subsection{Einführung und Motivation}
+
+    \subsection{Zielsetzung}
+    Erstellen einer Software die drei bestehende Programme integriert. Die ganze Software wird nach Python emigriert.
+    Es wird eine Software implementiert, die
+    \begin{itemize}
+    \item zwei Kamweras verwaltet
+    \begin{itemize}
+        \item  eine hochauflösende: Erfasst den gesamten Raum, Bild wird anhand markern aufgeteilt, und versucht in den Segmenten die marker der Becher zu erkennen
+        \item  eine weitere Kamera wird auf dem Arm montiert. Bild dienst zur lokalen Erkennung der Marker vor/ im Greifer.
+    \end{itemize}
+    \item Auf Aufforderung des Benutzers oder in festgelegten Abständen oder aufgrund der Türöffnung eine automatisierte Inventur durchführt:
+    \begin{itemize}
+        \item  Versuch die Inventur über die hochauflösende Kamera durchzuführen.
+        \item  Zur Verifizierung / bei Nichterkennung oder auf Aufforderung:
+    \end{itemize}
+    \item -Fahrt des Greifers vor dem Regal in einer Haltung die das bestmögliche Erkennen der Becher ermöglicht
+    \item -Paletten werden auf die Werkbank gestellt und dort Marker auf den Bechern erkannt.
+    \end{itemize}
+
+    \newpage
+    \section{Theoretischer Hintergrund}
+
+    \subsection{Die Programmierpsrache Python}
+    -kurzes Vorstellen der Sprache
+    -verwendete Bibliotheken außer nachfolgende untertitel
+
+    \subsection{GUI Programmierung mit PySide6 und Qt QuickQML}
+    - Datenmodelle
+    - Signal/Slot - Prinzip
+
+    \subsection{OPC UA}
+    - Konzept
+    - Code
+
+    \subsection{TCP/IP mittels websocket Bibliothek}
+    - Konzept
+    - Code
+
+    \subsection{RFID}
+    - Konzept
+    - Code
+    - Erkennungsraten?
+
+    \newpage
+    \section{Stand der Forschung}
+    \subsection{Merkmalserkennung}
+    \subsection{arUco Marker}
+    \subsection{Neuronale Netze ? }
+
+    \newpage
+    \section{Methodik}
+    \subsection{Architektur der Python-Anwendung}
+    \begin{itemize}
+        \item Bezugnahme auf Semesterarbeit
+        \item Vorstellen der neuen Softwarearchitektur
+    \end{itemize}
+
+    \subsection{Implementierung der Lagerverwaltung}
+    \begin{itemize}
+        \item Besonderheiten in der Implementierung
+        \item Controller <-> DatenModell <-> GUI-Element Zuordnung? oder Klassen/Objektdiagramm?
+    \end{itemize}
+
+    \subsection{Implementierung der Merkmalserkennung}
+
+    \subsubsection{Bildgewinnung}
+    \begin{itemize}
+        \item Datengenerierung von den Bildsensoren
+        \item Preprozessing und Bereitstellung an GUI
+    \end{itemize}
+
+    \subsubsection{Alghorithmus zur Merkmalserkennung}
+    \begin{itemize}
+        \item openCV cv2 arUco Generierung
+        \item openCV cv2 arUco Erkennung
+        \item angewandte Bildverarbeitungsmethoden:
+        \begin{itemize}
+            \item - Bildaufteilung
+            \item - verwendete Filter: Gauß, Dilatation, Custom-Filter
+        \end{itemize}
+    \end{itemize}
+
+    \subsection{Maßnahmen zur Fehlerbehandlung}
+    \begin{itemize}
+        \item Becher nicht erkannt
+        \item Becher fälschlicherweise erkannt
+        \item nicht alle Becher in der globalen Erkennung erkannt
+        \item mehr als 36 Becher in der globalen Erkennung erkannt
+    \end{itemize}
+
+    \newpage
+    \section{Ergebnisse}
+
+    \newpage
+    \section{Diskussion}
+
+    \newpage
+    \section{Fazit}
+
+    \newpage
+    \section{Ausblick}
+
+    \newpage
+    \section{Danksagung}
+
+    \newpage
+    \section{Anhang}
+
+\end{document}
+

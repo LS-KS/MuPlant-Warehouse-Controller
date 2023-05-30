@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Einleitung}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Einführung und Motivation}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Zielsetzung}{3}{}%
+\contentsline {section}{\numberline {2}Theoretischer Hintergrund}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Die Programmierpsrache Python}{4}{}%
+\contentsline {subsection}{\numberline {2.2}GUI Programmierung mit PySide6 und Qt QuickQML}{4}{}%
+\contentsline {subsection}{\numberline {2.3}OPC UA}{4}{}%
+\contentsline {subsection}{\numberline {2.4}TCP/IP mittels websocket Bibliothek}{4}{}%
+\contentsline {subsection}{\numberline {2.5}RFID}{4}{}%
+\contentsline {section}{\numberline {3}Stand der Forschung}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Merkmalserkennung}{5}{}%
+\contentsline {subsection}{\numberline {3.2}arUco Marker}{5}{}%
+\contentsline {subsection}{\numberline {3.3}Neuronale Netze ?}{5}{}%
+\contentsline {section}{\numberline {4}Methodik}{6}{}%
+\contentsline {subsection}{\numberline {4.1}Architektur der Python-Anwendung}{6}{}%
+\contentsline {subsection}{\numberline {4.2}Implementierung der Lagerverwaltung}{6}{}%
+\contentsline {subsection}{\numberline {4.3}Implementierung der Merkmalserkennung}{6}{}%
+\contentsline {subsubsection}{\numberline {4.3.1}Bildgewinnung}{6}{}%
+\contentsline {subsubsection}{\numberline {4.3.2}Alghorithmus zur Merkmalserkennung}{6}{}%
+\contentsline {subsection}{\numberline {4.4}Maßnahmen zur Fehlerbehandlung}{6}{}%
+\contentsline {section}{\numberline {5}Ergebnisse}{7}{}%
+\contentsline {section}{\numberline {6}Diskussion}{8}{}%
+\contentsline {section}{\numberline {7}Fazit}{9}{}%
+\contentsline {section}{\numberline {8}Ausblick}{10}{}%
+\contentsline {section}{\numberline {9}Danksagung}{11}{}%
+\contentsline {section}{\numberline {10}Anhang}{12}{}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
