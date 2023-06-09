@@ -1,0 +1,247 @@
+\chapter{Tips \& Tricks}
+
+Do's and Dont's in \LaTeX:
+\url{https://mast.queensu.ca/~andrew/LaTeX/latex-dos-and-donts.pdf}
+
+\section{Makros}
+\label{sec:makros}
+
+\TeX-\Index{Makros} \textsf{def} oder \LaTeX-Makos \textsf{newcommand}
+definieren für einheitliche Schreibweisen im Dokument:
+%
+\begin{verbatim}
+\newcommand{\Matlab}{\textsc{Matlab}\xspace}
+\def\squared#1{\ensuremath{#1^2}}
+\newcommand{\Makro}[3]{Argument #1 mit Argument#2 und Argument #3}
+
+Superskript mitten im Text ohne \$\$ -> \squared{\pi}
+
+Mit \Matlab kann man es berechnen!
+
+\end{verbatim}
+\newcommand{\Matlab}{\textsc{Matlab}\xspace}
+\def\Makro#1#2#3{Argument #1 mit Argument#2 und Argument #3}
+\def\squared#1{\ensuremath{#1^2}}
+
+Superskript mitten im Text ohne \$\$ -> \squared{\pi}
+
+Mit \Matlab kann man es berechnen!
+
+
+\section{Tabellen}
+
+Eigene Formate für Spalten in \Index{Tabellen} mit dem Paket
+\textsf{tabularx} definieren:
+%
+\begin{verbatim}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\end{verbatim}
+
+\begin{table}[h!!]
+ \caption{Neuer Spaltentyp}
+ \label{tab:tabularx}
+  \centering
+  \newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
+ \begin{tabularx}{\textwidth}{ |l|R|l|R| }
+  \hline
+  label 1 & label 2 & label 3 & label 4 \\
+  \hline 
+  item 1  & item 2  & item 3  & item 4  \\
+  \hline
+\end{tabularx}
+\end{table}
+
+
+Zahlen ausrichten in Spalten mit Paket \textsf{dcolumn} (und
+gleichzeitig ersetzen des Dezimaltrenners ``.'' durch ein Komma ``,'')
+
+\begin{verbatim}
+\newcolumntype{d}[1]{D{.}{,}{#1} }
+\end{verbatim}
+
+\begin{table}[h!!]
+\newcolumntype{d}[1]{D{.}{,}{#1} }
+  \centering
+  \begin{tabular}{ld{2}}
+    Symbol & Wert \\\hline
+    $\pi $ & 3.1415 \\
+     -e    & -2.71 \\
+  \end{tabular}
+  \caption{Neue Spaltentypen}
+  \label{tab:newcolumntype}
+\end{table}
+
+% ToDo: longtable, sidewayfigure
+
+Hilfe: \url{https://en.wikibooks.org/wiki/LaTeX/Tables}
+
+\section{Symbolverzeichnis}
+
+Ein \Index{Symbolverzeichnis} kann automatisch mit dem Paket \textsf{nomencl}
+angelegt werden: 
+
+Mit dem Befehl \verb#\Symbol{symbol}{bedeutung}# wird das Symbol im
+Text angegeben und gleichzeitig in das Symbolverzeichnis aufgenommen:
+%
+\begin{verbatim}
+Die Zahl \Symbol{$\pi$}{Kreiszahl} ist transzendent.
+\end{verbatim}
+
+Die Zahl \Symbol{$\pi$}{Kreiszahl} ist transzendent.
+
+Es können auch Einheit und Kommentar angegeben werden: 
+\begin{verbatim}
+Symbol mit Text: Die
+\SymbolT{$g$}{Erdbeschleunigung}
+wirkt immer.
+
+Symbol mit Text und Einheit: Die 
+\SymbolU{$g$}{Erdbeschleunigung}{m/s^2} 
+wirkt immer.
+
+Mit Text, Einheit und Bemerkung: Die 
+\SymbolB{$c$}{Lichgeschwindigkeit}{m/s^2}{im Vakkum} 
+ist maximal.
+\end{verbatim}
+
+Symbol mit Text: Die
+\SymbolT{$g$}{Erdbeschleunigung}
+wirkt immer.
+
+Symbol mit Text und Einheit: Die 
+\SymbolE{$g$}{Erdbeschleunigung}{m/s^2} 
+wirkt immer.
+
+Mit Text, Einheit und Bemerkung: Die 
+\SymbolB{$c$}{Lichgeschwindigkeit}{m/s^2}{im Vakkum} ist maximal.
+
+
+Das Symbolverzeichnis muss mit dem Befehl \textsf{makeindex} manuell
+erstellt werden:
+%
+\begin{verbatim}
+latex MRT-Bericht.tex
+makeindex MRT-Bericht.nlo -s nomencl.ist -o MRT-Bericht.nls
+latex MRT-Bericht.tex
+\end{verbatim}
+
+Hilfe: \url{https://www.ctan.org/pkg/nomencl?lang=de}
+
+\section{Abkürzungsverzeichnis}
+
+Ein \Index{Abkürzungsverzeichnis} wird in \LaTeX als \Index{Glossar}
+mit dem Befehl
+
+\verb#\Glossar{abkuerzung}{kurz}{lang}# erstellt:
+%
+\begin{verbatim}
+Hier ein Eintrag für das AbkVz: 
+\Glossar{svm}{SVM}{Support Vector Machine}
+\end{verbatim}
+
+Hier ein Eintrag für das AbkVz:
+\Glossar{svm}{SVM}{Support Vector Machine}
+
+Hilfe: \url{https://en.wikibooks.org/wiki/LaTeX/Glossary}
+
+\section{Index}
+
+\LaTeX erstellt automatisch einen \Index{Index} mit dem Befehl
+\verb#\Index{eintrag}# angelegt:
+
+\begin{verbatim}
+\LaTeX erstellt automatisch einen Index-Eintrag mit dem Befehl
+``\Index{Index}´´.
+\end{verbatim}
+
+\LaTeX{} erstellt automatisch einen Index-Eintrag mit dem Befehl
+``\Index{Index}''.
+
+
+Hilfe: \url{https://en.wikibooks.org/wiki/LaTeX/Indexing}
+
+
+\section{Nützliche Umgebungen}
+
+\subsection{Programm-Quellcode}
+
+Listings können mit dem Paket \Index{\textsf{listings}} in ein Dokument
+aufgenommen werden.
+
+\begin{lstlisting}[numbers=right]
+a = 1
+b = 2
+c = sqrt( a^2 + b^2 )
+\end{lstlisting}
+
+
+Man kann auch Befehle wie \lstinline{var i = 0;} direkt im Text angeben!
+
+
+Dateien automatisch in das Dokument einfügen:
+
+\begin{verbatim}
+\lstinputlisting[language=Python]{Demo1.py}
+\end{verbatim}
+
+
+Demo 1 als Python-Quelltext
+:
+\lstinputlisting[language=Python]{Listings/Demo1.py}
+
+Demo 2 mit Zeilennummern:
+\lstinputlisting[numbers=left]{Listings/Demo2.py}
+
+
+Hilfe: \url{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}
+
+\section{Mathematische Umgebungen}
+
+Schreibweise von Vektoren/Matrizen vereinfachen:
+
+\def\vk#1{\mathbf{#1}}
+\def\tr#1{\ensuremath{#1^{\mathrm{T}}}}
+\def\zvektor#1{\left(\begin{array}{c}#1\end{array}\right)}
+\def\svektor#1{\left(\begin{array}{c@{,\:}c@{,\:}c}#1\end{array}\right)}
+\def\matrix#1{\left(#1\right)}
+
+\Index{Vektor}
+\begin{align}
+  \tr{\vk{v_s}} = \svektor{11&12&13}
+\\
+\vk{v_z} = \zvektor{11\\21\\31}
+\end{align}
+
+g ist \Einheit{9.8055}{m/s^2}
+
+Die Umgebungen des Paketes \textsf{amsmath} verwenden weniger
+vertikalen Platz und können ausgerichtet werden
+
+\begin{verbatim}
+\begin{align}\label{eq:1}
+  a &= 1\\
+  xyz &= \i
+\end{align}
+
+\begin{alignat*}{2}
+    \dot{x} &= A \cdot x &+& B \cdot u\\
+          y &= C \cdot x &+& D \cdot u
+\end{alignat*}
+
+\end{verbatim}
+
+\begin{align}\label{eq:1}
+    \dot{x} &= A(t) \cdot x + B \cdot u\\
+          y &= C \cdot x + D \cdot u
+\end{align}
+%
+\def\vx{\vk{x}}
+\begin{alignat*}{2} % n=2 -> n+1=3 Tabulatoren "&" einfügen
+    \dot{\vx} &= \vk{A}(t) \cdot \vx  &+& B \cdot u\\
+           y &=  \vk{C}    \cdot \vx  &+& D \cdot u
+\end{alignat*}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../MRT-Bericht-2020"
+%%% End:

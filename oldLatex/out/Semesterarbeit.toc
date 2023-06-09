@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Einleitung und Motivation}{2}{}%
+\contentsline {section}{\numberline {2}Softwarearchitektur der bestehenden Software}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Lagerverwaltung 3.0}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Lagerelemente}{5}{}%
+\contentsline {subsection}{\numberline {2.2}RFID Server}{5}{}%
+\contentsline {subsection}{\numberline {2.3}Controller}{5}{}%
+\contentsline {section}{\numberline {3}Konzeptionierung einer integrierten Python Anwendung}{6}{}%
+\contentsline {subsection}{\numberline {3.1}Konzepte zur Datenmodellierung}{6}{}%
+\contentsline {subsection}{\numberline {3.2}Konzepte für Controller- und Serviceklassen}{6}{}%
+\contentsline {subsection}{\numberline {3.3}GUI - Konzeptionierung}{6}{}%
+\contentsline {subsection}{\numberline {3.4}Teilautomatisierte Code Dokumentation}{6}{}%
+\contentsline {section}{\numberline {4}Analyse zur Fehlerbehandlung}{7}{}%
+\contentsline {section}{\numberline {5}Ideensammlung zu kameragestützten Validierungsprozessen in der Lagerverwaltung}{8}{}%
+\contentsline {subsection}{\numberline {5.1}Konzepte}{8}{}%
+\contentsline {subsection}{\numberline {5.2}Abgeleitete Anforderungen an die Kamera}{8}{}%
+\contentsline {subsection}{\numberline {5.3}Kameraauswahl}{8}{}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

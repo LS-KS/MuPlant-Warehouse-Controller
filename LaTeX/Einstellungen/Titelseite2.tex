@@ -1,0 +1,66 @@
+% !TeX spellcheck = de_DE
+\renewcommand{\maketitle}{
+  \begin{center}
+	\vspace*{-0.5cm}
+	\includegraphics[width=75mm]{Bilder/UniKS-Logo}\\
+
+	\vspace{1.5cm}
+	\centering
+        \ifthenelse{\equal{\Typ}{MSc}}{
+	% Masterarbeit
+	\textbf{\Large Masterarbeit}\\[1ex]
+	zur Erlangung %\\[1ex]
+	des akademischen Grades\\[1ex]
+	\textbf{\Large Master of Science (M.Sc.)}\\[4ex]
+        }{\ifthenelse{\equal{\Typ}{BSc}}{
+	% Bachelorarbeit
+	\textbf{\Large Bachelorarbeit}\\[1ex]
+	zur Erlangung\\[1ex]
+	des akademischen Grades\\[1ex]
+	\textbf{\Large Bachelor of Science (B.Sc.)}\\[4ex]
+        }{
+        %  Restliche Arbeiten:
+	\textbf{\Large \Typ}\\[4ex]
+        }}
+	\textsf{\Huge \@title}\\[4ex]
+	angefertigt am\\[0.5ex]
+	Fachgebiet Mess- und Regelungstechnik\\[0.5ex]
+	der Universität Kassel\\[4ex]
+        %
+	vorgelegt von\\[1ex]
+	{\Large \@author}\\[1ex]
+        \ifthenelse{\isundefined{\Geburtsort}}{}{
+	geboren am \Geburtstag{} in \Geburtsort\\[1ex]
+        }
+        \ifthenelse{\isundefined{\Titelgrafik}}{}{
+  	  \vfill
+          \includegraphics[height=5cm]{\Titelgrafik}
+  	  \vfill
+        }
+	\vfill
+        \begin{center}
+          %\fbox{\parbox{14cm}{
+          \renewcommand{\arraystretch}{1.2}
+		\begin{tabularx}{\columnwidth}{p{0.5\textwidth}>{\raggedleft\arraybackslash}p{0.5\textwidth}}
+			Matrikelnummer: & \MatNr\\
+                        \ifthenelse{\equal{\Typ}{MSc}\or\equal{\Typ}{BSc}}{
+			Erstgutachter: & \Erstgutachter\\
+			Zweitgutachter: & \Zweitgutachter\\}{
+			Gutachter: & \Erstgutachter\\}
+                        \ifthenelse{\isundefined{\Betreuer}}{}{
+			Betreuer: & \Betreuer\\}
+			Tag der Abgabe: & \@date\\
+                        \ifthenelse{\isundefined{\MRTnr}}{}{MRT-Nr.:& \MRTnr\\}
+                      \end{tabularx}%
+            %          }}
+              \end{center}
+	\vfill
+	\includegraphics[height=12mm]{Bilder/MRT-Logo} \hfill \includegraphics[height=12mm]{Bilder/ISAC-Logo}
+\end{center}
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../MRT-Bericht-2020"
+%%% End:

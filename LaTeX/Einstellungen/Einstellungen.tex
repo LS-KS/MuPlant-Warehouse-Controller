@@ -1,0 +1,158 @@
+% !TeX spellcheck = de_DE
+
+% Do's & Dont's in LaTeX
+%\RequirePackage[l2tabu,orthodox]{nag}
+
+% Deutsch und UTF-8 Encoding
+\usepackage[english,ngerman]{babel}
+\selectlanguage{ngerman}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Seiteneinstellungen
+\usepackage{geometry}
+\geometry{left=35mm,right=35mm, bindingoffset=0mm, top=30mm,bottom=30mm}
+
+% Abstand im Text
+\usepackage{xspace}
+\usepackage{setspace}
+
+% Kapitelüberschrift: große Nummer -> Titel
+\renewcommand*{\chapterformat}{\mbox{\chapappifchapterprefix{\nobreakspace}\scalebox{3}{\thechapter}\enskip}}
+
+% Linie unter \chapter
+\makeatletter
+\renewcommand{\chapterlinesformat}[3]{%
+  \parbox[t]{\linewidth}{%
+    \raggedchapter\@hangfrom{#2}{#3}\par%
+    \vspace*{-.75\ht\strutbox}\rule{\linewidth}{.8pt}%
+  }%
+}
+\makeatother
+
+% pdf Pakete
+\usepackage[pdfusetitle=true,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,bookmarks=true,bookmarksopenlevel=2]{hyperref}
+
+% Pakete für Grafiken
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.5}
+\usepackage{caption}
+\captionsetup{labelfont=bf, textfont=small} 
+\usepackage{subcaption}
+
+% Tabellentools
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{multirow}
+\usepackage{multicol}
+
+% Mathematik
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb,amsthm,textcomp}
+\usepackage{upgreek}
+
+% Zahlenformate
+\usepackage{siunitx}
+\sisetup{range-phrase=\ \textrm{bis}\ }
+\sisetup{locale=DE}
+
+% Auflistungen
+\usepackage{enumerate}
+
+% Symbolverzeichnis
+\usepackage[nomentbl]{Einstellungen/nomencl-table}
+
+% Glossar
+%\usepackage[nonumberlist,toc,nopostdot,style=alttree,xindy]{glossaries}
+\usepackage{glossaries}
+
+% Index
+\usepackage{makeidx}
+
+% Listings
+\usepackage{listings}
+
+% Eigene Tabellenspalten
+\usepackage{tabularx}
+\usepackage{dcolumn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HIER EIGENE PAKETE HINZUFÜGEN
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vor dem Laden von weiteren Paketen in das Latex-Sündenregister von Marc Ensenbach schauen!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Sonstiges
+
+% Es können todo-Notes eingefügt werden
+\usepackage{todonotes}
+
+% Definition der Kopf und Fußzeilen
+\usepackage{fancyhdr,lastpage}
+\fancypagestyle{fancy2}{%
+	\fancyhf{}
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+	\fancyfoot[OL]{}
+	\fancyfoot[EL]{\thepage}
+	\fancyfoot[C]{ }
+	\fancyfoot[OR]{\thepage}
+	\fancyfoot[ER]{}
+	\renewcommand{\headrulewidth}{1pt}
+	\renewcommand{\footrulewidth}{1pt}
+}
+\fancypagestyle{plain}{%
+	\fancyhf{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}
+	\fancyfoot[OR]{\thepage}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage{emptypage}
+
+% \matr{A} ergibt "fettes A" wie es bei Matrizen aussehen soll
+\newcommand{\matr}[1]{\mathbf{#1}}
+
+% Definition der Uni Kassel Farbpalette
+\definecolor{UKDunkelGrau}{RGB}{87,87,87}
+\definecolor{UKMittelGrau}{RGB}{157,157,157}
+\definecolor{UKHellGrau}{RGB}{218,218,218}
+\definecolor{UKDunkelPink}{RGB}{154,12,70}
+\definecolor{UKMittelPink}{RGB}{199,16,92}
+\definecolor{UKHellPink}{RGB}{243,216,221}
+\definecolor{UKGruen}{RGB}{21,56,36}
+\definecolor{UKBlau}{RGB}{80,149,200}
+\definecolor{UKGelb}{RGB}{196,210,15}
+\definecolor{UKTuerkis}{RGB}{74,172,150}
+\definecolor{UKGold}{RGB}{234,195,114}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\familydefault}{\rmdefault}
+\renewcommand*\rmdefault{ppl}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\makeatletter
+\input{Einstellungen/Titelseite}
+\makeatother
+
+\newcounter{SeitenzahlSpeicher}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../MRT-Bericht-2020"
+%%% End:

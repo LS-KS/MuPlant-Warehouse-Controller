@@ -1,0 +1,58 @@
+% !TeX spellcheck = de_DE
+\renewcommand{\maketitle}{\fontfamily{cmss}\selectfont
+  \begin{center}
+	\vspace*{-0.5cm}
+	\includegraphics[width=75mm]{Bilder/UniKS-Logo}\\
+
+	\vspace{1.5cm}
+	\centering
+        \ifthenelse{\equal{\Typ}{MSc}}{
+	% Masterarbeit
+	\textbf{\Large Masterarbeit}\\[1ex]
+        }{\ifthenelse{\equal{\Typ}{BSc}}{
+	% Bachelorarbeit
+	\textbf{\Large Bachelorarbeit}\\[1ex]
+        }{
+        %  Restliche Arbeiten:
+	\textbf{\Large \Typ}\\[4ex]
+        }}
+	\textsf{\Huge \@title}\\[4ex]
+%
+	{\Large \@author}\\[4ex]
+%
+        \ifthenelse{\isundefined{\Titelgrafik}}{}{
+  	  \vfill
+          \includegraphics[height=8cm]{\Titelgrafik}
+  	  \vfill
+        }
+	\vfill
+        \ifthenelse{\equal{\Typ}{Technischer Bericht}}{
+        Bericht-Nr. \MRTnr\\  
+        }{ 
+        \begin{center}
+          %\fbox{\parbox{14cm}{
+          \renewcommand{\arraystretch}{1.2}
+		\begin{tabularx}{\columnwidth}{p{0.5\textwidth}>{\raggedleft\arraybackslash}p{0.5\textwidth}}
+			Matrikelnummer: & \MatNr\\
+                        \ifthenelse{\equal{\Typ}{MSc}\or\equal{\Typ}{BSc}}{
+			Erstgutachter: & \Erstgutachter\\
+			Zweitgutachter: & \Zweitgutachter\\}{
+			Gutachter: & \Erstgutachter\\}
+                        \ifthenelse{\isundefined{\Betreuer}}{}{
+			Betreuer: & \Betreuer\\}
+			Tag der Abgabe: & \@date\\
+                        \ifthenelse{\isundefined{\MRTnr}}{}{MRT-Nr.:& \MRTnr\\}
+                      \end{tabularx}%
+            %          }}
+                    \end{center}
+        }
+	\vfill
+	\includegraphics[height=12mm]{Bilder/MRT-Logo} \hfill \includegraphics[height=12mm]{Bilder/ISAC-Logo}
+\end{center}
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../MRT-Bericht-2020"
+%%% End:

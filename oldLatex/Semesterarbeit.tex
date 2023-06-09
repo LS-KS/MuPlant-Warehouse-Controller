@@ -1,0 +1,138 @@
+%! Author = lennartschink
+%! Date = 29.05.23
+
+% Preamble
+\documentclass[11pt]{scrartcl}
+\title{Von C\# nach Python: Software-Konzeptionierung einer robotergestützten Lagerverwaltung}
+\subtitle{Analyse bestehender Software und Konzeptionierung einer integrierten Python-Anwendung mit kameragestützen Validierungsprozessen in der Industrie 4.0-Plattform Modellfabrik $\mu$Plant}
+\author{Lennart Schink}
+\date{\today}
+% Packages
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\renewcommand{\figurename}{Abb}
+
+% Document
+\begin{document}
+
+    \maketitle
+    \tableofcontents
+    \newpage
+
+    \section{Motivation und Zielsetzung}
+    Das Institut für Mess- und Regelungstechnik an der Universität Kassel hat in den letzten Jahren eine Modellfabrik $\mu$Plant gebaut.
+    Aus über 70 Einzelarbeiten ist ein modernes Industrie-4.0 Konzept geschaffen worden. Teil der $\mu$Plant ist ein vollautomatisiertes Lager.
+    Das Lager besteht aus einem abgetrennten Raum, dessen Zugang über eine Tür mit einem Türschalter überwacht ist. In diesen Bereich können Turtlebots einfahren.
+    In dem abgetrennten Bereich steht ein Industrieroboter und ein Lagerregal mit ausgewiesenen 18 Lagerplätzen. Außerdem befindet sich neben einer Andockstation für den Turtlebot auch noch eine Werkbank. \\
+
+    Ein pneumatischer Greifer des Industrieroboters kann Paletten, die je mit bis zu zwei Bechern bestückt werden können, zwischen dem mobilen Roboter und dem Lagerregal frei bewegen.
+    Von einem PC-Arbeitsplatz aus können mittels Software die Lagerprozesse überwacht werden. Außerdem kann im Fehlerfall eingeschritten werden und es können manuell Prozesse ausgelöst werden.\\
+
+    Die Software ist derzeit in 3 Teile aufgeteilt: Einerseits gibt es die Lagerverwaltung - die Hauptsoftware. Sie bildet die automatisierten Prozesse ab und verfügt über ein GUI welches u.A. den Bestand visualisiert.
+    Daneben gibt es den Warehouse Controller, der dazu verwendet wird manuell Lagerprozesse auszulösen, und ein RFID-Tool was für manuelle RFID - Prozesse benutzt wird.
+
+    Mit dem Wechsel des Betriebssystems von Windows 7 auf Windows 10 ist die Kompatibilität der in C\# implementierten Software nicht mehr gegeben. Außerdem laufen Teilfunktionen des Programms nicht fehlerfrei oder tolerieren kaum Fehlbedienungen.
+    Die Dreiteilung der Software ist im Allgemeinen auch nicht mehr erwünscht. \\
+
+    Diese Seminararbeit beschäftigt sich mit der Analyse der bestehenden Software: Es wird ermittelt, aus welchen Programmteilen und Funktionen die Software besteht.
+    Aus den Erkenntnissen wird ein Konzept entwickelt wie die Drei Software Teile zusammengeführt werden könnten um so die Grundlage für eine Migration der Software nach Python zu schaffen.
+
+    Erkenntnisse aus der studentische Arbeit von [Hügler] sollen überprüft und vertieft werden um Anforderungen an Kameras und arUco Marker zu ermitteln, die später eine automatisierte Inventur ermöglicehn sollen.
+    \newpage
+    \section {Softwarearchitektur der bestehenden Software}
+    Analysemethoden der Informatik für Software sind in der Regel für die verschiedenen Design-Phasen einer Software entwickelt worden. Eine von mir durchgeführte Recherche ergab,
+    dass sich Analyse-Tools und Methoden für bestehende Software vor Allem darauf fokussieren die Performance, Speichermanagement und Benutzererfahrung zu bewerten.
+    Die Architektur einer Software spielt dabei eine untergeordnete Rolle.
+    Für die Neuentwicklung der bestehenden Software werden im Folgenden die Klassen und Objekte sowie ihre Wechselwirkungen dargestellt und anschließend analysiert und bewertet.
+    \\
+    In einem C\# - Projekt sind UI und Logik in getrennten Dateien implementiert. XAML- Dateien sind eine angepasste Form von XML-Dateien. Sie legen fest wie etwas gerendert wird während
+    XAML.CS- Dateien die dahinterliegende Buisiness-Logik abbilden.
+    Am Beispiel des Haupt-GUI des Programms soll der prinzipielle Aufbau gezeigt werden. Wegen der Komplexizität wird der Umfang jedoch nicht für das gesamte Programm fortgesetzt.
+    \begin{itemize}
+        \item Das Repository sollte in ein korrekt bezeichnetes Git-Repository gelegt werden.
+    \end{itemize}
+
+    \subsection {Lagerverwaltung 3.0}
+    \begin{itemize}
+        \item Die Datei \verb|App.xaml.cs| ist der Einstiegspunkt des Programms.
+        \item Die Datei \verb|App.xaml| erzeugt ein Objekt der Apllication Klasse und erzeugt ein Dictionary mit den Ressourcen der Anwendung. Als Startup-URL ist die Datei \verb |MainWindow.xaml| festgelegt.
+        \item In \verb|MainWindow.xaml| wird:
+        \begin{itemize}
+            \item Das Hauptfenster gerendert.
+            \item Objekte und Variablen initialisiert, die dem Lager zugeordnet sind:
+            \begin{itemize}
+                \item Ein Objekt \verb|inventory| der Klasse \verb|Inventory| für das Inventar mit \verb|null| initialisiert.
+                \item Ein Objekt \verb|storageMatrix| von der Klasse \verb|PalletMatrix| erzeugt.
+                \item Ein Object \verb|commissionMatrix| von der Klasse \verb|PalletMatrix| erzeugt.
+                \item Ein Objekt \verb|mobileRobot| von der Klasse \verb |MobileRobot| erzeugt.
+                \item Außerdem eine Variable \verb|lastCupRead| vom Datentyp \verb|ushort| (16-Bit-Ganzzahl, vorzeichenlos) mit 0 initialisiert.
+            \end{itemize}
+            \item Objekte und Variablen initialisiert, die dem ABB Controller zugeordnet sind:
+            \begin{itemize}
+                \item Ein Objekt \verb|commands| von der Klasse \verb|controllerCommandList|.
+                \item Ein Objekt \verb|controllerProperties| von der Klasse \verb|RobotControllerProperties|.
+                \item Ein Objekt \verb|controllerBase| von der Klasse \verb|RobotControllerBas|, mit dem Initialisierungswert \verb|null|.
+                \item Ein Objekt \verb|controllerSim| von der Klasse \verb|RobotSimulator|.
+            \end{itemize}
+        \end{itemize}
+        Im Constructor der Klasse werden der ModBus und der Roboter Controller initialisiert, die Produktlistegeladen und gerendert.
+        Daten des Lagers und des turtlebots sowie Comissionsdaten werden geladen und anschließend das Inventar gerendert.
+    \end{itemize}
+        Abb. 1 zeigt einen Screenshot des Hauptbildschirm des Programms. Es ist in 7 wesentliche Teile eingeteilt:
+    \begin{figure}[h]
+        \label{fig:figure}
+        \includegraphics[width = \textwidth ]{study/Startbildschirm.png}
+        \caption[Ansicht des Startbildschirms]%
+        {\small Startbildschirm der Anwendung, zur besseren Beschreibung sind die Bedienbereiche farblich und mit Ziffern gelennzeichnet}
+        \centering
+    \end{figure}
+    \begin{itemize}
+        \item Der rote , mit "1" markierte Bereich im Startbildschirm dient dazu die Verbindungsdaten zum ModBus zu konfigurieren. Über entsprechende Taste kann die Eingabe der beiden Felder aktiviert/deaktiviert werden. Über die Start-Taste wird die VErbindung hergestellt.
+        An der Stelle des sichtbaren roten Ausrufezeichen-Symbol wird ein grüner Haken sichtbar, wenn die Verbindung korrekt hergestellt wurde.
+        \item Der blaue, mit "2" markierte Bereich dient dazu gesondert den ModBus-Port einzustellen.
+        \item Der grüne, mit "3" markierte Bereich ist eine Listenansicht, in der jedes mögliche Produkt mit seiner zugeordneten ID abgebildet ist.
+        Die Liste ermöglicht dem Benutzer einen schnellen Überblick über mögliche Produkte.
+        \item Der gelbe, mit "4" markierte Bereich ist die Übersicht über das aktuelle Geschehen. Im linken, unteren Bereich ist der Lagerplatz des mobilen Roboters symbolisiert.
+        Im rechten, unteren Bereich ist der Lagerplatz der Werkbank symbolisiert. Beide Symboliken verfügen über je einen Lagerplatz, wobei die real doppelte Ausführung der Werkbank nicht umgesetzt wurde.
+        \item die violetten Bereiche "5" und "6" bilden die Visualisierung des Lagers. In Bereich 6 sind die 18 Lagerslots so dargestellt wie das reale Regal aufgebaut ist. Einzig die Lagerort-Bezeichnung ist anders.
+        Im Bereich "5" werden alle möglichen Produkte in einer Liste mit der gelagerten Menge angezeigt. Wahlweise können alle Produkte ausgeblendet werden, die keine Bestand haben.
+        Mit Klick auf ein Produkt, egal ob im Bereich "5" oder "6", werden alle passenden Einträge farblich hervorgehoben, sodass auf einen Blick erkennbar ist, wo die Lagermenge im Lager wirklich abgebildet ist.
+        \item Im grünen, mit "7" gekennzeichneten Bereich ist ein Eventlogger implementiert. Wann immer ein für den Benutzer relevantes Ereignis eintritt, wird hier eine entsprechende Meldung angezeigt.
+    \end{itemize}
+    \subsubsection{Lagerelemente}
+        Die bestehende Software dient dazu Lagerpakete vom mobilen Roboter auf die Werkbank oder ins Lager zu bewegen. Oder alle möglichen Kombinationen davon.
+    Das Konzept der $\mu$Plant beschränkt sich dabei auf eine Palette, die so ausgeführt ist, dass der Greifer des Industrieroboters sicher bewegen kann. Im Wesentlichen sit es ein Quader mit zwei seitlichen Längsnuten.
+    Eine Palette enthält zwei senkrechte Bohrungen, die es ermöglichen je einen Becher aufzunehmen.\\
+    Ein Becher ist ein transparentes, zylindrisches Gefäß aus Acrylglas mit einem Absatz, der etwa mittig in der Höhe angebracht ist. Dadurch können die Becher einzeln vom Greifer bewegt werden.
+
+    \subsection {RFID Server}
+
+    \subsection {Controller}
+
+    \newpage
+    \section {Konzeptionierung einer integrierten Python Anwendung}
+
+    \subsection {Konzepte zur Datenmodellierung}
+
+    \subsection {Konzepte für Controller- und Serviceklassen}
+
+    \subsection {GUI - Konzeptionierung}
+
+    \subsection {Teilautomatisierte Code Dokumentation}
+
+    \newpage
+    \section{Analyse zur Fehlerbehandlung}
+
+    \newpage
+    \section {Ideensammlung zu kameragestützten Validierungsprozessen in der Lagerverwaltung}
+
+    \subsection {Konzepte}
+
+    \subsection {Abgeleitete Anforderungen an die Kamera}
+
+    \subsection {Kameraauswahl}
+
+
+
+\end{document}

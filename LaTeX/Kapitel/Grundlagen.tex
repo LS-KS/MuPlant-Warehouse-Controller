@@ -1,0 +1,138 @@
+% !TeX spellcheck = de_DE
+
+\chapter{Grundlagen}
+
+Nachfolgend ein paar Beispiele für Formeln, Abbildungen, Tabellen und Quellenangaben.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FORMEL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Eine Formel:
+
+\begin{align}
+	\dot{m}_\mathrm{CH4} \left( p_\mathrm{U}, T_\mathrm{U}, C_\mathrm{ppmm}, \overline{v} \right) = \dfrac{p_\mathrm{U} \cdot M_\mathrm{CH4}}{R \cdot T_\mathrm{U}} \dfrac{C^{*}}{\num{10}^{\num{6}}} \mathrm{D} \cdot d \cdot \tan \left( \dfrac{\alpha}{2} \right)
+	\label{eq:DierksscheFormel}
+\end{align}
+
+mit dem Dierks'schen Faktor $\mathrm{D} = \num{2}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ABBILDUNG
+% Schaubilder werden am besten mit "tikz" erstellt
+% Bei Plots (z.B.) am besten aus Matlab nur die Daten übernehmen und "pgfplot" erstellen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Referenzen auf eine Pixelgrafik (siehe Abbildung \ref{fig:TestPixel}),
+eine zweiteilige Abbildung mit dem Paket \textit{subcaption} (siehe
+Abbildung \ref{fig:TestDoppel} -- man kann auch
+\ref{fig:TestDoppelLinks} und \ref{fig:TestDoppelRechts} einzeln
+referenzieren), ein Schaubild mit dem Paket \textit{tikz} (siehe
+Abbildung \ref{fig:TestTikz}) und ein Plot mit dem Paket
+\textit{pgfplots} (siehe Abbildung \ref{fig:TestPgf}).
+
+\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=0.45\textwidth]{Bilder/Testbild}
+	\caption{Dies ist eine Pixelgrafik.}
+	\label{fig:TestPixel}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{subfigure}[c]{.5\linewidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{Bilder/Testbild}
+		\caption{Linkes Bild}
+		\label{fig:TestDoppelLinks}
+	\end{subfigure}%
+	\begin{subfigure}[c]{.5\linewidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{Bilder/Testbild}
+		\caption{Rechtes Bild}
+		\label{fig:TestDoppelRechts}
+	\end{subfigure}
+	\caption{Eine Abbildung mit zwei Teilbildern.}
+	\label{fig:TestDoppel}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{tikzpicture}
+		\node[rectangle, draw = black, text centered, text width = 3.0cm, minimum height=1cm] (NodeA) {Teil 1};
+		\node[rectangle, draw = black, text centered, text width = 3.0cm, minimum height=1cm, below = of NodeA] (NodeB) {Teil 2};
+		\draw[-latex, thick] (NodeA) -- (NodeB) node[midway, right] {Verbindung};		
+	\end{tikzpicture}
+	\caption{Dies ist ein mit \textit{tikz} erstelltes Schaubild.}
+	\label{fig:TestTikz}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[%
+			xlabel={Geschwindigkeit $v$ in \si{\kilo\meter\per\hour}},
+			ylabel={Temperatur $T$ in \si{\degreeCelsius}},
+			height = 0.5\textwidth,
+			width = 0.8\textwidth,
+			xmin=0,xmax=120,
+			ymin=0,ymax=100,
+			xtick={0,10,...,120},
+			legend style={legend pos = south east}]%
+			\addplot [color=UKDunkelPink,mark=o]%
+				coordinates{
+					(0,0)
+					(120,100)
+				};%
+			\addplot [color=UKBlau,mark=x]%
+				coordinates{
+					(0,80)
+					(120,40)
+				};%
+		\legend{Gerade $\num{1}$, Gerade $\num{2}$}
+		\end{axis}%
+	\end{tikzpicture}
+	\caption{Dies ist ein mit \textit{pgfplots} (und \textit{tikz}) erstelltes Diagramm.}
+\label{fig:TestPgf}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABELLE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Eine Beispieltabelle ist in Tabelle \ref{tab:Test} zu finden.
+
+\begin{table}[!htbp]
+	\caption{Dies ist eine Tabelle mit \textit{multicolumn} und \textit{multirow} Beispielen.}
+	\label{tab:Test}
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Eigenschaften} & \textbf{Gegenstand 1} & \textbf{Gegenstand 2}\\
+		\hline
+		$E_1$ & \multicolumn{2}{c|}{zufällig identisch}\\
+		\hline
+		\multirow{2}{*}{$E_2$} & \multirow{2}{*}{kurz} & Zufällig sehr\\
+		 & & lang\\
+		\hline
+	\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUFZÄHLUNG UND ZITATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Beispielaufzählung und Zitate:
+
+\begin{itemize}
+	\item Buch \cite{2016-Book-Kroll-CIA}
+	\item Wissenschaftlicher Artikel \cite{OrdonezMueller2017}
+	\item Konferenzbeitrag \cite{Schramm2019}
+	\item Dissertation \cite{OrdonezMueller2018}
+	\item Patent \cite{DPatent2017}
+	\item Onlinequelle \cite{MRTToolbox2020}
+\end{itemize}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../MRT-Bericht-2020"
+%%% End:

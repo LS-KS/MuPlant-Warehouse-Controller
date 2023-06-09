@@ -1,0 +1,251 @@
+% !TeX encoding = UTF-8
+% !TeX TS-program = pdflatex
+% !TeX spellcheck = de_DE
+
+\def\version{\today L. Schink)}
+% Verlauf
+% v 1.1 20.2.20202 S. Schramm - Initiale Version
+% v 1.2 20.2.20202 A. Dürrbaum - Anpassungen Ttielseite / Indices
+
+% Dokumenteneinstellung
+\documentclass[a4paper,11pt,cleardoubleempty]{scrbook}
+
+%% Einstellungsdatei
+\input{Einstellungen/Einstellungen.tex}
+
+%% Alternative zu Schriftart Calibri
+\usepackage[sfdefault,lf]{carlito}
+
+%% Benötigte Daten!
+\title{\fontsize{16}{14}\selectfont Von C\# nach Python: Software-Konzeptionierung einer robotergestützten Lagerverwaltung\\
+{\fontsize{10}{10}\selectfont Analyse bestehender Software und Konzeptionierung einer integrierten Python-Anwendung mit kameragestützen Validierungsprozessen in der Industrie 4.0-Plattform Modellfabrik $\mu$Plant}}
+\date{\today}
+\author{Lennart Schink}
+\def\MatNr{33237484}
+ 
+%% Wenn \geburtsort auskommentiert -> Ausgabe von
+%%  Geburtsag und Geburtsort auf Deckblatt
+\def\Geburtsort{Bad Bergzabern}\def\Geburtstag{31.12.1990}
+
+%% Art des Berichtes (eines auskommentieren)
+%\def\Typ{MSc}
+\def\Typ{Seminararbeit}
+%\def\Typ{BSc}
+%\def\Typ{Seminararbeit}
+%\def\Typ{Technischer Bericht}
+
+%% MRT-Nummer, wenn schon bekannt
+\def\MRTnr{N.N}
+
+%% Auskommentieren, wenn eine Grafig auf dem Titelblatt erscheinen sollen
+% maximale Höhe: 5cm, max. Breite 15 cm
+\def\Titelgrafik{Bilder/Wissenschaft.jpg}
+
+%% Gutachter
+\def\Erstgutachter{Univ.-Prof.~Dr.-Ing. Andreas Kroll}
+%\def\Zweitgutachter{Dr.-Ing. Robert Schmoll } % nur bei MSc oder BSc
+
+%% Auskommentieren, wenn der/die Betreuer auf dem Titelblatt erscheinen sollen
+\def\Betreuer{Dip.-Ing. Axel Dürrbaum} % Mehrer Betreuer möglich
+
+%% PDF mit Aufgabenstellung
+\def\Aufgabenstellung{Bilder/Aufgabenstellung.pdf}
+
+%% MRT-Informationen im PDF
+\pdfinfo{
+   /Author \@author
+   /Title \@title
+   /CreationDate \@date
+   /Subject \Typ
+   /Keywords (MRT;LaTeX)
+}
+
+
+% --------------------------------------------------------------------
+% Benutzerdefinierte Makros
+% --------------------------------------------------------------------
+
+% Schreibweise für Vektoren
+\def\Vektor#1{\ensuremath{\mathbf{#1}}}
+
+% Transponieren einesVektors/einer Matrix
+\def\Trans#1{\ensuremath{#1^{\mathrm{T}}}}
+
+% Variable/Zahlenwert mit Einheit
+\def\Einheit#1#2{\ensuremath{#1 \text{ in } \mathrm{#2}}}
+
+% --------------------------------------------------------------------
+% Abkürzungsverzeichnis
+\makeglossary
+\newcommand*{\Glossar}[3]{#3 (\gls{#1})\newglossaryentry{#1}{name=#2,
+    description={#3}}}
+
+% Symbolverzeichnis
+\makenomenclature
+\renewcommand{\nomname}{Symbolverzeichnis}
+\newcommand*{\Symbol}[2]{#1\nomenclature{#1}{#2}{}{}}
+\newcommand*{\SymbolT}[2]{#2 #1\nomenclature{#1}{#2}{}{}}
+\newcommand*{\SymbolE}[3]{#2 #1\nomenclature{#1}{#2}{#3}{}}
+\newcommand*{\SymbolB}[4]{#2 #1\nomenclature{#1}{#2}{#3}{#4}}
+
+% Index
+\makeindex
+\newcommand*{\Index}[1]{#1\index{#1}}
+
+% --------------------------------------------------------------------
+  
+% Beginn des Dokuments
+\begin{document}
+\pagenumbering{Roman}
+
+% Bei Problemen mit überhängenden Absätzen kann Sloppy zur Aufweichung
+% der Satzparameter genutzt werden. Dies wird offiziell nicht
+% empfohlen, kann aber u. U. zu guten Ergebnissen führen.
+%\sloppy
+
+% --------------------------------------------------------------------------
+% Titelseite (IMMER)
+% --------------------------------------------------------------------------
+\fancyhf{}
+\pagestyle{empty}
+\maketitle 
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Aufgabenstellung (IMMER) 
+% PDF-Aufgabenstellung von Betreuer geben lassen und hier einfügen
+% --------------------------------------------------------------------------
+\ifthenelse{\equal{\Typ}{MSc}\or\equal{\Typ}{BSc}}{
+\begin{figure}[!htbp]\centering
+\fbox{\includegraphics[width=1.0\textwidth,page=1]{\Aufgabenstellung}}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\fbox{\includegraphics[width=1.0\textwidth,page=2]{\Aufgabenstellung}}
+\end{figure}
+\cleardoublepage
+}{}
+
+% --------------------------------------------------------------------------
+% Versicherung (BEI BA UND MA)
+% --------------------------------------------------------------------------
+\ifthenelse{\equal{\Typ}{MSc}\or\equal{\Typ}{BSc}}{
+\include{Kapitel/Versicherung}
+\cleardoublepage
+}{}
+
+% --------------------------------------------------------------------------
+% Zusammenfassung (BEI BA UND MA)
+% --------------------------------------------------------------------------
+\ifthenelse{\equal{\Typ}{MSc}\or\equal{\Typ}{BSc}}{
+\include{Kapitel/Kurzfassung}
+\cleardoublepage
+}{}
+
+% --------------------------------------------------------------------------
+% Summary (BEI MA)
+% --------------------------------------------------------------------------
+%\ifthenelse{\equal{\Typ}{MSc}}{
+%\include{Kapitel/Summary}
+%\cleardoublepage
+%}{}
+
+% --------------------------------------------------------------------------
+% Inhaltsverzeichnis (IMMER)
+% --------------------------------------------------------------------------
+\tableofcontents
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Liste der Tabellen und Bilder und Listings
+% --------------------------------------------------------------------------
+\listoftables      % optional
+\listoffigures     % optional
+\lstlistoflistings % optional
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Abkürzungsverzeichnis (IMMER)
+% --------------------------------------------------------------------------
+%\include{Kapitel/Abkuerzungsverzeichnis}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\printglossary[title={Abkürzungsverzeichnis},toctitle={Abkürzungsverzeichnis}]
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Symbolverzeichnis (IMMER)
+% --------------------------------------------------------------------------
+%\include{Kapitel/Symbolverzeichnis}
+\addcontentsline{toc}{chapter}{Symbolverzeichnis}
+\printnomenclature
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Index (optional)
+% --------------------------------------------------------------------------
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+\cleardoublepage
+
+
+% --------------------------------------------------------------------------
+% Hauptteil der Arbeit (IMMER)
+% --------------------------------------------------------------------------
+\pagestyle{fancy2}
+\setcounter{SeitenzahlSpeicher}{\value{page}}
+\pagenumbering{arabic}
+
+% Erklärung gemäß Prüfungsordnung
+% Danksagung
+
+\include{Kapitel/Einleitung}
+\cleardoublepage
+
+\include{Kapitel/altSoftwareArchitektur}
+\cleardoublepage
+
+\include{Kapitel/KonzeptPythonApp}
+\cleardoublepage
+
+\include{Kapitel/Fehlerbehandlung}
+\cleardoublepage
+
+\include{Kapitel/KameraValidierung}
+\cleardoublepage
+
+\include{Kapitel/Zusammenfassung_Ausblick}
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Anhang (WENN NÖTIG)
+% --------------------------------------------------------------------------
+\appendix
+%\pagenumbering{roman}\setcounter{page}{1}
+\pagenumbering{Roman}\setcounter{page}{\value{SeitenzahlSpeicher}}
+
+\include{Kapitel/AnhangA}
+\cleardoublepage
+
+% --------------------------------------------------------------------------
+% Literatur (IMMER)
+% --------------------------------------------------------------------------
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+%\bibliographystyle{Literatur/IEEEtran}
+%\bibliographystyle{Literatur/IEEEtranS}
+%%Deutsch (Groß/kleinschreibung)
+%\bibliographystyle{Literatur/IEEEtranGER}
+%%Deutsch (Groß/kleinschreibung) + DOI
+\bibliographystyle{Literatur/IEEEtranGERdoi}
+\bibliography{Literatur/MRT-Bericht}
+	
+% --------------------------------------------------------------------------
+% Ende des Dokuments
+% --------------------------------------------------------------------------
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

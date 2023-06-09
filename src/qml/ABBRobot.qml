@@ -42,7 +42,6 @@ Rectangle{
         width: parent.width/3
         height: parent.height/3 > 210? parent.height/3 : 210
         name: "Mobile Robot"
-        model: mobileRobotModel
         anchors{
             bottom: parent.bottom
             left:  parent.left
