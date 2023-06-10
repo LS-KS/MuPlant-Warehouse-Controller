@@ -3,22 +3,37 @@
 \chapter{Softwarearchitektur der bestehenden Software}
 
     Analysemethoden der Informatik für Software sind in der Regel für die verschiedenen Design-Phasen einer Software entwickelt worden.
-    Eine von mir durchgeführte Recherche ergab,dass sich Analyse-Tools und Methoden für bestehende Software vor
-    Allem darauf fokussieren die Performance, Speichermanagement und Benutzererfahrung zu bewerten.
+    Eine von mir durchgeführte Recherche ergab, dass sich Analyse-Tools und Methoden für bestehende Software vor
+    allem darauf fokussieren die Performance, Speichermanagement und Benutzererfahrung zu bewerten.
     Die Architektur einer Software spielt dabei eine untergeordnete Rolle.
-    Für die Neuentwicklung der bestehenden Software wird im Folgenden die Programmstruktur dargestellt und analysiert,
-    sodass eine Bewertung der Programmkomponenten erfolgen kann.
+    Für die Neuentwicklung der bestehenden Software wird allerdings im Folgenden die Programmstruktur dargestellt und analysiert.
+    Die Performance der Software und ihr Speicherverbrauch spielen für die $\mu$Plant eine untergeordnete Rolle.
+    Eine Bewertung der Programmkomponenten sollte also anhand folgender Kriterien bewertet werden:
+
+    \begin{itemize}
+        \item Ihrem Nutzen für den Anwender
+        \item Zuverlässigkeit
+        \item Umgang mit erwartbaren Fehlern
+    \end{itemize}
+
+    Der Programmcode sollte zudem
+    \begin{itemize}
+        \item Leicht lesbar und verständlich
+        \item Zuverlässig und robust
+        \item gut erweiterbar sein.
+    \end{itemize}
+
     \\
-    In einem C\# - Projekt sind UI und Logik in getrennten Dateien implementiert. XAML- Dateien sind eine angepasste
-    Form von XML-Dateien und legen somit fest wie das GUI gerendert wird.
+    In einem C\# Projekt sind UI und Logik in getrennten Dateien implementiert.
+    XAML Dateien sind eine angepasste Form von XML-Dateien und legen somit fest wie das GUI gerendert wird.
     XAML.CS Dateien enthalten die dahinterliegende Logik inklusive Schnittstellen zu anderen Programmteilen.
-    Am Beispiel des Startbildschirm des Programms \"Lagerverwaltung 3.0\" wird der grundlegende Programmaufbau geschildert.
-    Im Weiteren wird wegen der Komplexizität und des fehlenden Mehrwerts darauf verzichtet.
-    Ich verzichte aus den gleichen Gründen auf die detaillerte Funktionsweise der graphischen ELemente und der Events
+    Am Beispiel des Startbildschirms des Programms \glqq Lagerverwaltung 3.0\grqq wird der grundlegende Programmaufbau geschildert.
+    Im Weiteren wird wegen der Komplexität und des fehlenden Mehrwerts darauf verzichtet.
+    Ich verzichte aus den gleichen Gründen auf die detaillierte Funktionsweise der grafischen ELemente und der Events
     sowie ihrer Eventhandler.
     \\
-    In den erstellen Klassendiagrammen ist jedoch gut ersichtlich welche Klasse Events nutzt. Die Klasse
-    \verb|INotifyPropertyChanged| stellt die benötigten Listeners dafür bereit und wird an andere Klassen vererbt.
+    In den erstellen Klassendiagrammen ist gut ersichtlich, welche Klasse Events nutzt.
+    Die Klasse \verb|INotifyPropertyChanged| stellt die benötigten Listeners dafür bereit und wird an andere Klassen vererbt.
 
     \subsection {Lagerverwaltung 3.0}
 
@@ -30,8 +45,8 @@
     \\
     In der Datei ist beschrieben wie der Startbildschirm gerendert wird.
     Zunächst wird ein Banner gerendert, bestehend aus dem Titel des Programms, dem Logo des Instituts und der $\mu$Plant
-    (Siehe Abb. 2.1 Bereich \"A\").
-    Es werden außerdem alle benötigten Daten-Objekte erzeugt.
+    (Siehe Abb. 2.1 Bereich \glqq A\grqq).
+    Es werden außerdem alle benötigten Datenobjekte erzeugt.
     Sie lassen sich wie folgt einteilen:
     \\
     \begin{itemize}
@@ -51,36 +66,37 @@
                 \item Ein Objekt \verb|controllerSim| von der Klasse \verb|RobotSimulator|.
             \end{itemize}
     \end{itemize}
-    Im Constructor der Klasse \verb|MainWindow| werden außerdem der ModBus und der Roboter Controller initialisiert
-    und wie in Abb. 2.1 gerendert (Bereiche gekennzeichnet durch die Buchstaben \"B\" und \"C\").
-    Die Produktliste wird aus der Datei \verb|Produkte.db| geladen und gerendert (Abb. 2.1 Bereich \"D\").
+    Im Constructor der Klasse \verb|MainWindow| werden zudem der ModBus und der Roboter Controller initialisiert
+    und gerendert (Abb. 2.1 Bereiche \glqq B\grqq und \glqq C\grqq).
+    Die Produktliste wird aus der Datei \verb|Produkte.db| geladen und gerendert (Abb. 2.1 Bereich \glqq D\grqq).
     Daten des Lagers und des mobilen Roboters sowie die Kommissionsdaten werden aus der Datei \verb|CommissionData.db|
     geladen und anschließend das Inventar gerendert:
-    Es wird einerseits eine Produktliste im Bereich \"E\" in Abb. 2.1 erzeugt, die um die gelagerte Menge ergänzt ist.
-    Produkte ohne Lagermenge können mit einer Checkbox wahlweise ein- und Ausgeblendet werden.
-    Andererseits werden die Daten genutzt um im Bereich \"G\" der Abbildung das Lager zu visualisieren.
-    Die drei Reihen \"TOP\", \"MIDDLE\" und \"BOTTOM\" solen die drei Regalböden des Lagerregals nachbilden.
-    Die Slkots A1\ldots A6, H1\ldots H6 sowie  H7\ldots H12 sind die Plätze für je eine Palette, die wiederum Platz für
+    Es wird einerseits eine Produktliste im Bereich \glqq E\grqq in Abb. 2.1 erzeugt, die um die gelagerte Menge ergänzt ist.
+    Produkte ohne Lagermenge können mit einer Checkbox wahlweise ein- und ausgeblendet werden.
+    Andererseits werden die Daten genutzt, um im Bereich \glqq G\grqq der Abbildung das Lager zu visualisieren.
+    Die drei Reihen \glqq TOP\grqq, \glqq MIDDLE\grqq und \glqq BOTTOM\grqq solen die drei Regalböden des Lagerregals nachbilden.
+    Die Slots A1\ldots A6, H1\ldots H6 sowie H7\ldots H12 sind die Plätze für je eine Palette, die wiederum Platz für
     je zwei Becher hat.
     Der Ursprung dieser Bezeichnung konnte während der Vorbereitungen auf diese Arbeit nicht geklärt werden.
     Das reale Pendant ist mit L1\ldots L18 gekennzeichnet.
     \\
-    Im Bereich \"F\" werden alle Ereignisse der Software als text angezeigt.
+    Im Bereich \glqq F\grqq werden alle Ereignisse der Software als text angezeigt.
     Das können Fehler sein aber auch Fortschritte im Programmablauf.
     \\
-    Im Mittleren Bereich ist die Anordnung von Roboter, Andockstation und Kommissioniertisch symbolisiert.
-    Der \"Start\"-Knopf startet den Automatikbetrieb. Wenn keine Verbindung zum Mosbus hergestellt werden kann,
-    wird dem Benutzer angeboten die Vorgänge zu simulieren. Im Klassendiagramm Abb. 2.2 wird jedoch schnell deutlich,
-    dass dieser Simulationsbetrieb nicht dazu genutzt werden kann um etwaige Fehler zu erkennen, da dazu eine ganz
-    andere Klasse verwendet wird.
-    Im Bereich \"Mobile Robot\" wird nach erfolgreichem Andocken das erkannte Produkt angezeigt.
+    Im mittleren Bereich ist die Anordnung von Roboter, Andockstation und Kommissioniertisch symbolisiert.
+    Der \glqq Start\grqq -Knopf startet den Automatikbetrieb.
+    Wenn keine Verbindung zum Modbus hergestellt werden kann, wird dem Benutzer angeboten die Vorgänge zu simulieren.
+    m Klassendiagramm Abb. 2.2 wird jedoch schnell deutlich, dass dieser Simulationsbetrieb nicht dazu genutzt werden
+    kann, um etwaige Fehler zu erkennen, da dazu eine ganz andere Klasse verwendet wird.
+    Im Bereich \glqq Mobile Robot\grqq wird nach erfolgreichem Andocken das erkannte Produkt angezeigt.
     Dem Bediener wird hier angeboten die Daten manuell zu manipulieren oder Details auszublenden.
-    Im Bereich \"Workbench\" werden bis zu zwei Paletten mit ihrem Inhalt gerendert.
-    Auch hier wird dem Benutzer angeboten die Daten per Hand zu manipulieren.
+    Im Bereich \glqq Workbench\grqq werden bis zu zwei Paletten mit ihrem Inhalt gerendert.
+    Auch hier wird dem Benutzer angeboten, die Daten per Hand zu manipulieren.
 
-    \begin{figure}[ht]
+    \begin{figure}[h]
         \label{fig:figure}
         \includegraphics[width = \textwidth ]{Bilder/LV_Startbildschirm}
+
         \caption[Ansicht des Startbildschirms]
         {\small Startbildschirm der Anwendung, zur besseren Beschreibung sind die Bedienbereiche rot umrandet und mit
         Buchstanben gekennzeichnet}
@@ -109,8 +125,8 @@
     vererbt (schmale Linie mit leerem Pfeil, in Anlehnung an UML). Eigenschaften, die sowohl Palette als auch den
     Becher betreffen sind in dieser Klasse implementiert.
     Weiterhin findet sich das Lager als eigene Klasse \verb|Inventory| und der mobile Roboter als \verb|MobileRobot| wieder.
-    Die \verb|Inventory|-Klasse ist jedoch nicht das Lager im Sinne von Abb 2.1 Bereich \"G\", sondern auf die Liste in
-    Bereich \"E\".
+    Die \verb|Inventory|-Klasse ist jedoch nicht das Lager im Sinne von Abb 2.1 Bereich \glqq G\grqq, sondern auf die Liste in
+    Bereich \glqq E\grqq.
     Ansonsten versucht das Datenmodell nicht weiter reale Prozesse im Programm abzubilden.
     \\
     \begin{figure}[ht]
@@ -122,7 +138,7 @@
     \end{figure}
 
     Zentrales Element ist die \verb|MainWindow| Klasse.
-    Sie implementiert eigentlich eine Interface-Klasse \verb|System.Windows.Window| und ist somit als GUI-Element gedacht.
+    Sie implementiert eigentlich eine Interface-Klasse \verb|System.Windows.Window| und ist somit als GUI Element gedacht.
     Der Programmierer hat sie allerdings als Daten-Hub verwendet.
     Wie oben geschildert werden beim Rendern des Fensters alle benötigten Datenobjekte erzeugt oder aus Dateien geladen.
     \begin{itemize}
@@ -132,13 +148,13 @@
         \verb|StorageData.db|zu dem Zeitpunkt nicht verfügbar ist, stürzt das Programm ab.
         \item In der Klasse \verb|PalletMatrix| wird die Datei \verb|StorageData.db| bzw. \verb|CommissionData.db|
         geladen um einen zweidimensionalen Array \verb|data| zu erzeugen.
-        Jedes Array-Element ist ein Objekt der Klasse \verb|Pallet| und Enthält eine Liste \verb|CupList| von Objekten
+        Jedes Array-Element ist ein Objekt der Klasse \verb|Pallet| und enthält eine Liste \verb|CupList| von Objekten
         der Klasse \verb|Cup|.
-        Diese Struktur wird dazu verwendet um das reale Lager nachzubilden.
+        Diese Struktur wird dazu verwendet, um das reale Lager nachzubilden.
         Zur Laufzeit werden zwei Objekte der Klasse \verb|PalletMatrix| erzeugt:
-        \item \item \verb|storageMatrix| bildet das Datenmodell um die Visualisierung in Abb. 2.1 Bereich \"G\" zu realisieren.
+        \item \item \verb|storageMatrix| bildet das Datenmodell um die Visualisierung in Abb. 2.1 Bereich \grqq G\glqq zu realisieren.
         \item \item \verb|commissionMatrix| bildet das DatenModell für die Visualisierung des mobilen Roboters und der
-        Workbench. 
+        Workbench.
     \end{itemize}
     \begin{figure}[ht]
         \label{fig:figure3}
@@ -184,27 +200,11 @@
     \begin{figure}[ht]
         \label{fig:figure8}
         \includegraphics[width = \textwidth ]{Bilder/RFID_Klassendiagramm}
-        \caption[Klassendiagramm des Programms RFID-Server ]
-        {\small Klassendiagramm des Programms RFID-Server mit allen vererbenden Klassen jedoch ohne solche die
+        \caption[Klassendiagramm des Programms RFID Server ]
+        {\small Klassendiagramm des Programms RFID Server mit allen vererbenden Klassen jedoch ohne solche die
         lediglich Typen konvertieren.}
         \centering
     \end{figure}
-
-
-    \begin{itemize}
-        \item Der rote , mit "1" markierte Bereich im Startbildschirm dient dazu die Verbindungsdaten zum ModBus zu konfigurieren. Über entsprechende Taste kann die Eingabe der beiden Felder aktiviert/deaktiviert werden. Über die Start-Taste wird die VErbindung hergestellt.
-        An der Stelle des sichtbaren roten Ausrufezeichen-Symbol wird ein grüner Haken sichtbar, wenn die Verbindung korrekt hergestellt wurde.
-        \item Der blaue, mit "2" markierte Bereich dient dazu gesondert den ModBus-Port einzustellen.
-        \item Der grüne, mit "3" markierte Bereich ist eine Listenansicht, in der jedes mögliche Produkt mit seiner zugeordneten ID abgebildet ist.
-        Die Liste ermöglicht dem Benutzer einen schnellen Überblick über mögliche Produkte.
-        \item Der gelbe, mit "4" markierte Bereich ist die Übersicht über das aktuelle Geschehen. Im linken, unteren Bereich ist der Lagerplatz des mobilen Roboters symbolisiert.
-        Im rechten, unteren Bereich ist der Lagerplatz der Werkbank symbolisiert. Beide Symboliken verfügen über je einen Lagerplatz, wobei die real doppelte Ausführung der Werkbank nicht umgesetzt wurde.
-        \item die violetten Bereiche "5" und "6" bilden die Visualisierung des Lagers. In Bereich 6 sind die 18 Lagerslots so dargestellt wie das reale Regal aufgebaut ist. Einzig die Lagerort-Bezeichnung ist anders.
-        Im Bereich "5" werden alle möglichen Produkte in einer Liste mit der gelagerten Menge angezeigt. Wahlweise können alle Produkte ausgeblendet werden, die keine Bestand haben.
-        Mit Klick auf ein Produkt, egal ob im Bereich "5" oder "6", werden alle passenden Einträge farblich hervorgehoben, sodass auf einen Blick erkennbar ist, wo die Lagermenge im Lager wirklich abgebildet ist.
-        \item Im grünen, mit "7" gekennzeichneten Bereich ist ein Eventlogger implementiert. Wann immer ein für den Benutzer relevantes Ereignis eintritt, wird hier eine entsprechende Meldung angezeigt.
-    \end{itemize}
-
 
     \subsection {RFID Server}
 
