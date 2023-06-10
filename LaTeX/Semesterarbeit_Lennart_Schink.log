@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  9 JUN 2023 07:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  10 JUN 2023 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1514,9 +1514,9 @@ e 98.
 File: T1Crlt-LF.fd 2022/10/05 (autoinst) Font definitions for T1/Crlt-LF.
 )
 (./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Einleitung.aux)
-(./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/Kapitel.aux)
-(./Kapitel/Tips_Tricks.aux) (./Kapitel/Zusammenfassung_Ausblick.aux)
-(./Kapitel/AnhangA.aux))
+(./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux)
+(./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux)
+(./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
 \openout1 = `Semesterarbeit_Lennart_Schink.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
@@ -1642,7 +1642,6 @@ nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
 or `english'. on input line 98.
- (./Semesterarbeit_Lennart_Schink.glsdefs)
 \c@lstlisting=\count395
 \c@mv@tabular=\count396
 \c@mv@boldtabular=\count397
@@ -1744,12 +1743,7 @@ xlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <./Bilder/UniKS-Logo.pd
 f> <./Bilder/Wissenschaft.jpg> <./Bilder/MRT-Logo.pdf> <./Bilder/ISAC-Logo.pdf>
 ] [2
 
-] (./Semesterarbeit_Lennart_Schink.toc
-Overfull \hbox (1.37196pt too wide) detected at line 26
- []\T1/Crlt-LF/b/n/10.95 XVII
- []
-
-)
+] (./Semesterarbeit_Lennart_Schink.toc)
 \tf@toc=\write8
 \openout8 = `Semesterarbeit_Lennart_Schink.toc'.
 
@@ -1757,7 +1751,8 @@ Overfull \hbox (1.37196pt too wide) detected at line 26
 
 ] [4
 
-] (./Semesterarbeit_Lennart_Schink.lot)
+]
+(./Semesterarbeit_Lennart_Schink.lot)
 \tf@lot=\write9
 \openout9 = `Semesterarbeit_Lennart_Schink.lot'.
 
@@ -1796,80 +1791,8 @@ Class scrbook Warning: \float@listhead detected!
 No file Semesterarbeit_Lennart_Schink.gls.
 [11] [12
 
-] (./Semesterarbeit_Lennart_Schink.nls
-
-! Package array Error:  Illegal pream-token (s): `c' used.
-
-See the array package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2 \begin{thenomenclature}
-                           
-? 
-
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 2.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 2.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 2.
-
-
-LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 2.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.5 ...hgeschwindigkeit\endgroup &\begingroup m/s^
-                                                  2\endgroup &\begingroup im...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.5 ...igkeit\endgroup &\begingroup m/s^2\endgroup
-                                                   &\begingroup im Vakkum\en...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.7 ...rdbeschleunigung\endgroup &\begingroup m/s^
-                                                  2\endgroup &\begingroup \e...
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.7 ...nigung\endgroup &\begingroup m/s^2\endgroup
-                                                   &\begingroup \endgroup &\...
-
-? 
-
-Overfull \hbox (0.70981pt too wide) in alignment at lines 2--9
- [] [] [] [] [] [] 
- []
-
-) [13
-
-{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
-[14
-
-] (./Semesterarbeit_Lennart_Schink.ind [15
-
-
-
-
-]) [16
-
-
-]
+] (./Semesterarbeit_Lennart_Schink.nls)
+(./Semesterarbeit_Lennart_Schink.ind)
 \openout2 = `Kapitel/Einleitung.aux'.
 
  (./Kapitel/Einleitung.tex
@@ -1907,6 +1830,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
 ) [1
 
 
+
+
 ] [2
 
 
@@ -1938,24 +1863,78 @@ ties[]\T1/cmss/m/n/10.95 .
 
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/carlito/crlt_j4hweq.enc}{/u
 sr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-<Bilder/LV_Startbildschirm.png, id=194, 1431.84938pt x 783.42688pt>
+<Bilder/LV_Startbildschirm.png, id=162, 1499.6025pt x 817.0525pt>
 File: Bilder/LV_Startbildschirm.png Graphic file (type png)
 <use Bilder/LV_Startbildschirm.png>
 Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 42.
-(pdftex.def)             Requested size: 398.3386pt x 217.94745pt.
- [4 <./Bilder/LV_Startbildschirm.png>]) [5] [6
+(pdftex.def)             Requested size: 398.3386pt x 217.02904pt.
+<Bilder/LV_Klassendiagramm_Datenmodell.png, id=163, 799.98875pt x 1154.3125pt>
+File: Bilder/LV_Klassendiagramm_Datenmodell.png Graphic file (type png)
+<use Bilder/LV_Klassendiagramm_Datenmodell.png>
+Package pdftex.def Info: Bilder/LV_Klassendiagramm_Datenmodell.png  used on inp
+ut line 51.
+(pdftex.def)             Requested size: 398.3386pt x 574.77704pt.
+<Bilder/LV_Klassendiagramm_ABBController.png, id=165, 817.0525pt x 1165.35374pt
+>
+File: Bilder/LV_Klassendiagramm_ABBController.png Graphic file (type png)
+<use Bilder/LV_Klassendiagramm_ABBController.png>
+Package pdftex.def Info: Bilder/LV_Klassendiagramm_ABBController.png  used on i
+nput line 59.
+(pdftex.def)             Requested size: 398.3386pt x 568.14767pt.
+<Bilder/LV_Klassendiagramm_Modbus.png, id=166, 811.03pt x 677.53125pt>
+File: Bilder/LV_Klassendiagramm_Modbus.png Graphic file (type png)
+<use Bilder/LV_Klassendiagramm_Modbus.png>
+Package pdftex.def Info: Bilder/LV_Klassendiagramm_Modbus.png  used on input li
+ne 67.
+(pdftex.def)             Requested size: 398.3386pt x 332.77892pt.
+<Bilder/Controller_Startbildschirm.png, id=167, 235.37938pt x 528.97626pt>
+File: Bilder/Controller_Startbildschirm.png Graphic file (type png)
+<use Bilder/Controller_Startbildschirm.png>
+Package pdftex.def Info: Bilder/Controller_Startbildschirm.png  used on input l
+ine 75.
+(pdftex.def)             Requested size: 300.07779pt x 674.33032pt.
 
 
+LaTeX Warning: Float too large for page by 22.0pt on input line 79.
 
-]
+<Bilder/C_Klassendiagramm.png, id=168, 805.0075pt x 653.44125pt>
+File: Bilder/C_Klassendiagramm.png Graphic file (type png)
+<use Bilder/C_Klassendiagramm.png>
+Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 83.
+(pdftex.def)             Requested size: 398.3386pt x 323.33975pt.
+<Bilder/RFIDServer_Bildschirm.png, id=169, 379.4175pt x 368.87813pt>
+File: Bilder/RFIDServer_Bildschirm.png Graphic file (type png)
+<use Bilder/RFIDServer_Bildschirm.png>
+Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 9
+2.
+(pdftex.def)             Requested size: 409.71848pt x 398.3386pt.
+
+Overfull \hbox (11.37988pt too wide) in paragraph at lines 92--94
+[][] 
+ []
+
+<Bilder/RFID_Klassendiagramm.png, id=170, 814.04124pt x 940.51375pt>
+File: Bilder/RFID_Klassendiagramm.png Graphic file (type png)
+<use Bilder/RFID_Klassendiagramm.png>
+Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 10
+0.
+(pdftex.def)             Requested size: 398.3386pt x 460.22432pt.
+[4 <./Bilder/LV_Startbildschirm.png>]) [5] [6 <./Bilder/LV_Klassendiagramm_Date
+nmodell.png>] [7 <./Bilder/LV_Klassendiagramm_ABBController.png>] [8 <./Bilder/
+LV_Klassendiagramm_Modbus.png>] [9 <./Bilder/Controller_Startbildschirm.png>]
+[10 <./Bilder/C_Klassendiagramm.png>] [11 <./Bilder/RFIDServer_Bildschirm.png>]
+[12 <./Bilder/RFID_Klassendiagramm.png>]
 \openout2 = `Kapitel/KonzeptPythonApp.aux'.
 
  (./Kapitel/KonzeptPythonApp.tex
 chapter 3.
-) [7
+) [13
 
 
-] [8
+
+
+
+] [14
 
 
 
@@ -1964,10 +1943,10 @@ chapter 3.
 
  (./Kapitel/Fehlerbehandlung.tex
 chapter 4.
-) [9
+) [15
 
 
-] [10
+] [16
 
 
 
@@ -1976,10 +1955,10 @@ chapter 4.
 
  (./Kapitel/KameraValidierung.tex
 chapter 5.
-) [11
+) [17
 
 
-] [12
+] [18
 
 
 
@@ -1988,10 +1967,10 @@ chapter 5.
 
  (./Kapitel/Zusammenfassung_Ausblick.tex
 chapter 6.
-) [13
+) [19
 
 
-] [14
+] [20
 
 
 
@@ -2000,10 +1979,10 @@ chapter 6.
 
  (./Kapitel/AnhangA.tex
 chapter A.
-) [17
+) [13
 
 
-] [18
+] [14
 
 
 
@@ -2012,7 +1991,7 @@ chapter A.
 LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
                before end of `thebibliography' environment on input line 27.
 
-) [19
+) [15
 
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
@@ -2025,82 +2004,24 @@ hanged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 50856 strings out of 476025
- 1184286 string characters out of 5790017
- 1861388 words of memory out of 5000000
- 70278 multiletter control sequences out of 15000+600000
+ 50883 strings out of 476025
+ 1186558 string characters out of 5790017
+ 1863388 words of memory out of 5000000
+ 70309 multiletter control sequences out of 15000+600000
  598361 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,11n,106p,10620b,1128s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{lstlisting.4.-3} has been referenced but does not e
-xist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{lstlisting.4.-2} has been referenced but does not e
-xist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{table.caption.13} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{table.caption.12} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.7} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.4.6.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.6} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.5} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.4} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.3} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.2} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.4.1} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{subsection.3.1.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.3.1} has been referenced but does not exist
-, replaced by a fixed one
-
-</usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Bold.pfb></
-usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Regular.pfb><
-/usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local
-/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/202
-3/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf-di
-st/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2023/texmf-dist
-/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2023/texmf-dist/f
-onts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2023/texmf-dist/fon
-ts/type1/public/cm-super/sfsx1440.pfb>
-Output written on Semesterarbeit_Lennart_Schink.pdf (33 pages, 451521 bytes).
+</usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Bold.pfb>
+</usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Regular.pfb
+></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/loc
+al/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive
+/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2
+023/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/202
+3/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
+Output written on Semesterarbeit_Lennart_Schink.pdf (35 pages, 668768 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 323 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 385 PDF objects out of 1000 (max. 8388607)
+ 305 compressed objects within 4 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -3,8 +3,9 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Semesterarbeit_Lennart_Schink.aux
 A level-1 auxiliary file: Kapitel/Einleitung.aux
 A level-1 auxiliary file: Kapitel/altSoftwareArchitektur.aux
-A level-1 auxiliary file: Kapitel/Kapitel.aux
-A level-1 auxiliary file: Kapitel/Tips_Tricks.aux
+A level-1 auxiliary file: Kapitel/KonzeptPythonApp.aux
+A level-1 auxiliary file: Kapitel/Fehlerbehandlung.aux
+A level-1 auxiliary file: Kapitel/KameraValidierung.aux
 A level-1 auxiliary file: Kapitel/Zusammenfassung_Ausblick.aux
 A level-1 auxiliary file: Kapitel/AnhangA.aux
 The style file: Literatur/IEEEtranGERdoi.bst
@@ -28,7 +29,7 @@ while executing---line 2524 of file Literatur/IEEEtranGERdoi.bst
 Done.
 You've used 0 entries,
             4474 wiz_defined-function locations,
-            875 strings with 7999 characters,
+            876 strings with 8042 characters,
 and the built_in function-call counts, 111 in all, are:
 = -- 0
 > -- 0
