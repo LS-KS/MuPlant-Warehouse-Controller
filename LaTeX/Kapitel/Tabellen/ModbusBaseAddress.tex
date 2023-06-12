@@ -5,15 +5,50 @@
 \hline
 Adresse & Wert & Beschreibung \\
 \hline
-Status & 1  & Modbus Status  \\
+Status & 1 & \\
 \hline
-KeepAlive & 2 & Verbindung intakt solange >0 \\
+KeepAlive & 2 &\\
 \hline
-Working & 3 &  \\
+Working & 3 &\\
 \hline
-
+FunctionReady & 5 &\\
 \hline
-    FunctionReady & 5 & \\
-
+ResponseReady & 6 &\\
+\hline
+Done & 7 &\\
+\hline
+AgentLockID & 8 &\\
+\hline
+AgentLockRequest & 9 &\\
+\hline
+FunctionID & 10 &\\
+\hline
+FunctionParameters & 11 &\\
+\hline
+FunctionParametersLength & 32 &
+\hline
+ResponseID & 43 &\\
+\hline
+ResponseParameters & 44 &\\
+\hline
+ResponseParametersLength & 32 &\\
+\hline
+StorageCup & 1024 &\\
+\hline
+StorageProduct & 1280& /// 1024 + 256\\
+\hline
+CommissionCup & 2048 &\\
+\hline
+CommissionProduct & 2080 & /// 2048 + 32\\
+\hline
+MobileRobotCup & 2560 &\\
+\hline
+MobileRobotProduct & 2568 & /// 2560+8\\
+\hline
+MobileRobotDocked & 2576 &\\
+\hline
+MobileRobotReadyToLeave & 2580 &\\
+\hline
 \end{tabular}\label{tab:ModbusBase}
 \end{table}
+
