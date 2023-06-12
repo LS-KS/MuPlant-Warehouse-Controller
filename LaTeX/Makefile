@@ -15,7 +15,7 @@ distclean: clean
 	-rm $(MASTER).bbl
 	-rm $(MASTER).dvi
 	-rm $(MASTER).glo
-	-rm $(MASTER).fls 
+	-rm $(MASTER).fls
 	-rm $(MASTER).fdb_latexmk
 	-rm $(MASTER).gls
 	-rm $(MASTER).glsdefs
@@ -30,8 +30,8 @@ distclean: clean
 	-rm $(MASTER).nls
 	-rm $(MASTER).toc
 	-rm ./*~ ./*.bak
-	-rm ./Kaptitel/*~ 
-	-rm ./Einstellungen/*~ 
+	-rm ./Kaptitel/*~
+	-rm ./Einstellungen/*~
 
 clean-emacs: distclean
 	-rm -R auto

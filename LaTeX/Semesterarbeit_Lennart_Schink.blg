@@ -8,64 +8,76 @@ A level-1 auxiliary file: Kapitel/Fehlerbehandlung.aux
 A level-1 auxiliary file: Kapitel/KameraValidierung.aux
 A level-1 auxiliary file: Kapitel/Zusammenfassung_Ausblick.aux
 A level-1 auxiliary file: Kapitel/AnhangA.aux
-The style file: Literatur/IEEEtranGERdoi.bst
-I found no \citation commands---while reading file Semesterarbeit_Lennart_Schink.aux
-Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
-Reallocated global_strs (elt_size=200001) to 20 items from 10.
-Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+The style file: Literatur/IEEEtran.bst
+Illegal, another \bibstyle command---line 61 of file Semesterarbeit_Lennart_Schink.aux
+ : \bibstyle
+ :          {Literatur/IEEEtranS}
+I'm skipping whatever remains of this command
+Illegal, another \bibstyle command---line 62 of file Semesterarbeit_Lennart_Schink.aux
+ : \bibstyle
+ :          {Literatur/IEEEtranGER}
+I'm skipping whatever remains of this command
+Illegal, another \bibstyle command---line 63 of file Semesterarbeit_Lennart_Schink.aux
+ : \bibstyle
+ :          {Literatur/IEEEtranGERdoi}
+I'm skipping whatever remains of this command
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Database file #1: Literatur/MRT-Bericht.bib
+Database file #1: Literatur/Semesterarbeit.bib
+Warning--entry type for "LarsKistner2017" isn't style-file defined
+--line 30 of file Literatur/Semesterarbeit.bib
+I was expecting a `,' or a `}'---line 32 of file Literatur/Semesterarbeit.bib
+ : 
+ : title = {Konzeptionierung und Umsetzung einer serviceorientierten verteilten Automatisierungs-Architektur für die heterogene Modellfabrik µPlant},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-You can't pop an empty literal stack
-while executing---line 2524 of file Literatur/IEEEtranGERdoi.bst
 
 Done.
-You've used 0 entries,
-            4474 wiz_defined-function locations,
-            876 strings with 8042 characters,
-and the built_in function-call counts, 111 in all, are:
-= -- 0
-> -- 0
+You've used 2 entries,
+            4024 wiz_defined-function locations,
+            831 strings with 7748 characters,
+and the built_in function-call counts, 657 in all, are:
+= -- 32
+> -- 5
 < -- 0
-+ -- 0
-- -- 0
-* -- 19
-:= -- 28
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 3
+- -- 1
+* -- 29
+:= -- 113
+add.period$ -- 3
+call.type$ -- 2
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 3
+cite$ -- 2
+duplicate$ -- 57
+empty$ -- 68
+format.name$ -- 1
+if$ -- 124
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 26
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 2
+missing$ -- 14
+newline$ -- 29
+num.names$ -- 1
+pop$ -- 43
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1
+skip$ -- 50
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 3
+swap$ -- 25
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 0
+type$ -- 2
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 25
-(There were 2 error messages)
+while$ -- 1
+width$ -- 3
+write$ -- 34
+(There were 4 error messages)

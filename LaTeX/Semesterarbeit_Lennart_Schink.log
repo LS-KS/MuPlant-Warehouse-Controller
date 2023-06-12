@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  10 JUN 2023 15:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  12 JUN 2023 15:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1813,17 +1813,17 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              deprecated \float@addtolist interface.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--11
+Underfull \hbox (badness 10000) in paragraph at lines 7--14
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--20
+Underfull \hbox (badness 10000) in paragraph at lines 20--30
 
  []
 
@@ -1842,99 +1842,200 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--20
  (./Kapitel/altSoftwareArchitektur.tex
 chapter 2.
 LaTeX Font Info:    Trying to load font information for TS1+Crlt-LF on input li
-ne 15.
+ne 14.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/carlito/TS1Crlt-LF.fd
 File: TS1Crlt-LF.fd 2022/10/05 (autoinst) Font definitions for TS1/Crlt-LF.
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-5.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
+4.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Overfull \hbox (53.6576pt too wide) in paragraph at lines 31--32
-[]\T1/cmss/m/n/10.95 Ein Ob-jekt [][]\T1/lmtt/m/n/10.95 controllerProperties []
-\T1/cmss/m/n/10.95 von der Klas-se [][]\T1/lmtt/m/n/10.95 RobotControllerProper
-ties[]\T1/cmss/m/n/10.95 . 
+Overfull \hbox (32.9819pt too wide) in paragraph at lines 38--50
+\T1/cmss/m/n/10.95 Application-Klasse mit al-len be-nö-tig-ten Res-sour-cen er-
+zeugt. Als Start URL ist [][]\T1/lmtt/m/n/10.95 MainWindow.xaml
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--50
+
  []
 
 [3
 
 
 {/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/carlito/crlt_j4hweq.enc}{/u
-sr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
-<Bilder/LV_Startbildschirm.png, id=162, 1499.6025pt x 817.0525pt>
+sr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texli
+ve/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+Overfull \hbox (8.15222pt too wide) in paragraph at lines 57--58
+[]\T1/cmss/m/n/10.95 Auÿerdem ei-ne Va-ria-ble [][]\T1/lmtt/m/n/10.95 lastCupRe
+ad []\T1/cmss/m/n/10.95 vom Da-ten-typ [][]\T1/lmtt/m/n/10.95 ushort []\T1/cmss
+/m/n/10.95 (16-Bit-Ganzzahl,
+ []
+
+
+Overfull \hbox (33.1811pt too wide) in paragraph at lines 62--63
+[]\T1/cmss/m/n/10.95 Ein Ob-jekt [][]\T1/lmtt/m/n/10.95 controllerProperties []
+\T1/cmss/m/n/10.95 von der Klas-se [][]\T1/lmtt/m/n/10.95 RobotControllerProper
+ties[]\T1/cmss/m/n/10.95 . 
+ []
+
+<Bilder/LV_Startbildschirm.png, id=179, 1499.6025pt x 817.0525pt>
 File: Bilder/LV_Startbildschirm.png Graphic file (type png)
 <use Bilder/LV_Startbildschirm.png>
-Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 42.
+Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 90.
 (pdftex.def)             Requested size: 398.3386pt x 217.02904pt.
-<Bilder/LV_Klassendiagramm_Datenmodell.png, id=163, 799.98875pt x 1154.3125pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
+<Bilder/LV_Klassendiagramm_Datenmodell.png, id=186, 799.98875pt x 1154.3125pt>
 File: Bilder/LV_Klassendiagramm_Datenmodell.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Datenmodell.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Datenmodell.png  used on inp
-ut line 51.
+ut line 122.
 (pdftex.def)             Requested size: 398.3386pt x 574.77704pt.
-<Bilder/LV_Klassendiagramm_ABBController.png, id=165, 817.0525pt x 1165.35374pt
+
+[5 <./Bilder/LV_Startbildschirm.png>] [6 <./Bilder/LV_Klassendiagramm_Datenmode
+ll.png>]
+Overfull \hbox (26.5628pt too wide) in paragraph at lines 135--141
+[]\T1/cmss/m/n/10.95 In der Klas-se [][]\T1/lmtt/m/n/10.95 PalletMatrix []\T1/c
+mss/m/n/10.95 wird die Da-tei [][]\T1/lmtt/m/n/10.95 StorageData.db []\T1/cmss/
+m/n/10.95 bzw. [][]\T1/lmtt/m/n/10.95 CommissionData.db
+ []
+
+[7]
+<Bilder/LV_Klassendiagramm_ABBController.png, id=203, 817.0525pt x 1165.35374pt
 >
 File: Bilder/LV_Klassendiagramm_ABBController.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_ABBController.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_ABBController.png  used on i
-nput line 59.
+nput line 151.
 (pdftex.def)             Requested size: 398.3386pt x 568.14767pt.
-<Bilder/LV_Klassendiagramm_Modbus.png, id=166, 811.03pt x 677.53125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--207
+
+ []
+
+
+Overfull \hbox (32.81642pt too wide) in paragraph at lines 181--207
+[][]\T1/lmtt/m/n/10.95 Description = string.Format("[{0}.{1}] {2}({3}) -> {4}({
+5})",cupID, prodID, 
+ []
+
+
+Overfull \hbox (4.07275pt too wide) in paragraph at lines 181--207
+[]\T1/lmtt/m/n/10.95 str_title_Storage, PositionName, str_title_Commissioning,P
+ositionName) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--207
+
+ []
+
+
+Overfull \hbox (56.009pt too wide) in paragraph at lines 181--207
+[]\T1/cmss/m/n/10.95 Damit wird ein String er-zeugt, der ei-ne Be-schrei-bung d
+es Vor-gangs ent-hält. Die [][]\T1/lmtt/m/n/10.95 ControllerCommands
+ []
+
+[8] [9 <./Bilder/LV_Klassendiagramm_ABBController.png>]
+
+LaTeX Warning: Citation `ModbusOrg' on page 10 undefined on input line 211.
+
+(./Kapitel/Tabellen/ModbusBaseAddress.tex
+Overfull \hbox (342.95619pt too wide) in paragraph at lines 4--17
+ [][][] 
+ []
+
+)
+Underfull \hbox (badness 10000) in paragraph at lines 211--238
+
+ []
+
+<Bilder/LV_Klassendiagramm_Modbus.png, id=217, 811.03pt x 677.53125pt>
 File: Bilder/LV_Klassendiagramm_Modbus.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Modbus.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Modbus.png  used on input li
-ne 67.
+ne 248.
 (pdftex.def)             Requested size: 398.3386pt x 332.77892pt.
-<Bilder/Controller_Startbildschirm.png, id=167, 235.37938pt x 528.97626pt>
+[10] [11 <./Bilder/LV_Klassendiagramm_Modbus.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 282--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--317
+
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12]
+[13]
+<Bilder/Controller_Startbildschirm.png, id=240, 235.37938pt x 528.97626pt>
 File: Bilder/Controller_Startbildschirm.png Graphic file (type png)
 <use Bilder/Controller_Startbildschirm.png>
 Package pdftex.def Info: Bilder/Controller_Startbildschirm.png  used on input l
-ine 75.
+ine 328.
 (pdftex.def)             Requested size: 300.07779pt x 674.33032pt.
 
 
-LaTeX Warning: Float too large for page by 22.0pt on input line 79.
+LaTeX Warning: Float too large for page by 23.0pt on input line 330.
 
-<Bilder/C_Klassendiagramm.png, id=168, 805.0075pt x 653.44125pt>
+<Bilder/C_Klassendiagramm.png, id=241, 805.0075pt x 653.44125pt>
 File: Bilder/C_Klassendiagramm.png Graphic file (type png)
 <use Bilder/C_Klassendiagramm.png>
-Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 83.
+Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 336.
 (pdftex.def)             Requested size: 398.3386pt x 323.33975pt.
-<Bilder/RFIDServer_Bildschirm.png, id=169, 379.4175pt x 368.87813pt>
+[14] [15 <./Bilder/Controller_Startbildschirm.png>] [16 <./Bilder/C_Klassendiag
+ramm.png>]
+<Bilder/RFIDServer_Bildschirm.png, id=256, 379.4175pt x 368.87813pt>
 File: Bilder/RFIDServer_Bildschirm.png Graphic file (type png)
 <use Bilder/RFIDServer_Bildschirm.png>
-Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 9
-2.
+Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 3
+45.
 (pdftex.def)             Requested size: 409.71848pt x 398.3386pt.
 
-Overfull \hbox (11.37988pt too wide) in paragraph at lines 92--94
-[][] 
+Overfull \hbox (11.37988pt too wide) in paragraph at lines 345--347
+ [][] 
  []
 
-<Bilder/RFID_Klassendiagramm.png, id=170, 814.04124pt x 940.51375pt>
+<Bilder/RFID_Klassendiagramm.png, id=257, 814.04124pt x 940.51375pt>
 File: Bilder/RFID_Klassendiagramm.png Graphic file (type png)
 <use Bilder/RFID_Klassendiagramm.png>
-Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 10
-0.
+Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 35
+3.
 (pdftex.def)             Requested size: 398.3386pt x 460.22432pt.
-[4 <./Bilder/LV_Startbildschirm.png>]) [5] [6 <./Bilder/LV_Klassendiagramm_Date
-nmodell.png>] [7 <./Bilder/LV_Klassendiagramm_ABBController.png>] [8 <./Bilder/
-LV_Klassendiagramm_Modbus.png>] [9 <./Bilder/Controller_Startbildschirm.png>]
-[10 <./Bilder/C_Klassendiagramm.png>] [11 <./Bilder/RFIDServer_Bildschirm.png>]
-[12 <./Bilder/RFID_Klassendiagramm.png>]
+) [17 <./Bilder/RFIDServer_Bildschirm.png>] [18 <./Bilder/RFID_Klassendiagramm.
+png>]
 \openout2 = `Kapitel/KonzeptPythonApp.aux'.
 
  (./Kapitel/KonzeptPythonApp.tex
 chapter 3.
-) [13
+) [19
 
 
 
 
 
-] [14
+] [20
 
 
 
@@ -1943,10 +2044,10 @@ chapter 3.
 
  (./Kapitel/Fehlerbehandlung.tex
 chapter 4.
-) [15
+) [21
 
 
-] [16
+] [22
 
 
 
@@ -1955,10 +2056,10 @@ chapter 4.
 
  (./Kapitel/KameraValidierung.tex
 chapter 5.
-) [17
+) [23
 
 
-] [18
+] [24
 
 
 
@@ -1967,10 +2068,10 @@ chapter 5.
 
  (./Kapitel/Zusammenfassung_Ausblick.tex
 chapter 6.
-) [19
+) [25
 
 
-] [20
+] [26
 
 
 
@@ -1986,42 +2087,42 @@ chapter A.
 
 
 
-] (./Semesterarbeit_Lennart_Schink.bbl
+] (./Semesterarbeit_Lennart_Schink.bbl) [15
 
-LaTeX Warning: Empty `thebibliography' environment or \BreakBibliography
-               before end of `thebibliography' environment on input line 27.
+]
 
-) [15
-
-] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Einleitung.aux)
 (./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux)
 (./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux)
 (./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `Semesterarbeit_Lennart_Schink.out' has not c
 hanged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 50883 strings out of 476025
- 1186558 string characters out of 5790017
+ 50917 strings out of 476025
+ 1187380 string characters out of 5790017
  1863388 words of memory out of 5000000
- 70309 multiletter control sequences out of 15000+600000
- 598361 words of font info for 92 fonts, out of 8000000 for 9000
+ 70325 multiletter control sequences out of 15000+600000
+ 606143 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,11n,106p,10620b,1128s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,11n,106p,10620b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Bold.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Regular.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/loc
-al/texlive/2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive
-/2023/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2
-023/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/202
-3/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on Semesterarbeit_Lennart_Schink.pdf (35 pages, 668768 bytes).
+al/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/
+2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf
+-dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2023/texmf-d
+ist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2023/texmf-dis
+t/fonts/type1/public/cm-super/sfsx1440.pfb>
+Output written on Semesterarbeit_Lennart_Schink.pdf (41 pages, 712089 bytes).
 PDF statistics:
- 385 PDF objects out of 1000 (max. 8388607)
- 305 compressed objects within 4 object streams
- 68 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 457 PDF objects out of 1000 (max. 8388607)
+ 369 compressed objects within 4 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

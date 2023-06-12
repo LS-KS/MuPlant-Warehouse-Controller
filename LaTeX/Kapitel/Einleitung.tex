@@ -5,25 +5,34 @@
 \chapter{Motivation und Zielsetzung}
 
     Das Institut für Mess- und Regelungstechnik an der Universität Kassel hat in den letzten Jahren eine Modellfabrik $\mu$Plant gebaut.
-    Aus über 70 Einzelarbeiten ist ein modernes Industrie-4.0 Konzept geschaffen worden. Teil der $\mu$Plant ist ein vollautomatisiertes Lager.
-    Das Lager besteht aus einem abgetrennten Raum, dessen Zugang über eine Tür mit einem Türschalter überwacht ist. In diesen Bereich können Turtlebots einfahren.
-    In dem abgetrennten Bereich steht ein Industrieroboter und ein Lagerregal mit ausgewiesenen 18 Lagerplätzen. Außerdem befindet sich neben einer Andockstation für den Turtlebot auch noch eine Werkbank. \\
+    Aus über 70 Einzelarbeiten ist ein modernes Industrie-4.0 Konzept geschaffen worden.
+    Teil der $\mu$Plant ist ein vollautomatisiertes Lager.
+    Das Lager besteht aus einem abgetrennten Raum, dessen Zugang über eine Tür mit einem Türschalter überwacht ist.
+    In diesen Bereich können autonome mobile Roboter (Turtlebots) einfahren.
+    In dem abgetrennten Bereich steht ein Industrieroboter Typ ABB IRB 140 und ein Lagerregal mit ausgewiesenen 18 Lagerplätzen.
+    Außerdem befindet sich neben einer Andockstation für den Turtlebot ein Kommissioniertisch. \\
 
-    Ein pneumatischer Greifer des Industrieroboters kann Paletten, die je mit bis zu zwei Bechern bestückt werden können, zwischen dem mobilen Roboter und dem Lagerregal frei bewegen.
-    Von einem PC-Arbeitsplatz aus können mittels Software die Lagerprozesse überwacht werden. Außerdem kann im Fehlerfall eingeschritten werden und es können manuell Prozesse ausgelöst werden.\\
+    Ein pneumatischer Greifer kann Paletten, die je mit bis zu zwei Bechern bestückt werden können,
+    zwischen dem mobilen Roboter und dem Lagerregal transportieren.
+    Von einem PC-Arbeitsplatz aus können mittels Software die Lagerprozesse überwacht werden.
+    Im Fehlerfall kann eingeschritten werden oder es können manuell Prozesse ausgelöst werden.\\
 
-    Die Software ist derzeit in 3 Teile aufgeteilt: Einerseits gibt es die Lagerverwaltung - die Hauptsoftware. Sie bildet die automatisierten Prozesse ab und verfügt über ein GUI welches u.A. den Bestand visualisiert.
-    Daneben gibt es den Warehouse Controller, der dazu verwendet wird manuell Lagerprozesse auszulösen, und ein RFID-Tool was für manuelle RFID - Prozesse benutzt wird.
-
-    Mit dem Wechsel des Betriebssystems von Windows 7 auf Windows 10 ist die Kompatibilität der in C\# implementierten Software nicht mehr gegeben. Außerdem laufen Teilfunktionen des Programms nicht fehlerfrei oder tolerieren kaum Fehlbedienungen.
+    Die Software ist derzeit in 3 Programme aufgeteilt: Einerseits gibt es die Lagerverwaltung 3.0 - die Hauptsoftware.
+    Sie bildet die automatisierten Prozesse ab und verfügt über ein GUI welches u.A.\ den Bestand visualisiert.
+    Daneben gibt es den Warehouse Controller, der dazu verwendet wird, manuelle Prozesse auszulösen.
+    Zudem gibt es ein Programm \glqq RFID-Server\grqq mit dem über RFID Leser der Fa. Feig Tags der Transportbehälter
+    ausgelesen werden können.
+    \\
+    Mit dem Wechsel des Betriebssystems von Windows 7 auf Windows 10 ist die Kompatibilität der C\# Implementierung
+    nicht mehr gegeben.
+    Außerdem laufen Teilfunktionen des Programms nicht fehlerfrei oder tolerieren kaum Fehlbedienungen.
     Die Dreiteilung der Software ist im Allgemeinen auch nicht mehr erwünscht. \\
 
-    Diese Seminararbeit beschäftigt sich mit der Analyse der bestehenden Software: Es wird ermittelt, aus welchen Programmteilen und Funktionen die Software besteht.
-    Aus den Erkenntnissen wird ein Konzept entwickelt wie die Drei Software Teile zusammengeführt werden könnten um so die Grundlage für eine Migration der Software nach Python zu schaffen.
+    Diese Seminararbeit beschäftigt sich mit der Analyse der bestehenden Software:
+    Es wird ermittelt, aus welchen Programmteilen und Funktionen die Software besteht.
+    Aus den Erkenntnissen wird ein Konzept entwickelt, welches die Funktionen der Drei Software Teile zusammenführt.
+    Dies soll die Grundlage für eine Migration der Software nach Python schaffen.
 
-    Erkenntnisse aus der studentische Arbeit von [Hügler] sollen überprüft und vertieft werden um Anforderungen an Kameras und arUco Marker zu ermitteln, die später eine automatisierte Inventur ermöglicehn sollen.
+    Erkenntnisse aus der studentischen Arbeit von [Hügler] sollen überprüft und vertieft werden um Anforderungen
+    an Kameras und arUco Marker zu ermitteln, die später eine automatisierte Inventur ermöglichen sollen.
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../MRT-Bericht2020"
-%%% End:
