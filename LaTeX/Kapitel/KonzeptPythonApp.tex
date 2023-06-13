@@ -1,9 +1,38 @@
 
 
-\chapter{Konzeptionierung einer integrierten Python Anwendung}
+\chapter{Konzeptionierung einer integrierten Python Anwendung}\label{PythonApp}
 
-\section]{PySide6 und QuickQml 2.0}
+Design Pattern--> Wahl fällt auf MVC-Pattern
 
+\section{PySide6 und QuickQml 2.0}
+
+Laut der Qt Wiki Website \cite{QtWikiHistory} wurde das Qt Framework geboren als ihre Schöpfer Haavard Nord und
+Eric Chambe-Eng im Sommer 1990 in Norwegen an einem GUI für eine Ultraschall Datenbank arbeiten.
+Die Software sollte damals in C++ implementiert auf Mac, Unix und Windows laufen.
+Fünf Jahre später veröffentlichten Sie das erste Qt Framework unter dem Firmennamen Troll Tech.
+Seitdem gewann das Framework immer mehr Popularität.
+Im Jahr 2006 übernahm Nokia die Firma Trolltech und verkaufte das Qt Project in den Jahren 2011 und 2012 erst teilweise,
+dann vollständig an den Digia Konzern.
+Seit 2014 ist Qt als Tochterunternehmen des Digia Konzerns unter dem Namen \glqq The Qt Company\grqq ein eigenständiges Unternehmen.
+
+Das Qt Framework ist in C++ implementiert und profitiert dadurch von dem Performance-Vorteil gegenüber anderen
+Programmiersprachen.
+Die neue Software für die $\mu$Plant soll jedoch in Python implementiert werden.
+Für diese Zwecke hat Qt u.A. das Framework PySide6 veröffentlicht, welches einen Wrapper für Python Projekte bietet.
+
+GUI's können in PySide6 im wesentlichen auf zwei Arten erstellt werden.
+Eine Möglichkeit ist es, das GUI über sog. Widgets zu erstellen, die direkt im Python Code implementiert werden können.
+Die zweite Möglichkeit ist QTQuickQML zu nutzen, bei dem das GUI in einer separaten QML Datei erstellt wird und
+mittels einer \verb|QtQMLEngine| Klasse in das Programm eingebunden wird.
+
+Für die Umsetzung eines MVC-Design Patterns empfiehlt sich die Verwendung von QtQuickQML.
+Durch die Verwendung des Frameworks wird die konsequente Trennung zwischen Interface und Datenmodell bzw. Services fast
+schon erzwungen.
+Das behandeln von Events und Kommunikation zwischen dem GUI und dem Backend der Software wird nach dem Signal/Slot Prinzip
+gelöst \cite{pysideSignalSlot}.
+Dadurch muss man keine zusätzlichen Callbacks oder Lamda-Ausdrücke definieren.
+Ein Signal wird an beliebiger Stelle (GUI oder Backend) emittiert und kann an jeder Stelle abgefangen werden.
+Eine Funktion die mit der Annotation \glqq Slot(str) \grqq versehen ist, wird als Slot behandelt.
 \section{GUI - Konzeptionierung}
 
 \section{Konzepte zur Datenmodellierung}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  12 JUN 2023 15:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.25)  13 JUN 2023 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1503,40 +1503,41 @@ Writing glossary file Semesterarbeit_Lennart_Schink.glo
 \openout5 = `Semesterarbeit_Lennart_Schink.nlo'.
 
 Package nomencl Info: Writing nomenclature file Semesterarbeit_Lennart_Schink.n
-lo on input line 84.
+lo on input line 85.
 \@indexfile=\write6
 \openout6 = `Semesterarbeit_Lennart_Schink.idx'.
 
 Writing index file Semesterarbeit_Lennart_Schink.idx
 LaTeX Font Info:    Trying to load font information for T1+Crlt-LF on input lin
-e 98.
+e 99.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/carlito/T1Crlt-LF.fd
 File: T1Crlt-LF.fd 2022/10/05 (autoinst) Font definitions for T1/Crlt-LF.
 )
-(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Einleitung.aux)
-(./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux)
-(./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux)
-(./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
+(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux)
+(./Kapitel/Einleitung.aux) (./Kapitel/altSoftwareArchitektur.aux)
+(./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux)
+(./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux)
+(./Kapitel/AnhangA.aux))
 \openout1 = `Semesterarbeit_Lennart_Schink.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 99.
+LaTeX Font Info:    ... okay on input line 99.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1572,7 +1573,7 @@ LaTeX Font Info:    ... okay on input line 98.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 98.
+Package hyperref Info: Link coloring ON on input line 99.
 (./Semesterarbeit_Lennart_Schink.out) (./Semesterarbeit_Lennart_Schink.out)
 \@outlinefile=\write7
 \openout7 = `Semesterarbeit_Lennart_Schink.out'.
@@ -1584,7 +1585,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 98.
+(scrbook)           before \begin{document} on input line 99.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
@@ -1633,7 +1634,7 @@ File: translations-basic-dictionary-german.trsl (german translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `german'. on input line 98.
+or `german'. on input line 99.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/translations/translations-basic-d
 ictionary-english.trsl
@@ -1641,12 +1642,12 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 98.
+or `english'. on input line 99.
 \c@lstlisting=\count395
 \c@mv@tabular=\count396
 \c@mv@boldtabular=\count397
 LaTeX Font Info:    Trying to load font information for T1+cmss on input line 1
-11.
+12.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
@@ -1654,85 +1655,79 @@ File: t1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
 <Bilder/UniKS-Logo.pdf, id=7, 193.72375pt x 38.1425pt>
 File: Bilder/UniKS-Logo.pdf Graphic file (type pdf)
 <use Bilder/UniKS-Logo.pdf>
-Package pdftex.def Info: Bilder/UniKS-Logo.pdf  used on input line 111.
+Package pdftex.def Info: Bilder/UniKS-Logo.pdf  used on input line 112.
 (pdftex.def)             Requested size: 213.39566pt x 42.01622pt.
 
 
 LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
-(Font)              using `T1/cmss/bx/n' instead on input line 111.
+(Font)              using `T1/cmss/bx/n' instead on input line 112.
 
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
-11.
+12.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-11.
+12.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-111.
+112.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-111.
+112.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 111.
+(Font)              <10> on input line 112.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 111.
+(Font)              <7> on input line 112.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 111.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 111
+(Font)              <5> on input line 112.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 112
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 111
+LaTeX Font Info:    Trying to load font information for U+msb on input line 112
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Bilder/Wissenschaft.jpg, id=8, 401.5pt x 401.5pt>
-File: Bilder/Wissenschaft.jpg Graphic file (type jpg)
-<use Bilder/Wissenschaft.jpg>
-Package pdftex.def Info: Bilder/Wissenschaft.jpg  used on input line 111.
-(pdftex.def)             Requested size: 227.62596pt x 227.62204pt.
-
-Overfull \hbox (24.0pt too wide) in alignment at lines 111--111
+Overfull \hbox (24.0pt too wide) in alignment at lines 112--112
 [][] 
  []
 
-<Bilder/MRT-Logo.pdf, id=9, 59.39853pt x 21.628pt>
+<Bilder/MRT-Logo.pdf, id=8, 59.39853pt x 21.628pt>
 File: Bilder/MRT-Logo.pdf Graphic file (type pdf)
 <use Bilder/MRT-Logo.pdf>
-Package pdftex.def Info: Bilder/MRT-Logo.pdf  used on input line 111.
+Package pdftex.def Info: Bilder/MRT-Logo.pdf  used on input line 112.
 (pdftex.def)             Requested size: 93.78247pt x 34.1433pt.
-<Bilder/ISAC-Logo.pdf, id=10, 209.6633pt x 68.71672pt>
+<Bilder/ISAC-Logo.pdf, id=9, 209.6633pt x 68.71672pt>
 File: Bilder/ISAC-Logo.pdf Graphic file (type pdf)
 <use Bilder/ISAC-Logo.pdf>
-Package pdftex.def Info: Bilder/ISAC-Logo.pdf  used on input line 111.
+Package pdftex.def Info: Bilder/ISAC-Logo.pdf  used on input line 112.
 (pdftex.def)             Requested size: 104.17555pt x 34.1433pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 112.
+(hyperref)                removing `math shift' on input line 113.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mu' on input line 112.
+(hyperref)                removing `\mu' on input line 113.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 112.
+(hyperref)                removing `math shift' on input line 113.
 
 [1
 
@@ -1740,10 +1735,10 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 al/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
 /texlive/2023/texmf-dist/fonts/enc/dvips/carlito/crlt_ys3vdn.enc}{/usr/local/te
 xlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc} <./Bilder/UniKS-Logo.pd
-f> <./Bilder/Wissenschaft.jpg> <./Bilder/MRT-Logo.pdf> <./Bilder/ISAC-Logo.pdf>
-] [2
+f> <./Bilder/MRT-Logo.pdf> <./Bilder/ISAC-Logo.pdf>] [2
 
-] (./Semesterarbeit_Lennart_Schink.toc)
+]
+(./Semesterarbeit_Lennart_Schink.toc)
 \tf@toc=\write8
 \openout8 = `Semesterarbeit_Lennart_Schink.toc'.
 
@@ -1777,7 +1772,7 @@ Class scrbook Warning: \float@listhead detected!
 (scrbook)              Loading of package `scrhack' may help to
 (scrbook)              avoid this warning, if you are using a
 (scrbook)              a package that still implements the
-(scrbook)              deprecated \float@listhead interface on input line 165.
+(scrbook)              deprecated \float@listhead interface on input line 166.
 
 [7] [8
 
@@ -1788,11 +1783,143 @@ Class scrbook Warning: \float@listhead detected!
  [9] [10
 
 ]
-No file Semesterarbeit_Lennart_Schink.gls.
-[11] [12
+\openout2 = `Kapitel/Abkuerzungsverzeichnis.aux'.
 
-] (./Semesterarbeit_Lennart_Schink.nls)
-(./Semesterarbeit_Lennart_Schink.ind)
+
+(./Kapitel/Abkuerzungsverzeichnis.tex
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 11.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 12.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 12.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 12.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 13.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 13.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 13.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 14.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 14.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 14.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 16.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 16.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 16.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 17.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 17.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 18.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 18.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 19.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 20.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 20.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 20.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 21.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 21.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 21.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 21.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 21.
+
+) [11
+
+
+]
+No file Semesterarbeit_Lennart_Schink.gls.
+[12
+
+
+] (./Semesterarbeit_Lennart_Schink.nls) (./Semesterarbeit_Lennart_Schink.ind)
 \openout2 = `Kapitel/Einleitung.aux'.
 
  (./Kapitel/Einleitung.tex
@@ -1812,22 +1939,8 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              a package that still implements the
 (scrbook)              deprecated \float@addtolist interface.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 7--14
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--30
-
- []
-
 ) [1
+
 
 
 
@@ -1852,14 +1965,9 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 3
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Overfull \hbox (32.9819pt too wide) in paragraph at lines 38--50
+Overfull \hbox (32.9819pt too wide) in paragraph at lines 40--43
 \T1/cmss/m/n/10.95 Application-Klasse mit al-len be-nö-tig-ten Res-sour-cen er-
 zeugt. Als Start URL ist [][]\T1/lmtt/m/n/10.95 MainWindow.xaml
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 38--50
-
  []
 
 [3
@@ -1881,7 +1989,7 @@ Overfull \hbox (33.1811pt too wide) in paragraph at lines 62--63
 ties[]\T1/cmss/m/n/10.95 . 
  []
 
-<Bilder/LV_Startbildschirm.png, id=179, 1499.6025pt x 817.0525pt>
+<Bilder/LV_Startbildschirm.png, id=187, 1499.6025pt x 817.0525pt>
 File: Bilder/LV_Startbildschirm.png Graphic file (type png)
 <use Bilder/LV_Startbildschirm.png>
 Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 90.
@@ -1889,19 +1997,15 @@ Package pdftex.def Info: Bilder/LV_Startbildschirm.png  used on input line 90.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
-<Bilder/LV_Klassendiagramm_Datenmodell.png, id=186, 799.98875pt x 1154.3125pt>
+[4]
+<Bilder/LV_Klassendiagramm_Datenmodell.png, id=194, 799.98875pt x 1154.3125pt>
 File: Bilder/LV_Klassendiagramm_Datenmodell.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Datenmodell.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Datenmodell.png  used on inp
 ut line 122.
 (pdftex.def)             Requested size: 398.3386pt x 574.77704pt.
-
-[5 <./Bilder/LV_Startbildschirm.png>] [6 <./Bilder/LV_Klassendiagramm_Datenmode
-ll.png>]
+ [5 <./Bilder/LV_Startbildschirm.png>] [6 <./Bilder/LV_Klassendiagramm_Datenmod
+ell.png>]
 Overfull \hbox (26.5628pt too wide) in paragraph at lines 135--141
 []\T1/cmss/m/n/10.95 In der Klas-se [][]\T1/lmtt/m/n/10.95 PalletMatrix []\T1/c
 mss/m/n/10.95 wird die Da-tei [][]\T1/lmtt/m/n/10.95 StorageData.db []\T1/cmss/
@@ -1909,7 +2013,7 @@ m/n/10.95 bzw. [][]\T1/lmtt/m/n/10.95 CommissionData.db
  []
 
 [7]
-<Bilder/LV_Klassendiagramm_ABBController.png, id=203, 817.0525pt x 1165.35374pt
+<Bilder/LV_Klassendiagramm_ABBController.png, id=211, 817.0525pt x 1165.35374pt
 >
 File: Bilder/LV_Klassendiagramm_ABBController.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_ABBController.png>
@@ -1917,137 +2021,145 @@ Package pdftex.def Info: Bilder/LV_Klassendiagramm_ABBController.png  used on i
 nput line 151.
 (pdftex.def)             Requested size: 398.3386pt x 568.14767pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--207
+Underfull \hbox (badness 10000) in paragraph at lines 181--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--207
+Underfull \hbox (badness 10000) in paragraph at lines 187--195
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--207
+Underfull \hbox (badness 10000) in paragraph at lines 187--195
 
  []
 
 
-Overfull \hbox (32.81642pt too wide) in paragraph at lines 181--207
+Overfull \hbox (32.81642pt too wide) in paragraph at lines 187--195
 [][]\T1/lmtt/m/n/10.95 Description = string.Format("[{0}.{1}] {2}({3}) -> {4}({
 5})",cupID, prodID, 
  []
 
 
-Overfull \hbox (4.07275pt too wide) in paragraph at lines 181--207
-[]\T1/lmtt/m/n/10.95 str_title_Storage, PositionName, str_title_Commissioning,P
-ositionName) 
+Overfull \hbox (4.07275pt too wide) in paragraph at lines 196--207
+[][][]\T1/lmtt/m/n/10.95 str_title_Storage, PositionName, str_title_Commissioni
+ng,PositionName) 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--207
+Underfull \hbox (badness 10000) in paragraph at lines 196--207
 
  []
 
 
-Overfull \hbox (56.009pt too wide) in paragraph at lines 181--207
+Overfull \hbox (56.009pt too wide) in paragraph at lines 196--207
 []\T1/cmss/m/n/10.95 Damit wird ein String er-zeugt, der ei-ne Be-schrei-bung d
 es Vor-gangs ent-hält. Die [][]\T1/lmtt/m/n/10.95 ControllerCommands
  []
 
 [8] [9 <./Bilder/LV_Klassendiagramm_ABBController.png>]
-
-LaTeX Warning: Citation `ModbusOrg' on page 10 undefined on input line 211.
-
 (./Kapitel/Tabellen/ModbusBaseAddress.tex
-Overfull \hbox (342.95619pt too wide) in paragraph at lines 4--17
- [][][] 
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 211--238
+Underfull \hbox (badness 10000) in paragraph at lines 211--54
 
  []
 
-<Bilder/LV_Klassendiagramm_Modbus.png, id=217, 811.03pt x 677.53125pt>
+) [10]
+<Bilder/LV_Klassendiagramm_Modbus.png, id=234, 811.03pt x 677.53125pt>
 File: Bilder/LV_Klassendiagramm_Modbus.png Graphic file (type png)
 <use Bilder/LV_Klassendiagramm_Modbus.png>
 Package pdftex.def Info: Bilder/LV_Klassendiagramm_Modbus.png  used on input li
-ne 248.
+ne 252.
 (pdftex.def)             Requested size: 398.3386pt x 332.77892pt.
-[10] [11 <./Bilder/LV_Klassendiagramm_Modbus.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 282--301
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--317
-
- []
-
-
+ [11 <./Bilder/LV_Klassendiagramm_Modbus.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
 [13]
-<Bilder/Controller_Startbildschirm.png, id=240, 235.37938pt x 528.97626pt>
+
+LaTeX Warning: Citation `LarsKistner2016' on page 14 undefined on input line 34
+3.
+
+<Bilder/C_Klassendiagramm.png, id=255, 805.0075pt x 653.44125pt>
+File: Bilder/C_Klassendiagramm.png Graphic file (type png)
+<use Bilder/C_Klassendiagramm.png>
+Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 355.
+(pdftex.def)             Requested size: 318.67209pt x 258.6698pt.
+<Bilder/Controller_Startbildschirm.png, id=256, 235.37938pt x 528.97626pt>
 File: Bilder/Controller_Startbildschirm.png Graphic file (type png)
 <use Bilder/Controller_Startbildschirm.png>
 Package pdftex.def Info: Bilder/Controller_Startbildschirm.png  used on input l
-ine 328.
+ine 362.
 (pdftex.def)             Requested size: 300.07779pt x 674.33032pt.
 
+LaTeX Warning: Float too large for page by 23.0pt on input line 364.
 
-LaTeX Warning: Float too large for page by 23.0pt on input line 330.
+[14 <./Bilder/C_Klassendiagramm.png>] [15 <./Bilder/Controller_Startbildschirm.
+png>]
 
-<Bilder/C_Klassendiagramm.png, id=241, 805.0075pt x 653.44125pt>
-File: Bilder/C_Klassendiagramm.png Graphic file (type png)
-<use Bilder/C_Klassendiagramm.png>
-Package pdftex.def Info: Bilder/C_Klassendiagramm.png  used on input line 336.
-(pdftex.def)             Requested size: 398.3386pt x 323.33975pt.
-[14] [15 <./Bilder/Controller_Startbildschirm.png>] [16 <./Bilder/C_Klassendiag
-ramm.png>]
-<Bilder/RFIDServer_Bildschirm.png, id=256, 379.4175pt x 368.87813pt>
+LaTeX Warning: Citation `LarsKistner2016' on page 16 undefined on input line 37
+5.
+
+<Bilder/RFIDServer_Bildschirm.png, id=270, 379.4175pt x 368.87813pt>
 File: Bilder/RFIDServer_Bildschirm.png Graphic file (type png)
 <use Bilder/RFIDServer_Bildschirm.png>
-Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 3
-45.
+Package pdftex.def Info: Bilder/RFIDServer_Bildschirm.png  used on input line 4
+05.
 (pdftex.def)             Requested size: 409.71848pt x 398.3386pt.
 
-Overfull \hbox (11.37988pt too wide) in paragraph at lines 345--347
+Overfull \hbox (11.37988pt too wide) in paragraph at lines 405--407
  [][] 
  []
 
-<Bilder/RFID_Klassendiagramm.png, id=257, 814.04124pt x 940.51375pt>
+<Bilder/RFID_Klassendiagramm.png, id=271, 814.04124pt x 940.51375pt>
 File: Bilder/RFID_Klassendiagramm.png Graphic file (type png)
 <use Bilder/RFID_Klassendiagramm.png>
-Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 35
+Package pdftex.def Info: Bilder/RFID_Klassendiagramm.png  used on input line 41
 3.
 (pdftex.def)             Requested size: 398.3386pt x 460.22432pt.
-) [17 <./Bilder/RFIDServer_Bildschirm.png>] [18 <./Bilder/RFID_Klassendiagramm.
-png>]
+[16] [17 <./Bilder/RFIDServer_Bildschirm.png>] [18 <./Bilder/RFID_Klassendiagra
+mm.png>]
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 428.
+
+
+LaTeX Font Warning: Font shape `T1/cmss/b/n' undefined
+(Font)              using `T1/cmss/bx/n' instead on input line 455.
+
+[19]) [20]
 \openout2 = `Kapitel/KonzeptPythonApp.aux'.
 
  (./Kapitel/KonzeptPythonApp.tex
 chapter 3.
-) [19
+
+Overfull \hbox (1.44339pt too wide) in paragraph at lines 18--22
+[]\T1/cmss/m/n/10.95 Das Qt Fra-me-work ist in C++ im-ple-men-tiert und pro-fi-
+tiert da-durch von dem Performance-
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21
 
 
-
-
-
-] [20
 
 
 
 ]
+[22]
 \openout2 = `Kapitel/Fehlerbehandlung.aux'.
 
  (./Kapitel/Fehlerbehandlung.tex
 chapter 4.
-) [21
+) [23
 
 
-] [22
+
+
+
+] [24
 
 
 
@@ -2056,10 +2168,10 @@ chapter 4.
 
  (./Kapitel/KameraValidierung.tex
 chapter 5.
-) [23
+) [25
 
 
-] [24
+] [26
 
 
 
@@ -2068,10 +2180,10 @@ chapter 5.
 
  (./Kapitel/Zusammenfassung_Ausblick.tex
 chapter 6.
-) [25
+) [27
 
 
-] [26
+] [28
 
 
 
@@ -2087,15 +2199,23 @@ chapter A.
 
 
 
-] (./Semesterarbeit_Lennart_Schink.bbl) [15
+] (./Semesterarbeit_Lennart_Schink.bbl
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
+27.
 
-]
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ts1cmss.fd
+File: ts1cmss.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)) [15
+
+{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Einleitung.aux)
-(./Kapitel/altSoftwareArchitektur.aux) (./Kapitel/KonzeptPythonApp.aux)
-(./Kapitel/Fehlerbehandlung.aux) (./Kapitel/KameraValidierung.aux)
-(./Kapitel/Zusammenfassung_Ausblick.aux) (./Kapitel/AnhangA.aux))
+(./Semesterarbeit_Lennart_Schink.aux (./Kapitel/Abkuerzungsverzeichnis.aux)
+(./Kapitel/Einleitung.aux) (./Kapitel/altSoftwareArchitektur.aux)
+(./Kapitel/KonzeptPythonApp.aux) (./Kapitel/Fehlerbehandlung.aux)
+(./Kapitel/KameraValidierung.aux) (./Kapitel/Zusammenfassung_Ausblick.aux)
+(./Kapitel/AnhangA.aux))
 
 LaTeX Warning: There were undefined references.
 
@@ -2104,13 +2224,13 @@ hanged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 50917 strings out of 476025
- 1187380 string characters out of 5790017
- 1863388 words of memory out of 5000000
- 70325 multiletter control sequences out of 15000+600000
- 606143 words of font info for 94 fonts, out of 8000000 for 9000
+ 50978 strings out of 476025
+ 1189415 string characters out of 5790017
+ 1866388 words of memory out of 5000000
+ 70367 multiletter control sequences out of 15000+600000
+ 606488 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 108i,11n,106p,10620b,952s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,11n,106p,10620b,996s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Bold.pfb>
 </usr/local/texlive/2023/texmf-dist/fonts/type1/google/carlito/Crlt-Regular.pfb
 ></usr/local/texlive/2023/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/loc
@@ -2118,11 +2238,12 @@ al/texlive/2023/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/
 2023/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2023/texmf
 -dist/fonts/type1/public/cm-super/sfss1095.pfb></usr/local/texlive/2023/texmf-d
 ist/fonts/type1/public/cm-super/sfss1440.pfb></usr/local/texlive/2023/texmf-dis
-t/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on Semesterarbeit_Lennart_Schink.pdf (41 pages, 712089 bytes).
+t/fonts/type1/public/cm-super/sfsx1095.pfb></usr/local/texlive/2023/texmf-dist/
+fonts/type1/public/cm-super/sfsx1440.pfb>
+Output written on Semesterarbeit_Lennart_Schink.pdf (43 pages, 717723 bytes).
 PDF statistics:
- 457 PDF objects out of 1000 (max. 8388607)
- 369 compressed objects within 4 object streams
- 80 named destinations out of 1000 (max. 500000)
- 273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 417 compressed objects within 5 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 292 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,6 +1,6 @@
 
 
-\chapter{Softwarearchitektur der bestehenden Software}
+\chapter{Softwarearchitektur der bestehender Programme}
 
     Analysemethoden der Informatik für Software sind in der Regel für die verschiedenen Design-Phasen entwickelt worden.
     Eine von mir durchgeführte Recherche ergab, dass sich Analyse-Tools und Methoden für bestehende Software vor
@@ -152,7 +152,7 @@
         \centering
     \end{figure}
 
-\subsection{Klassenstruktur zur Steuerung des ABB Industrieoboter IRB 140}
+\subsection{Klassenstruktur zur Steuerung des ABB Industrieoboter IRB 140}\label{ABBKlassen}
 Um dem Industrieroboter ABB IRB 140 Befehle zu erteilen, muss das Programm mit der Steuerung IRC5 kommunizieren.
 Im Programmcode finden sich dazu wie in Abb.\ref{fig:figure3} gezeigt, die Klassen der Bibliothek \verb|ABBRobotics|.
 Instanzen dieser Bibliothekbestandteile werden in der Klasse \verb|RobotController| erzeugt, die von der Klasse
@@ -206,9 +206,9 @@ Wie genau die Daten vom Modbus Server in die \verb|commissionMatrix| geschrieben
 bescheidenen C$\#$ Kenntnissen nicht evaluieren.
 \newpage
 
-\subsubsection{Klassenstruktur Modbus TCP/IP}
+\subsubsection{Klassenstruktur Modbus TCP/IP}\label{ModbusChapter}
 
-Modbus ist ein open-source Kommunikationsprotokoll welches 1979 von Modicon (heute Schneider Electric) veröffentlicht wurde \cite{ModbusOrg}.
+Modbus ist ein open-source Kommunikationsprotokoll welches 1979 von Modicon (heute Schneider Electric) veröffentlicht wurde.
 Es wird dazu verwendet Client-Server Verbindungen einzurichten und ist laut Modbus Organization de facto Standard in
 industriellen Herstellungsprozessen.
 Modbus unterstützt verschiedene Kommunikationsstrukturen.
@@ -217,7 +217,7 @@ TCP/IP ist das übliche Transportprotokoll des Internets und besteht aus einer R
 zuverlässigen Datentransport zwischen Maschinen bereitstellen.
 Die Verwendung von Ethernet TCP/IP in der Fabrik ermöglicht eine echte Integration mit dem Unternehmensintranet und
 MES-Systemen, die die Fabrik unterstützen.
-Die Protokollspezifikation und Implementierungsanleitung sind auf der Seite der Modbus Organization frei verfügbar.
+Die Protokollspezifikation und Implementierungsanleitung sind auf der Seite der Modbus Organization frei verfügbar\cite{ModbusOrg}.
 \newline
 \newline
 Lars Kistner \cite{LarsKistner2017} hat in seiner Bachelorarbeit aus dem Jahr 2016 die Kommunikationsstruktur der $\mu$Plant
@@ -227,10 +227,14 @@ Adressen und/oder Funktionsregister schreibt.
 Diese Adressen sind in der Datei \verb|ModbusBaseAddress.cs| niedergeschrieben und und um die Adressen des mobilen Roboters
 ergänzt.
 \input{Kapitel/Tabellen/ModbusBaseAddress}
-Schaut man sich das Klassendiagramm der Modbus - Implementierung \ref{fig:figure4} an, sieht man schnell, dass die
-Klasse \verb|MainWindow| nur zwei wesentliche Objekte hat:
-Zum Einen hat sie ein Objekt der Klasse \verb|ModbusClient| als \verb|modbusClient| gespeichert, zum Anderen ein Objekt
-\verb|modbusInfo| der Klasse \verb|ModbusInfo|.
+Schaut man sich das Klassendiagramm der Modbus - Implementierung \ref{fig:figure4} an, stellt man fest, dass es die Klasse
+\verb|MainWindow| Objekte von drei verschiedenen Klassen instanziert, die sich dem Modbus Protokoll zuordnen lassen.
+Sie besitzt ein Objekt der Klasse \verb|ModbusStatus| welches ein Objekt der Klasse \verb|ModBusCommunication| besitzt.
+\verb|modbusTCP.modbusTCPServer| wird ebenfalls als Objekt in \verb|MainWindow| erzeugt.
+Gleichzeitig wird sie aber auch in \verb|ModbusCommunication| instanziert.
+Die dritte Klasse ist \verb|ModbusProperties|.
+--> Methoden analysieren und Übergang zu ABB Klassen schaffen.
+
 \verb|CommissionMatrix|
 Die Klasse RobotController übersetzt diese in Strings und schickt sie an die IRC5 Steuerung.
 Wenn diese den Befehl ausgeführt hat, meldet sie \glqq Fertig \grqq zurück.
@@ -304,7 +308,8 @@ Rechts ist der Bereich des Kommissioniertischs gerendert.
 Beide Bereiche geben dem Benutzer, wie das Lager auch, die Möglichkeit über die Checkboxen \glqq Show Details \grqq
 und \glqq Edit\grqq Die Cup- bzw. Produkt ID ein- und auszublenden oder die Daten manuell zu überschreiben.
 Darüber ist der Roboter IRB 140 als symbolbild gerendert.
-Das Bild bietet keinerlei Bedienfunktion. Links daneben befindet sich die \glqq Start \grqq Taste.
+Das Bild bietet keinerlei Bedienfunktion.
+Links daneben befindet sich die \glqq Start \grqq Taste.
 Sie startet bei verbundenem Modbus den Automatikbetrieb.
 Ist der Modbus nicht verbunden, erscheint nach dem Klick ein Dialogfenster.
 Dieses fragt den Benutzer ob wegen der fehlenden Verbindung der Controller simuliert werden soll.
@@ -317,11 +322,40 @@ der Schriftzug \glqq Wait\ldots \grqq bevor das Programm wieder in den Ausgangsz
 
 Weiterhin bietet das Programm keine Möglichkeit den Roboter zu steuern.
 
-
-
-
 \newpage
 \section {Controller}
+
+Der Controller ist ein kleines Programm, welches die manuelle Bedienung der Lagerzelle ermöglicht.
+Wie in \ref{fig:figure5} ersichtlich, ist das Fenster einfach strukturiert und übersichtlich.
+Ganz oben können die Modbus Verbindungsdaten konfiguriert werden und ganz unten ist ein Eventlog, derüber alle Fehler und
+Fortschritte in Textform berichtet.
+Dazwischen sind über eine Registeransicht die Basisfunktionen, wie sie in den statischen Methoden aus Kapitel
+\ref{ABBKlassen} schon beschrieben wurden.
+In dem Reiter kann ein Befehl konfiguriert werden und mit \glqq Send\grqq wird der Befehl
+über die implementierten Modbus-Klassen an die Steuerung IRC5 des Industrieroboters IRB 140 gesendet.\\
+
+Mit dem RFID Server Tool, darunter dargestellt, können Speicherblöcke eines RFID-Tags mit der Cup ID oder mit der Produkt ID
+beschrieben werden.
+Voraussetzung dafür ist, dass der Becher in der Andockstation des mobilen Roboters steht.
+
+In Abb.\ref{fig:figure6} sieht man, dass das Programm aus zwei wesentlichen Klassen neben dem \verb|MainWindow| besteht.
+\verb|ModbusClient| implementiert den Modbus Clienten zur Kommunikation mit den Modbus Servern, die in \ref{ModbusChapter}
+beschrieben sind. Die Klasse implementiert auch das in \cite{LarsKistner2016} beschriebene Agentensystem.
+\verb|ModbusInfo| dagegen hält die Daten, die zur Erzeugung der Kommandos benötigt werden.
+
+Die Implementierung der RFID - Funktionen können anhand des Klassendiagramms nicht gezeigt werden.
+In Vorbereitung auf diese Arbeit habe ich nicht ausprobiert, ob das Programm diese Funktionen so erfüllt wie sie in dem
+GUI impliziert wird. Für die weitere Arbeit würde dies auch keinen Mehrwert bieten wie sich in Kapitel \ref{PythonApp}
+noch zeigen wird.
+
+\begin{figure}
+    \caption[Klassendiagramm des Controllers ]
+    {\small Klassendiagramm des Warehouse-Controllers mit allen vererbenden Klassen jedoch ohne Klassen die
+    lediglich Datentypen konvertieren.}\label{fig:figure6}
+    \includegraphics[width = 0.8\textwidth ]{Bilder/C_Klassendiagramm}
+    \centering
+\end{figure}
+
 \begin{figure}
     \caption[Ansicht des Controller- Startbildschirm ]
     {\small Ansicht des Controller Startbildschirms. }\label{fig:figure5}
@@ -329,16 +363,42 @@ Weiterhin bietet das Programm keine Möglichkeit den Roboter zu steuern.
     \centering
 \end{figure}
 
-\begin{figure}
-    \caption[Klassendiagramm des Controllers ]
-    {\small Klassendiagramm des Warehouse-Controllers mit allen vererbenden Klassen jedoch ohne Klassen die
-    lediglich Datentypen konvertieren.}\label{fig:figure6}
-    \includegraphics[width = \textwidth ]{Bilder/C_Klassendiagramm}
-    \centering
-\end{figure}
-
 \newpage
 \section {RFID Server}
+
+Dieses kleine Programm implementiert einen Modbus TCP/IP Server wie in \ref{ModbusChapter} beschrieben.
+Statt mit dem ABB Controller zu kommunizieren, hält dieser Server Daten, die aus einem RFID-Tag stammen.
+In jeder Fertigungszelle der $\mu$Plant gibt es einen RFID Leser der Fa. Feig.
+Stationen in der $\mu$Plant können einen Tag am Becher beschreiben wenn sie das Produkt im Becher manipulieren.
+Anschließend können Stationen die einen Becher erhalten, den angekündigten Becher und das Produkt beim Eintreffen
+in der Station verifizieren.
+Die Verfahren dazu sind in \cite{LarsKistner2016} gut beschrieben.
+Die Daten der Tags sollen beim Schreiben und Lesen auf die Modbus Adresse des RFID Servers der jeweiligen Station
+geschrieben werden.
+Die Auftragswervaltung der $\mu$Plant kann die Daten der Tags dann von den RFID Servern abrufen.
+Wie das funktioniert, konnte ich in Vorbereitung auf diese Arbeit nicht untersuchen.
+
+Das GUI des RFID-Servers ist einfach gehalten und ist in Abb.\ref{fig:figure7} dargestellt.
+Das Hauptelement ist eine Liste.
+Jedes Listenelement enthält Daten zu einem RFID Modbus Server und einem Tag mit seinen Daten.
+Mit der Taste \glqq Add New \grqq können neue, leere, Listenelemente erzeugt werden.
+Standardmäßig sind die Eingabefelder deaktiviert, können jedoch mit der Taste \glqq Modify\grqq zum Bearbeiten
+freigeschaltet werden.
+Mit der Taste \glqq Start\grqq wird die Verbindung hergestellt. Ein Feedback, ob die Verbindung erfolgreich hergestellt
+werden konnte ist zunächst nicht erischtlich.
+Jedes Listenelement enthält eine Checkbox mit der es ausgewählt werden kann.
+Mit den Tasten \glqq Select All \grqq und \glqq Select None \grqq können alle Listenelemente an- oder abgewählt werden.
+Im unteren, rechten Bereich können mit den Tasten \glqq Start Selected \grqq und \glqq Stop Selected\grqq mehrere Server
+gleichzeitig gestartet und gestoppt werden.
+Mit der Taste \glqq Remove Selected \grqq können alle ausgewählten Listenelemente gelöscht werden.
+Sicherheitsabfrage?!?
+
+Die Programmstruktur kann anhand des Klassendiagramms in \ref{fig:figure8} gut erklärt werden.
+Eine Klasse \verb|MainWindow| hält eine Instanz der Klasse \verb|RFIDProducerCollection|.
+Diese implementiert die oben beschriebene Liste welche Objekte der Klasse \verb|RFIDProducer| speichert.
+Ein \verb|RFIDProducer| Objekt enthält ein Objekt der Klasse \verb|ModbusClient| für die Kommunikation über TCP/IP und
+ein Objekt der Klasse \verb|TagReader| für die RFID Kommunikation.
+
 \begin{figure}
     \caption[Startbildschirm des Programms RFID-Server]
     {\small Startbildschirm des Programms RFID-Server}\label{fig:figure7}
@@ -354,5 +414,62 @@ Weiterhin bietet das Programm keine Möglichkeit den Roboter zu steuern.
     \centering
 \end{figure}
 
+\newpage
+\section{Funktionsanalyse}
+In diesem Abschnitt werden die Funktionen der bisher beschriebenen Programme kurz beschrieben und daraus ein gesamter
+Funktionsumfang abgeleitet, der für das Kapitel \ref{PythonApp} dienlich sein wird.
 
+\subsection{Lagerverwaltung 3.0}
+Dieses Programm hat genau ein Anwendungsfenster welches dem Benutzer einen umfassenden Überblick über die LZ gibt.
+Das Fenster hat eine Mindest- und Maximalgröße, ist dazwischen aber beliebig skalierbar. Dialoge werden genutzt, wenn
+Einträge gelöscht werden, Verbindungen nicht aufgebaut werden könenn und der Simulationsbetrieb gestartet werden kann.
+Felder sind standardmäßig deaktiviert und müssen über Checkboxen aktiviert werden. \\
+
+\textbf{Bedienfunktionen}:\\
+Der Benutzer kann über das GUI folgende Eingriffe vornehmen:\\
+\begin{itemize}
+    \item Die Verbindung zu einem Modbus Server konfigurieren, starten und beenden.
+    \item Die Verbindung zur ABB IRC5 Steuerung konfigurieren, speichern, starten und beenden.
+    \item In der Produktliste kann gescrollt werden.
+    \item In der Inventarliste können leere Produkte ein- und ausgeblendet werden.
+    \item Die vergangenen Einträge im Eventlogger können gelöscht werden.
+    \item In der Lagervisualisierung können an den einzelnen Lagerorten
+    \begin{itemize}
+        \item Paletten hinzugefügt oder entfernt werden
+        \item Becher hinzugefügt oder entfernt werden
+        \item Produkt ID und Cup ID der Becher konfiguriert werden
+        \item Durch Klick auf einen Becher werden alle Becher gleichen Produkts in der Lagervisualisierung und auch im
+        Inventar blau hervorgehoben.
+    \end{itemize}
+    \item Palette, Becher und Produkt auf dem Kommissioniertisch können konfiguriert werden
+    \item Becher und Produkt auf dem mobilen Roboter können konfiguriert werden.
+    \item Der Automatikbetrieb kann gestartet werden
+    \item Wenn die Verbindung zum Modbus Server nicht hergestellt wurde kann ein Simulationsbetrieb gestartet werden
+    \item Im Simulationsbetrieb kann zudem
+    \begin{itemize}
+        \item Die Anwesenheit eines mobilen Roboters Simuliert werden
+        \item ausgewählt werden, dass der Becher auf dem mobilen Roboter nicht transparent ist (Funktion unklar)
+    \end{itemize}
+\end{itemize}
+
+\textbf{Informationsdarstellung}:\\
+Der Benutzer wird über folgende Inhalte informiert:\\
+\begin{itemize}
+    \item Die Verbindungseinstellungen des Modbus Servers und den Verbindungsstatus
+    \item Die Verbindungseinstellungen des ABB-Controllers und ihren Verbindungsstatus
+    \item Alle möglichen Produkt ID's und die zugehörigen Produktnamen
+    \item Produkte und ihre Lagermengen im Inventarbereich.
+    \item In der Lagervisualisierung:
+    \begin{itemize}
+        \item Symbolisierung einer Palette durch dunkelgraues Rechteck, wenn eine Palette vorhanden ist
+        \item Symbolisierung der Becher durch weißes Rechteck, wenn ein Becher vorhanden ist
+        \item Produknamen und auf Wunsch auch Produkt ID und Becher ID
+    \end{itemize}
+    \item Im Eventlogger werden folgende Informationen bereit gestellt:
+    \begin{itemize}
+        \item Fehler und Events der Verbindung über Modbus TCP/IP
+        \item Fehler und Events der Verbindung zur Steuerung IRC5 des Industrieroboters
+        \item Programmfortschritte und Events im Automatikbetrieb oder der Simulation
+    \end{itemize}
+\end{itemize}
 

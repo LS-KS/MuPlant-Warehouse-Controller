@@ -21,10 +21,25 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{Hübler2019}
+S.~Hübler, \glqq BPS Tätigkeits- und Erfahrungsbericht: Objekterkennung und
+  Verfolgung mittels Kamera in Produktionsanlagen am Beispiel der Modellfabrik
+  µPlant,  2019.
+
 \bibitem{ModbusOrg}
-``Modbus organization,'' \url{http://www.modbus.org}, accessed: [12.06.2023].
+\glqq Modbus Organization,  \url{http://www.modbus.org}, Accessed:
+  [12.06.2023].
 
 \bibitem{LarsKistner2017}
-L.~Kistner.
+L.~Kistner, \glqq Konzeptionierung und Umsetzung einer serviceorientierten
+  verteilten Automatisierungs-Architektur für die heterogene Modellfabrik
+  µPlant,  2017.
+
+\bibitem{QtWikiHistory}
+\glqq Qt History on Qt Wiki,  \url{https://wiki.qt.io/Qt_History}, Accessed:
+  [13.06.2023].
+
+\bibitem{pysideSignalSlot}
+\glqq Signal and Slot in PySide6 Framework,  Accessed: [13.06.2023].
 
 \end{thebibliography}

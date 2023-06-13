@@ -6,6 +6,8 @@ Jeder Teil ist ein Server
 --> Agentensystem --> C# durchsuchen alle agentenvariablen vermutlich zur verfügung stellen: Axel fragen. 
 --> Keep Alive. 
 
+--> Kein AgentenClient nötig
+
 
 
 

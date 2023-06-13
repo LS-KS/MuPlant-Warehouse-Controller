@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2023)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Semesterarbeit_Lennart_Schink.aux
+A level-1 auxiliary file: Kapitel/Abkuerzungsverzeichnis.aux
 A level-1 auxiliary file: Kapitel/Einleitung.aux
 A level-1 auxiliary file: Kapitel/altSoftwareArchitektur.aux
 A level-1 auxiliary file: Kapitel/KonzeptPythonApp.aux
@@ -8,76 +9,58 @@ A level-1 auxiliary file: Kapitel/Fehlerbehandlung.aux
 A level-1 auxiliary file: Kapitel/KameraValidierung.aux
 A level-1 auxiliary file: Kapitel/Zusammenfassung_Ausblick.aux
 A level-1 auxiliary file: Kapitel/AnhangA.aux
-The style file: Literatur/IEEEtran.bst
-Illegal, another \bibstyle command---line 61 of file Semesterarbeit_Lennart_Schink.aux
- : \bibstyle
- :          {Literatur/IEEEtranS}
-I'm skipping whatever remains of this command
-Illegal, another \bibstyle command---line 62 of file Semesterarbeit_Lennart_Schink.aux
- : \bibstyle
- :          {Literatur/IEEEtranGER}
-I'm skipping whatever remains of this command
-Illegal, another \bibstyle command---line 63 of file Semesterarbeit_Lennart_Schink.aux
- : \bibstyle
- :          {Literatur/IEEEtranGERdoi}
-I'm skipping whatever remains of this command
+The style file: Literatur/IEEEtranGER.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Literatur/Semesterarbeit.bib
-Warning--entry type for "LarsKistner2017" isn't style-file defined
---line 30 of file Literatur/Semesterarbeit.bib
-I was expecting a `,' or a `}'---line 32 of file Literatur/Semesterarbeit.bib
- : 
- : title = {Konzeptionierung und Umsetzung einer serviceorientierten verteilten Automatisierungs-Architektur für die heterogene Modellfabrik µPlant},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "LarsKistner2016"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 2 entries,
-            4024 wiz_defined-function locations,
-            831 strings with 7748 characters,
-and the built_in function-call counts, 657 in all, are:
-= -- 32
-> -- 5
+You've used 5 entries,
+            4022 wiz_defined-function locations,
+            848 strings with 8345 characters,
+and the built_in function-call counts, 1641 in all, are:
+= -- 109
+> -- 11
 < -- 0
-+ -- 3
-- -- 1
-* -- 29
-:= -- 113
-add.period$ -- 3
-call.type$ -- 2
-change.case$ -- 2
++ -- 7
+- -- 2
+* -- 60
+:= -- 278
+add.period$ -- 10
+call.type$ -- 5
+change.case$ -- 3
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 57
-empty$ -- 68
-format.name$ -- 1
-if$ -- 124
+cite$ -- 5
+duplicate$ -- 152
+empty$ -- 177
+format.name$ -- 2
+if$ -- 343
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 14
-newline$ -- 29
-num.names$ -- 1
-pop$ -- 43
+int.to.str$ -- 5
+missing$ -- 35
+newline$ -- 38
+num.names$ -- 2
+pop$ -- 110
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 50
+skip$ -- 126
 stack$ -- 0
-substring$ -- 3
-swap$ -- 25
+substring$ -- 11
+swap$ -- 73
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 2
+type$ -- 5
 warning$ -- 0
-while$ -- 1
-width$ -- 3
-write$ -- 34
-(There were 4 error messages)
+while$ -- 2
+width$ -- 6
+write$ -- 56
+(There was 1 warning)
