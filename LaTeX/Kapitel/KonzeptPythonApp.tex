@@ -20,9 +20,9 @@ Programmiersprachen.
 Die neue Software für die $\mu$Plant soll jedoch in Python implementiert werden.
 Für diese Zwecke hat Qt u.A. das Framework PySide6 veröffentlicht, welches einen Wrapper für Python Projekte bietet.
 
-GUI's können in PySide6 im wesentlichen auf zwei Arten erstellt werden.
-Eine Möglichkeit ist es, das GUI über sog. Widgets zu erstellen, die direkt im Python Code implementiert werden können.
-Die zweite Möglichkeit ist QTQuickQML zu nutzen, bei dem das GUI in einer separaten QML Datei erstellt wird und
+GUI's können in PySide6 im Wesentlichen auf zwei Arten erstellt werden.
+Eine Möglichkeit ist es, das GUI über Widgets\cite{pysideQtWidgets} zu erstellen, die direkt im Python Code implementiert werden können.
+Die zweite Möglichkeit ist QtQuick \cite{pysideQtQuick} zu nutzen, bei dem das GUI in einer separaten QML Datei erstellt wird und
 mittels einer \verb|QtQMLEngine| Klasse in das Programm eingebunden wird.
 
 Für die Umsetzung eines MVC-Design Patterns empfiehlt sich die Verwendung von QtQuickQML.
