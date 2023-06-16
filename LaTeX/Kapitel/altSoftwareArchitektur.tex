@@ -415,7 +415,7 @@ ein Objekt der Klasse \verb|TagReader| für die RFID Kommunikation.
 \end{figure}
 
 \newpage
-\section{Funktionsanalyse}
+\section{Funktionsanalyse}\label{funktionsanalyse}
 In diesem Abschnitt werden die Funktionen der bisher beschriebenen Programme kurz beschrieben und daraus ein gesamter
 Funktionsumfang abgeleitet, der für das Kapitel \ref{PythonApp} dienlich sein wird.
 
@@ -473,5 +473,48 @@ Der Benutzer wird über folgende Inhalte informiert:\\
     \end{itemize}
 \end{itemize}
 
+\subsection{Controller}
+
+Der Benutzer kann folgende Bedienvorgänge durchführen: \\
+
+\begin{itemize}
+    \item Die Verbindungseinstellungen des Modbus Servers konfigurieren und starten
+    \item Transportbefehle können erzeugt werden:
+    \begin{itemize}
+        \item Transportbefehle eines einzelnen Bechers zwischen Lager, Kommissioniertisch und Roboter
+        \item Transportbefehle für einer Palette zwischen Lager und Kommissioniertisch
+    \end{itemize}
+    Die beiden Befehle können einerseits direkt ausgeführt werden, andererseits können sie auch als Eingabe für die
+    Lagerverwaltungssoftware benutzt werden.
+    \item Ein Becher in der Andockstation kann mittels einem RFID- Lesegerät beschrieben werden.
+\end{itemize}
+
+Der Benutzer wird in diesem Programm nur über seine Eingaben Informiert.
+Die Eingaben erfolgen wo möglich über ein Dropdown Menü
+
+\subsection{RFID Server}
+
+Der Benutzer kann folgende Bedienvorgänge durchführen: \\
+
+\begin{itemize}
+    \item Einen Neuen Listeneintrag erzeugen
+    \item Einen oder alle Listeneintrag markieren
+    \item Markierte Listeneinträge abwählen
+    \item ausgewählte Listeneinträge Löschen, Verbindung starten oder stoppen
+    \item Je Listeneintrag kann der Benutzer folgende Einstellungen vornehmen:
+    \begin{itemize}
+        \item IP und Port des Tag Readers
+        \item IP, Port und Modbus Adresse des Endpoints
+    \end{itemize}
+    \item Ein einzelner Listeneintrag kann gestartet werden
+    \item Mit der Taste \glqq Modify \grqq kann ein Listeneintrag zum Bearbeiten freigeschaltet werden
+    \item Mit der Taste \glqq Save \grqq können Änderungen gespeichert werden.
+\end{itemize}
+
+Der Benutzer sieht in diesem Programme eine Liste aller eingetragenen RFID Reader, Endpoints und Modbus Adressen.
+Jeder Listeneintrag kann auf eine Zeile minimiert werden die lediglich den Namen des Endpunkts und die gelesenen
+Tag Daten anzeigt.
+Im ausgeklappten Zustand sind die Konfigurationen sichtbar, aber grau hinterlegt um anzudeuten, dass die Bearbeitung
+gesperrt ist.
 
 

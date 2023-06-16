@@ -112,12 +112,47 @@ Signale können Daten übergeben werden, die so an einen Slot übergeben werden 
 In meiner Vorbereitung auf diese Arbeit hat sich eine intuitive Vorgehensweise entwickelt, die ich für die Implementierung
 der Software empfehlen möchte:\\
 \vspace{1cm}
-Beim initialisieren des Programms werden von allen Datenmodellen (\verb|QAbstractModel| und abgeleitete Klassen), Controllern
-und Serviceklassen Instanzen erzeugt und als rootContext der \verb|QQmlApllicationEngine| gesetzt.
+Beim Initialisieren des Programms werden alle Datenmodelle (\verb|QAbstractModel| und abgeleitete Klassen), Controller
+und Serviceklassen instanziert und als rootContext der \verb|QQmlApllicationEngine| gesetzt.
+Siehe dazu das Beispiel \ref{exampleApp}.
+Damit stehen sie dem Programmierer in jeder QML Datei ser Anwendung zur verfügung.\\
+In einer QML Datei können die Kontexte der QmlEngine nun unter ihrer URI referenziert werden. Dies ist in Beispiel
+\ref{exampleListview} gezeigt:\\
+In dem QML Type \glqq ListView \grqq wird dem Property \verb|model| die URI des listModels aus \ref{exampleApp} zugewiesen.
+Im weiteren Verlauf des Codes findet sich ein \verb|MouseArea| QML Type.
+Wird den dem Bereich ein Klick mit linker Maustaste durchgeführt, wird das Signal \verb|onClicked| emittiert.
+Innerhalb des \verb|MouseArea| Codes wird definiert, dass nach einem Mausklick die Funktion \verb|selectRow(message)|
+aufgerufen wird. \verb|message| ist dabei der übergebene Parameter.
+Es ist schnell ersichtlich, dass das Beispiel keinerlei Importe enthält, was daran liegt, dass sowohl das DatenModell als
+auch das Objekt der Controllerklasse als Ressource in der QmlEngine registriert wurden.
+Im weiteren Verlauf des Codes wird eine \verb|Connections| erzeugt, bei dem das Signal des Controllers \verb|onRowClicked|
+mit mit einer Funktion verbunden wird. Innerhalb des \verb|Connections| Types wird in Javascript die Function definiert.
+Zu beachten ist, dass im Controller selbst das Signal als \verb|RowClicked| definiert wird.
+Innerhalb der QML Datei werden die Signale dann mit dem Präfix \glqq on \grqq erfasst.
+Der Signalname wird als Name einer javascript - Funktion verwendet, die mit \verb|function| gekennzeichnet ist.
+Der Code innerhalb des Funktionskörpers beschreibt dann die Funktionslogik in Javascript.
+Im Fall des Beispiels wird ein bool'sches Property umgeschaltet, wenn die \verb|id| des Datenmodell - Delegates mit der
+\verb|message| des Signals übereinstimmt.
+
+
 \lstset{
     basicstyle=\small\ttfamily
 }
-\lstinputlisting[language=Python]{Listings/Demo1.py}\label{exampleApp}
+\newpage
+\lstinputlisting[language=Python,
+        caption ={Beispiel einer einfachen App mittels PySide6. \small Zunächst wird eine Instanz der
+Application-Klasse und der QmlEngine erzeugt. Danach werden Objekte eines Datenmodells und
+eines Controllers erzeugt und als rootContext der QmlEngine registriert. Anschließend wird die QML Datei des Hauptfensters geladen,
+was die App startet.}]
+{Listings/Demo1.py}\label{exampleApp}
+
+\lstinputlisting[language=xml,
+caption ={Beispiel einer QML Datei\small Diese QML Datei erzeugt ListView QML Type, der zum Anzeigen der Daten
+in einem ListModel verwendet wird. Innerhalb eines Rechtecks mit farbigem Rand werden in einem RowLayout Type die
+Datensätze des Datenmodells gerendert und über die Funktionslogik von Signalen der QML Types und der Controllerklasse
+farblioch markiert.}]{Listings/listviewExample.qml}\label{exampleListview}
+\newpage
+
 \begin{figure}
         \caption[Model-View Konzept mit zusätzlichem Controller und Service ]
         {\small Die Abbildung zeigt das in PySide6 verwendete Model-View Konzept, welches um einer Controllerklasse und
@@ -125,6 +160,26 @@ und Serviceklassen Instanzen erzeugt und als rootContext der \verb|QQmlApllicati
         \includegraphics[width = \textwidth ]{Bilder/MVCS_Beispiel}
         \centering
 \end{figure}
+
+\newpage
+
+Mit den Beispielen \ref{exampleApp} und \ref{exampleListview} lässt sich sehr gut ein Schema erkennen:
+Die Daten sind hinter einem DatenModel geschützt und werden gleichzeitig der View zur Verfügung gestellt.
+Über die QML Dateien erfolgt die GUI Modellierung und Events werden mit dem Signal/Slot Prinzip behandelt.
+Beliebige Ressourcen können als Teil der QmlEngine registriert werden um Sie an jeder Stelle im GUI verfügbar zu machen.
+Das künftige Programm soll jedoch auch Programmteile aufweisen, die nicht unbedingt mit den Daten und dem GUI verknüpft sind.
+Das sind z.B. die Kommunikation über ModBus und dem ABB Industrieroboter oder das Übersetzen der Modbus Werte in
+RAPID Befehle.
+Diese Programmteile werden als Service Klassen bezeichnet.
+Wenn sich der Programmcode auf ein GUi auswirkt, wird ein Controller gebraucht, der dieses Verhalten steuert.
+Selbstverständlich könnten die Funktionen eines Controllers in den Service integriert werden.
+Dies würde aber die Wartbarkeit und Erweiterbarkeit verschlechtern.
+Nach dem Schema wie in \ref{fig:figure10} können beliebig viele Datenmodelle, GUI's, Controller und Services
+parallel existieren ohne sich gegenseitig zu beeinflussen.\\
+Als Nachteil kann angeführt werden, dass sich mit zunehmendem Kontextregister der QmlEngine die Performance des Programms
+verschlechtern wird.
+Bei dem eher geringen erwarteten Funktionsumfang ist dies jedoch untergeordnet und könnte durch das dezidierte Aufteilen der
+Funktionen in Threads reduziert werden.
 
 \section{GUI - Konzeptionierung}
 
