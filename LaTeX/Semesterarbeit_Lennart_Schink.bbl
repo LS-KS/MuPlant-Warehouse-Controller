@@ -21,6 +21,10 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{qmlTypeList}
+\glqq Liste aller QML Types,
+  \url{https://doc.qt.io/qt-6/qtquick-qmlmodule.html}, Accessed:[15.06.2023].
+
 \bibitem{Hübler2019}
 S.~Hübler, \glqq BPS Tätigkeits- und Erfahrungsbericht: Objekterkennung und
   Verfolgung mittels Kamera in Produktionsanlagen am Beispiel der Modellfabrik
@@ -39,7 +43,19 @@ L.~Kistner, \glqq Konzeptionierung und Umsetzung einer serviceorientierten
 \glqq Qt History on Qt Wiki,  \url{https://wiki.qt.io/Qt_History}, Accessed:
   [13.06.2023].
 
+\bibitem{pysideQtWidgets}
+\glqq PySide6 QtWidgets,
+  \url{https://doc.qt.io/qtforpython-6/PySide6/QtWidgets/index.html}, Accessed:
+  [14.06.2023].
+
+\bibitem{pysideQtQuick}
+\glqq PySide6 QtQuick,
+  \url{https://doc.qt.io/qtforpython-6/PySide6/QtQuick/index.html}, Accessed:
+  [14.06.2023].
+
 \bibitem{pysideSignalSlot}
-\glqq Signal and Slot in PySide6 Framework,  Accessed: [13.06.2023].
+\glqq Signal and Slot in PySide6 Framework,
+  \url{https://doc.qt.io/qtforpython-6/PySide6/QtCore/Slot.html}, Accessed:
+  [13.06.2023].
 
 \end{thebibliography}

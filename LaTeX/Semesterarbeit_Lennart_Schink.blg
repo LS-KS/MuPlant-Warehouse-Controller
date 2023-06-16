@@ -22,45 +22,45 @@ Warning--I didn't find a database entry for "LarsKistner2016"
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 5 entries,
+You've used 8 entries,
             4022 wiz_defined-function locations,
-            848 strings with 8345 characters,
-and the built_in function-call counts, 1641 in all, are:
-= -- 109
-> -- 11
+            863 strings with 8762 characters,
+and the built_in function-call counts, 2595 in all, are:
+= -- 184
+> -- 14
 < -- 0
-+ -- 7
++ -- 10
 - -- 2
-* -- 60
-:= -- 278
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 3
+* -- 89
+:= -- 434
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 6
 chr.to.int$ -- 0
-cite$ -- 5
-duplicate$ -- 152
-empty$ -- 177
+cite$ -- 8
+duplicate$ -- 246
+empty$ -- 283
 format.name$ -- 2
-if$ -- 343
+if$ -- 557
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 35
-newline$ -- 38
+int.to.str$ -- 8
+missing$ -- 56
+newline$ -- 47
 num.names$ -- 2
-pop$ -- 110
+pop$ -- 174
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 126
+skip$ -- 204
 stack$ -- 0
-substring$ -- 11
-swap$ -- 73
+substring$ -- 20
+swap$ -- 120
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 8
 warning$ -- 0
 while$ -- 2
-width$ -- 6
-write$ -- 56
+width$ -- 9
+write$ -- 78
 (There was 1 warning)
