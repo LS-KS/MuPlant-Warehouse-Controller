@@ -9,44 +9,36 @@ Darüber hinaus müssen diese Schritte auch von Personen durchgeführt werden k�
 der Software nicht involviert waren.
 Eine saubere Struktur der Software ist dazu unerlässlich.
 Die alte Software nutzte eine GUI-Klasse als Datenhub.
-Dadurch entstand ein unübersichtliches Klassenkonstrukt, sodass es für Außenstehende sehr schwer wurde sich in den Code
-einzudenken.
-Dadurch, dass Teile der Programmlogik in den XAML Dateien \glqq versteckt\grqq wurden, wurde es beinahe unmöglich.
+Dadurch entstand ein unübersichtliches Klassenkonstrukt, dass es schwer machte sich in den Code zu überschauen.
 Zum Beispiel wird anhand der Klassendiagramme deutlich, dass Daten der Modbus Adressen in die \verb|commissionMatrix|
-geschrieben werden müssen, weil ausschließlich dort zu RAPID Kommandos übersetzt werden und an den ABBRobotics Controller
-übergeben werden.
-Wie genau das passiert, lässt sich anhand des C\# Codes nicht nachvollziehen.
-Ich bin mir sicher, dass mit einer Menge Zeitaufwand dieses Rätsel gelöst werden kann, jedoch bringt es für die
-Konzeptionierung der neuen Software keinen Mehrwert.\\
+geschrieben werden müssen, weil sie ausschließlich dort zu RAPID Kommandos für den Industrieroboter übersetzt werden.
+Wie genau das passiert, lässt sich jedoch anhand des C\# Codes nicht nachvollziehen.
+Mit einer Menge Zeitaufwand könnte dieses Rätsel aufgelöst werden, jedoch bringt es für die Konzeptionierung der neuen
+Software keinen Mehrwert.\\
 \vspace{1cm}
-Um diese Unannehmlichkeiten für die Zukunft zu vermeiden, empfiehlt es sich auf branchenübliche Design Patterns zurückzugreifen.
-Das grundlegendste Design Konzept ist das MVC.
-Dieses Konzept sieht vor, dass Daten (Model) und GUI (View) keinerlei Zugriff aufeinander erlauben.
+Um solche Unannehmlichkeiten für die Zukunft zu vermeiden, empfiehlt es sich auf branchenübliche Design Patterns
+zurückzugreifen.
+Dieses MVC Konzept sieht vor, dass Daten (Model) und GUI (View) keinerlei Zugriff aufeinander erlauben.
 Die Schnittstelle zwischen den Daten und dem Benutzer ist ein Controller, der die Programmlogik implementiert.
 Für die Daten gilt, dass sie in einer Objektstruktur modelliert werden und nicht von außerhalb dieser Objekte verändert
 werden.
 \vspace{1cm}
-Soll ein Wert in dem Datenmodell geschrieben oder verändert werden, dann muss dafür eine öffentliche Methode existieren,
-die alle möglichen Fehler abfängt und referenzielle Integrität herstellt. \\
-Als Beispiel für die referenzielle Integrität möchte ich eine Palette mit einem Becher anführen.
-In Abb. \ref{fig:figure9} sind drei Klassen, Pallet, Cup und Product, dargestellt.
-Die Attribute der Klassen sind private, was durch das \glqq - \grqq angedeutet ist.
+Soll das Datenmodell gerändert werden, muss dafür eine öffentliche Methode in dem Modell selbst existieren,
+die alle möglichen Fehler abfängt und referenzielle Integrität herstellt, sodass das Datenmodell nach jeder berechtigten
+Änderung konsistent bleibt und unberechtigte Änderungen nicht zulässt.\\
+Die drei Klassen in Abb. \ref{fig:figure9} besitzen private Attribute, was durch das \glqq - \grqq angedeutet ist.
+Dafür besitzen sie öffentliche Methoden, die einerseits die Attribute zurückgeben (get-Methoden) oder einen zu verändernden
+Wert übernehmen (set - Methoden).
+Werden Listen verwendet, können Objekte mit den with- und without - Methoden hinzugefügt oder entfernt werden.
 Ein Objekt der Klasse \verb|Pallet| kann sich also nicht direkt selbst in das entsprechende Feld eines Objekts der Klasse
-\verb|Cup| eintragen, sondern muss dazu die entsprechende Methode \verb|SetPallet()| aufrufen, die, durch
-das \glqq + \grqq Symbol gekennzeichnet, public sind.
-Typischer Weise wird in diesen get- und set- Methoden das entsprechende Objekt als Parameter übergeben.
-Diese Methoden müssen mindestens drei wichtige Dinge erledigen.
+\verb|Cup| eintragen, sondern muss dazu die entsprechende Methode \verb|SetPallet()| aufrufen.
+Diese Methode muss mindestens die folgenden Kriterien erfülllen um referenzielle Integrität herzustellen:
 Erstens muss die Gültigkeit der übergebenen Parameter geprüft werden.
-Zweitens muss überprüft werden ob in dem zu schreibenden Attribut schon ein anderes Objekt vermerkt ist, wenn ja, wird
-dies für Schritt 3 wichtig.
-Drittens müssen die übergebenen Parameter verarbeitet werden: In die eigene Klasse wird die Änderung geschrieben und
-die Änderungen werden allen anderen betroffenen Objekten mitgeteilt.
+Zweitens muss überprüft werden ob in dem zu schreibenden Attribut schon ein anderes Objekt vermerkt ist.
+Drittens müssen die Änderungen jeder betroffenen Klasse mitgeteilt werden und eventuelle Fehlerfälle behandelt werden.
 Wird zum Beispiel einem Objekt der Klasse \verb|Cup| je ein Objekt der Klasse  \verb|Pallet| und \verb|Product|
-übergeben, dann muss am Ende das \verb|Cup| Objekt in der Liste \verb|cups| der Klasse \verb|Product| stehen und das
-Objekt der Klasse \verb|Pallet| muss als Feldwert des Attributs \verb|cup| das Objekt der \verb|Cup| Klasse geschrieben
-sein.
-Dies wird im Allgemeinen durch den gegenseitigen Aufruf der jeweiligen get/set - Methoden sichergestellt.
-Für Listennamen haben sich Namen mit dem präfix with bzw. without durchgesetzt.
+übergeben, dann muss am Ende der Änderung das \verb|Cup| Objekt in der Liste \verb|cups| der Klasse \verb|Product| stehen.
+Das Objekt der Klasse \verb|Pallet| muss ebenfalls als Feldwert des Attributs \verb|cup| das Objekt der \verb|Cup| Klasse haben.\\
 
 \vspace{1cm}
 \begin{figure}
@@ -61,16 +53,15 @@ Für Listennamen haben sich Namen mit dem präfix with bzw. without durchgesetzt
 \section{PySide6 und QuickQml 2.0}
 
 Laut der Qt Wiki Website \cite{QtWikiHistory} wurde das Qt Framework geboren als ihre Schöpfer Haavard Nord und
-Eric Chambe-Eng im Sommer 1990 in Norwegen an einem GUI für eine Ultraschall Datenbank arbeiten.
+Eric Chambe-Eng im Sommer 1990 in Norwegen an einem GUI für eine Ultraschalldatenbank arbeiten.
 Die Software sollte damals in C++ implementiert auf Mac, Unix und Windows laufen.
 Fünf Jahre später veröffentlichten Sie das erste Qt Framework unter dem Firmennamen Troll Tech.
 Seitdem gewann das Framework immer mehr Popularität.
-Im Jahr 2006 übernahm Nokia die Firma Trolltech und verkaufte das Qt Project in den Jahren 2011 und 2012 erst teilweise,
+Im Jahr 2006 übernahm Nokia die Firma Troll Tech und verkaufte das Qt Project in den Jahren 2011 und 2012 erst teilweise,
 dann vollständig an den Digia Konzern.
 Seit 2014 ist Qt als Tochterunternehmen des Digia Konzerns unter dem Namen \glqq The Qt Company\grqq ein eigenständiges Unternehmen.
 
-Das Qt Framework ist in C++ implementiert und profitiert dadurch von dem Performance-Vorteil gegenüber anderen
-Programmiersprachen.
+Das Qt Framework ist in C++ implementiert.
 Die neue Software für die $\mu$Plant soll jedoch in Python implementiert werden.
 Für diese Zwecke hat Qt u.A. das Framework PySide6 veröffentlicht, welches einen Wrapper für Python Projekte bietet.
 
@@ -82,58 +73,57 @@ mittels einer \verb|QtQmlApplicationEngine| Klasse in das Programm eingebunden w
 Für die Umsetzung eines MVC-Design Patterns empfiehlt sich die Verwendung von QtQuickQML.
 Durch die Verwendung des Frameworks wird die konsequente Trennung zwischen Interface und Datenmodell erzwungen.
 Veranschaulicht wird dies in Abb. \ref{fig:figure10}.
-Die eigentlichen Daten (von Server oder Datei) werden in ein Model überführt.
-Dieses Model ist ein beliebig komplexes Klassenkonstrukt welches referenzielle Integrität aufbaut: Wird eine Stelle
-berechtigter Weise geändert, bleibt das Modell intakt und im Sinne seiner Logik.
+Die eigentlichen Daten (von Server oder Datei) werden in ein Datenmodell (Model) überführt.
+Dieses Datenmodell ist ein beliebig komplexes Klassenkonstrukt, welches referenzielle Integrität aufbaut.
 In Pyside6 muss dieses Datenmodell von der Basisklasse \verb|QAbstractModel| abgeleitet werden.
 Beim Initialisierung der Anwendung wird eine Instanz dieser Klasse (oder einer abgeleiteten Klasse) erstellt und als
-rootcontext der \verb|QQmlApplicationEngine| registriert.
+Root-context der \verb|QQmlApplicationEngine| registriert.
 Somit ist das Datenmodell mit dem GUI verknüpft und kann unter seiner URI in jedem QML File angesprochen werden.
-In einer QML Datei wird ein entsprechendes QML Item, z.B. \verb|ListView|, welches eine einfache Liste erzeugt,
+In einer QML Datei wird ein entsprechender QML Type, z.B. \verb|ListView|, welches eine einfache Liste erzeugt,
 und dem Property \verb|model| die URI des Datenmodells zugewiesen.
-Dadurch kennt das \verb|ListView| Objekt die Indices des Datenmodells und erhält beim rendern der Liste nur die benötigten
-Teile der Daten.
-Jede weitere Aktion die durch den Benutzer auf ein Listenelement ausgelöst wird, bezieht sich auf ein Delegate des Datenmodells.
+Dadurch kennt das \verb|ListView| Objekt die Indices des Datenmodells und erhält beim Rendern der Liste nur die benötigten
+Daten.
+Jede weitere Aktion, die durch den Benutzer auf ein Listenelement ausgelöst wird, bezieht sich auf ein Delegate des Datenmodells.
 Jede Änderung an dem Delegate wird zunächst gerendert und überprüft bevor das Datenmodell geändert wird.
-Diese Basisfunktion kommt mit dem Qt Framework an sich und müssen nicht implementiert werden.
+Diese Basisfunktion kommt mit dem Qt Framework an sich und muss nicht implementiert werden.
 Wie jedoch das Datenmodell mit den geänderten Daten umgeht oder ob die Änderung des Datenmodells automatisch ein Update
 der Daten auf dem Server oder der Datei auslöst, muss vom Entwickler implementiert werden!
 An ein Delegate sind je nach QmlType durch das Framework Signale gebunden.
 Signale sind Teil des Signal/Slot Prinzips des Qt Framework \cite{pysideSignalSlot} und stellen die Funktion eines Events dar.
-Durch die \verb|QmlApplicationEngine| sind innerhalb eines GUIs alle rootContext Elemente ansprechbar.
+Durch die \verb|QmlApplicationEngine| sind innerhalb eines GUIs alle Root-context Elemente ansprechbar.
 Wird ein Signal an beliebiger Stelle im GUI emittiert, kann es an jeder anderen Stelle als Event genutzt werden.
 Dadurch muss man  in der Regel keine zusätzlichen Callbacks oder Lamda-Ausdrücke definieren.
 Außerhalb des QML Contexts, z.B. in einer Python Klasse, muss das Signal der Klasse bekannt sein, indem das Signal an die Klasse
 gebunden wird.
 Eine Funktion die mit der Annotation \glqq Slot(str) \grqq versehen ist, wird als Slot behandelt und kann mit dem Signal
 verknüpft werden, sodass diese bei Auftreten des Signals ausgeführt werden.
-Signale können Daten übergeben werden, die so an einen Slot übergeben werden können.\\
+An Signale können Daten übergeben werden, die so in einem Slot weiterverarbeitet werden können.\\
 \vspace{1cm}
 In meiner Vorbereitung auf diese Arbeit hat sich eine intuitive Vorgehensweise entwickelt, die ich für die Implementierung
 der Software empfehlen möchte:\\
 \vspace{1cm}
 Beim Initialisieren des Programms werden alle Datenmodelle (\verb|QAbstractModel| und abgeleitete Klassen), Controller
-und Serviceklassen instanziert und als rootContext der \verb|QQmlApllicationEngine| gesetzt.
+und Serviceklassen instanziert und als Root-context der \verb|QQmlApllicationEngine| gesetzt.
 Siehe dazu das Beispiel \ref{exampleApp}.
-Damit stehen sie dem Programmierer in jeder QML Datei ser Anwendung zur verfügung.\\
-In einer QML Datei können die Kontexte der QmlEngine nun unter ihrer URI referenziert werden. Dies ist in Beispiel
-\ref{exampleListview} gezeigt:\\
+Damit stehen sie dem Programmierer in jeder QML Datei der Anwendung zur verfügung.\\
+In einer QML Datei können die Kontexte der QQmlEngine nun unter ihrer URI referenziert werden.
+Dies ist in Beispiel \ref{exampleListview} gezeigt:\\
 In dem QML Type \glqq ListView \grqq wird dem Property \verb|model| die URI des listModels aus \ref{exampleApp} zugewiesen.
 Im weiteren Verlauf des Codes findet sich ein \verb|MouseArea| QML Type.
-Wird den dem Bereich ein Klick mit linker Maustaste durchgeführt, wird das Signal \verb|onClicked| emittiert.
+Wird in dem Bereich ein Klick mit linker Maustaste durchgeführt, wird das Signal \verb|onClicked| emittiert.
 Innerhalb des \verb|MouseArea| Codes wird definiert, dass nach einem Mausklick die Funktion \verb|selectRow(message)|
 aufgerufen wird. \verb|message| ist dabei der übergebene Parameter.
-Es ist schnell ersichtlich, dass das Beispiel keinerlei Importe enthält, was daran liegt, dass sowohl das DatenModell als
-auch das Objekt der Controllerklasse als Ressource in der QmlEngine registriert wurden.
-Im weiteren Verlauf des Codes wird eine \verb|Connections| erzeugt, bei dem das Signal des Controllers \verb|onRowClicked|
-mit mit einer Funktion verbunden wird. Innerhalb des \verb|Connections| Types wird in Javascript die Function definiert.
+Das Beispiel braucht dabei keinerlei Importe anderer Klassen, was daran liegt, dass sowohl das DatenModell als
+auch das Objekt der Controller Klasse als Ressource der QQmlEngine registriert wurden.
+Im weiteren Verlauf des Codes wird ein QML Type \verb|Connections| erzeugt, bei dem das Signal des Controllers \verb|onRowClicked|
+mit einer Funktion verbunden wird.
+Innerhalb des \verb|Connections| Types wird in Javascript die Funktion definiert.
 Zu beachten ist, dass im Controller selbst das Signal als \verb|RowClicked| definiert wird.
 Innerhalb der QML Datei werden die Signale dann mit dem Präfix \glqq on \grqq erfasst.
 Der Signalname wird als Name einer javascript - Funktion verwendet, die mit \verb|function| gekennzeichnet ist.
 Der Code innerhalb des Funktionskörpers beschreibt dann die Funktionslogik in Javascript.
 Im Fall des Beispiels wird ein bool'sches Property umgeschaltet, wenn die \verb|id| des Datenmodell - Delegates mit der
 \verb|message| des Signals übereinstimmt.
-
 
 \lstset{
     basicstyle=\small\ttfamily
@@ -163,25 +153,31 @@ farblioch markiert.}]{Listings/listviewExample.qml}\label{exampleListview}
 
 \newpage
 
-Mit den Beispielen \ref{exampleApp} und \ref{exampleListview} lässt sich sehr gut ein Schema erkennen:
-Die Daten sind hinter einem DatenModel geschützt und werden gleichzeitig der View zur Verfügung gestellt.
+Aus den Beispielen \ref{exampleApp} und \ref{exampleListview} lässt sich eine Systematik erkennen:
+Die Daten sind hinter einem DatenModel geschützt und werden der View zur Verfügung gestellt.
 Über die QML Dateien erfolgt die GUI Modellierung und Events werden mit dem Signal/Slot Prinzip behandelt.
-Beliebige Ressourcen können als Teil der QmlEngine registriert werden um Sie an jeder Stelle im GUI verfügbar zu machen.
-Das künftige Programm soll jedoch auch Programmteile aufweisen, die nicht unbedingt mit den Daten und dem GUI verknüpft sind.
-Das sind z.B. die Kommunikation über ModBus und dem ABB Industrieroboter oder das Übersetzen der Modbus Werte in
+Beliebige Ressourcen können als Teil der QmlEngine registriert werden, um Sie an anderer Stelle verfügbar zu machen.
+Das künftige Programm soll jedoch auch Programmteile aufweisen, die nicht unbedingt mit den Daten oder dem GUI verknüpft sind.
+Das sind beispielsweise die Kommunikationen über ModBus und dem ABB Industrieroboter oder das Übersetzen der Modbus Werte in
 RAPID Befehle.
 Diese Programmteile werden als Service Klassen bezeichnet.
-Wenn sich der Programmcode auf ein GUi auswirkt, wird ein Controller gebraucht, der dieses Verhalten steuert.
+Wenn sich der Programmcode auf ein GUI auswirkt, wird ein Controller gebraucht, der dieses Verhalten steuert.
 Selbstverständlich könnten die Funktionen eines Controllers in den Service integriert werden.
 Dies würde aber die Wartbarkeit und Erweiterbarkeit verschlechtern.
-Nach dem Schema wie in \ref{fig:figure10} können beliebig viele Datenmodelle, GUI's, Controller und Services
+Nach der Systematik wie in \ref{fig:figure10} abgebildet, können beliebig viele Datenmodelle, GUI's, Controller und Services
 parallel existieren ohne sich gegenseitig zu beeinflussen.\\
 Als Nachteil kann angeführt werden, dass sich mit zunehmendem Kontextregister der QmlEngine die Performance des Programms
 verschlechtern wird.
-Bei dem eher geringen erwarteten Funktionsumfang ist dies jedoch untergeordnet und könnte durch das dezidierte Aufteilen der
-Funktionen in Threads reduziert werden.
+Bei dem eher gering erwarteten Funktionsumfang der zu erstellenden Software ist dies jedoch untergeordnet und könnte
+durch das dezidierte Aufteilen der Funktionen in Threads reduziert werden.
 
 \section{GUI - Konzeptionierung}
+
+Die Hauptfunktion der Software war bisher das automatisierte Abarbeiten der Kommissionsaufträge, die über Modbus TCP/IP
+von der Auftragsverwaltung der $\mu$Plant übergeben werden.
+Während diese Funktion abläuft, macht der Benutzer höchstwahrscheinlich einen Soll-Ist-Vergleich zwischen dem GUI
+und dem was er in der LZ sieht.
+Für das GUI muss leitet sich daraus ab:
 
 \section{Konzepte zur Datenmodellierung}
 
