@@ -177,7 +177,38 @@ Die Hauptfunktion der Software war bisher das automatisierte Abarbeiten der Komm
 von der Auftragsverwaltung der $\mu$Plant übergeben werden.
 Während diese Funktion abläuft, macht der Benutzer höchstwahrscheinlich einen Soll-Ist-Vergleich zwischen dem GUI
 und dem was er in der LZ sieht.
-Für das GUI muss leitet sich daraus ab:
+In Abb. \ref{fig:figure11} ist ein Entwurf dargestellt welche Elemente sichtbar sein sollten, wenn der Automatikbetrieb läuft.
+Links ist die Andockstation des mobilen Roboters simuliert mit einem RFID Gerät darüber [Fehlt noch eine zufriedenstellende Idee wie die Daten des RFID Readers angezeigt werden].
+Der Kommissioniertisch ist mit seinen beiden Plätzen \glqq K1 \grqq und \glqq K2\grqq  daneben symbolisiert.
+Die Visualisierung des Lagers nimmt den gesamten rechten Bildschirm ein.
+Die Produktliste, wie sie in \ref{fig:figure} Bereich \glqq D\grqq dargestellt ist, kann entfallen.
+Muss der Bediener ein Produkt an irgendeiner Stelle des Programms überschreiben, so wird ihm nicht mehr die Produkt ID
+angezeigt, sondern direkt der Name.
+Zusätzlich könnte die Produktliste als Neues Fenster auf Wunsch des Benutzers eingeblendet werden.
+Zum Beispiel über die Toolbar.
+Sämtliche Einstellungen wie Ip und Port der Kommunikationsschnittstellen sollen nur bei Bedarf angezeigt werden.
+Ihr Aufruf soll über die Toolbar erfolgen.
+Die Bereiche \glqq E\grqq (Inventarliste) und \glqq F\grqq (Eventlog) aus Abb \ref{fig:figure} Müssen nicht
+gleichzeitig sichtbar sein.
+Sie können in einem Register integriert werden und mit dem QML Type \verb|StackView| oder einem Loader angezeigt werden.
+Als Drittes Register soll zusätzlich zum alten Startbildschirm eine Commission List hinzugefügt werden.
+Sie soll eine Übersicht über die von der Auftragsverwaltung eingetroffenen Aufträge und ihren Status anzeigen.
+Um Manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
+wenn man über dem entsprechenden Bereich den Mauszeiger hält (Hovering).
+Bei Klick auf das Zahnrad-Symbol soll ein Objekt des QML Types \verb|QDialog| eingeblendet werden in dem die alten
+Feldwerte angezeigt und editiert werden können, aber auch das Editieren verworfen werden kann.\\
+\vspace{1cm}
+
+Die Funktion des Controllers soll über die Toolbar aufgerufen werden.
+
+\begin{figure}
+        \caption[Mockup des Startbildschirms]
+        {\small Die Abbildung zeigt wie der Startbildschirm aussehen könnte um die Funktion des Automatikbetriebs abzubilden:
+        }\label{fig:figure11}
+        \includegraphics[width = \textwidth ]{Bilder/Mockup_Startbildschirm}
+        \centering
+\end{figure}
+
 
 \section{Konzepte zur Datenmodellierung}
 
