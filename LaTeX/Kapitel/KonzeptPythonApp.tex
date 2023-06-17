@@ -191,21 +191,39 @@ Ihr Aufruf soll über die Toolbar erfolgen.
 Die Bereiche \glqq E\grqq (Inventarliste) und \glqq F\grqq (Eventlog) aus Abb \ref{fig:figure} Müssen nicht
 gleichzeitig sichtbar sein.
 Sie können in einem Register integriert werden und mit dem QML Type \verb|StackView| oder einem Loader angezeigt werden.
+Das Erscheinungsbild der beiden GUI Elemente kann aus der alten Software übernommen werden.
 Als Drittes Register soll zusätzlich zum alten Startbildschirm eine Commission List hinzugefügt werden.
 Sie soll eine Übersicht über die von der Auftragsverwaltung eingetroffenen Aufträge und ihren Status anzeigen.
-Um Manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
+Um Manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen, ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
 wenn man über dem entsprechenden Bereich den Mauszeiger hält (Hovering).
 Bei Klick auf das Zahnrad-Symbol soll ein Objekt des QML Types \verb|QDialog| eingeblendet werden in dem die alten
 Feldwerte angezeigt und editiert werden können, aber auch das Editieren verworfen werden kann.\\
 \vspace{1cm}
 
 Die Funktion des Controllers soll über die Toolbar aufgerufen werden.
+Der Begriff an sich ist im Zusammenhang mit der neu konzipierten Software irreführend und wird daher verworfen.
+Der Oberbegriff \glqq Manual Processing \grqq wird stattdessen gewählt.
+Hiermit sollen manuell Transportaufträge erzeugt werden wie \glqq Räume den Becher aus Lagerort L3a nach L6b \grqq.
+Im Grunde soll dies für jede denkbare Operation möglich sein.
+Bei Klick auf den entsprechenden Eintrag in der Toolbar könnte sich ein Fenster oder ein Dialog öffnen wie in
+\ref{fig:figure12}.
+Die so neu erzeugten Transportaufträge werden ebenfalls in der Commission List angezeigt.
 
 \begin{figure}
         \caption[Mockup des Startbildschirms]
         {\small Die Abbildung zeigt wie der Startbildschirm aussehen könnte um die Funktion des Automatikbetriebs abzubilden:
         }\label{fig:figure11}
         \includegraphics[width = \textwidth ]{Bilder/Mockup_Startbildschirm}
+        \centering
+\end{figure}
+
+\begin{figure}
+        \caption[Mockup des Menüs für die Manuelle Lagersteuerung]
+        {\small Die Abbildung zeigt, dass entweder ein Becher oder eine Palette (mit oder ohne Becher) vom Startort zum
+        Zielort transportiert werden kann. Die Eingabe der Zielorte wird hier über zwei Dropdown Menüs realisiert.
+        Das Mockup impliziert, dass bei Tätigung einer Eingabe eine Validierung der Eingaben erfolgt.
+        }\label{fig:figure12}
+        \includegraphics[width = \textwidth ]{Bilder/Mockup_ManualProcessing}
         \centering
 \end{figure}
 
