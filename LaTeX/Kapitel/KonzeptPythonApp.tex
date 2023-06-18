@@ -177,9 +177,11 @@ Die Hauptfunktion der Software war bisher das automatisierte Abarbeiten der Komm
 von der Auftragsverwaltung der $\mu$Plant übergeben werden.
 Während diese Funktion abläuft, macht der Benutzer höchstwahrscheinlich einen Soll-Ist-Vergleich zwischen dem GUI
 und dem was er in der LZ sieht.
-In Abb. \ref{fig:figure11} ist ein Entwurf dargestellt welche Elemente sichtbar sein sollten, wenn der Automatikbetrieb läuft.
-Links ist die Andockstation des mobilen Roboters simuliert mit einem RFID Gerät darüber [Fehlt noch eine zufriedenstellende Idee wie die Daten des RFID Readers angezeigt werden].
-Der Kommissioniertisch ist mit seinen beiden Plätzen \glqq K1 \grqq und \glqq K2\grqq  daneben symbolisiert.
+In Abb. \ref{fig:figure11} ist ein Entwurf dargestellt, der zeigt welche Elemente sichtbar sein sollten, wenn der
+Automatikbetrieb läuft.
+Links ist die Andockstation des mobilen Roboters simuliert mit einem RFID Gerät darüber.
+Die eingelesen Daten des RFID -Lesers könnten rechts daneben angezeigt werden.
+Der Kommissioniertisch ist mit seinen beiden Plätzen \glqq K1 \grqq und \glqq K2 \grqq  daneben symbolisiert.
 Die Visualisierung des Lagers nimmt den gesamten rechten Bildschirm ein.
 Die Produktliste, wie sie in \ref{fig:figure} Bereich \glqq D\grqq dargestellt ist, kann entfallen.
 Muss der Bediener ein Produkt an irgendeiner Stelle des Programms überschreiben, so wird ihm nicht mehr die Produkt ID
@@ -187,14 +189,17 @@ angezeigt, sondern direkt der Name.
 Zusätzlich könnte die Produktliste als Neues Fenster auf Wunsch des Benutzers eingeblendet werden.
 Zum Beispiel über die Toolbar.
 Sämtliche Einstellungen wie Ip und Port der Kommunikationsschnittstellen sollen nur bei Bedarf angezeigt werden.
-Ihr Aufruf soll über die Toolbar erfolgen.
-Die Bereiche \glqq E\grqq (Inventarliste) und \glqq F\grqq (Eventlog) aus Abb \ref{fig:figure} Müssen nicht
+Dazu wird die Taste zum Aufrufen in der Toolbar platziert und die EInstellungen sollen in einem QML Type \verb|QDialog|
+erfolgen.
+Das hat den Vorteil, dass die Eingabe der Daten ohne viel Implementierung erfolgen kann ohne das Datenmodell zu ändern.
+Eingegebene Daten müssen bestätigt werden und können auch wieder verworfen werden.
+Die Bereiche \glqq E\grqq (Inventarliste) und \glqq F\grqq (Eventlog) aus Abb. \ref{fig:figure} müssen nicht
 gleichzeitig sichtbar sein.
 Sie können in einem Register integriert werden und mit dem QML Type \verb|StackView| oder einem Loader angezeigt werden.
 Das Erscheinungsbild der beiden GUI Elemente kann aus der alten Software übernommen werden.
-Als Drittes Register soll zusätzlich zum alten Startbildschirm eine Commission List hinzugefügt werden.
+Als Drittes Register soll zusätzlich zum alten Startbildschirm eine Commission List (siehe Abb. \ref{fig:figure13}) hinzugefügt werden.
 Sie soll eine Übersicht über die von der Auftragsverwaltung eingetroffenen Aufträge und ihren Status anzeigen.
-Um Manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen, ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
+Um manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen, ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
 wenn man über dem entsprechenden Bereich den Mauszeiger hält (Hovering).
 Bei Klick auf das Zahnrad-Symbol soll ein Objekt des QML Types \verb|QDialog| eingeblendet werden in dem die alten
 Feldwerte angezeigt und editiert werden können, aber auch das Editieren verworfen werden kann.\\
@@ -204,10 +209,10 @@ Die Funktion des Controllers soll über die Toolbar aufgerufen werden.
 Der Begriff an sich ist im Zusammenhang mit der neu konzipierten Software irreführend und wird daher verworfen.
 Der Oberbegriff \glqq Manual Processing \grqq wird stattdessen gewählt.
 Hiermit sollen manuell Transportaufträge erzeugt werden wie \glqq Räume den Becher aus Lagerort L3a nach L6b \grqq.
-Im Grunde soll dies für jede denkbare Operation möglich sein.
+Dies soll für jede sinnvolle Transportoperation möglich sein.
 Bei Klick auf den entsprechenden Eintrag in der Toolbar könnte sich ein Fenster oder ein Dialog öffnen wie in
 \ref{fig:figure12}.
-Die so neu erzeugten Transportaufträge werden ebenfalls in der Commission List angezeigt.
+Die so neu erzeugten Transportaufträge werden ebenfalls in der Commission List (siehe Abb. \ref{fig:figure13}) angezeigt.\\
 
 \begin{figure}
         \caption[Mockup des Startbildschirms]
@@ -218,18 +223,73 @@ Die so neu erzeugten Transportaufträge werden ebenfalls in der Commission List 
 \end{figure}
 
 \begin{figure}
-        \caption[Mockup des Menüs für die Manuelle Lagersteuerung]
+        \caption[Mockup des Menüs für die manuelle Lagersteuerung]
         {\small Die Abbildung zeigt, dass entweder ein Becher oder eine Palette (mit oder ohne Becher) vom Startort zum
         Zielort transportiert werden kann. Die Eingabe der Zielorte wird hier über zwei Dropdown Menüs realisiert.
         Das Mockup impliziert, dass bei Tätigung einer Eingabe eine Validierung der Eingaben erfolgt.
         }\label{fig:figure12}
-        \includegraphics[width = \textwidth ]{Bilder/Mockup_ManualProcessing}
+        \includegraphics[height = 0.5\textwidth ]{Bilder/Mockup_ManualProcessing}
+        \centering
+\end{figure}
+
+\begin{figure}
+        \caption[Mockup der Commission List]
+        {\small Die Abbildung zeigt, wie die Commission List aussehen könnte. Sie könnte als Tab in einem Register eingebunden werden.:
+        }\label{fig:figure13}
+        \includegraphics[width = \textwidth ]{Bilder/Mockup_CommissionList}
+        \centering
+\end{figure}
+\vspace{1cm}
+Das GUI des RFID Server Programms war sinnvoll und praktisch und kann so wie bisher umgesetzt werden.
+Der Aufruf des Programms soll über die Toolbar implementiert werden.
+
+\section{Konzepte zur Datenmodellierung}
+
+Für die Modellierung der Daten wird das MVC Konzept angewandt und um Serviceklassen erweitert.
+Bei der Anlieferung eines Bechers wird dieser in eine Palette gestellt und anschließend eingelagert.
+Ein Objektdiagramm dieser Situation ist in Abb.\ref{fig:figure14} dargestellt.
+Eine Palette kann keinen, einen oder zwei Becher beinhalten.
+Die Becher in einer Liste zu speichern hat den Nachteil, dass man die Becher in der Palette als Solche verarbeiten muss,
+wenn der Slot als zweites Listenelement geführt wird.
+Die Becher als separates Objekt in der Palette zu führen hat den Nachteil, dass man immer an zwei Orten nachsehen muss.
+Andererseits ist die Zuordnung des Bechers zum Slot dadurch inhärent.
+Im Folgenden werden die Becher nicht als Liste, sondern als separate Feldwerte in der Palette geführt.
+Abb. \ref{fig:figure14} zeigt auch, dass jedes Objekt der Klasse Palette und Cup ein Feld \verb|location| braucht.
+Hier wird das Objekt gespeichert in welchem sich die Palette oder Becher gerade befindet.
+Dies ist erforderlich um refrenzielle Integrität zu gewährleisten und erleichtert die Implementierung der Controller,
+wie eingangs in \ref{PythonApp} beschrieben.
+Aus dem Diagramm wird auch deutlich, dass zwsichen den Objekten der Klassen \verb|MobileRobot|, \verb|WorkBench| und
+\verb|Inventory| keinerlei Assoziationen gibt.
+Es wird also ein weiteres Objekt, z.B. ein InventoryController, gebraucht um aktiv Objekte von einem Lagerort zu einem Anderen
+zu schreiben.
+Als Ergebnis dieser Überlegungen leitet sich ein (Daten-)Klassendiagramm ab (Siehe Abb.\ref{fig:figure15}).
+
+
+\begin{figure}
+        \caption[Objektdiagramm]
+        {\small Die Abbildung zeigt ein Objektidiagramm aus Ablageorten für Paletten und Becher. Es ist ebenfalls
+        ersichtlich, dass keine Verbindungslinien zwischen dem mobilen Roboter, dem Kommissioniertisch und dem Lager existieren.
+        }\label{fig:figure14}
+        \includegraphics[width = \textwidth ]{Bilder/Objektdiagramm_PaletteCupStorage}
+        \centering
+\end{figure}
+
+\begin{figure}
+        \caption[Klassendiagramm Datenmodell ]
+        {\small Klassendiagramm für die Datenstruktur der Software der Lagerverwaltung.
+        }\label{fig:figure15}
+        \includegraphics[width = \textwidth ]{Bilder/Klassendiagramm_Datenstruktur}
         \centering
 \end{figure}
 
 
-\section{Konzepte zur Datenmodellierung}
-
 \section{Konzepte für Controller- und Serviceklassen}
 
+Für die Kommunikation über Modbus TCP/IP, OPC UA, RFID und ABB Robotics wird jeweils eine eigene Serviceklasse und ein
+Controller angelegt, wobei für Modbus TCP/IP  und OPC UA sowohl Client als auch Server gebraucht werden.
+Das in \cite{LarsKistner2017} eingeführte Agentensystem wird ebenfalls als eigener Service implementiert.
+Da die LZ nicht mit anderen Stationen kommunizieren muss, reicht die Implementierung des Clients.
+
+
+InventoryController muss Datenmodell initialisieren.
 \section{Teilautomatisierte Code Dokumentation}

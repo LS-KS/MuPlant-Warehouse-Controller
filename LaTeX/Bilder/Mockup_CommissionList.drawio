@@ -1,0 +1,85 @@
+<mxfile host="app.diagrams.net" modified="2023-06-17T16:56:50.993Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 OPR/99.0.0.0" etag="5-bJdQKpVF4lz028SuVf" version="21.3.8" type="device">
+  <diagram name="Seite-1" id="1Lfcv1JscwHjvBgKQqQj">
+    <mxGraphModel dx="1330" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-497" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry width="820" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-498" value="Commission List" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="40" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-499" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.navigation.scrollBar;strokeColor=#999999;barPos=20;fillColor2=#99ddff;strokeColor2=none;direction=north;" vertex="1" parent="1">
+          <mxGeometry x="790" y="100" width="20" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-500" value="23" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="104" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-501" value="&amp;nbsp;Cup 54 from L15 b to K1 a" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="104" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-502" value="In Progress..." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="104" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-503" value="24" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="134" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-504" value="&amp;nbsp;Cup 67 from MR b to L15 a" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="134" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-505" value="Pending" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="134" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-506" value="25" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="164" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-507" value="&amp;nbsp;Cup 87 from K2 a to L1 a" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="164" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-508" value="Pending" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="164" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-509" value="26" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20" y="194" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-510" value="&amp;nbsp;Cup 5 from L5 a to MR" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="194" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-511" value="Pending" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="660" y="194" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-512" value="Manual Process" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="104" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-513" value="Modbus" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="134" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-514" value="Modbus" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="194" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-515" value="Manual Process" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="370" y="164" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-516" value="ID" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="74" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-518" value="Task" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="74" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-519" value="Source" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="370" y="74" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-520" value="Status" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="660" y="74" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-521" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.markup.line;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="20" y="90" width="760" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="7-Hqb6H97nyhliVRLqJK-522" value="Show processed orders" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.rrect;rSize=0;fillColor=#eeeeee;strokeColor=#999999;gradientColor=#cccccc;align=left;spacingLeft=4;fontSize=17;fontColor=#666666;labelPosition=right;" vertex="1" parent="1">
+          <mxGeometry x="590" y="47.5" width="15" height="15" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
