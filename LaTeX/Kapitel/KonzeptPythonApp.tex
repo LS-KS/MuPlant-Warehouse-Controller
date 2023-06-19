@@ -4,27 +4,26 @@
 
 Die Basisanforderungen einer integrierten LZ-Verwaltung lassen sich aus Kapitel \ref{Kap2} ableiten.
 Hinzu kommen die später in Kapitel 5 beschriebenen Funktionen.
-Anhand dieser beiden Punkte kann man erkennen, dass Modularität, Erweiterbarkeit sowie Wartbarkeit wichtige Kriterien sind.
-Darüber hinaus müssen diese Schritte auch von Personen durchgeführt werden können, die mit der ursprünglichen Entwicklung
-der Software nicht involviert waren.
-Eine saubere Struktur der Software ist dazu unerlässlich.
+Neben den Kriterien Modularität, Erweiterbarkeit und Wartbarkeit ist darüber hinaus wichtig, dass auch Personen,
+die bei der ursprünglichen Entwicklung der Software nicht involviert waren die Software warten und weiterentwickeln können.
+Eine saubere Struktur der Software ist daher unerlässlich und impliziert eine objektorientierte Programmierung.
 Die alte Software nutzte eine GUI-Klasse als Datenhub.
-Dadurch entstand ein unübersichtliches Klassenkonstrukt, dass es schwer machte sich in den Code zu überschauen.
+Dadurch entstand ein unübersichtliches Klassenkonstrukt, dass es schwer machte den Code zu überschauen.
 Zum Beispiel wird anhand der Klassendiagramme deutlich, dass Daten der Modbus Adressen in die \verb|commissionMatrix|
 geschrieben werden müssen, weil sie ausschließlich dort zu RAPID Kommandos für den Industrieroboter übersetzt werden.
 Wie genau das passiert, lässt sich jedoch anhand des C\# Codes nicht nachvollziehen.
-Mit einer Menge Zeitaufwand könnte dieses Rätsel aufgelöst werden, jedoch bringt es für die Konzeptionierung der neuen
+Mit genügend Zeitaufwand könnte dieses Rätsel aufgelöst werden, jedoch bringt es für die Konzeptionierung der neuen
 Software keinen Mehrwert.\\
 \vspace{1cm}
-Um solche Unannehmlichkeiten für die Zukunft zu vermeiden, empfiehlt es sich auf branchenübliche Design Patterns
+Um den genannten Anforderungen gerecht zu werden, empfiehlt es sich auf branchenübliche Design Patterns
 zurückzugreifen.
-Dieses MVC Konzept sieht vor, dass Daten (Model) und GUI (View) keinerlei Zugriff aufeinander erlauben.
+Das MVC Konzept sieht vor, dass Daten (Model) und GUI (View) keinerlei Zugriff aufeinander erlauben.
 Die Schnittstelle zwischen den Daten und dem Benutzer ist ein Controller, der die Programmlogik implementiert.
 Für die Daten gilt, dass sie in einer Objektstruktur modelliert werden und nicht von außerhalb dieser Objekte verändert
-werden.
+werden.\\
 \vspace{1cm}
 Soll das Datenmodell gerändert werden, muss dafür eine öffentliche Methode in dem Modell selbst existieren,
-die alle möglichen Fehler abfängt und referenzielle Integrität herstellt, sodass das Datenmodell nach jeder berechtigten
+die alle möglichen Fehler behandelt und referenzielle Integrität herstellt, sodass das Datenmodell nach jeder berechtigten
 Änderung konsistent bleibt und unberechtigte Änderungen nicht zulässt.\\
 Die drei Klassen in Abb. \ref{fig:figure9} besitzen private Attribute, was durch das \glqq - \grqq angedeutet ist.
 Dafür besitzen sie öffentliche Methoden, die einerseits die Attribute zurückgeben (get-Methoden) oder einen zu verändernden
@@ -38,7 +37,9 @@ Zweitens muss überprüft werden ob in dem zu schreibenden Attribut schon ein an
 Drittens müssen die Änderungen jeder betroffenen Klasse mitgeteilt werden und eventuelle Fehlerfälle behandelt werden.
 Wird zum Beispiel einem Objekt der Klasse \verb|Cup| je ein Objekt der Klasse  \verb|Pallet| und \verb|Product|
 übergeben, dann muss am Ende der Änderung das \verb|Cup| Objekt in der Liste \verb|cups| der Klasse \verb|Product| stehen.
-Das Objekt der Klasse \verb|Pallet| muss ebenfalls als Feldwert des Attributs \verb|cup| das Objekt der \verb|Cup| Klasse haben.\\
+Das Objekt der Klasse \verb|Pallet| muss ebenfalls als Feldwert des Attributs \verb|cup| das Objekt der \verb|Cup| Klasse haben.
+Es bleibt anzumerken, dass es die Attribute \verb|public, private| und \verb|protected| in Python nicht gibt.
+Dennoch ist eine modellierte Datenstruktur sinnvoll.\\
 
 \vspace{1cm}
 \begin{figure}
@@ -52,8 +53,8 @@ Das Objekt der Klasse \verb|Pallet| muss ebenfalls als Feldwert des Attributs \v
 \newpage
 \section{PySide6 und QuickQml 2.0}
 
-Laut der Qt Wiki Website \cite{QtWikiHistory} wurde das Qt Framework geboren als ihre Schöpfer Haavard Nord und
-Eric Chambe-Eng im Sommer 1990 in Norwegen an einem GUI für eine Ultraschalldatenbank arbeiten.
+Laut der Qt Wiki Website \cite{QtWikiHistory} wurde das Qt Framework geboren, als ihre Schöpfer Haavard Nord und
+Eric Chambe-Eng im Sommer 1990 in Norwegen an einem GUI für eine Ultraschalldatenbank arbeiteten.
 Die Software sollte damals in C++ implementiert auf Mac, Unix und Windows laufen.
 Fünf Jahre später veröffentlichten Sie das erste Qt Framework unter dem Firmennamen Troll Tech.
 Seitdem gewann das Framework immer mehr Popularität.
@@ -82,12 +83,12 @@ Somit ist das Datenmodell mit dem GUI verknüpft und kann unter seiner URI in je
 In einer QML Datei wird ein entsprechender QML Type, z.B. \verb|ListView|, welches eine einfache Liste erzeugt,
 und dem Property \verb|model| die URI des Datenmodells zugewiesen.
 Dadurch kennt das \verb|ListView| Objekt die Indices des Datenmodells und erhält beim Rendern der Liste nur die benötigten
-Daten.
+Daten.\\
 Jede weitere Aktion, die durch den Benutzer auf ein Listenelement ausgelöst wird, bezieht sich auf ein Delegate des Datenmodells.
 Jede Änderung an dem Delegate wird zunächst gerendert und überprüft bevor das Datenmodell geändert wird.
 Diese Basisfunktion kommt mit dem Qt Framework an sich und muss nicht implementiert werden.
 Wie jedoch das Datenmodell mit den geänderten Daten umgeht oder ob die Änderung des Datenmodells automatisch ein Update
-der Daten auf dem Server oder der Datei auslöst, muss vom Entwickler implementiert werden!
+der Daten auf dem Server oder der Datei auslöst, muss vom Entwickler implementiert werden!\\
 An ein Delegate sind je nach QmlType durch das Framework Signale gebunden.
 Signale sind Teil des Signal/Slot Prinzips des Qt Framework \cite{pysideSignalSlot} und stellen die Funktion eines Events dar.
 Durch die \verb|QmlApplicationEngine| sind innerhalb eines GUIs alle Root-context Elemente ansprechbar.
@@ -114,7 +115,7 @@ Wird in dem Bereich ein Klick mit linker Maustaste durchgeführt, wird das Signa
 Innerhalb des \verb|MouseArea| Codes wird definiert, dass nach einem Mausklick die Funktion \verb|selectRow(message)|
 aufgerufen wird. \verb|message| ist dabei der übergebene Parameter.
 Das Beispiel braucht dabei keinerlei Importe anderer Klassen, was daran liegt, dass sowohl das DatenModell als
-auch das Objekt der Controller Klasse als Ressource der QQmlEngine registriert wurden.
+auch das Objekt der Controller Klasse als Ressource der QQmlEngine registriert wurden.\\
 Im weiteren Verlauf des Codes wird ein QML Type \verb|Connections| erzeugt, bei dem das Signal des Controllers \verb|onRowClicked|
 mit einer Funktion verbunden wird.
 Innerhalb des \verb|Connections| Types wird in Javascript die Funktion definiert.
@@ -157,7 +158,7 @@ Aus den Beispielen \ref{exampleApp} und \ref{exampleListview} lässt sich eine S
 Die Daten sind hinter einem DatenModel geschützt und werden der View zur Verfügung gestellt.
 Über die QML Dateien erfolgt die GUI Modellierung und Events werden mit dem Signal/Slot Prinzip behandelt.
 Beliebige Ressourcen können als Teil der QmlEngine registriert werden, um Sie an anderer Stelle verfügbar zu machen.
-Das künftige Programm soll jedoch auch Programmteile aufweisen, die nicht unbedingt mit den Daten oder dem GUI verknüpft sind.
+Das künftige Programm soll jedoch auch Programmteile aufweisen, die nicht unbedingt mit den Daten oder dem GUI verknüpft sind.\\
 Das sind beispielsweise die Kommunikationen über ModBus und dem ABB Industrieroboter oder das Übersetzen der Modbus Werte in
 RAPID Befehle.
 Diese Programmteile werden als Service Klassen bezeichnet.
@@ -177,26 +178,25 @@ Die Hauptfunktion der Software war bisher das automatisierte Abarbeiten der Komm
 von der Auftragsverwaltung der $\mu$Plant übergeben werden.
 Während diese Funktion abläuft, macht der Benutzer höchstwahrscheinlich einen Soll-Ist-Vergleich zwischen dem GUI
 und dem was er in der LZ sieht.
-In Abb. \ref{fig:figure11} ist ein Entwurf dargestellt, der zeigt welche Elemente sichtbar sein sollten, wenn der
-Automatikbetrieb läuft.
+In Abb. \ref{fig:figure11} ist ein Entwurf dargestellt, der zeigt, welche Elemente im Automatikbetrieb sichtbar sein sollten:\\
 Links ist die Andockstation des mobilen Roboters simuliert mit einem RFID Gerät darüber.
-Die eingelesen Daten des RFID -Lesers könnten rechts daneben angezeigt werden.
-Der Kommissioniertisch ist mit seinen beiden Plätzen \glqq K1 \grqq und \glqq K2 \grqq  daneben symbolisiert.
-Die Visualisierung des Lagers nimmt den gesamten rechten Bildschirm ein.
+Die eingelesen Daten des RFID -Lesers könnten rechts daneben angezeigt werden.\\
+Der Kommissioniertisch ist mit seinen beiden Plätzen \glqq K1 \grqq und \glqq K2 \grqq  daneben symbolisiert.\\
+Die Visualisierung des Lagers nimmt den gesamten rechten Bildschirm ein.\\
 Die Produktliste, wie sie in \ref{fig:figure} Bereich \glqq D\grqq dargestellt ist, kann entfallen.
 Muss der Bediener ein Produkt an irgendeiner Stelle des Programms überschreiben, so wird ihm nicht mehr die Produkt ID
 angezeigt, sondern direkt der Name.
 Zusätzlich könnte die Produktliste als Neues Fenster auf Wunsch des Benutzers eingeblendet werden.
-Zum Beispiel über die Toolbar.
+Zum Beispiel über die Toolbar.\\
 Sämtliche Einstellungen wie Ip und Port der Kommunikationsschnittstellen sollen nur bei Bedarf angezeigt werden.
 Dazu wird die Taste zum Aufrufen in der Toolbar platziert und die EInstellungen sollen in einem QML Type \verb|QDialog|
 erfolgen.
 Das hat den Vorteil, dass die Eingabe der Daten ohne viel Implementierung erfolgen kann ohne das Datenmodell zu ändern.
-Eingegebene Daten müssen bestätigt werden und können auch wieder verworfen werden.
+Eingegebene Daten müssen bestätigt werden und können auch wieder verworfen werden.\\
 Die Bereiche \glqq E\grqq (Inventarliste) und \glqq F\grqq (Eventlog) aus Abb. \ref{fig:figure} müssen nicht
 gleichzeitig sichtbar sein.
 Sie können in einem Register integriert werden und mit dem QML Type \verb|StackView| oder einem Loader angezeigt werden.
-Das Erscheinungsbild der beiden GUI Elemente kann aus der alten Software übernommen werden.
+Das Erscheinungsbild der beiden GUI Elemente kann aus der alten Software übernommen werden.\\
 Als Drittes Register soll zusätzlich zum alten Startbildschirm eine Commission List (siehe Abb. \ref{fig:figure13}) hinzugefügt werden.
 Sie soll eine Übersicht über die von der Auftragsverwaltung eingetroffenen Aufträge und ihren Status anzeigen.
 Um manuelle Überschreibungen der Produkte und Cup IDs vorzunehmen, ist vorgesehen, dass ein Zahnrad-Symbol erscheint,
@@ -205,13 +205,13 @@ Bei Klick auf das Zahnrad-Symbol soll ein Objekt des QML Types \verb|QDialog| ei
 Feldwerte angezeigt und editiert werden können, aber auch das Editieren verworfen werden kann.\\
 \vspace{1cm}
 
-Die Funktion des Controllers soll über die Toolbar aufgerufen werden.
+Die Funktion des ehemaligen Controllers soll über die Toolbar aufgerufen werden.
 Der Begriff an sich ist im Zusammenhang mit der neu konzipierten Software irreführend und wird daher verworfen.
-Der Oberbegriff \glqq Manual Processing \grqq wird stattdessen gewählt.
+Der stattdessen wird der Titel \glqq Manual Processing \grqq gewählt.
 Hiermit sollen manuell Transportaufträge erzeugt werden wie \glqq Räume den Becher aus Lagerort L3a nach L6b \grqq.
 Dies soll für jede sinnvolle Transportoperation möglich sein.
 Bei Klick auf den entsprechenden Eintrag in der Toolbar könnte sich ein Fenster oder ein Dialog öffnen wie in
-\ref{fig:figure12}.
+\ref{fig:figure12}.\\
 Die so neu erzeugten Transportaufträge werden ebenfalls in der Commission List (siehe Abb. \ref{fig:figure13}) angezeigt.\\
 
 \begin{figure}
@@ -249,20 +249,24 @@ Für die Modellierung der Daten wird das MVC Konzept angewandt und um Servicekla
 Bei der Anlieferung eines Bechers wird dieser in eine Palette gestellt und anschließend eingelagert.
 Ein Objektdiagramm dieser Situation ist in Abb.\ref{fig:figure14} dargestellt.
 Eine Palette kann keinen, einen oder zwei Becher beinhalten.
-Die Becher in einer Liste zu speichern hat den Nachteil, dass man die Becher in der Palette als Solche verarbeiten muss,
-wenn der Slot als zweites Listenelement geführt wird.
-Die Becher als separates Objekt in der Palette zu führen hat den Nachteil, dass man immer an zwei Orten nachsehen muss.
+Die Becher in einer Liste zu speichern hat den Nachteil, dass man die Becher in der Palette als Listeneinträge verarbeiten muss
+und der Slot als weitere Listenspalte geführt wird.
+Die Becher als zwei separate Objekte in der Palette zu führen hat den Nachteil, dass zwei Orte abgefragt werden müssen.
 Andererseits ist die Zuordnung des Bechers zum Slot dadurch inhärent.
-Im Folgenden werden die Becher nicht als Liste, sondern als separate Feldwerte in der Palette geführt.
+Im Folgenden werden daher die Becher nicht als Liste, sondern als separate Feldwerte in der Palette geführt.\\
 Abb. \ref{fig:figure14} zeigt auch, dass jedes Objekt der Klasse Palette und Cup ein Feld \verb|location| braucht.
 Hier wird das Objekt gespeichert in welchem sich die Palette oder Becher gerade befindet.
-Dies ist erforderlich um refrenzielle Integrität zu gewährleisten und erleichtert die Implementierung der Controller,
-wie eingangs in \ref{PythonApp} beschrieben.
+Dies ist erforderlich um referenzielle Integrität zu gewährleisten und erleichtert die Implementierung der Controller,
+wie eingangs in Kapitel \ref{PythonApp} beschrieben.
 Aus dem Diagramm wird auch deutlich, dass zwsichen den Objekten der Klassen \verb|MobileRobot|, \verb|WorkBench| und
 \verb|Inventory| keinerlei Assoziationen gibt.
 Es wird also ein weiteres Objekt, z.B. ein InventoryController, gebraucht um aktiv Objekte von einem Lagerort zu einem Anderen
-zu schreiben.
-Als Ergebnis dieser Überlegungen leitet sich ein (Daten-)Klassendiagramm ab (Siehe Abb.\ref{fig:figure15}).
+zu schreiben.\\
+Als Ergebnis dieser Überlegungen leitet sich ein (Daten-)Klassendiagramm ab (Siehe Abb.\ref{fig:figure15}).\\
+Weitere Daten des Programms werden erwartungsgemäß nur in den Service-Klassen (siehe Kapitel \ref{ControllerServices})
+gebraucht.
+Die werden daher auch dort gespeichert wo sie verarbeitet werden.
+Immer wenn ein Service Zugriff auf das Datenmodell braucht, wird der entsprechende Controller diese Zugriffe verarbeiten.\\
 
 
 \begin{figure}
@@ -283,13 +287,57 @@ Als Ergebnis dieser Überlegungen leitet sich ein (Daten-)Klassendiagramm ab (Si
 \end{figure}
 
 
-\section{Konzepte für Controller- und Serviceklassen}
+\section{Konzepte für Controller- und Serviceklassen}\label{ControllerServices}
 
-Für die Kommunikation über Modbus TCP/IP, OPC UA, RFID und ABB Robotics wird jeweils eine eigene Serviceklasse und ein
-Controller angelegt, wobei für Modbus TCP/IP  und OPC UA sowohl Client als auch Server gebraucht werden.
+Für die Kommunikation über Modbus TCP/IP, OPC UA, RFID und ABB Robotics wird jeweils eine eigene Serviceklassen angelegt,
+wobei für Modbus TCP/IP  und OPC UA sowohl Client als auch Server gebraucht werden.
 Das in \cite{LarsKistner2017} eingeführte Agentensystem wird ebenfalls als eigener Service implementiert.
-Da die LZ nicht mit anderen Stationen kommunizieren muss, reicht die Implementierung des Clients.
+Da die LZ nicht mit anderen Stationen kommunizieren muss, reicht die Implementierung des Clients.\\
+
+Controller werden gebraucht um Schnittstellen zwischen Service und Daten oder zwischen Service und GUI zu implementieren.
+Da Service und GUI im Allgemeinen getrennt sind, macht es am meisten Sinn, den Controller dem GUI zuzuordnen.
+Controller wie \verb|EventlogController| machen Sinn, Controller wie \verb|ModBusController| eher weniger und implizieren
+eine andere Aufgabe.
+
+Eine besondere Rolle nimmt der \verb|InventoryController| ein.
+Er muss zum Start des Programms das Inventar aus Dateien laden und damit das Datenmodell initialisieren.
+Aus Gründen die in Kapitel \ref{Fehlerbehandlung} erörtert werden, sollte der Controller nach jeder vollständigen Änderung
+des Datenmodells die Änderung einerseits in der Datei und andererseits in OPC UA sichern.
+
+Eine Liste aller benötigter Service Klassen ist in Tab. \ref{tab:Services} aufgelistet.
+Die Controller finden sich in Tab. \ref{tab:Controller}.
 
 
-InventoryController muss Datenmodell initialisieren.
+\input{Kapitel/Tabellen/Services}
+\input{Kapitel/Tabellen/Controller}
+
+\newpage
 \section{Teilautomatisierte Code Dokumentation}
+
+Code-Dokumentation ist ein wichtiger Bestandteil jedes Softwareprojekts und dient dazu den Code anderen Entwicklern zugänglich zu machen.
+Die Erstellung ist unter Umständen aufwändig, kann aber zumindest teilweise automatisiert werden.
+Eine Möglichkeit besteht darin, das Paket Sphinx zu verwenden.
+Sphinx ist ein Tool, das es Entwicklern ermöglicht, Dokumentationen in verschiedenen Formaten wie HTML, PDF und ePub
+aus Kommentaren im Code des Python Projekts zu erstellen.
+Dazu werden die in Python üblich Docstrings verwendet \cite{pepDocstrings}.\\
+
+Das Sphinx- Paket benutzt sog. Themes um die Dokumentation graphisch darzustellen und zu strukturieren.
+In Vorbereitung auf diese Arbeit habe ich mir das rtd-theme (Read the Docs \cite{RTD}) angeschaut und ausprobiert.
+Es ist ein beliebtes Theme für Sphinx-Dokumentationen, da eine klare und übersichtliche Darstellung der Dokumentation
+bietet und einfach zu verwenden ist. \\
+Um das rtd-theme in einem Sphinx-Projekt zu verwenden, muss es zunächst installiert werden.
+Dies kann über den Befehl \verb|pip install sphinx_rtd_theme| erfolgen, dabei wird das Sphinx Paket auf die Version 6.4.1 angepasst.\\
+\vspace{1cm}
+Um Sphinx zu nutzen, muss es zunächst konfiguriert werden.
+
+[Hier beschreiben wie PShinx DOkumentation aufgesetzt wird]\\
+
+\vspace{1cm}
+Nach der Installation des rtd-theme kann es in der Konfigurationsdatei von Sphinx aktiviert werden.
+Dazu muss die Zeile \verb|html_theme = 'sphinx_rtd_theme'| in die Datei \verb|conf.py| eingefügt werden.
+Sobald das Theme aktiviert ist, wird die Dokumentation im rtd-Theme angezeigt.\\
+
+[Hier noch erklären wie sphinx verwendet wird falls Code aktualisiert oder gar neue Dateien hinhugefügt werden]
+
+
+
