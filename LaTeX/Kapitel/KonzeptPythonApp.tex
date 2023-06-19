@@ -1,5 +1,4 @@
 
-
 \chapter{Konzeptionierung einer integrierten Python Anwendung}\label{PythonApp}
 
 Die Basisanforderungen einer integrierten LZ-Verwaltung lassen sich aus Kapitel \ref{Kap2} ableiten.
@@ -312,7 +311,7 @@ Die Controller finden sich in Tab. \ref{tab:Controller}.
 \input{Kapitel/Tabellen/Controller}
 
 \newpage
-\section{Teilautomatisierte Code Dokumentation}
+\section{Teilautomatisierte Code Dokumentation mit Sphinx}
 
 Code-Dokumentation ist ein wichtiger Bestandteil jedes Softwareprojekts und dient dazu den Code anderen Entwicklern zugänglich zu machen.
 Die Erstellung ist unter Umständen aufwändig, kann aber zumindest teilweise automatisiert werden.
@@ -320,24 +319,135 @@ Eine Möglichkeit besteht darin, das Paket Sphinx zu verwenden.
 Sphinx ist ein Tool, das es Entwicklern ermöglicht, Dokumentationen in verschiedenen Formaten wie HTML, PDF und ePub
 aus Kommentaren im Code des Python Projekts zu erstellen.
 Dazu werden die in Python üblich Docstrings verwendet \cite{pepDocstrings}.\\
-
-Das Sphinx- Paket benutzt sog. Themes um die Dokumentation graphisch darzustellen und zu strukturieren.
+Das Paket kann über PyPi mit folgendem Kommando über die Eingabeaufforderung installiert werden:
+\begin{lstlisting}
+        pip install -U sphinx
+\end{lstlisting}
+\vspace{1cm}
+Das Sphinx- Paket benutzt Themes um die Dokumentation grafisch darzustellen und zu strukturieren.
 In Vorbereitung auf diese Arbeit habe ich mir das rtd-theme (Read the Docs \cite{RTD}) angeschaut und ausprobiert.
 Es ist ein beliebtes Theme für Sphinx-Dokumentationen, da eine klare und übersichtliche Darstellung der Dokumentation
 bietet und einfach zu verwenden ist. \\
 Um das rtd-theme in einem Sphinx-Projekt zu verwenden, muss es zunächst installiert werden.
-Dies kann über den Befehl \verb|pip install sphinx_rtd_theme| erfolgen, dabei wird das Sphinx Paket auf die Version 6.4.1 angepasst.\\
+Dies kann über den Befehl
+\begin{lstlisting}
+        pip install sphinx_rtd_theme
+\end{lstlisting}
+erfolgen, dabei wird das Sphinx Paket auf die Version 6.4.1 angepasst.\\
 \vspace{1cm}
-Um Sphinx zu nutzen, muss es zunächst konfiguriert werden.
+Um Sphinx zu nutzen, muss es zunächst konfiguriert werden. Mit dem Kommando
 
-[Hier beschreiben wie PShinx DOkumentation aufgesetzt wird]\\
+\begin{lstlisting}[language = python]
+        sphinx-quickstart
+\end{lstlisting}
+wird man Über die Konsole aufgefordert einige Optionen festzulegen mit denen die Dokumentation aufgesetzt wird.
+Anschließend befinden sich in dem ausgewählten Ordner:
+\begin{itemize}
+        \item ein Makefile
+        \item eine Datei \verb|modules.rst|
+        \item eine Datei \verb|index.rst|
+\end{itemize}
 
-\vspace{1cm}
+Index ist in der HTML -Version die Startseite.
+Im RST-Format \cite{sphinxRST}kann die Seite gestaltet werden. \\
+In der \verb|modules.rst| dagegen werden die Module aufgelistet, die dokumentiert werden sollen.
 Nach der Installation des rtd-theme kann es in der Konfigurationsdatei von Sphinx aktiviert werden.
 Dazu muss die Zeile \verb|html_theme = 'sphinx_rtd_theme'| in die Datei \verb|conf.py| eingefügt werden.
 Sobald das Theme aktiviert ist, wird die Dokumentation im rtd-Theme angezeigt.\\
 
 [Hier noch erklären wie sphinx verwendet wird falls Code aktualisiert oder gar neue Dateien hinhugefügt werden]
+\subsection{Sphinx Erweiterungen}\label{subsec:sphinx-erweiterungen}
+
+In der Konfigurationsdatei \verb|conf.py| habe ich folgende Zeile eingefügt:
+
+\begin{lstlisting}[language = python,label={lst:sphinxExt}]
+extensions = [
+        'sphinx.ext.autodoc',
+        'sphinx.ext.viewcode',
+        'sphinx_copybutton']
+\end{lstlisting}
+
+\subsubsection{Autodoc}
+Autodoc wird dazu verwendet um die Docstrings im Python-Code als Dokumentationstext zu erfassen.
+Damit dies funktioniert muss ein Modul in der Datei \verb|modules.rst| mit folgendem Syntax hinzugefügt werden:
+\begin{lstlisting}[language = python,label={lst:sphinxAutomodule}]
+.. automodule:: src.cameraApplication.cameraProcessing
+        :members:
+\end{lstlisting}
+
+Die Dateipfade der Module werden wie im Beispiel vom Makefile aus zur Python-Datei angegeben, jedoch ohne Dateierweiterung.
+Docstrings in den Modulen werden direkt als HTML gerendert.
+Inline-Kommentare werde nicht angezeigt.
+
+\subsubsection{viewcode}
+
+Um den Code des Moduls in dem HTML Dokument einzublenden wird die Erweiterung viewcode genutzt.
+Unterhalb der Modulüberschrift im HTML-Dokumentwerden zunächst alle Docstrings gerendert.
+Darunter erscheint nun ein grauer Bereich, in dem Python Code mit Farbformatierung angezeigt wird.
+Es werden auch andere Sprachen erkannt, jedoch gibt es leider keine Option QML Code farblich formatiert
+anzuzeigen.
+QML Dateien werden im Allgemeinen von Autodoc nicht erkannt.
+Die Einzige Option ist ein \verb|literalinclude| Befehl in der Datei \verb|modules.rst| wie z.B.:
+\begin{lstlisting}[language = python,label={lst:sphinxQML}]
+qml.main.qml
+------------
+
+The main QML-file creates the main application window.
+
+.. literalinclude:: src/qml/main.qml
+        :language: qml
+\end{lstlisting}
+
+Wie leicht zu erkennen werden Docstrings nicht erkannt und müssen daher manuell eingefügt werden.
+Kommentare im Javascript-Syntax und Properties werden farblich hervorgehoben.
+Insofern ist dies ein gangbarer Weg.
+
+\subsubsection{sphinx\_copybutton}
+
+Diese Erweiterung erleichtert dem Anwender oder Entwickler das Leben wenn durch die HTML Seite navigiert wird.
+Werden Codes für die Kommandozeile in den rst Dateien angegeben, wie z.B.:
+\begin{lstlisting}[label={lst:sphinxCodebutton}]
+        .. code-block:: bash
+                pip install -r requirements.txt
+\end{lstlisting}
+Dann wird im HTML Dokument im grau hinterlegten Bereich der den Code darstellt, ein Knopf gerendert,
+der das Kommando per Click in den Zwischenspeicher kopiert.
 
 
 
+\section{Sonstige Festlegungen}
+
+\subsection{Virtual Environment}
+
+Die Entwicklung der Software soll in einer virtuellen Entwicklungsumgebung (venv) stattfinden.
+Alle benötigten Pakete werden dort installiert. \\
+
+Die installierten Pakete werden nicht in das Git Repository gepusht. Stattdessen wird mit
+\begin{lstlisting}[label={lst:freezeReq}]
+        pip freeze > requirements.txt
+\end{lstlisting}
+Eine Textdatei mit allen verwendeten Bibliotheken erstellt.
+Läd sich ein Benutzer das Repository herunter, können mit dem Befehl
+\begin{lstlisting}[label={lst:installReq}]
+        pip install -r requirements.txt
+\end{lstlisting}
+alle benötigten Pakete installiert werden, sodass das Projekt lauffähig kompiliert werden kann.
+Der Nachteil ist, dass es im Aufgabenbereich des Entwicklers liegt, nicht verwendete Pakete zu deinstallieren,
+sodass sie später nicht unbeabsichtigter Weise installiert werden.
+
+
+\subsection{Verwendete Programme }
+
+Nachfolgend werden alle verwendeten Programme und Software aufgelistet, die zur Erstellung der Software benutzt werden
+\begin{itemize}
+        \item PyCharm Comunity Edition von JetBrains wird zur Editierung von Code verwendet. Das betrifft nicht nur Python Code,
+        sondern auch alle anderen Sprachen und Syntaxe exklusiv QML. Sogar zur Erstellung von LaTeX Dokumenten wird
+        PyCharm mit dem PlugIn TeXiFy verwendet.
+        \item Qt Creator kann für alle Qt kompatiblen Programmiersprachen verwendet werden. Es beinhaltet außerdem den
+        Qt Designer, mit dem QML Dateien grafisch editiert werden können. Das Programm ist teilweise unbequem und umständlich,
+        ist aber für QML in Python die beste Lösung um intuitiv Einstellungen an QML Types auszuprobieren.
+        \item Visual Studio 2022 wird dazu verwendet den C\# Code der alten Software zu analysieren.
+        Das PlugIn \glqq Class Designer \grqq wird dazu verwendet um die Projektmappen in Klassendiagramme darzustellen.
+        \item Die Homepage Diagrams.net bietet eine gute Lösung um schnell Diagramme in UML und anderen Standards zu erstellen und
+        in gewünschten Dateiformaten zu exportieren.
+\end{itemize}
