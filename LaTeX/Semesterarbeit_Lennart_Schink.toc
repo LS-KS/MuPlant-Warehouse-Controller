@@ -33,6 +33,8 @@
 \contentsline {subsection}{\numberline {3.6.1}Virtual Environment}{37}{subsection.3.6.1}%
 \contentsline {subsection}{\numberline {3.6.2}Verwendete Programme}{37}{subsection.3.6.2}%
 \contentsline {chapter}{\numberline {4}Analyse zur Fehlerbehandlung}{39}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Fehleridentifikation}{39}{subsection.4.0.1}%
+\contentsline {subsection}{\numberline {4.0.2}Erkennung fehlerhafter Benutzereingaben}{39}{subsection.4.0.2}%
 \contentsline {chapter}{\numberline {5}Ideensammlung zu kameragestützten Validierungsprozessen in der Lagerverwaltung}{41}{chapter.5}%
 \contentsline {subsection}{\numberline {5.0.1}Konzepte}{41}{subsection.5.0.1}%
 \contentsline {subsection}{\numberline {5.0.2}Abgeleitete Anforderungen an die Kamera}{41}{subsection.5.0.2}%

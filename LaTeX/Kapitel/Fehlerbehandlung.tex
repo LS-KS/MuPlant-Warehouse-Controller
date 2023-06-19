@@ -1,7 +1,30 @@
 \chapter{Analyse zur Fehlerbehandlung}\label{Fehlerbehandlung}
 
+\subsection{Fehleridentifikation}
 
-Wenn Manuell Transportaufträge eingegeben werden, kann es zu Konflikten kommen.
+Fehler können systematischer oder sporadischer Natur sein.
+Systematische Fehler können in der Softwareentwicklung durch intensives Testen behoben werden.
+In Python ist dies beispielsweise mit dem Paket \verb|pytest| ( siehe \cite{pytestHP}) oder \verb|unittest| ( siehe \cite{unittestHP}) möglich.
+Anhand einer kurzen Recherche beider Internetauftritte werde ich pytest verwende.
+Einerseits liefert pytest bei fehlgeschlagenen Tests eine ausführlichere Analysemeldung, adererseits wird pytest von Qt empfohlen.
+Mit pytest lassen sich aber nur Python Module testen.
+Für einen GUI Test muss das \verb|QtTest| Framework verwendet werden.
+Leider lässt sich zu diesem Paket keine umfangreiche Dokumentation, sodass von diesem Framework in dieser Arbeit abgesehen wird.\\
+
+\vspace{1cm}
+Sporadische Fehler können nicht vorhergesehen werden und müssen überprüft und abgefangen werden.
+Die erwarteten Quellen sind Eingabefehler und Kommunikationsfehler.
+
+\subsection{Erkennung fehlerhafter Benutzereingaben}
+
+Werden im Programm falsche Daten eingegeben, soll dies, soweit wie möglich, überprüft und abgefangen werden.
+Die Tabelle \ref{tab:Benutzereingaben} listet alle erwarteten Benutzereingaben und mögliche Methoden die Benutzereingaben
+zu validieren. \\
+
+\input{Kapitel/Tabellen/BenutzereingabenFehler}
+
+\vspace{1cm}
+Wenn manuell Transportaufträge eingegeben werden, kann es zu Konflikten kommen.
 Z.B. Könnte im Abholort kein Becher oder keine Palette sein.
 Umgekehrt könnte am Abstellort eine Palette oder Becher stehen.
 Für diese Problematiken können :

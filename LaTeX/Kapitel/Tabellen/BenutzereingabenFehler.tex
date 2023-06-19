@@ -1,0 +1,20 @@
+\begin{table}[h]
+\centering
+\caption{Benutzerinageben, mögliche Fehler und ihre Erkennung}
+\begin{tabularx}{\textwidth}{|l|p{2cm}|p{2cm}|X|}
+\hline
+Art & Typ & Wertebereich & Fehlererkennung \\
+\hline
+IP Adresse & Formatierter String aus Integers & 0 \ldots 255 bzw. 0 \ldots 9 & Gültigkeitsprüfung bei Dateneingabe, Validierung bei Verbindungsaufbau\\
+\hline
+IP Port & Integer & 0\ldots65536 & Wertebereich bei Dateneingabe, Validierung bei Verbindungsaufbau\\
+\hline
+Produkt ID & Integer & 0\ldots99 & Eingabe anhand Dropdown Menü mit Anzeige des Produktnamens beschränkt Wertebereich auf zulässige Werte. Validierung nur im Softwarebetrieb durch Soll-Ist Abgleich.\\
+\hline
+Becher ID & Integer & 0\ldots99 & Eingabe kann nicht auf gültigen Wertebereich beschränkt werden. Soll-Ist-Vergleich mittels RFID ist möglich.\\
+\hline
+Palette & Bool & True / False & Abgleich mit Anwesenheit von Bechern, arUco Marker Erkennung mittels Kamera\\
+\hline
+\end{tabularx}\label{tab:Benutzereingaben}
+\end{table}
+
